@@ -1,0 +1,24 @@
+<mat-toolbar color="primary" class="position-sticky">
+  <!-- <button
+    mat-icon-button
+    class="example-icon mr-2"
+    aria-label="Example icon-button with menu icon"
+  >
+    <mat-icon (click)="navToggle.emit()">menu</mat-icon>
+  </button> -->
+  <div class="d-flex align-items-baseline">
+    <span class="ml-2 cursor-pointer" [routerLink]="['/home']">Breaker Boxer</span>
+    <span class="ml-4 nav-link" [routerLink]="['/workspace']">Workspace</span>
+  </div>
+  <app-dark-mode-switch class="ml-auto"></app-dark-mode-switch>
+  <!-- <button mat-raised-button (click)="auth.googleSignIn()" *ngIf="!(auth.loggedIn$| async) as loggedIn; else profileTemplate">Login</button>
+  <ng-template #profileTemplate>
+    <button mat-icon-button [matMenuTriggerFor]="menu"><mat-icon>account_circle</mat-icon></button>
+    <mat-menu #menu="matMenu">
+      <div mat-menu-item>Login Required 1</div>
+      <div mat-menu-item>Login Required 1</div>
+      <mat-divider></mat-divider>
+      <div mat-menu-item  (click)="auth.signOut()">Log Out</div>
+    </mat-menu>
+  </ng-template> -->
+</mat-toolbar>

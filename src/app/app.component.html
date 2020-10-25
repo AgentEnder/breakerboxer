@@ -1,3 +1,4 @@
-<main>
-  <app-canvas class="workspace"></app-canvas>
-</main>
+<div class="main-wrapper" [ngClass]="{'dark-theme': darkService.dark}">
+  <app-navbar></app-navbar>
+  <router-outlet></router-outlet>
+</div>

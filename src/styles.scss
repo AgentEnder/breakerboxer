@@ -1,17 +1,13 @@
 /* You can add global styles to this file, and also import other style files */
-* {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
+@import 'scss/index';
+@import 'https://fonts.googleapis.com/icon?family=Material+Icons';
+@import "~bootstrap/dist/css/bootstrap.css";
+
+html,
+body {
+  height: 100%;
 }
-
-// app-root {
-//     min-height: 100vh;
-//     width: 100vw;
-//     display: flex;
-// }
-
-// main {
-//     flex-grow: 1;
-//     // border: 4px black solid;
-// }
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}

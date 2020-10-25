@@ -1,0 +1,56 @@
+.dark-mode-switch {
+    --dms-bg: #dcdcfc;
+    --dms-text: #2a2a2a;
+    --handle-position: 0.25rem;
+    --handle-width: 1.5rem;
+    background-color: var(--dms-bg);
+    color: var(--dms-text);
+    display: flex;
+    align-items: center;
+    border-radius: 2rem;
+    line-height: 1rem;
+    justify-content: space-between;
+    position: relative;
+    padding: 0.25rem;
+    user-select: none;
+    cursor: pointer;
+    transition: color 250ms ease-in-out,
+                background-color 250ms ease-in-out;
+
+    &::before {
+        content: '';
+        position: absolute;
+        width: var(--handle-width);
+        height: var(--handle-width);
+        border-radius: 50%;
+        background-color: var(--dms-text);
+        left: var(--handle-position);
+        transition: left 250ms ease-in-out,
+                    background-color 250ms ease-in-out;
+    }
+
+    &--light {
+        margin-left: 1rem;
+        opacity: 100%;
+        transition: opacity 100ms ease-in-out;
+    }
+
+    &--dark {
+        opacity: 0%;
+        transition: opacity 100ms ease-in-out;
+    }
+}
+
+.dark-theme .dark-mode-switch{
+    --dms-bg: #2a2a2a;
+    --dms-text: #dcdcfc;
+    --handle-position: calc(100% - var(--handle-width) - 0.25em);
+
+    &--light {
+        opacity: 0%;
+    }
+
+    &--dark {
+        opacity: 100%;
+    }
+}
