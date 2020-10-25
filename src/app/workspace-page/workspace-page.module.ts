@@ -1,12 +1,18 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
-import { MatToolbarModule } from '@angular/material/toolbar';
 import { RouterModule, Routes } from '@angular/router';
+
+import { MatButtonModule } from '@angular/material/button';
+import { MatButtonToggleModule } from '@angular/material/button-toggle';
+import { MatIconModule } from '@angular/material/icon';
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatTooltipModule } from '@angular/material/tooltip';
+import { MatSidenavModule } from '@angular/material/sidenav';
 
 import { CoreModule } from '../core/core.module';
 import { CanvasComponent } from './canvas/canvas.component';
-import { WorkspacePageComponent } from './workspace-page.component';
 import { ToolbarComponent } from './toolbar/toolbar.component';
+import { WorkspacePageComponent } from './workspace-page.component';
 
 const routes: Routes = [
   {
@@ -21,7 +27,12 @@ const routes: Routes = [
     CommonModule,
     RouterModule.forChild(routes),
     CoreModule,
-    MatToolbarModule
+    MatToolbarModule,
+    MatButtonModule,
+    MatIconModule,
+    MatTooltipModule,
+    MatButtonToggleModule,
+    MatSidenavModule
   ]
 })
 export class WorkspacePageModule { }

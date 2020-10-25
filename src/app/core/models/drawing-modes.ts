@@ -1,3 +1,3 @@
 export type DrawingMode
-= 'wall'
-| 'room';
+= 'polyline'
+| 'rectangle';

@@ -2,4 +2,5 @@
     (mousedown)="onClick($event)" 
     (mousewheel)="onScroll($event)"
     (mousemove)="onMouseMove($event)"
+    (contextmenu)="$event.preventDefault()"
 ></canvas>

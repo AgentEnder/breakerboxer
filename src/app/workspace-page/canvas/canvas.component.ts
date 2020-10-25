@@ -1,8 +1,9 @@
 import { AfterViewInit, Component, ElementRef, Input, OnInit, ViewChild } from '@angular/core';
+import { Subscription } from 'rxjs';
 
 import { DarkModeService } from 'src/app/layout/dark-mode-switch/dark-mode.service';
 
-import { DrawingMode, IDrawable, Point, Wall } from '../../core/models';
+import { DrawableMap, DrawingMode, IDrawable, Point, Polyline } from '../../core/models';
 
 @Component({
   selector: 'app-canvas',
@@ -13,7 +14,7 @@ export class CanvasComponent implements AfterViewInit {
 
   @Input() public resX;
   @Input() public resY;
-  @Input() public drawingMode: DrawingMode = 'wall';
+  @Input() public drawingMode: DrawingMode = 'polyline';
 
   @ViewChild('workspaceCanvas') canvas: ElementRef<HTMLCanvasElement>;
 
@@ -22,8 +23,25 @@ export class CanvasComponent implements AfterViewInit {
   private inProgressDrawable: IDrawable;
   private drawing = false;
   private lastKnownMousePoint: Point;
+  private drawingSubscription: Subscription;
 
   constructor(private el: ElementRef<HTMLElement>, private darkModeService: DarkModeService) { }
+
+  public clear(): void {
+    this.drawables = [];
+    this.inProgressDrawable = null;
+    this.drawing = false;
+    this.render();
+  }
+
+  public undo(): void {
+    if (this.drawing && this.inProgressDrawable) {
+      this.inProgressDrawable.undo();
+    } else {
+      this.drawables.pop();
+    }
+    this.render(this.lastKnownMousePoint);
+  }
 
   ngAfterViewInit(): void {
     const canvasElement = this.canvas.nativeElement;
@@ -52,6 +70,13 @@ export class CanvasComponent implements AfterViewInit {
       else {
         this.inProgressDrawable.click(pt);
       }
+    } else if (this.inProgressDrawable && event.button === 2) {
+      if (this.inProgressDrawable.altClick) { this.inProgressDrawable.altClick(pt); }
+      else {
+        this.resetDrawingAction();
+      }
+
+      event.preventDefault();
     }
   }
 
@@ -69,35 +94,47 @@ export class CanvasComponent implements AfterViewInit {
 
   startDrawing(pt: Point): void {
     this.drawing = true;
-    switch (this.drawingMode) {
-      case 'wall':
-        this.inProgressDrawable = new Wall();
-        this.inProgressDrawable.click(pt);
-        const subscription = this.inProgressDrawable.finished.subscribe(x => {
-          this.finishDrawing(x);
-          console.log(`Finished drawing ${x}`);
-          subscription.unsubscribe();
-        });
-    }
+    this.inProgressDrawable = DrawableMap[this.drawingMode]();
+    this.inProgressDrawable.click(pt);
+    const subscription = this.inProgressDrawable.finished.subscribe(x => {
+      if (x) {
+        this.finishDrawing(x);
+        console.log(`Finished drawing ${x}`);
+      } else {
+        console.log('Failed to draw shape');
+        this.resetDrawingAction();
+      }
+      subscription.unsubscribe();
+    });
   }
 
   finishDrawing(drawable: IDrawable): void {
-    this.drawing = false;
     this.drawables.push(drawable);
-    this.inProgressDrawable = null;
+    this.resetDrawingAction();
   }
 
   render(mousePosition?: Point): void {
     if (this.darkModeService.dark) {
       this.ctx.strokeStyle = 'white';
+      this.ctx.fillStyle = 'white';
     } else {
       this.ctx.strokeStyle = 'black';
+      this.ctx.fillStyle = 'black';
     }
     this.ctx.clearRect(0, 0, this.canvas.nativeElement.clientWidth, this.canvas.nativeElement.clientHeight);
     this.drawables.forEach(x => x.draw(this.ctx));
     if (this.inProgressDrawable && this.inProgressDrawable.drawPreview && mousePosition) {
       this.inProgressDrawable.drawPreview(this.ctx, mousePosition);
     }
+  }
+
+  resetDrawingAction(): void {
+    this.inProgressDrawable = null;
+    this.drawing = false;
+    if (this.drawingSubscription) {
+      this.drawingSubscription.unsubscribe();
+    }
+    this.render();
   }
 
   getCanvasXY(event: MouseEvent): Point {

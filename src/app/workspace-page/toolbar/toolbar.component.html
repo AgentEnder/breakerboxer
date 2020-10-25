@@ -1,1 +1,30 @@
-<p>toolbar works!</p>
+<mat-toolbar>
+    <mat-button-toggle-group>
+        <mat-button-toggle        
+            matTooltip="Draw a polyline"
+            (click)="toolSelected.emit('polyline')"
+            [checked]="true">
+            <mat-icon>timeline</mat-icon>
+        </mat-button-toggle>
+        <mat-button-toggle        
+            matTooltip="Draw a room"
+            (click)="toolSelected.emit('rectangle')">
+            <mat-icon>crop_square</mat-icon>
+        </mat-button-toggle>
+    </mat-button-toggle-group>
+    
+    <button 
+        mat-raised-button 
+        matTooltip="Undo"
+        class="ml-auto mr-2" 
+        (click)="undo.emit()">
+        <mat-icon>undo</mat-icon>
+    </button>
+    <button 
+        mat-raised-button 
+        matTooltip="Clear All"
+        class="mr-2" 
+        (click)="clear.emit()">
+        <mat-icon>delete_forever</mat-icon>
+    </button>
+</mat-toolbar>

@@ -90,7 +90,7 @@ app-sidebar {
     transition: var(--background-color-transition);
 }
 
-p, h1, h2 {
+p, h1, h2, h3, li {
     color: var(--text-color)
 }
 
@@ -102,4 +102,10 @@ p, h1, h2 {
 
 .cursor-pointer {
     cursor: pointer;
+}
+
+.workspace-sidebar {
+    max-width: 15vw;
+    padding: 0.5em;
+
 }

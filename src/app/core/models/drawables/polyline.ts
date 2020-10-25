@@ -1,12 +1,14 @@
+import { DrawingMode } from '../drawing-modes';
 import { Point } from '../point';
 import { Drawable } from './drawable';
 
-export class Wall extends Drawable {
+export class Polyline extends Drawable {
 
     points: Point[] = [];
     snapsAtAngles = [30, 45];
     snaps = true;
     pointSnapMagnitude = 5;
+    name: DrawingMode = 'polyline';
 
     draw = (ctx: CanvasRenderingContext2D) => {
         this.drawPoints(ctx);
@@ -14,7 +16,7 @@ export class Wall extends Drawable {
 
     drawPreview = (ctx: CanvasRenderingContext2D, next: Point) => {
         if (!this.points.length) { return; }
-        this.drawPoints(ctx);
+        this.drawPoints(ctx, true);
         if (this.snaps) { next = this.getSnappedPoint(next).newPoint; }
         ctx.beginPath();
         ctx.moveTo(...this.points[this.points.length - 1].coordinates);
@@ -32,6 +34,18 @@ export class Wall extends Drawable {
         if (sr && sr.snappedToPoint) {
             this.$finished.next(this);
         }
+    }
+
+    public altClick = (pt: Point) => {
+        if (this.points.length) {
+            this.$finished.next(this);
+        } else {
+            this.$finished.next(null);
+        }
+    }
+
+    undo = () => {
+        this.points.pop();
     }
 
     private getSnappedPoint(pt: Point): SnappingResult {
@@ -94,11 +108,11 @@ export class Wall extends Drawable {
         }, [0, 360]))).sort((a, b) => a - b);
     }
 
-    private drawPoints(ctx: CanvasRenderingContext2D): void {
-        this.drawHandle(ctx, this.points[0]);
+    private drawPoints(ctx: CanvasRenderingContext2D, drawHandles = false): void {
+        if (drawHandles) { this.drawHandle(ctx, this.points[0]); }
         for (let idx = 1; idx < this.points.length; idx++) {
             const pt = this.points[idx];
-            this.drawHandle(ctx, pt);
+            if (drawHandles) { this.drawHandle(ctx, pt); }
             this.drawSegment(ctx, this.points[idx - 1], pt);
         }
     }
