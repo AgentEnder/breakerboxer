@@ -81,6 +81,7 @@ export class CanvasComponent implements AfterViewInit {
       setTimeout(() => {
         canvasElement.width = this.el.nativeElement.clientWidth;
         canvasElement.height = this.el.nativeElement.clientHeight;
+        this.render();
       }, 1000); // timeout handles some weirdness with scaling not being stable due to angular/material drawer.
     }
 
