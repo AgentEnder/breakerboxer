@@ -1,5 +1,6 @@
 import { AfterViewInit, Component, ElementRef, Input, OnInit, ViewChild } from '@angular/core';
-import { Subscription } from 'rxjs';
+import { fromEvent, Subscription } from 'rxjs';
+import { filter, pairwise, takeUntil } from 'rxjs/operators';
 
 import { DarkModeService } from 'src/app/layout/dark-mode-switch/dark-mode.service';
 
@@ -24,6 +25,9 @@ export class CanvasComponent implements AfterViewInit {
   private drawing = false;
   private lastKnownMousePoint: Point;
   private drawingSubscription: Subscription;
+  private panX = 0;
+  private panY = 0;
+  private scaleFactor = 1;
 
   constructor(private el: ElementRef<HTMLElement>, private darkModeService: DarkModeService) { }
 
@@ -77,12 +81,29 @@ export class CanvasComponent implements AfterViewInit {
       }
 
       event.preventDefault();
+    } else {
+      fromEvent(this.canvas.nativeElement, 'mousemove').pipe(
+        takeUntil(fromEvent(this.canvas.nativeElement, 'mouseup').pipe(
+          filter((x: MouseEvent) => x.button === 2)
+        )),
+      ).subscribe((evt: MouseEvent) => {
+        this.panX += evt.movementX;
+        this.panY += evt.movementY;
+        console.log(this.panX, this.panY)
+        this.render();
+      });
     }
   }
 
-  onScroll(event: UIEvent): void {
+  onScroll(event: WheelEvent): void {
     console.log(event);
     event.preventDefault();
+    if (event.deltaY > 0) {
+      this.scaleFactor *= 1.25;
+    } else {
+      this.scaleFactor /= 1.25;
+    }
+    this.render();
   }
 
   onMouseMove(event: MouseEvent): void {
@@ -121,7 +142,11 @@ export class CanvasComponent implements AfterViewInit {
       this.ctx.strokeStyle = 'black';
       this.ctx.fillStyle = 'black';
     }
-    this.ctx.clearRect(0, 0, this.canvas.nativeElement.clientWidth, this.canvas.nativeElement.clientHeight);
+    this.ctx.setTransform(1, 0, 0, 1, 0, 0);
+    this.ctx.clearRect(0, 0, this.canvas.nativeElement.width, this.canvas.nativeElement.height);
+
+    this.ctx.translate(this.panX, this.panY);
+    this.ctx.scale(this.scaleFactor, this.scaleFactor);
     this.drawables.forEach(x => x.draw(this.ctx));
     if (this.inProgressDrawable && this.inProgressDrawable.drawPreview && mousePosition) {
       this.inProgressDrawable.drawPreview(this.ctx, mousePosition);
