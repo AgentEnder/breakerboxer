@@ -17,6 +17,28 @@ export class CanvasComponent implements AfterViewInit {
   @Input() public resY;
   @Input() public drawingMode: DrawingMode = 'polyline';
 
+  #gridSnap = true;
+  @Input() public set gridSnap(v) {
+    this.#gridSnap = v;
+    this.render();
+  }
+  public get gridSnap(): boolean {
+    return this.#gridSnap;
+  }
+
+  #angleSnap = true;
+  @Input() public set angleSnap(v) {
+    this.#angleSnap = v;
+
+    if (this.inProgressDrawable) {
+      this.inProgressDrawable.angleSnap = v;
+    }
+  }
+  public get angleSnap(): boolean {
+    return this.#angleSnap;
+  }
+
+
   @ViewChild('workspaceCanvas') canvas: ElementRef<HTMLCanvasElement>;
 
   private ctx: CanvasRenderingContext2D;
@@ -28,6 +50,7 @@ export class CanvasComponent implements AfterViewInit {
   private panX = 0;
   private panY = 0;
   private scaleFactor = 1;
+  private gridScale = 0.05;
 
   constructor(private el: ElementRef<HTMLElement>, private darkModeService: DarkModeService) { }
 
@@ -76,7 +99,7 @@ export class CanvasComponent implements AfterViewInit {
       else {
         this.inProgressDrawable.click(pt);
       }
-    // RIGHT CLICK, Drawing in progress
+      // RIGHT CLICK, Drawing in progress
     } else if (this.inProgressDrawable && event.button === 2) {
       if (this.inProgressDrawable.altClick) { this.inProgressDrawable.altClick(pt); }
       else {
@@ -129,6 +152,7 @@ export class CanvasComponent implements AfterViewInit {
     this.drawing = true;
     this.inProgressDrawable = DrawableMap[this.drawingMode]();
     this.inProgressDrawable.click(pt);
+    this.inProgressDrawable.angleSnap = this.#angleSnap;
     const subscription = this.inProgressDrawable.finished.subscribe(x => {
       if (x) {
         this.finishDrawing(x);
@@ -164,11 +188,47 @@ export class CanvasComponent implements AfterViewInit {
     this.ctx.translate(this.panX, this.panY);
     this.ctx.scale(this.scaleFactor, this.scaleFactor);
 
+    if (this.#gridSnap) { this.drawGrid(); }
+
     // Draw each item in queue
     this.drawables.forEach(x => x.draw(this.ctx));
     if (this.inProgressDrawable && this.inProgressDrawable.drawPreview && mousePosition) {
       this.inProgressDrawable.drawPreview(this.ctx, mousePosition);
     }
+  }
+
+  drawGrid(): void {
+    const oldStyle = this.ctx.strokeStyle;
+    this.ctx.strokeStyle = '#e3e3e3';
+    let [left, top, right, bottom] = this.getWorldSpaceBorderRect();
+    console.dir({ left, top, right, bottom, w: right - left, h: top - bottom });
+
+    const hspace = this.canvas.nativeElement.width * this.scaleFactor * this.gridScale;
+    const vspace = this.canvas.nativeElement.height * this.scaleFactor * this.gridScale;
+    const gridOffsetPt = this.getWorldSpacePoint(new Point(0, 0));
+    const gridOffsetX = gridOffsetPt.x % hspace;
+    const gridOffsetY = gridOffsetPt.y % vspace;
+    left += -gridOffsetX - hspace;
+    right += -gridOffsetX + hspace;
+    top += -gridOffsetY - vspace;
+    bottom += -gridOffsetY + vspace;
+    let [x, y] = [left, top];
+
+    this.ctx.beginPath();
+
+    while (x <= right) {
+      this.ctx.moveTo(x, top);
+      this.ctx.lineTo(x, bottom);
+      x += hspace;
+    }
+    while (y <= bottom) {
+      this.ctx.moveTo(left, y);
+      this.ctx.lineTo(right, y);
+      y += vspace;
+    }
+
+    this.ctx.stroke();
+    this.ctx.strokeStyle = oldStyle;
   }
 
   resetDrawingAction(): void {
@@ -182,12 +242,15 @@ export class CanvasComponent implements AfterViewInit {
 
   getCanvasXY(event: MouseEvent): Point {
     const [x, y] = this.getRawCanvasXY(event).coordinates;
+    return this.getWorldSpacePoint(new Point(x, y));
+  }
+
+  getWorldSpacePoint(pt: Point): Point {
     const matrix = this.ctx.getTransform();
-    const transformedPoint = new Point(
-      (x - matrix.e) / matrix.a ,
-      (y - matrix.f) / matrix.d ,
+    return new Point(
+      (pt.x - matrix.e) / matrix.a,
+      (pt.y - matrix.f) / matrix.d,
     );
-    return transformedPoint;
   }
 
   getRawCanvasXY(event: MouseEvent): Point {
@@ -195,6 +258,16 @@ export class CanvasComponent implements AfterViewInit {
     const x = event.clientX - rect.left;
     const y = event.clientY - rect.top;
     return new Point(x, y);
+  }
+
+  getWorldSpaceBorderRect(): ([number, number, number, number]) {
+    const topLeft = new Point(0, 0);
+    const bottomRight = new Point(this.canvas.nativeElement.width, this.canvas.nativeElement.height);
+    const matrix = this.ctx.getTransform();
+    const transformedTL = this.getWorldSpacePoint(topLeft);
+    const transformedBR = this.getWorldSpacePoint(bottomRight);
+    console.log(matrix);
+    return [...transformedTL.coordinates, ...transformedBR.coordinates];
   }
 
 }

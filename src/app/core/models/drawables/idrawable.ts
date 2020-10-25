@@ -9,4 +9,7 @@ export interface IDrawable {
     undo: () => void;
     finished: Observable<IDrawable>;
     guid: string;
+    angleSnap: boolean;
+    gridSnap: boolean;
+    gridSnapSize: number;
 }

@@ -69,6 +69,14 @@ export class Polyline extends Drawable {
             };
         }
 
+        if (!this.angleSnap) {
+            return {
+                newPoint: pt,
+                snappedToAngle: false,
+                snappedToPoint: false
+            };
+        }
+
         const deltaX = pt.x - last.x;
         const deltaY = last.y - pt.y; // y axis is flipped for easier thinking.
         const magnitude = Math.sqrt(deltaX * deltaX + deltaY * deltaY);

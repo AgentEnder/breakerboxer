@@ -24,6 +24,7 @@ export class Rectangle extends Drawable {
             this.points[0] = next;
         } else {
             this.points[1] = next;
+            console.log(`Created rect at (${this.points[0].x}, ${this.points[0].y}) -> (${this.points[1].x}, ${this.points[1].y})`)
             this.$finished.next(this);
         }
     }

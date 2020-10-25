@@ -15,8 +15,40 @@
     
     <button 
         mat-raised-button 
-        matTooltip="Undo"
+        matTooltip="Toggle grid + snapping"
         class="ml-auto mr-2" 
+        (click)="toggleGrid()"
+        >
+        <mat-icon>{{displayGrid ? 'grid_on' : 'grid_off'}}</mat-icon>
+    </button>
+    
+    <button 
+        mat-raised-button 
+        matTooltip="Toggle angle snapping"
+        class="mr-2" 
+        (click)="toggleAngleSnap()"
+        >
+        <mat-icon>{{angleSnap ? 'radio_button_checked' : 'radio_button_unchecked'}}</mat-icon>
+    </button>
+
+    <button 
+        mat-raised-button 
+        matTooltip="Right click and drag to pan."
+        class="ml-auto mr-2" 
+        >
+        <mat-icon>pan_tool</mat-icon>
+    </button>
+    <button 
+        mat-raised-button 
+        matTooltip="Scroll up / down to zoom."
+        class="mr-2"
+        >
+        <mat-icon>zoom_in</mat-icon>
+    </button>
+    <button 
+        mat-raised-button 
+        matTooltip="Undo"
+        class="mr-2" 
         (click)="undo.emit()">
         <mat-icon>undo</mat-icon>
     </button>

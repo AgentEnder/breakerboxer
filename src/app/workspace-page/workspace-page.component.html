@@ -15,6 +15,8 @@
       (clear)="workspace.clear()"
       (undo)="workspace.undo()"
       (toolSelected)="workspace.drawingMode = $event"
+      [(angleSnap)]="workspace.angleSnap"
+      [(displayGrid)]="workspace.gridSnap"
     ></app-toolbar>
     <app-canvas class="workspace" #workspace></app-canvas>
   </mat-drawer-content>
