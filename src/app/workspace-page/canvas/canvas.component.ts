@@ -101,6 +101,13 @@ export class CanvasComponent implements AfterViewInit {
     console.log(event);
     event.preventDefault(); // Prevent page from scrolling when user tries to zoom
 
+    // This section applies the actual zoom.
+    if (event.deltaY < 0) {
+      this.scaleFactor *= 1.25;
+    } else {
+      this.scaleFactor /= 1.25;
+    }
+
     // This section applies extra panning when the user zooms. This is meant to provide better UX and zoom towards mouse cursor.
     const width = this.canvas.nativeElement.width;
     const height = this.canvas.nativeElement.height;
@@ -108,12 +115,6 @@ export class CanvasComponent implements AfterViewInit {
     this.panX += (width / 2 - canvasX) * this.scaleFactor;
     this.panY += (height / 2 - canvasY) * this.scaleFactor;
 
-    // This section applies the actual zoom.
-    if (event.deltaY < 0) {
-      this.scaleFactor *= 1.25;
-    } else {
-      this.scaleFactor /= 1.25;
-    }
     this.render();
   }
 
