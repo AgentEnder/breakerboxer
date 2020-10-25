@@ -58,7 +58,7 @@ export class CanvasComponent implements AfterViewInit {
       setTimeout(() => {
         canvasElement.width = this.el.nativeElement.clientWidth;
         canvasElement.height = this.el.nativeElement.clientHeight;
-      }, 1000);
+      }, 1000); // timeout handles some weirdness with scaling not being stable due to angular/material drawer.
     }
 
     this.darkModeService.dark$.subscribe(x => {
@@ -68,6 +68,7 @@ export class CanvasComponent implements AfterViewInit {
 
   onClick(event: MouseEvent): void {
     const pt = this.getCanvasXY(event);
+    // LEFT CLICK
     if (event.button === 0) {
       if (!this.inProgressDrawable) {
         this.startDrawing(pt);
@@ -75,6 +76,7 @@ export class CanvasComponent implements AfterViewInit {
       else {
         this.inProgressDrawable.click(pt);
       }
+    // RIGHT CLICK, Drawing in progress
     } else if (this.inProgressDrawable && event.button === 2) {
       if (this.inProgressDrawable.altClick) { this.inProgressDrawable.altClick(pt); }
       else {
@@ -82,15 +84,14 @@ export class CanvasComponent implements AfterViewInit {
       }
 
       event.preventDefault();
-    } else {
-      fromEvent(this.canvas.nativeElement, 'mousemove').pipe(
-        takeUntil(fromEvent(this.canvas.nativeElement, 'mouseup').pipe(
-          filter((x: MouseEvent) => x.button === 2)
+    } else { // RIGHT CLICK, not drawing: PAN
+      fromEvent(this.canvas.nativeElement, 'mousemove').pipe( // when user hits mouse down start listening to mouse movement
+        takeUntil(fromEvent(this.canvas.nativeElement, 'mouseup').pipe( // stop this whenever they let up of the mouse
+          filter((x: MouseEvent) => x.button === 2) // iff it was the right mouse button
         )),
-      ).subscribe((evt: MouseEvent) => {
+      ).subscribe((evt: MouseEvent) => { // apply panning and rerender
         this.panX += evt.movementX;
         this.panY += evt.movementY;
-        console.log(this.panX, this.panY)
         this.render();
       });
     }
@@ -98,14 +99,16 @@ export class CanvasComponent implements AfterViewInit {
 
   onScroll(event: WheelEvent): void {
     console.log(event);
-    event.preventDefault();
+    event.preventDefault(); // Prevent page from scrolling when user tries to zoom
 
+    // This section applies extra panning when the user zooms. This is meant to provide better UX and zoom towards mouse cursor.
     const width = this.canvas.nativeElement.width;
     const height = this.canvas.nativeElement.height;
     const [canvasX, canvasY] = this.getRawCanvasXY(event).coordinates;
     this.panX += (width / 2 - canvasX) * this.scaleFactor;
     this.panY += (height / 2 - canvasY) * this.scaleFactor;
 
+    // This section applies the actual zoom.
     if (event.deltaY < 0) {
       this.scaleFactor *= 1.25;
     } else {
@@ -143,6 +146,7 @@ export class CanvasComponent implements AfterViewInit {
   }
 
   render(mousePosition?: Point): void {
+    // Handle darkmode styles
     if (this.darkModeService.dark) {
       this.ctx.strokeStyle = 'white';
       this.ctx.fillStyle = 'white';
@@ -150,11 +154,16 @@ export class CanvasComponent implements AfterViewInit {
       this.ctx.strokeStyle = 'black';
       this.ctx.fillStyle = 'black';
     }
+
+    // Clear last frame
     this.ctx.setTransform(1, 0, 0, 1, 0, 0);
     this.ctx.clearRect(0, 0, this.canvas.nativeElement.width, this.canvas.nativeElement.height);
 
+    // Handle translations
     this.ctx.translate(this.panX, this.panY);
     this.ctx.scale(this.scaleFactor, this.scaleFactor);
+
+    // Draw each item in queue
     this.drawables.forEach(x => x.draw(this.ctx));
     if (this.inProgressDrawable && this.inProgressDrawable.drawPreview && mousePosition) {
       this.inProgressDrawable.drawPreview(this.ctx, mousePosition);
@@ -173,14 +182,11 @@ export class CanvasComponent implements AfterViewInit {
   getCanvasXY(event: MouseEvent): Point {
     const [x, y] = this.getRawCanvasXY(event).coordinates;
     const matrix = this.ctx.getTransform();
-    console.log(matrix);
     const transformedPoint = new Point(
       (x - matrix.e) / matrix.a ,
       (y - matrix.f) / matrix.d ,
     );
-    console.log('Original:', x, y, ' Transformed:', ...transformedPoint.coordinates);
     return transformedPoint;
-    return new Point(x,y);
   }
 
   getRawCanvasXY(event: MouseEvent): Point {
