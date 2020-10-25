@@ -86,7 +86,7 @@ app-sidebar {
     transition: var(--background-color-transition);
 }
 
-.mat-drawer {
+.mat-drawer, .mat-drawer-container {
     transition: var(--background-color-transition);
 }
 

@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { LocalStorageService } from './services/local-storage.service';
+import { ProjectsService } from './services/projects.service';
 
 @NgModule({
     declarations: [],
@@ -8,6 +9,7 @@ import { LocalStorageService } from './services/local-storage.service';
     exports: [],
     providers: [
         LocalStorageService,
+        ProjectsService
     ],
 })
 export class CoreModule {}
