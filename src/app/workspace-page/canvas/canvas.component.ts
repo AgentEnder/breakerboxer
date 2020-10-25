@@ -33,8 +33,9 @@ export class CanvasComponent implements AfterViewInit {
 
   public clear(): void {
     this.drawables = [];
-    this.inProgressDrawable = null;
-    this.drawing = false;
+    this.panX = 0;
+    this.panY = 0;
+    this.scaleFactor = 1;
     this.render();
   }
 
@@ -98,7 +99,14 @@ export class CanvasComponent implements AfterViewInit {
   onScroll(event: WheelEvent): void {
     console.log(event);
     event.preventDefault();
-    if (event.deltaY > 0) {
+
+    const width = this.canvas.nativeElement.width;
+    const height = this.canvas.nativeElement.height;
+    const [canvasX, canvasY] = this.getRawCanvasXY(event).coordinates;
+    this.panX += (width / 2 - canvasX) * this.scaleFactor;
+    this.panY += (height / 2 - canvasY) * this.scaleFactor;
+
+    if (event.deltaY < 0) {
       this.scaleFactor *= 1.25;
     } else {
       this.scaleFactor /= 1.25;
@@ -163,6 +171,19 @@ export class CanvasComponent implements AfterViewInit {
   }
 
   getCanvasXY(event: MouseEvent): Point {
+    const [x, y] = this.getRawCanvasXY(event).coordinates;
+    const matrix = this.ctx.getTransform();
+    console.log(matrix);
+    const transformedPoint = new Point(
+      (x - matrix.e) / matrix.a ,
+      (y - matrix.f) / matrix.d ,
+    );
+    console.log('Original:', x, y, ' Transformed:', ...transformedPoint.coordinates);
+    return transformedPoint;
+    return new Point(x,y);
+  }
+
+  getRawCanvasXY(event: MouseEvent): Point {
     const rect = this.canvas.nativeElement.getBoundingClientRect();
     const x = event.clientX - rect.left;
     const y = event.clientY - rect.top;
