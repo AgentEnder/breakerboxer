@@ -101,23 +101,27 @@ export class CanvasComponent implements AfterViewInit {
         this.inProgressDrawable.click(pt);
       }
       // RIGHT CLICK, Drawing in progress
-    } else if (this.inProgressDrawable && event.button === 2) {
-      if (this.inProgressDrawable.altClick) { this.inProgressDrawable.altClick(pt); }
+    } else if (event.button === 2) {
+      if (this.inProgressDrawable) {
+        if (this.inProgressDrawable.altClick) { this.inProgressDrawable.altClick(pt); }
+        else {
+          this.resetDrawingAction();
+        }
+      }
       else {
-        this.resetDrawingAction();
+        // RIGHT CLICK, not drawing: PAN
+        fromEvent(this.canvas.nativeElement, 'mousemove').pipe( // when user hits mouse down start listening to mouse movement
+          takeUntil(fromEvent(this.canvas.nativeElement, 'mouseup').pipe( // stop this whenever they let up of the mouse
+            filter((x: MouseEvent) => x.button === 2) // iff it was the right mouse button
+          )),
+        ).subscribe((evt: MouseEvent) => { // apply panning and rerender
+          this.panX += evt.movementX;
+          this.panY += evt.movementY;
+          this.render();
+        });
       }
 
       event.preventDefault();
-    } else { // RIGHT CLICK, not drawing: PAN
-      fromEvent(this.canvas.nativeElement, 'mousemove').pipe( // when user hits mouse down start listening to mouse movement
-        takeUntil(fromEvent(this.canvas.nativeElement, 'mouseup').pipe( // stop this whenever they let up of the mouse
-          filter((x: MouseEvent) => x.button === 2) // iff it was the right mouse button
-        )),
-      ).subscribe((evt: MouseEvent) => { // apply panning and rerender
-        this.panX += evt.movementX;
-        this.panY += evt.movementY;
-        this.render();
-      });
     }
   }
 
@@ -200,9 +204,8 @@ export class CanvasComponent implements AfterViewInit {
 
   drawGrid(): void {
     const oldStyle = this.ctx.strokeStyle;
-    this.ctx.strokeStyle = '#e3e3e3';
+    this.ctx.strokeStyle = this.darkModeService.dark ? '#565656' : '#e3e3e3' ;
     let [left, top, right, bottom] = this.getWorldSpaceBorderRect();
-    console.dir({ left, top, right, bottom, w: right - left, h: top - bottom });
 
     const hspace = this.gridPxSpacing;
     const vspace = this.gridPxSpacing;
@@ -267,7 +270,6 @@ export class CanvasComponent implements AfterViewInit {
     const matrix = this.ctx.getTransform();
     const transformedTL = this.getWorldSpacePoint(topLeft);
     const transformedBR = this.getWorldSpacePoint(bottomRight);
-    console.log(matrix);
     return [...transformedTL.coordinates, ...transformedBR.coordinates];
   }
 
