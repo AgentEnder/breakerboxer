@@ -50,7 +50,7 @@ export class CanvasComponent implements AfterViewInit {
   private panX = 0;
   private panY = 0;
   private scaleFactor = 1;
-  private gridScale = 0.05;
+  private gridPxSpacing = 50;
 
   constructor(private el: ElementRef<HTMLElement>, private darkModeService: DarkModeService) { }
 
@@ -204,8 +204,8 @@ export class CanvasComponent implements AfterViewInit {
     let [left, top, right, bottom] = this.getWorldSpaceBorderRect();
     console.dir({ left, top, right, bottom, w: right - left, h: top - bottom });
 
-    const hspace = this.canvas.nativeElement.width * this.scaleFactor * this.gridScale;
-    const vspace = this.canvas.nativeElement.height * this.scaleFactor * this.gridScale;
+    const hspace = this.gridPxSpacing;
+    const vspace = this.gridPxSpacing;
     const gridOffsetPt = this.getWorldSpacePoint(new Point(0, 0));
     const gridOffsetX = gridOffsetPt.x % hspace;
     const gridOffsetY = gridOffsetPt.y % vspace;
