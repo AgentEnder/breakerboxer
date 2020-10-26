@@ -51,22 +51,13 @@ export class Polyline extends Drawable {
     private getSnappedPoint(pt: Point): SnappingResult {
         const last = this.points[this.points.length - 1];
 
-        let snappingDelta = Number.MAX_SAFE_INTEGER;
-        let closestPoint = null;
-        for (const point of this.points) {
-            const delta = (point.x - pt.x) * (point.x - pt.x) + (point.y - pt.y) * (point.y - pt.y);
-            if (delta < snappingDelta) {
-                closestPoint = point;
-                snappingDelta = delta;
-            }
-        }
-
-        if (snappingDelta < this.pointSnapMagnitude * this.pointSnapMagnitude) {
+        let ptSnap = this.checkPointSnap(pt);
+        if (ptSnap !== pt) {
             return {
-                newPoint: closestPoint,
+                newPoint: ptSnap,
                 snappedToAngle: false,
                 snappedToPoint: true
-            };
+            }
         }
 
         if (!this.angleSnap) {
@@ -83,7 +74,7 @@ export class Polyline extends Drawable {
         let angle = Math.atan2(deltaY, deltaX) / Math.PI * 180;
         if (angle < 0) { angle += 360; }
         let closestSnappingAngle = 0;
-        snappingDelta = 360;
+        let snappingDelta = 360;
         const snappingAngles = this.getExpandedSnappingAngles();
         for (const x of snappingAngles) {
             const delta = Math.abs(angle - x);
@@ -98,11 +89,34 @@ export class Polyline extends Drawable {
         const dx = magnitude * Math.cos(theta);
         const dy = magnitude * Math.sin(theta);
         const angledPoint = new Point(last.x + dx, last.y - dy);
-        return {
+        ptSnap = this.checkPointSnap(angledPoint);
+        return ptSnap === angledPoint ? {
             newPoint: angledPoint,
             snappedToPoint: false,
             snappedToAngle: true
+        } : {
+            newPoint: ptSnap,
+            snappedToPoint: true,
+            snappedToAngle: false
         };
+    }
+
+    private checkPointSnap(pt: Point): Point {
+        let snappingDelta = Number.MAX_SAFE_INTEGER;
+        let closestPoint = null;
+        for (const point of this.points) {
+            const delta = (point.x - pt.x) * (point.x - pt.x) + (point.y - pt.y) * (point.y - pt.y);
+            if (delta < snappingDelta) {
+                closestPoint = point;
+                snappingDelta = delta;
+            }
+        }
+
+        if (snappingDelta < this.pointSnapMagnitude * this.pointSnapMagnitude) {
+            return closestPoint;
+        } else {
+            return pt;
+        }
     }
 
     private getExpandedSnappingAngles(): number[] {
@@ -125,7 +139,7 @@ export class Polyline extends Drawable {
         }
     }
 
-    private drawHandle(ctx: CanvasRenderingContext2D, pt: Point): void {
+    private drawHandle(ctx: CanvasRenderingContext2D, pt: Point, next?: Point): void {
         ctx.beginPath();
         ctx.arc(pt.x, pt.y, this.pointSnapMagnitude, 0, 2 * Math.PI);
         ctx.fill();
