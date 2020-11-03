@@ -180,6 +180,7 @@ export class CanvasComponent implements AfterViewInit {
       }
       subscription.unsubscribe();
     });
+    this.render();
   }
 
   finishDrawing(drawable: IDrawable): void {
