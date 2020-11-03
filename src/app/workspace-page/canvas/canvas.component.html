@@ -1,7 +1,10 @@
-<canvas #workspaceCanvas 
-    (mousedown)="onClick($event)" 
+<canvas #workspaceCanvas
+    [appThrottleEvent]="'mousedown'"
+    (throttledEvent)="onClick($event)"
     (mousewheel)="onScroll($event)"
     (mousemove)="onMouseMove($event)"
     (contextmenu)="$event.preventDefault()"
     (resize)="setCanvasPxSize()"
 ></canvas>
+
+<!-- (mousedown)="onClick($event)"  -->
