@@ -1,8 +1,9 @@
-import { Injectable } from '@angular/core';
+import { Injectable, Optional } from '@angular/core';
 import { MediaMatcher } from '@angular/cdk/layout';
 
 import { LocalStorageService } from '../../core/services/local-storage.service';
 import { from, Subject } from 'rxjs';
+import { OverlayContainer } from '@angular/cdk/overlay';
 
 @Injectable({
     providedIn: 'root'
@@ -24,7 +25,12 @@ export class DarkModeService {
     private darkSubject = new Subject<boolean>();
     public dark$ = from(this.darkSubject);
 
-    constructor(private mediaMatcher: MediaMatcher, private storageService: LocalStorageService) {
+    private overlay: HTMLElement;
+
+    constructor(
+        private mediaMatcher: MediaMatcher,
+        private storageService: LocalStorageService,
+    ) {
         const saved = this.storageService.retrieveLocalStorage<string>('dark-mode');
         console.log(saved);
         switch (saved) {

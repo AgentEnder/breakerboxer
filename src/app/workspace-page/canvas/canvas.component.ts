@@ -1,6 +1,7 @@
 import { AfterViewInit, Component, ElementRef, Input, OnInit, ViewChild } from '@angular/core';
 import { fromEvent, Subscription } from 'rxjs';
 import { filter, pairwise, takeUntil } from 'rxjs/operators';
+import { WorkspaceContext } from 'src/app/core/models/workspace-context';
 
 import { DarkModeService } from 'src/app/layout/dark-mode-switch/dark-mode.service';
 
@@ -13,29 +14,25 @@ import { DrawableMap, DrawingMode, IDrawable, Point, Polyline } from '../../core
 })
 export class CanvasComponent implements AfterViewInit {
 
-  @Input() public resX;
-  @Input() public resY;
   @Input() public drawingMode: DrawingMode = 'polyline';
 
-  #gridSnap = true;
   @Input() public set gridSnap(v) {
-    this.#gridSnap = v;
+    this.context.gridSnapSettings.snap = v;
     this.render();
   }
   public get gridSnap(): boolean {
-    return this.#gridSnap;
+    return this.context.gridSnapSettings.snap;
   }
 
-  #angleSnap = true;
   @Input() public set angleSnap(v) {
-    this.#angleSnap = v;
-
+    this.context.angleSnapSettings.snap = v;
     if (this.inProgressDrawable) {
-      this.inProgressDrawable.angleSnap = v;
+      this.render();
     }
   }
+
   public get angleSnap(): boolean {
-    return this.#angleSnap;
+    return this.context.angleSnapSettings.snap;
   }
 
 
@@ -50,7 +47,20 @@ export class CanvasComponent implements AfterViewInit {
   private panX = 0;
   private panY = 0;
   private scaleFactor = 1;
-  private gridPxSpacing = 50;
+
+  public context: WorkspaceContext = {
+    angleSnapSettings: {
+      angles: [30, 45],
+      snap: false
+    },
+    ctx: null,
+    gridSnapSettings: {
+      gridSizeX: 50,
+      gridSizeY: 50,
+      displayGrid: true,
+      snap: true
+    }
+  };
 
   constructor(private el: ElementRef<HTMLElement>, private darkModeService: DarkModeService) { }
 
@@ -74,20 +84,23 @@ export class CanvasComponent implements AfterViewInit {
   ngAfterViewInit(): void {
     const canvasElement = this.canvas.nativeElement;
     this.ctx = this.canvas.nativeElement.getContext('2d');
-    if (this.resX && this.resY) {
-      canvasElement.width = this.resX;
-      canvasElement.height = this.resY;
-    } else {
-      setTimeout(() => {
-        canvasElement.width = this.el.nativeElement.clientWidth;
-        canvasElement.height = this.el.nativeElement.clientHeight;
-        this.render();
-      }, 1000); // timeout handles some weirdness with scaling not being stable due to angular/material drawer.
-    }
+    this.context.ctx = this.ctx;
+    // @ts-ignore
+    const obs = new ResizeObserver(() => this.setCanvasPxSize()).observe(canvasElement);
+    // setTimeout(() => {
+    //   this.setCanvasPxSize();
+    // }, 1000); // timeout handles some weirdness with scaling not being stable due to angular/material drawer.
 
     this.darkModeService.dark$.subscribe(x => {
       this.render(this.lastKnownMousePoint);
     });
+  }
+
+  setCanvasPxSize(): void {
+    const canvasElement = this.canvas.nativeElement;
+    canvasElement.width = this.el.nativeElement.clientWidth;
+    canvasElement.height = this.el.nativeElement.clientHeight;
+    this.render();
   }
 
   onClick(event: MouseEvent): void {
@@ -114,7 +127,7 @@ export class CanvasComponent implements AfterViewInit {
           takeUntil(fromEvent(this.canvas.nativeElement, 'mouseup').pipe( // stop this whenever they let up of the mouse
             filter((x: MouseEvent) => x.button === 2) // iff it was the right mouse button
           )),
-        ).subscribe((evt: MouseEvent) => { // apply panning and rerender
+        ).subscribe((evt: MouseEvent) => { // apply panning and re-render
           this.panX += evt.movementX;
           this.panY += evt.movementY;
           this.render();
@@ -155,9 +168,8 @@ export class CanvasComponent implements AfterViewInit {
 
   startDrawing(pt: Point): void {
     this.drawing = true;
-    this.inProgressDrawable = DrawableMap[this.drawingMode]();
+    this.inProgressDrawable = DrawableMap[this.drawingMode](this.context);
     this.inProgressDrawable.click(pt);
-    this.inProgressDrawable.angleSnap = this.#angleSnap;
     const subscription = this.inProgressDrawable.finished.subscribe(x => {
       if (x) {
         this.finishDrawing(x);
@@ -175,8 +187,12 @@ export class CanvasComponent implements AfterViewInit {
     this.resetDrawingAction();
   }
 
-  render(mousePosition?: Point): void {
-    // Handle darkmode styles
+  public render(mousePosition?: Point): void {
+    if (!this.ctx) { return; }
+
+    mousePosition = mousePosition || this.lastKnownMousePoint;
+
+    // Handle dark mode styles
     if (this.darkModeService.dark) {
       this.ctx.strokeStyle = 'white';
       this.ctx.fillStyle = 'white';
@@ -193,12 +209,12 @@ export class CanvasComponent implements AfterViewInit {
     this.ctx.translate(this.panX, this.panY);
     this.ctx.scale(this.scaleFactor, this.scaleFactor);
 
-    if (this.#gridSnap) { this.drawGrid(); }
+    if (this.context.gridSnapSettings.displayGrid) { this.drawGrid(); }
 
     // Draw each item in queue
-    this.drawables.forEach(x => x.draw(this.ctx));
+    this.drawables.forEach(x => x.draw());
     if (this.inProgressDrawable && this.inProgressDrawable.drawPreview && mousePosition) {
-      this.inProgressDrawable.drawPreview(this.ctx, mousePosition);
+      this.inProgressDrawable.drawPreview(mousePosition);
     }
   }
 
@@ -207,8 +223,8 @@ export class CanvasComponent implements AfterViewInit {
     this.ctx.strokeStyle = this.darkModeService.dark ? '#565656' : '#e3e3e3' ;
     let [left, top, right, bottom] = this.getWorldSpaceBorderRect();
 
-    const hspace = this.gridPxSpacing;
-    const vspace = this.gridPxSpacing;
+    const hspace = this.context.gridSnapSettings.gridSizeX;
+    const vspace = this.context.gridSnapSettings.gridSizeY;
     const gridOffsetPt = this.getWorldSpacePoint(new Point(0, 0));
     const gridOffsetX = gridOffsetPt.x % hspace;
     const gridOffsetY = gridOffsetPt.y % vspace;

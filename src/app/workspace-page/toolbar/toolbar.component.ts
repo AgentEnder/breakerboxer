@@ -4,7 +4,6 @@ import { DrawingMode } from 'src/app/core/models';
 @Component({
   selector: 'app-toolbar',
   templateUrl: './toolbar.component.html',
-  styleUrls: ['./toolbar.component.scss']
 })
 export class ToolbarComponent implements OnInit {
 
@@ -12,26 +11,50 @@ export class ToolbarComponent implements OnInit {
   @Output() clear = new EventEmitter<void>();
   @Output() toolSelected = new EventEmitter<DrawingMode>();
 
+  #displayGrid = true;
   @Output() displayGridChange = new EventEmitter<boolean>();
-  @Input() displayGrid = true;
+  @Input() set displayGrid(v: boolean) {
+    this.#displayGrid = v;
+    this.displayGridChange.emit(v);
+    this.contextChange.emit();
+  }
 
+  @Output() gridSnapChange = new EventEmitter<boolean>();
+  #gridSnap = true;
+  @Input() set gridSnap(v: boolean) {
+    this.#gridSnap = v;
+    this.gridSnapChange.emit(v);
+    this.contextChange.emit();
+  }
+  get gridSnap(): boolean {
+    return this.#gridSnap;
+  }
+
+  #angleSnap = true;
   @Output() angleSnapChange = new EventEmitter<boolean>();
-  @Input() angleSnap = true;
+  @Input() set angleSnap(v: boolean) {
+    this.#angleSnap = v;
+    this.angleSnapChange.emit(v);
+    this.contextChange.emit();
+  }
+  get angleSnap(): boolean {
+    return this.#angleSnap;
+  }
 
+  #angles: number[];
+  @Output() anglesChange = new EventEmitter<number[]>();
+  @Input() set angles(v: number[]) {
+    this.#angles = v;
+    this.anglesChange.emit(v);
+    this.contextChange.emit();
+  }
+  get angles(): number[] {return this.#angles; }
+
+  @Output() contextChange = new EventEmitter<void>();
 
   constructor() { }
 
   ngOnInit(): void {
-  }
-
-  toggleGrid(): void {
-    this.displayGrid = !this.displayGrid;
-    this.displayGridChange.emit(this.displayGrid);
-  }
-
-  toggleAngleSnap(): void {
-    this.angleSnap = !this.angleSnap;
-    this.angleSnapChange.emit(this.angleSnap);
   }
 
 }

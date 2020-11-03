@@ -1,5 +1,5 @@
 <mat-toolbar>
-    <mat-button-toggle-group>
+    <mat-button-toggle-group class="mr-auto">
         <mat-button-toggle        
             matTooltip="Draw a polyline"
             (click)="toolSelected.emit('polyline')"
@@ -12,24 +12,13 @@
             <mat-icon>crop_square</mat-icon>
         </mat-button-toggle>
     </mat-button-toggle-group>
-    
-    <button 
-        mat-raised-button 
-        matTooltip="Toggle grid + snapping"
-        class="ml-auto mr-2" 
-        (click)="toggleGrid()"
-        >
-        <mat-icon>{{displayGrid ? 'grid_on' : 'grid_off'}}</mat-icon>
-    </button>
-    
-    <button 
-        mat-raised-button 
-        matTooltip="Toggle angle snapping"
-        class="mr-2" 
-        (click)="toggleAngleSnap()"
-        >
-        <mat-icon>{{angleSnap ? 'radio_button_checked' : 'radio_button_unchecked'}}</mat-icon>
-    </button>
+
+    <app-snap-settings-menu
+        [(angleSnap)]="angleSnap"
+        [(angles)]="angles"
+        [(displayGrid)]="displayGrid"
+        [(gridSnap)]="gridSnap"
+    ></app-snap-settings-menu>
 
     <button 
         mat-raised-button 

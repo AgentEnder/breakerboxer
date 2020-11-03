@@ -1,0 +1,24 @@
+<button
+  mat-raised-button
+  matTooltip="Toggle angle snapping"
+  [matMenuTriggerFor]="menu"
+>
+  Snap Settings
+</button>
+
+<mat-menu #menu>
+  <div mat-menu-item>
+    <mat-slide-toggle (click)="$event.stopPropagation()" [(ngModel)]="gridSnap">Snap to Grid</mat-slide-toggle>
+  </div>
+  <div mat-menu-item>
+    <mat-slide-toggle (click)="$event.stopPropagation()" [(ngModel)]="displayGrid">View Grid</mat-slide-toggle>
+  </div>
+  <div mat-menu-item>
+    <mat-slide-toggle (click)="$event.stopPropagation()" [(ngModel)]="angleSnap">Snap to Angles</mat-slide-toggle>
+  </div>
+  <div mat-menu-item>
+    <mat-form-field class="example-full-width">
+      <input matInput (click)="$event.stopPropagation()" [value]="'30, 45'" />
+    </mat-form-field>
+  </div>
+</mat-menu>

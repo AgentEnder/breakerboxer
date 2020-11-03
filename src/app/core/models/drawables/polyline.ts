@@ -5,34 +5,35 @@ import { Drawable } from './drawable';
 export class Polyline extends Drawable {
 
     points: Point[] = [];
-    snapsAtAngles = [30, 45];
-    snaps = true;
     pointSnapMagnitude = 5;
     name: DrawingMode = 'polyline';
 
-    draw = (ctx: CanvasRenderingContext2D) => {
-        this.drawPoints(ctx);
+    draw = () => {
+        this.drawPoints();
     }
 
-    drawPreview = (ctx: CanvasRenderingContext2D, next: Point) => {
+    drawPreview = (next: Point) => {
         if (!this.points.length) { return; }
-        this.drawPoints(ctx, true);
-        if (this.snaps) { next = this.getSnappedPoint(next).newPoint; }
-        ctx.beginPath();
-        ctx.moveTo(...this.points[this.points.length - 1].coordinates);
-        ctx.lineTo(...next.coordinates);
-        ctx.stroke();
+        this.drawPoints(true);
+        next = this.getSnappedPoint(next).newPoint;
+        this.ctx.beginPath();
+        this.ctx.moveTo(...this.points[this.points.length - 1].coordinates);
+        this.ctx.lineTo(...next.coordinates);
+        this.ctx.stroke();
     }
 
     click = (next: Point) => {
         let sr: SnappingResult;
-        if (this.snaps && this.points.length) {
+        if (this.points.length) {
             sr = this.getSnappedPoint(next);
             next = sr.newPoint;
+        } else {
+            next = this.snapPointToGrid(next);
         }
         this.points.push(next);
-        if (sr && sr.snappedToPoint) {
+        if (sr && sr.snappedTo === snappedToEnum.POINT) {
             this.$finished.next(this);
+            console.log('Created polyline at points: ', ...this.points);
         }
     }
 
@@ -51,20 +52,29 @@ export class Polyline extends Drawable {
     private getSnappedPoint(pt: Point): SnappingResult {
         const last = this.points[this.points.length - 1];
 
+
         let ptSnap = this.checkPointSnap(pt);
         if (ptSnap !== pt) {
             return {
                 newPoint: ptSnap,
-                snappedToAngle: false,
-                snappedToPoint: true
-            }
+                snappedTo: snappedToEnum.POINT
+            };
         }
 
-        if (!this.angleSnap) {
+        pt = this.snapPointToGrid(pt);
+        ptSnap = this.checkPointSnap(pt);
+        if (ptSnap !== pt) {
+            return {
+                newPoint: ptSnap,
+                snappedTo: snappedToEnum.POINT
+            };
+        }
+
+
+        if (!this.workspaceContext.angleSnapSettings.snap) {
             return {
                 newPoint: pt,
-                snappedToAngle: false,
-                snappedToPoint: false
+                snappedTo: snappedToEnum.NULL
             };
         }
 
@@ -92,13 +102,11 @@ export class Polyline extends Drawable {
         ptSnap = this.checkPointSnap(angledPoint);
         return ptSnap === angledPoint ? {
             newPoint: angledPoint,
-            snappedToPoint: false,
-            snappedToAngle: true
+            snappedTo: snappedToEnum.ANGLE
         } : {
-            newPoint: ptSnap,
-            snappedToPoint: true,
-            snappedToAngle: false
-        };
+                newPoint: ptSnap,
+                snappedTo: snappedToEnum.POINT
+            };
     }
 
     private checkPointSnap(pt: Point): Point {
@@ -120,7 +128,7 @@ export class Polyline extends Drawable {
     }
 
     private getExpandedSnappingAngles(): number[] {
-        return Array.from(new Set(this.snapsAtAngles.reduce((acc, angle) => {
+        return Array.from(new Set(this.workspaceContext.angleSnapSettings.angles.reduce((acc, angle) => {
             let multiple = angle;
             while (multiple < 360) {
                 acc.push(multiple);
@@ -130,33 +138,39 @@ export class Polyline extends Drawable {
         }, [0, 360]))).sort((a, b) => a - b);
     }
 
-    private drawPoints(ctx: CanvasRenderingContext2D, drawHandles = false): void {
-        if (drawHandles) { this.drawHandle(ctx, this.points[0]); }
+    private drawPoints(drawHandles = false): void {
+        if (drawHandles) { this.drawHandle(this.points[0]); }
         for (let idx = 1; idx < this.points.length; idx++) {
             const pt = this.points[idx];
-            if (drawHandles) { this.drawHandle(ctx, pt); }
-            this.drawSegment(ctx, this.points[idx - 1], pt);
+            if (drawHandles) { this.drawHandle(pt); }
+            this.drawSegment(this.points[idx - 1], pt);
         }
     }
 
-    private drawHandle(ctx: CanvasRenderingContext2D, pt: Point, next?: Point): void {
-        ctx.beginPath();
-        ctx.arc(pt.x, pt.y, this.pointSnapMagnitude, 0, 2 * Math.PI);
-        ctx.fill();
-        ctx.closePath();
+    private drawHandle(pt: Point, next?: Point): void {
+        this.ctx.beginPath();
+        this.ctx.arc(pt.x, pt.y, this.pointSnapMagnitude, 0, 2 * Math.PI);
+        this.ctx.fill();
+        this.ctx.closePath();
     }
 
-    private drawSegment(ctx: CanvasRenderingContext2D, first: Point, second: Point): void {
-        ctx.beginPath();
-        ctx.moveTo(...first.coordinates);
-        ctx.lineTo(...second.coordinates);
-        ctx.stroke();
-        ctx.closePath();
+    private drawSegment(first: Point, second: Point): void {
+        this.ctx.beginPath();
+        this.ctx.moveTo(...first.coordinates);
+        this.ctx.lineTo(...second.coordinates);
+        this.ctx.stroke();
+        this.ctx.closePath();
     }
 }
 
+enum snappedToEnum {
+    NULL,
+    POINT,
+    ANGLE,
+    GRID
+}
+
 interface SnappingResult {
-    snappedToPoint: boolean;
-    snappedToAngle: boolean;
+    snappedTo: snappedToEnum;
     newPoint: Point;
 }

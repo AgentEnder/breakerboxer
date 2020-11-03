@@ -10,21 +10,22 @@ export class Rectangle extends Drawable {
     pointSnapMagnitude = 5;
     name: DrawingMode = 'polyline';
 
-    draw = (ctx: CanvasRenderingContext2D) => {
-        this.drawRect(ctx, ...this.points);
+    draw = () => {
+        this.drawRect(...this.points);
     }
 
-    drawPreview = (ctx: CanvasRenderingContext2D, next: Point) => {
+    drawPreview = (next: Point) => {
         if (!this.points.length) { return; }
-        this.drawRect(ctx, this.points[0], next, true);
+        this.drawRect(this.points[0], next, true);
     }
 
     click = (next: Point) => {
+        next = this.snapPointToGrid(next);
         if (!this.points[0]) {
             this.points[0] = next;
         } else {
             this.points[1] = next;
-            console.log(`Created rect at (${this.points[0].x}, ${this.points[0].y}) -> (${this.points[1].x}, ${this.points[1].y})`)
+            console.log(`Created rect at (${this.points[0].x}, ${this.points[0].y}) -> (${this.points[1].x}, ${this.points[1].y})`);
             this.$finished.next(this);
         }
     }
@@ -33,20 +34,20 @@ export class Rectangle extends Drawable {
         this.points.pop();
     }
 
-    private drawRect(ctx: CanvasRenderingContext2D, pt1: Point, pt2: Point, drawHandles = false): void {
+    private drawRect(pt1: Point, pt2: Point, drawHandles = false): void {
         if (drawHandles) {
-            this.drawHandle(ctx, pt1);
-            this.drawHandle(ctx, pt2);
+            this.drawHandle(pt1);
+            this.drawHandle(pt2);
         }
-        ctx.beginPath();
-        ctx.rect(pt1.x, pt1.y, pt2.x - pt1.x, pt2.y - pt1.y);
-        ctx.stroke();
+        this.ctx.beginPath();
+        this.ctx.rect(pt1.x, pt1.y, pt2.x - pt1.x, pt2.y - pt1.y);
+        this.ctx.stroke();
     }
 
-    private drawHandle(ctx: CanvasRenderingContext2D, pt: Point): void {
-        ctx.beginPath();
-        ctx.arc(pt.x, pt.y, this.pointSnapMagnitude, 0, 2 * Math.PI);
-        ctx.fill();
-        ctx.closePath();
+    private drawHandle(pt: Point): void {
+        this.ctx.beginPath();
+        this.ctx.arc(pt.x, pt.y, this.pointSnapMagnitude, 0, 2 * Math.PI);
+        this.ctx.fill();
+        this.ctx.closePath();
     }
 }

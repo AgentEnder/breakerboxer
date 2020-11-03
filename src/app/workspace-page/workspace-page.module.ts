@@ -5,14 +5,19 @@ import { RouterModule, Routes } from '@angular/router';
 import { MatButtonModule } from '@angular/material/button';
 import { MatButtonToggleModule } from '@angular/material/button-toggle';
 import { MatIconModule } from '@angular/material/icon';
+import { MatInputModule } from '@angular/material/input';
+import { MatMenuModule } from '@angular/material/menu';
+import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatTooltipModule } from '@angular/material/tooltip';
-import { MatSidenavModule } from '@angular/material/sidenav';
+import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 
 import { CoreModule } from '../core/core.module';
 import { CanvasComponent } from './canvas/canvas.component';
 import { ToolbarComponent } from './toolbar/toolbar.component';
 import { WorkspacePageComponent } from './workspace-page.component';
+import { SnapSettingsMenuComponent } from './snap-settings-menu/snap-settings-menu.component';
+import { FormsModule } from '@angular/forms';
 
 const routes: Routes = [
   {
@@ -22,17 +27,26 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  declarations: [WorkspacePageComponent, CanvasComponent, ToolbarComponent],
+  declarations: [
+    WorkspacePageComponent,
+    CanvasComponent,
+    ToolbarComponent,
+    SnapSettingsMenuComponent
+  ],
   imports: [
     CommonModule,
     RouterModule.forChild(routes),
+    FormsModule,
     CoreModule,
     MatToolbarModule,
     MatButtonModule,
+    MatInputModule,
     MatIconModule,
     MatTooltipModule,
     MatButtonToggleModule,
-    MatSidenavModule
+    MatSidenavModule,
+    MatMenuModule,
+    MatSlideToggleModule
   ]
 })
 export class WorkspacePageModule { }
