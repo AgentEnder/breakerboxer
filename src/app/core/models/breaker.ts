@@ -1,7 +1,7 @@
-import { BaseModel } from './base-model';
+import { BaseModel, type } from './base-model';
 import { IElectricalComponent } from './electrical-components/electrical-component';
 
-export interface IBreaker {
+export interface IBreaker extends BaseModel {
     name: string;
     components: IElectricalComponent[];
 }
@@ -9,6 +9,7 @@ export interface IBreaker {
 export class Breaker extends BaseModel implements IBreaker {
     name: string;
     components: IElectricalComponent[] = [];
+    type: type = 'breaker';
 
     constructor(name: string) {
         super();

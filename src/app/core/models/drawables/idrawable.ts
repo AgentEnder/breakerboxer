@@ -1,7 +1,8 @@
 import { Observable, Subject } from 'rxjs';
+import { BaseModel } from '../base-model';
 import { Point } from '../point';
 
-export interface IDrawable {
+export interface IDrawable extends BaseModel {
     draw: () => void;
     drawPreview?: (next: Point) => void;
     click: (coordinates: Point) => void;

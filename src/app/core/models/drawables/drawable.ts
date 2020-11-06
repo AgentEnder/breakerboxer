@@ -1,6 +1,6 @@
 import { from, Observable, Subject } from 'rxjs';
 
-import { BaseModel } from '../base-model';
+import { BaseModel, type } from '../base-model';
 import { WorkspaceContext } from '../workspace-context';
 import { DrawingMode } from '../drawing-modes';
 import { Point } from '../point';
@@ -19,6 +19,8 @@ export abstract class Drawable extends BaseModel implements IDrawable {
 
     protected $finished = new Subject<IDrawable>();
     finished: Observable<IDrawable> = from(this.$finished);
+
+    type: type = 'drawable';
 
     constructor(context: WorkspaceContext) {
         super();

@@ -9,6 +9,9 @@ export * from './point';
 export * from './drawables/polyline';
 export * from './drawables/rectangle';
 export * from './drawables/idrawable';
+export * from './room';
+export * from './breaker';
+export * from './electrical-components/electrical-component';
 
 type DrawableMapping = {
     [key in DrawingMode]: (ctx: WorkspaceContext) => IDrawable

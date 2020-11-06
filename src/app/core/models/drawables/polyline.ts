@@ -1,3 +1,4 @@
+import { type } from '../base-model';
 import { DrawingMode } from '../drawing-modes';
 import { Point } from '../point';
 import { Drawable } from './drawable';
@@ -7,6 +8,7 @@ export class Polyline extends Drawable {
     points: Point[] = [];
     pointSnapMagnitude = 5;
     name: DrawingMode = 'polyline';
+    type: type = 'polyline';
 
     draw = () => {
         this.drawPoints();

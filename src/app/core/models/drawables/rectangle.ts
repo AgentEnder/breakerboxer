@@ -1,3 +1,4 @@
+import { type } from '../base-model';
 import { DrawingMode } from '../drawing-modes';
 import { Point } from '../point';
 import { Drawable } from './drawable';
@@ -8,7 +9,8 @@ export class Rectangle extends Drawable {
     snapsAtAngles = [30, 45];
     snaps = true;
     pointSnapMagnitude = 5;
-    name: DrawingMode = 'polyline';
+    name: DrawingMode = 'rectangle';
+    type: type = 'rectangle';
 
     draw = () => {
         this.drawRect(...this.points);
