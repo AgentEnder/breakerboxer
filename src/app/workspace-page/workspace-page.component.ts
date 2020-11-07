@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { SnapSettings } from '../core/models/workspace-context';
+import { CanvasComponent } from './canvas/canvas.component';
 
 @Component({
   selector: 'app-workspace-page',
@@ -7,9 +9,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class WorkspacePageComponent implements OnInit {
 
+  @ViewChild(CanvasComponent) canvas: CanvasComponent;
+
   constructor() { }
 
   ngOnInit(): void {
+  }
+
+  setSnapSettings(settings: SnapSettings): void {
+    Object.assign(this.canvas.context, settings);
   }
 
 }

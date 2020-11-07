@@ -14,10 +14,8 @@
     </mat-button-toggle-group>
 
     <app-snap-settings-menu
-        [(angleSnap)]="angleSnap"
-        [(angles)]="angles"
-        [(displayGrid)]="displayGrid"
-        [(gridSnap)]="gridSnap"
+        [snapSettings]="snapSettings"
+        (snapSettingsChange)="setSnapSettings($event)"
     ></app-snap-settings-menu>
 
     <button 

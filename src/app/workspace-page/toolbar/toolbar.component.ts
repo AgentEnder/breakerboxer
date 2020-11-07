@@ -1,5 +1,6 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { DrawingMode } from 'src/app/core/models';
+import { SnapSettings } from 'src/app/core/models/workspace-context';
 
 @Component({
   selector: 'app-toolbar',
@@ -11,50 +12,31 @@ export class ToolbarComponent implements OnInit {
   @Output() clear = new EventEmitter<void>();
   @Output() toolSelected = new EventEmitter<DrawingMode>();
 
-  #displayGrid = true;
-  @Output() displayGridChange = new EventEmitter<boolean>();
-  @Input() set displayGrid(v: boolean) {
-    this.#displayGrid = v;
-    this.displayGridChange.emit(v);
-    this.contextChange.emit();
-  }
+  @Input() snapSettings: SnapSettings = {
+    angleSnapSettings: {
+      angles: [],
+      snap: true
+    },
+    gridSnapSettings: {
+      displayGrid: true,
+      gridSizeX: 50,
+      gridSizeY: 50,
+      snap: true
+    }
+  };
 
-  @Output() gridSnapChange = new EventEmitter<boolean>();
-  #gridSnap = true;
-  @Input() set gridSnap(v: boolean) {
-    this.#gridSnap = v;
-    this.gridSnapChange.emit(v);
-    this.contextChange.emit();
-  }
-  get gridSnap(): boolean {
-    return this.#gridSnap;
-  }
-
-  #angleSnap = true;
-  @Output() angleSnapChange = new EventEmitter<boolean>();
-  @Input() set angleSnap(v: boolean) {
-    this.#angleSnap = v;
-    this.angleSnapChange.emit(v);
-    this.contextChange.emit();
-  }
-  get angleSnap(): boolean {
-    return this.#angleSnap;
-  }
-
-  #angles: number[];
-  @Output() anglesChange = new EventEmitter<number[]>();
-  @Input() set angles(v: number[]) {
-    this.#angles = v;
-    this.anglesChange.emit(v);
-    this.contextChange.emit();
-  }
-  get angles(): number[] {return this.#angles; }
+  @Output() snapSettingsChange = new EventEmitter<SnapSettings>();
 
   @Output() contextChange = new EventEmitter<void>();
 
   constructor() { }
 
   ngOnInit(): void {
+  }
+
+  setSnapSettings(settings: SnapSettings): void {
+    this.snapSettingsChange.emit(settings);
+    this.snapSettings = settings;
   }
 
 }
