@@ -8,13 +8,31 @@
 
 <mat-menu #menu>
   <div mat-menu-item>
-    <mat-slide-toggle (click)="$event.stopPropagation()" [(ngModel)]="gridSnap">Snap to Grid</mat-slide-toggle>
+    <mat-slide-toggle 
+      (click)="$event.stopPropagation()" 
+      [(ngModel)]="snapSettingsModel.gridSnapSettings.snap" 
+      (ngModelChange)="refreshSnapSettings()"
+      >
+      Snap to Grid
+    </mat-slide-toggle>
   </div>
   <div mat-menu-item>
-    <mat-slide-toggle (click)="$event.stopPropagation()" [(ngModel)]="displayGrid">View Grid</mat-slide-toggle>
+    <mat-slide-toggle 
+      (click)="$event.stopPropagation()" 
+      [(ngModel)]="snapSettingsModel.gridSnapSettings.displayGrid" 
+      (ngModelChange)="refreshSnapSettings()"
+      >
+      View Grid
+    </mat-slide-toggle>
   </div>
   <div mat-menu-item>
-    <mat-slide-toggle (click)="$event.stopPropagation()" [(ngModel)]="angleSnap">Snap to Angles</mat-slide-toggle>
+    <mat-slide-toggle
+    (click)="$event.stopPropagation()"
+    [(ngModel)]="snapSettingsModel.angleSnapSettings.snap"
+    (ngModelChange)="refreshSnapSettings()"
+      >
+      Snap to Angles
+    </mat-slide-toggle>
   </div>
   <div mat-menu-item>
     <mat-form-field class="example-full-width">

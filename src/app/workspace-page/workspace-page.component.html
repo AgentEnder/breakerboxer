@@ -16,10 +16,8 @@
       (undo)="workspace.undo()"
       (toolSelected)="workspace.drawingMode = $event"
       (contextChange)="workspace.render()"
-      [(angleSnap)]="workspace.context.angleSnapSettings.snap"
-      [(angles)]="workspace.context.angleSnapSettings.angles"
-      [(gridSnap)]="workspace.context.gridSnapSettings.snap"
-      [(displayGrid)]="workspace.context.gridSnapSettings.displayGrid"
+      [snapSettings]="workspace.context"
+      (snapSettingsChange)="setSnapSettings($event)"
     ></app-toolbar>
     <app-canvas class="workspace" #workspace></app-canvas>
   </mat-drawer-content>
