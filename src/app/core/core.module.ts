@@ -6,7 +6,7 @@ import { ThrottleEventDirective } from './directives/throttle-event.directive';
 
 const CORE_DIRECTIVES = [
     ThrottleEventDirective
-]
+];
 
 @NgModule({
     declarations: [...CORE_DIRECTIVES],

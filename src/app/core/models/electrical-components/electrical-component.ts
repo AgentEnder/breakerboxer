@@ -10,7 +10,7 @@ export interface IElectricalComponent extends BaseModel {
     breaker?: Breaker;
 }
 
-export class ElectricalComponent extends BaseModel implements IElectricalComponent 
+export class ElectricalComponent extends BaseModel implements IElectricalComponent
 {
     type: type = 'electrical-component';
     name: string;

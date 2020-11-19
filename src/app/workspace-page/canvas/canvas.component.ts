@@ -1,7 +1,7 @@
 import { AfterViewInit, Component, ElementRef, Input, OnInit, ViewChild } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { fromEvent, Subscription } from 'rxjs';
-import { filter, pairwise, takeUntil } from 'rxjs/operators';
+import { filter, map, pairwise, takeUntil } from 'rxjs/operators';
 import { WorkspaceContext } from 'src/app/core/models/workspace-context';
 
 import { DarkModeService } from 'src/app/layout/dark-mode-switch/dark-mode.service';
@@ -131,9 +131,12 @@ export class CanvasComponent implements AfterViewInit {
         // RIGHT CLICK, not drawing: PAN
         fromEvent(this.canvas.nativeElement, 'mousemove').pipe( // when user hits mouse down start listening to mouse movement
           takeUntil(fromEvent(this.canvas.nativeElement, 'mouseup').pipe( // stop this whenever they let up of the mouse
-            filter((x: MouseEvent) => x.button === 2) // iff it was the right mouse button
+            filter((x: MouseEvent) => x.button === 2), // iff it was the right mouse button
+            // Map should fire right before takeUntil clears the event.
+            map(x => { this.canvas.nativeElement.style.removeProperty('cursor'); })
           )),
         ).subscribe((evt: MouseEvent) => { // apply panning and re-render
+          this.canvas.nativeElement.style.cursor = 'grab';
           this.panX += evt.movementX;
           this.panY += evt.movementY;
           this.render();
