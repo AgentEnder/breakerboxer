@@ -1,4 +1,5 @@
 import { AfterViewInit, Component, ElementRef, Input, OnInit, ViewChild } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
 import { fromEvent, Subscription } from 'rxjs';
 import { filter, pairwise, takeUntil } from 'rxjs/operators';
 import { WorkspaceContext } from 'src/app/core/models/workspace-context';
@@ -6,6 +7,7 @@ import { WorkspaceContext } from 'src/app/core/models/workspace-context';
 import { DarkModeService } from 'src/app/layout/dark-mode-switch/dark-mode.service';
 
 import { DrawableMap, DrawingMode, IDrawable, Point, Polyline } from '../../core/models';
+import { CreateRoomDialogComponent } from '../create-room-dialog/create-room-dialog.component';
 
 @Component({
   selector: 'app-canvas',
@@ -62,7 +64,11 @@ export class CanvasComponent implements AfterViewInit {
     }
   };
 
-  constructor(private el: ElementRef<HTMLElement>, private darkModeService: DarkModeService) { }
+  constructor(
+    private el: ElementRef<HTMLElement>,
+    private darkModeService: DarkModeService,
+    private dialogService: MatDialog
+  ) { }
 
   public clear(): void {
     this.drawables = [];
@@ -185,6 +191,9 @@ export class CanvasComponent implements AfterViewInit {
 
   finishDrawing(drawable: IDrawable): void {
     this.drawables.push(drawable);
+    if (this.drawingMode === 'polyline' || this.drawingMode === 'rectangle') {
+      this.dialogService.open(CreateRoomDialogComponent, {data: {drawable}, disableClose: true});
+    }
     this.resetDrawingAction();
   }
 

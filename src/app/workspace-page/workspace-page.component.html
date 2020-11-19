@@ -1,14 +1,6 @@
 <mat-drawer-container class="flex-grow-1">
   <mat-drawer [mode]="'side'" opened>
-      <div class="workspace-sidebar">
-          <h2>Help</h2>
-          <h3>PolyLine Tool</h3>
-          <ul>
-              <li>Click to start drawing, or add another point to the line.</li>
-              <li>Right click to end the line at any time.</li>
-              <li>Connect the line to any of the visible handles to create a new room</li>
-          </ul>
-      </div>
+      <app-sidebar></app-sidebar>
   </mat-drawer>
   <mat-drawer-content class="d-flex flex-column">
     <app-toolbar

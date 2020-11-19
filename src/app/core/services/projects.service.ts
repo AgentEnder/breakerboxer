@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { from, Subject } from 'rxjs';
 import { IElectricalComponent, IDrawable, IRoom, IBreaker } from '../models';
 import { BaseModel } from '../models/base-model';
 import { assertType } from '../utils/assertType';
@@ -11,6 +12,9 @@ export class ProjectsService {
 
     private drawablesByComponent: {[componentId: string]: IDrawable} = {};
     private componentsByDrawable: {[drawableId: string]: BaseModel} = {};
+    public rooms: IRoom[] = [];
+    private roomsSubject = new Subject<IRoom[]>();
+    public rooms$ = from(this.roomsSubject);
 
     public getDrawableForComponent(component: IElectricalComponent): IDrawable {
         return this.drawablesByComponent[component.guid];
@@ -23,6 +27,8 @@ export class ProjectsService {
     public addRoom(drawable: IDrawable, room: IRoom): void {
         this.componentsByDrawable[drawable.guid] = room;
         this.drawablesByComponent[room.guid] = drawable;
+        this.rooms.push(room);
+        this.roomsSubject.next(this.rooms);
     }
 
     public addComponentToRoom(drawable: IDrawable, component: IElectricalComponent, room: IRoom): void {
