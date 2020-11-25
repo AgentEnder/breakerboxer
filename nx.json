@@ -13,13 +13,16 @@
   },
   "projects": {
     "breakerboxer": {
-      "tags": []
+      "tags": ["platform:web", "scope:breakerboxer", "type:web"]
     },
     "breakerboxer-e2e": {
-      "tags": []
+      "tags": ["platform:web", "scope:breakerboxer", "type:e2e"]
     },
     "utils": {
-      "tags": []
+      "tags": ["platform:agnostic", "scope:shared", "type:utils"]
+    },
+    "layout": {
+      "tags": ["platform:web", "scope:shared", "type:lib"]
     }
   }
 }

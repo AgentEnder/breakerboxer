@@ -15,7 +15,8 @@
     "types": ["resize-observer-browser"],
     "paths": {
       "@breakerboxer/*": ["apps/breakerboxer/src/app/*"],
-      "@breakerboxer/utils": ["libs/utils/src/index.ts"]
+      "@breakerboxer/utils": ["libs/utils/src/index.ts"],
+      "@breakerboxer/layout": ["libs/layout/src/index.ts"]
     },
     "rootDir": "."
   }
