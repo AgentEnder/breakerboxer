@@ -18,6 +18,7 @@ export class Rectangle extends Drawable {
 
     drawPreview = (next: Point) => {
         if (!this.points.length) { return; }
+        next = this.snapPointToGrid(next);
         this.drawRect(this.points[0], next, true);
     }
 
