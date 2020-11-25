@@ -43,7 +43,6 @@
               "optimization": true,
               "outputHashing": "all",
               "sourceMap": false,
-              "extractCss": true,
               "namedChunks": false,
               "extractLicenses": true,
               "vendorChunk": false,
@@ -126,5 +125,8 @@
       }
     }
   },
-  "defaultProject": "breakerboxer"
+  "defaultProject": "breakerboxer",
+  "cli": {
+    "analytics": "48079284-5d9d-47d1-92a4-cb756e8f9b97"
+  }
 }
