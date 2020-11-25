@@ -2,7 +2,7 @@
   "hosting": [
     {
       "target": "breakerboxer",
-      "public": "dist/breakerboxer",
+      "public": "dist/apps/breakerboxer",
       "ignore": [
         "**/.*"
       ],
