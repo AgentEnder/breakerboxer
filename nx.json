@@ -1,0 +1,25 @@
+{
+  "npmScope": "breakerboxer",
+  "affected": {
+    "defaultBase": "master"
+  },
+  "implicitDependencies": {
+    "angular.json": "*",
+    "package.json": "*",
+    "tsconfig.json": "*",
+    "tslint.json": "*",
+    ".eslintrc.json": "*",
+    "nx.json": "*"
+  },
+  "projects": {
+    "breakerboxer": {
+      "tags": []
+    },
+    "breakerboxer-e2e": {
+      "tags": []
+    },
+    "utils": {
+      "tags": []
+    }
+  }
+}

@@ -1,0 +1,11 @@
+{
+  "targets": {
+    "breakerboxer-506ed": {
+      "hosting": {
+        "breakerboxer": [
+          "breakerboxer-506ed"
+        ]
+      }
+    }
+  }
+}
