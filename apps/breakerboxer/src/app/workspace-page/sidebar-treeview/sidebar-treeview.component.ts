@@ -5,7 +5,7 @@ import { IElectricalComponent, IRoom } from '@breakerboxer/web-app/core/models';
 import { ProjectsService } from '@breakerboxer/web-app/core/services/projects.service';
 
 @Component({
-  selector: 'breakerboxer-sidebar-treeview',
+  selector: 'app-sidebar-treeview',
   templateUrl: './sidebar-treeview.component.html',
   styleUrls: ['./sidebar-treeview.component.scss']
 })
