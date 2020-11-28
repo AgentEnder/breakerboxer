@@ -31,12 +31,12 @@
 
     &--light {
         margin-left: 1rem;
-        opacity: 100%;
+        opacity: 1;
         transition: opacity 100ms ease-in-out;
     }
 
     &--dark {
-        opacity: 0%;
+        opacity: 0;
         transition: opacity 100ms ease-in-out;
     }
 }
@@ -47,10 +47,10 @@
     --handle-position: calc(100% - var(--handle-width) - 0.25em);
 
     &--light {
-        opacity: 0%;
+        opacity: 0;
     }
 
     &--dark {
-        opacity: 100%;
+        opacity: 1;
     }
 }
