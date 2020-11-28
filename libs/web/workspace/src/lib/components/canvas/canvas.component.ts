@@ -2,15 +2,14 @@ import { AfterViewInit, Component, ElementRef, Input, OnInit, ViewChild } from '
 import { MatDialog } from '@angular/material/dialog';
 import { fromEvent, Subscription } from 'rxjs';
 import { filter, map, pairwise, takeUntil } from 'rxjs/operators';
-import { WorkspaceContext } from '@breakerboxer/web-app/core/models/workspace-context';
+import { WorkspaceContext } from '../../models/workspace-context';
 
-import { DarkModeService } from '@breakerboxer/core';
+import { DarkModeService, Point } from '@breakerboxer/core';
 
-import { DrawableMap, DrawingMode, IDrawable, Point, Polyline } from '../../core/models';
-import { CreateRoomDialogComponent } from '../create-room-dialog/create-room-dialog.component';
+import { DrawableMap, DrawingMode, IDrawable } from '../../models';
 
 @Component({
-  selector: 'app-canvas',
+  selector: 'breakerboxer-canvas',
   templateUrl: './canvas.component.html',
   styleUrls: ['./canvas.component.scss']
 })
@@ -195,7 +194,8 @@ export class CanvasComponent implements AfterViewInit {
   finishDrawing(drawable: IDrawable): void {
     this.drawables.push(drawable);
     if (this.drawingMode === 'polyline' || this.drawingMode === 'rectangle') {
-      this.dialogService.open(CreateRoomDialogComponent, {data: {drawable}, disableClose: true});
+      // this.dialogService.open(CreateRoomDialogComponent, {data: {drawable}, disableClose: true});
+      // TODO: Create room on room mode completion
     }
     this.resetDrawingAction();
   }

@@ -16,14 +16,12 @@ import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatTreeModule } from '@angular/material/tree';
 
 import { CoreModule } from '../core/core.module';
-import { CanvasComponent } from './canvas/canvas.component';
 import { CreateRoomDialogComponent } from './create-room-dialog/create-room-dialog.component';
 import { SidebarHelpComponent } from './sidebar-help/sidebar-help.component';
 import { SidebarTreeviewComponent } from './sidebar-treeview/sidebar-treeview.component';
 import { SidebarComponent } from './sidebar/sidebar.component';
-import { SnapSettingsMenuComponent } from './snap-settings-menu/snap-settings-menu.component';
-import { ToolbarComponent } from './toolbar/toolbar.component';
 import { WorkspacePageComponent } from './workspace-page.component';
+import { WebWorkspaceModule } from '@breakerboxer/web/workspace';
 
 const routes: Routes = [
   {
@@ -35,9 +33,6 @@ const routes: Routes = [
 @NgModule({
   declarations: [
     WorkspacePageComponent,
-    CanvasComponent,
-    ToolbarComponent,
-    SnapSettingsMenuComponent,
     CreateRoomDialogComponent,
     SidebarComponent,
     SidebarTreeviewComponent,
@@ -46,6 +41,7 @@ const routes: Routes = [
   imports: [
     CommonModule,
     RouterModule.forChild(routes),
+    WebWorkspaceModule,
     FormsModule,
     CoreModule,
     MatToolbarModule,

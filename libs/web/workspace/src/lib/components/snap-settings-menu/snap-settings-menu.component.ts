@@ -1,8 +1,8 @@
 import { Component, EventEmitter, forwardRef, Input, Output } from '@angular/core';
-import { SnapSettings } from '@breakerboxer/web-app/core/models/workspace-context';
+import { SnapSettings } from '../../models';
 
 @Component({
-    selector: 'app-snap-settings-menu',
+    selector: 'breakerboxer-snap-settings-menu',
     templateUrl: './snap-settings-menu.component.html'
 })
 export class SnapSettingsMenuComponent {

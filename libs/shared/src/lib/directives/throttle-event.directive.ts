@@ -3,11 +3,11 @@ import { fromEvent, Subject, Subscription } from 'rxjs';
 import { throttleTime } from 'rxjs/operators';
 
 @Directive({
-    selector: '[appThrottleEvent]'
+    selector: '[breakerboxerThrottleEvent]'
 })
 export class ThrottleEventDirective implements OnInit, OnDestroy {
 
-    @Input('appThrottleEvent') event: string;
+    @Input('breakerboxerThrottleEvent') event: string;
     @Input() throttleTime = 250;
 
     private subscription: Subscription;

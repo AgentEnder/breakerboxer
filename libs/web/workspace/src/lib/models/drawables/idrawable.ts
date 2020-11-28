@@ -1,6 +1,5 @@
 import { Observable, Subject } from 'rxjs';
-import { BaseModel } from '../base-model';
-import { Point } from '../point';
+import { BaseModel, Point } from '@breakerboxer/core';
 
 export interface IDrawable extends BaseModel {
     draw: () => void;

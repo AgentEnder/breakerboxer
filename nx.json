@@ -29,6 +29,9 @@
     },
     "web-workspace": {
       "tags": ["platform:web", "scope:breakerboxer", "type:lib"]
+    },
+    "shared": {
+      "tags": ["platform:agnostic", "scope:shared", "type:lib"]
     }
   }
 }

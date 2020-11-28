@@ -1,6 +1,5 @@
-import { type } from '../base-model';
+import { type, Point } from '@breakerboxer/core';
 import { DrawingMode } from '../drawing-modes';
-import { Point } from '../point';
 import { Drawable } from './drawable';
 
 export class Polyline extends Drawable {

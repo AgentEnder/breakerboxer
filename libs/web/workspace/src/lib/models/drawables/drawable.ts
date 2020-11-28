@@ -1,9 +1,8 @@
 import { from, Observable, Subject } from 'rxjs';
 
-import { BaseModel, type } from '../base-model';
+import { BaseModel, type, Point } from '@breakerboxer/core';
 import { WorkspaceContext } from '../workspace-context';
 import { DrawingMode } from '../drawing-modes';
-import { Point } from '../point';
 import { IDrawable } from './idrawable';
 
 export abstract class Drawable extends BaseModel implements IDrawable {

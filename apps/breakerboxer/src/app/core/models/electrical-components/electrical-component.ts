@@ -1,6 +1,6 @@
-import { BaseModel, type } from '../base-model';
+import { BaseModel, type } from '@breakerboxer/core';
+import { IDrawable } from '@breakerboxer/web/workspace';
 import { Breaker } from '../breaker';
-import { IDrawable } from '../drawables/idrawable';
 
 export interface IElectricalComponent extends BaseModel {
     name: string;

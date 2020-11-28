@@ -1,6 +1,6 @@
 import { Subject } from 'rxjs';
 
-import { OnDestroy, Component } from '@angular/core';
+import { Component, OnDestroy } from '@angular/core';
 
 @Component({template: ''})
 export class BaseComponent implements OnDestroy {
