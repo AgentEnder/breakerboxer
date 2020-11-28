@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'app-sidebar-help',
+  selector: 'breakerboxer-sidebar-help',
   templateUrl: './sidebar-help.component.html'
 })
 export class SidebarHelpComponent implements OnInit {

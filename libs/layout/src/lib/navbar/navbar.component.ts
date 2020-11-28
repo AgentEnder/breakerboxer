@@ -1,9 +1,7 @@
 import { Component, Output, EventEmitter, Input, OnInit } from '@angular/core';
-import { LocalStorageService } from '../../core/services/local-storage.service';
-
 
 @Component({
-    selector: 'app-navbar',
+    selector: 'breakerboxer-navbar',
     templateUrl: './navbar.component.html'
 })
 export class NavbarComponent {

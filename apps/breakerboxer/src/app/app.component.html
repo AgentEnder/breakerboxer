@@ -1,4 +1,9 @@
-<div class="main-wrapper" [ngClass]="{'dark-theme': darkService.dark}">
-  <app-navbar></app-navbar>
+<div class="main-wrapper" [ngClass]="{ 'dark-theme': darkService.dark }">
+  <breakerboxer-navbar>
+    <span class="ml-2 cursor-pointer" [routerLink]="['/home']">
+      Breaker Boxer
+    </span>
+    <span class="ml-4 nav-link" [routerLink]="['/workspace']"> Workspace </span>
+  </breakerboxer-navbar>
   <router-outlet></router-outlet>
 </div>

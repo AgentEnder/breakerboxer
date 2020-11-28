@@ -23,6 +23,9 @@
     },
     "layout": {
       "tags": ["platform:web", "scope:shared", "type:lib"]
+    },
+    "core": {
+      "tags": []
     }
   }
 }

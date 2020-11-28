@@ -5,7 +5,7 @@ import { Subscription } from 'rxjs';
 import { DarkModeService } from './dark-mode.service';
 
 @Component({
-    selector: 'app-dark-mode-switch',
+    selector: 'breakerboxer-darkmode-switch',
     templateUrl: './dark-mode-switch.component.html',
     styleUrls: ['./dark-mode-switch.component.scss'],
     encapsulation: ViewEncapsulation.None

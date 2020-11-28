@@ -4,7 +4,6 @@ import { throwIfAlreadyLoaded } from '@breakerboxer/utils';
 import { StoreModule } from '@ngrx/store';
 
 import { ThrottleEventDirective } from './directives/throttle-event.directive';
-import { LocalStorageService } from './services/local-storage.service';
 import { ProjectsService } from './services/projects.service';
 
 const CORE_DIRECTIVES = [ThrottleEventDirective];
@@ -13,7 +12,7 @@ const CORE_DIRECTIVES = [ThrottleEventDirective];
   declarations: [...CORE_DIRECTIVES],
   imports: [CommonModule],
   exports: [...CORE_DIRECTIVES],
-  providers: [LocalStorageService, ProjectsService],
+  providers: [ProjectsService],
 })
 export class CoreModule {
 

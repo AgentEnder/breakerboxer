@@ -16,7 +16,8 @@
     "paths": {
       "@breakerboxer/*": ["apps/breakerboxer/src/app/*"],
       "@breakerboxer/utils": ["libs/utils/src/index.ts"],
-      "@breakerboxer/layout": ["libs/layout/src/index.ts"]
+      "@breakerboxer/layout": ["libs/layout/src/index.ts"],
+      "@breakerboxer/core": ["libs/core/src/index.ts"]
     },
     "rootDir": "."
   }

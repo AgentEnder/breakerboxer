@@ -7,10 +7,9 @@
     <mat-icon (click)="navToggle.emit()">menu</mat-icon>
   </button> -->
   <div class="d-flex align-items-baseline">
-    <span class="ml-2 cursor-pointer" [routerLink]="['/home']">Breaker Boxer</span>
-    <span class="ml-4 nav-link" [routerLink]="['/workspace']">Workspace</span>
+    <ng-content></ng-content>
   </div>
-  <app-dark-mode-switch class="ml-auto"></app-dark-mode-switch>
+  <breakerboxer-darkmode-switch class="ml-auto"></breakerboxer-darkmode-switch>
   <!-- <button mat-raised-button (click)="auth.googleSignIn()" *ngIf="!(auth.loggedIn$| async) as loggedIn; else profileTemplate">Login</button>
   <ng-template #profileTemplate>
     <button mat-icon-button [matMenuTriggerFor]="menu"><mat-icon>account_circle</mat-icon></button>
