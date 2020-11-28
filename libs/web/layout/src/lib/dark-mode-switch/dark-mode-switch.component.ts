@@ -2,7 +2,7 @@ import { Component, EventEmitter, Input, Output, ViewEncapsulation } from '@angu
 
 import { Subscription } from 'rxjs';
 
-import { DarkModeService } from './dark-mode.service';
+import { DarkModeService } from '@breakerboxer/core';
 
 @Component({
     selector: 'breakerboxer-darkmode-switch',

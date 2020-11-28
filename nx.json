@@ -25,7 +25,10 @@
       "tags": ["platform:web", "scope:shared", "type:lib"]
     },
     "core": {
-      "tags": []
+      "tags": ["platform:agnostic", "scope:shared", "type:lib"]
+    },
+    "web-workspace": {
+      "tags": ["platform:web", "scope:breakerboxer", "type:lib"]
     }
   }
 }

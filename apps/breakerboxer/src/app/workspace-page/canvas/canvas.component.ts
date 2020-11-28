@@ -2,9 +2,9 @@ import { AfterViewInit, Component, ElementRef, Input, OnInit, ViewChild } from '
 import { MatDialog } from '@angular/material/dialog';
 import { fromEvent, Subscription } from 'rxjs';
 import { filter, map, pairwise, takeUntil } from 'rxjs/operators';
-import { WorkspaceContext } from '@breakerboxer/core/models/workspace-context';
+import { WorkspaceContext } from '@breakerboxer/web-app/core/models/workspace-context';
 
-import { DarkModeService } from '@breakerboxer/layout/dark-mode-switch/dark-mode.service';
+import { DarkModeService } from '@breakerboxer/core';
 
 import { DrawableMap, DrawingMode, IDrawable, Point, Polyline } from '../../core/models';
 import { CreateRoomDialogComponent } from '../create-room-dialog/create-room-dialog.component';

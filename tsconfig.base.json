@@ -14,10 +14,11 @@
     "lib": ["es2018", "dom"],
     "types": ["resize-observer-browser"],
     "paths": {
-      "@breakerboxer/*": ["apps/breakerboxer/src/app/*"],
+      "@breakerboxer/web-app/*": ["apps/breakerboxer/src/app/*"],
       "@breakerboxer/utils": ["libs/utils/src/index.ts"],
-      "@breakerboxer/layout": ["libs/layout/src/index.ts"],
-      "@breakerboxer/core": ["libs/core/src/index.ts"]
+      "@breakerboxer/layout": ["libs/web/layout/src/index.ts"],
+      "@breakerboxer/core": ["libs/core/src/index.ts"],
+      "@breakerboxer/web/workspace": ["libs/web/workspace/src/index.ts"]
     },
     "rootDir": "."
   }

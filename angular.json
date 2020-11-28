@@ -168,24 +168,24 @@
     },
     "layout": {
       "projectType": "library",
-      "root": "libs/layout",
-      "sourceRoot": "libs/layout/src",
+      "root": "libs/web/layout",
+      "sourceRoot": "libs/web/layout/src",
       "prefix": "breakerboxer",
       "architect": {
         "lint": {
           "builder": "@angular-devkit/build-angular:tslint",
           "options": {
             "tsConfig": [
-              "libs/layout/tsconfig.lib.json",
-              "libs/layout/tsconfig.spec.json"
+              "libs/web/layout/tsconfig.lib.json",
+              "libs/web/layout/tsconfig.spec.json"
             ],
-            "exclude": ["**/node_modules/**", "!libs/layout/**/*"]
+            "exclude": ["**/node_modules/**", "!libs/web/layout/**/*"]
           }
         },
         "test": {
           "builder": "@nrwl/jest:jest",
           "options": {
-            "jestConfig": "libs/layout/jest.config.js",
+            "jestConfig": "libs/web/layout/jest.config.js",
             "passWithNoTests": true
           }
         }
@@ -216,6 +216,36 @@
           "builder": "@nrwl/jest:jest",
           "options": {
             "jestConfig": "libs/core/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      },
+      "schematics": {
+        "@schematics/angular:component": {
+          "style": "scss"
+        }
+      }
+    },
+    "web-workspace": {
+      "projectType": "library",
+      "root": "libs/web/workspace",
+      "sourceRoot": "libs/web/workspace/src",
+      "prefix": "breakerboxer",
+      "architect": {
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/web/workspace/tsconfig.lib.json",
+              "libs/web/workspace/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**", "!libs/web/workspace/**/*"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/web/workspace/jest.config.js",
             "passWithNoTests": true
           }
         }

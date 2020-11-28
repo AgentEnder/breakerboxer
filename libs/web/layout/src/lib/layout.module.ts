@@ -15,7 +15,6 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { RouterModule } from '@angular/router';
 
 import { DarkModeSwitchComponent } from './dark-mode-switch/dark-mode-switch.component';
-import { DarkModeService } from './dark-mode-switch/dark-mode.service';
 import { NavbarComponent } from './navbar/navbar.component';
 import { SidebarComponent } from './sidebar/sidebar.component';
 
@@ -44,9 +43,6 @@ import { SidebarComponent } from './sidebar/sidebar.component';
   exports: [
     NavbarComponent,
     SidebarComponent
-  ],
-  providers: [
-    DarkModeService
-  ],
+  ]
 })
 export class LayoutModule { }

@@ -1,7 +1,5 @@
 import { CommonModule } from '@angular/common';
 import { Inject, NgModule, Optional, SkipSelf } from '@angular/core';
-import { throwIfAlreadyLoaded } from '@breakerboxer/utils';
-import { StoreModule } from '@ngrx/store';
 
 import { ThrottleEventDirective } from './directives/throttle-event.directive';
 import { ProjectsService } from './services/projects.service';

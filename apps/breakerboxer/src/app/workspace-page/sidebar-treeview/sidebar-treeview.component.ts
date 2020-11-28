@@ -1,8 +1,8 @@
 import { NestedTreeControl } from '@angular/cdk/tree';
 import { Component, OnChanges, OnInit } from '@angular/core';
 import { MatTreeNestedDataSource } from '@angular/material/tree';
-import { IElectricalComponent, IRoom } from '@breakerboxer/core/models';
-import { ProjectsService } from '@breakerboxer/core/services/projects.service';
+import { IElectricalComponent, IRoom } from '@breakerboxer/web-app/core/models';
+import { ProjectsService } from '@breakerboxer/web-app/core/services/projects.service';
 
 @Component({
   selector: 'breakerboxer-sidebar-treeview',

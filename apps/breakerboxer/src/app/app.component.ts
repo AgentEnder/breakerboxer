@@ -1,7 +1,7 @@
 import { OverlayContainer } from '@angular/cdk/overlay';
 import { Component } from '@angular/core';
 
-import { DarkModeService } from './layout/dark-mode-switch/dark-mode.service';
+import {DarkModeService} from '@breakerboxer/core';
 
 @Component({
   selector: 'app-root',

@@ -1,6 +1,6 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { DrawingMode } from '@breakerboxer/core/models';
-import { SnapSettings } from '@breakerboxer/core/models/workspace-context';
+import { DrawingMode } from '@breakerboxer/web-app/core/models';
+import { SnapSettings } from '@breakerboxer/web-app/core/models/workspace-context';
 
 @Component({
   selector: 'app-toolbar',
