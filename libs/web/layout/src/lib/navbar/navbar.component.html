@@ -1,23 +1,25 @@
 <mat-toolbar color="primary" class="position-sticky">
-  <!-- <button
+  <button
     mat-icon-button
     class="example-icon mr-2"
-    aria-label="Example icon-button with menu icon"
+    aria-label="Toggle Side Navigation"
+    *ngIf="!hideNavToggle"
   >
     <mat-icon (click)="navToggle.emit()">menu</mat-icon>
-  </button> -->
-  <div class="d-flex align-items-baseline">
-    <ng-content></ng-content>
+  </button>
+  <div class="d-flex align-items-baseline mr-auto">
+    <span class="ml-2" [routerLink]="['/']" >{{title.title$| async}}</span>
+    <ng-content select="[navItem]"></ng-content>
   </div>
-  <breakerboxer-darkmode-switch class="ml-auto"></breakerboxer-darkmode-switch>
-  <!-- <button mat-raised-button (click)="auth.googleSignIn()" *ngIf="!(auth.loggedIn$| async) as loggedIn; else profileTemplate">Login</button>
+  <button mat-raised-button class="mr-2" (click)="auth.googleSignIn()" *ngIf="!loggedInUser else profileTemplate">Log In</button>
   <ng-template #profileTemplate>
+    <span class="mr-2">{{loggedInUser?.displayName}}</span>
     <button mat-icon-button [matMenuTriggerFor]="menu"><mat-icon>account_circle</mat-icon></button>
     <mat-menu #menu="matMenu">
-      <div mat-menu-item>Login Required 1</div>
-      <div mat-menu-item>Login Required 1</div>
+      <ng-content select="[profileItem]"></ng-content>
       <mat-divider></mat-divider>
       <div mat-menu-item  (click)="auth.signOut()">Log Out</div>
     </mat-menu>
-  </ng-template> -->
+  </ng-template>
+  <breakerboxer-darkmode-switch></breakerboxer-darkmode-switch>
 </mat-toolbar>

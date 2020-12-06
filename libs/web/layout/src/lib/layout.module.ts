@@ -16,6 +16,7 @@ import { RouterModule } from '@angular/router';
 
 import { DarkModeSwitchComponent } from './dark-mode-switch/dark-mode-switch.component';
 import { NavbarComponent } from './navbar/navbar.component';
+import { TitleService } from './services/title.service';
 import { SidebarComponent } from './sidebar/sidebar.component';
 
 @NgModule({
@@ -43,6 +44,9 @@ import { SidebarComponent } from './sidebar/sidebar.component';
   exports: [
     NavbarComponent,
     SidebarComponent
+  ],
+  providers: [
+    TitleService
   ]
 })
 export class LayoutModule { }

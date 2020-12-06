@@ -4,7 +4,9 @@ module.exports = {
     '<rootDir>/libs/web/layout',
     '<rootDir>/libs/core',
     '<rootDir>/libs/ui',
-    '<rootDir>/libs/web/workspace',
+    '<rootDir>/libs/web/bb-workspace',
     '<rootDir>/libs/shared',
+    '<rootDir>/apps/emu-compat',
+    '<rootDir>/libs/user',
   ],
 };

@@ -13,13 +13,13 @@
   },
   "projects": {
     "breakerboxer": {
-      "tags": ["platform:web", "scope:breakerboxer", "type:web"]
+      "tags": ["platform:web", "scope:breakerboxer", "type:app"]
     },
     "breakerboxer-e2e": {
       "tags": ["platform:web", "scope:breakerboxer", "type:e2e"]
     },
     "utils": {
-      "tags": ["platform:agnostic", "scope:shared", "type:utils"]
+      "tags": ["platform:agnostic", "scope:shared", "type:util"]
     },
     "layout": {
       "tags": ["platform:web", "scope:shared", "type:lib"]
@@ -27,10 +27,20 @@
     "core": {
       "tags": ["platform:agnostic", "scope:shared", "type:lib"]
     },
-    "web-workspace": {
+    "web-bb-workspace": {
       "tags": ["platform:web", "scope:breakerboxer", "type:lib"]
     },
     "shared": {
+      "tags": ["platform:agnostic", "scope:shared", "type:lib"]
+    },
+    "emu-compat": {
+      "tags": ["platform:web", "scope:emu-compat", "type:app"]
+    },
+    "emu-compat-e2e": {
+      "tags": ["platform:web", "scope:emu-compat", "type:e2e"],
+      "implicitDependencies": ["emu-compat"]
+    },
+    "user": {
       "tags": ["platform:agnostic", "scope:shared", "type:lib"]
     }
   }

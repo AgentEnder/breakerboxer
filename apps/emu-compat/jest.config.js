@@ -1,6 +1,6 @@
 module.exports = {
-  displayName: 'web-workspace',
-  preset: '../../../jest.preset.js',
+  displayName: 'emu-compat',
+  preset: '../../jest.preset.js',
   setupFilesAfterEnv: ['<rootDir>/src/test-setup.ts'],
   globals: {
     'ts-jest': {
@@ -14,7 +14,7 @@ module.exports = {
       },
     },
   },
-  coverageDirectory: '../../../coverage/libs/web/workspace',
+  coverageDirectory: '../../coverage/apps/emu-compat',
   snapshotSerializers: [
     'jest-preset-angular/build/AngularNoNgAttributesSnapshotSerializer.js',
     'jest-preset-angular/build/AngularSnapshotSerializer.js',

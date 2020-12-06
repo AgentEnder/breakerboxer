@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 import { from, Subject } from 'rxjs';
 
 import { BaseModel } from '@breakerboxer/core';
-import { IDrawable } from '@breakerboxer/web/workspace';
+import { IDrawable } from '@breakerboxer/web/bb-workspace';
 
 import { IBreaker, IElectricalComponent, IRoom } from '../models';
 import { assertType } from '../utils/assertType';

@@ -142,5 +142,9 @@
       }
     ]
   },
-  "rulesDirectory": ["codelyzer", "node_modules/@nrwl/workspace/src/tslint"]
+  "rulesDirectory": [
+    "codelyzer",
+    "node_modules/@nrwl/workspace/src/tslint",
+    "node_modules/codelyzer"
+  ]
 }

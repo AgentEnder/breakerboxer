@@ -21,7 +21,7 @@ import { SidebarHelpComponent } from './sidebar-help/sidebar-help.component';
 import { SidebarTreeviewComponent } from './sidebar-treeview/sidebar-treeview.component';
 import { SidebarComponent } from './sidebar/sidebar.component';
 import { WorkspacePageComponent } from './workspace-page.component';
-import { WebWorkspaceModule } from '@breakerboxer/web/workspace';
+import { WebWorkspaceModule } from '@breakerboxer/web/bb-workspace';
 
 const routes: Routes = [
   {

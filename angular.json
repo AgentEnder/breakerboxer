@@ -226,26 +226,26 @@
         }
       }
     },
-    "web-workspace": {
+    "web-bb-workspace": {
       "projectType": "library",
-      "root": "libs/web/workspace",
-      "sourceRoot": "libs/web/workspace/src",
+      "root": "libs/web/bb-workspace",
+      "sourceRoot": "libs/web/bb-workspace/src",
       "prefix": "breakerboxer",
       "architect": {
         "lint": {
           "builder": "@angular-devkit/build-angular:tslint",
           "options": {
             "tsConfig": [
-              "libs/web/workspace/tsconfig.lib.json",
-              "libs/web/workspace/tsconfig.spec.json"
+              "libs/web/bb-workspace/tsconfig.lib.json",
+              "libs/web/bb-workspace/tsconfig.spec.json"
             ],
-            "exclude": ["**/node_modules/**", "!libs/web/workspace/**/*"]
+            "exclude": ["**/node_modules/**", "!libs/web/bb-workspace/**/*"]
           }
         },
         "test": {
           "builder": "@nrwl/jest:jest",
           "options": {
-            "jestConfig": "libs/web/workspace/jest.config.js",
+            "jestConfig": "libs/web/bb-workspace/jest.config.js",
             "passWithNoTests": true
           }
         }
@@ -285,6 +285,157 @@
           "style": "scss"
         }
       }
+    },
+    "emu-compat": {
+      "projectType": "application",
+      "schematics": {
+        "@schematics/angular:component": {
+          "style": "scss"
+        }
+      },
+      "root": "apps/emu-compat",
+      "sourceRoot": "apps/emu-compat/src",
+      "prefix": "breakerboxer",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:browser",
+          "options": {
+            "outputPath": "dist/apps/emu-compat",
+            "index": "apps/emu-compat/src/index.html",
+            "main": "apps/emu-compat/src/main.ts",
+            "polyfills": "apps/emu-compat/src/polyfills.ts",
+            "tsConfig": "apps/emu-compat/tsconfig.app.json",
+            "aot": true,
+            "assets": [
+              "apps/emu-compat/src/favicon.ico",
+              "apps/emu-compat/src/assets"
+            ],
+            "styles": ["apps/emu-compat/src/styles.scss"],
+            "scripts": []
+          },
+          "configurations": {
+            "production": {
+              "fileReplacements": [
+                {
+                  "replace": "apps/emu-compat/src/environments/environment.ts",
+                  "with": "apps/emu-compat/src/environments/environment.prod.ts"
+                }
+              ],
+              "optimization": true,
+              "outputHashing": "all",
+              "sourceMap": false,
+              "namedChunks": false,
+              "extractLicenses": true,
+              "vendorChunk": false,
+              "buildOptimizer": true,
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "2mb",
+                  "maximumError": "5mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "6kb",
+                  "maximumError": "10kb"
+                }
+              ]
+            }
+          }
+        },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "options": {
+            "browserTarget": "emu-compat:build"
+          },
+          "configurations": {
+            "production": {
+              "browserTarget": "emu-compat:build:production"
+            }
+          }
+        },
+        "extract-i18n": {
+          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "options": {
+            "browserTarget": "emu-compat:build"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "apps/emu-compat/tsconfig.app.json",
+              "apps/emu-compat/tsconfig.spec.json",
+              "apps/emu-compat/tsconfig.editor.json"
+            ],
+            "exclude": ["**/node_modules/**", "!apps/emu-compat/**/*"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "apps/emu-compat/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      }
+    },
+    "emu-compat-e2e": {
+      "root": "apps/emu-compat-e2e",
+      "sourceRoot": "apps/emu-compat-e2e/src",
+      "projectType": "application",
+      "architect": {
+        "e2e": {
+          "builder": "@nrwl/cypress:cypress",
+          "options": {
+            "cypressConfig": "apps/emu-compat-e2e/cypress.json",
+            "tsConfig": "apps/emu-compat-e2e/tsconfig.e2e.json",
+            "devServerTarget": "emu-compat:serve"
+          },
+          "configurations": {
+            "production": {
+              "devServerTarget": "emu-compat:serve:production"
+            }
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": ["apps/emu-compat-e2e/tsconfig.e2e.json"],
+            "exclude": ["**/node_modules/**", "!apps/emu-compat-e2e/**/*"]
+          }
+        }
+      }
+    },
+    "user": {
+      "projectType": "library",
+      "root": "libs/user",
+      "sourceRoot": "libs/user/src",
+      "prefix": "breakerboxer",
+      "architect": {
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/user/tsconfig.lib.json",
+              "libs/user/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**", "!libs/user/**/*"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/user/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      },
+      "schematics": {
+        "@schematics/angular:component": {
+          "style": "scss"
+        }
+      }
     }
   },
   "defaultProject": "breakerboxer",
@@ -294,7 +445,8 @@
   },
   "schematics": {
     "@nrwl/angular:application": {
-      "unitTestRunner": "jest"
+      "unitTestRunner": "jest",
+      "e2eTestRunner": "cypress"
     },
     "@nrwl/angular:library": {
       "unitTestRunner": "jest"

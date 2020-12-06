@@ -18,8 +18,9 @@
       "@breakerboxer/utils": ["libs/utils/src/index.ts"],
       "@breakerboxer/layout": ["libs/web/layout/src/index.ts"],
       "@breakerboxer/core": ["libs/core/src/index.ts"],
-      "@breakerboxer/web/workspace": ["libs/web/workspace/src/index.ts"],
-      "@breakerboxer/shared": ["libs/shared/src/index.ts"]
+      "@breakerboxer/web/bb-workspace": ["libs/web/bb-workspace/src/index.ts"],
+      "@breakerboxer/shared": ["libs/shared/src/index.ts"],
+      "@breakerboxer/user": ["libs/user/src/index.ts"]
     },
     "rootDir": "."
   }
