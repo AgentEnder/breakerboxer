@@ -1,8 +1,8 @@
 {
   "extends": "../../tslint.json",
   "rules": {
-    "directive-selector": [true, "attribute", "breakerboxer", "camelCase"],
-    "component-selector": [true, "element", "breakerboxer", "kebab-case"]
+    "directive-selector": [true, "attribute", "emuCompat", "camelCase"],
+    "component-selector": [true, "element", "emu-compat", "kebab-case"]
   },
   "linterOptions": {
     "exclude": ["!**/*"]

@@ -8,5 +8,7 @@ module.exports = {
     '<rootDir>/libs/shared',
     '<rootDir>/apps/emu-compat',
     '<rootDir>/libs/user',
+    '<rootDir>/libs/rating',
+    '<rootDir>/libs/web/rating',
   ],
 };

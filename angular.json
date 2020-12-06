@@ -436,6 +436,66 @@
           "style": "scss"
         }
       }
+    },
+    "rating": {
+      "projectType": "library",
+      "root": "libs/rating",
+      "sourceRoot": "libs/rating/src",
+      "prefix": "tbs",
+      "architect": {
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/rating/tsconfig.lib.json",
+              "libs/rating/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**", "!libs/rating/**/*"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/rating/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      },
+      "schematics": {
+        "@schematics/angular:component": {
+          "style": "scss"
+        }
+      }
+    },
+    "web-rating": {
+      "projectType": "library",
+      "root": "libs/web/rating",
+      "sourceRoot": "libs/web/rating/src",
+      "prefix": "tbs",
+      "architect": {
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/web/rating/tsconfig.lib.json",
+              "libs/web/rating/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**", "!libs/web/rating/**/*"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/web/rating/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      },
+      "schematics": {
+        "@schematics/angular:component": {
+          "style": "scss"
+        }
+      }
     }
   },
   "defaultProject": "breakerboxer",

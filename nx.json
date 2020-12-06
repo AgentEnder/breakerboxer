@@ -42,6 +42,12 @@
     },
     "user": {
       "tags": ["platform:agnostic", "scope:shared", "type:lib"]
+    },
+    "rating": {
+      "tags": ["platform:agnostic", "scope:shared", "type:lib"]
+    },
+    "web-rating": {
+      "tags": ["platform:web", "scope:shared", "type:lib"]
     }
   }
 }

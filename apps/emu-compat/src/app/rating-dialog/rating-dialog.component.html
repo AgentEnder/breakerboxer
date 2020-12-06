@@ -1,0 +1,21 @@
+<div class="container-fluid">
+    <div class="row d-flex justify-content-between">
+        <label class="mr-4">Gameplay</label>
+        <tbs-rating [align]="'right'" [rating]="rm[0]"></tbs-rating>
+    </div>
+    <div class="row d-flex justify-content-between">
+        <label class="mr-4">Sound</label>
+        <tbs-rating [align]="'right'" [rating]="rm[1]"></tbs-rating>
+    </div>
+    <div class="row d-flex justify-content-between">
+        <label class="mr-4">Video</label>
+        <tbs-rating [align]="'right'" [rating]="rm[2]"></tbs-rating>
+    </div>
+    <div class="row d-flex justify-content-between">
+        <label class="mr-4">Stability</label>
+        <tbs-rating [align]="'right'" [rating]="rm[3]"></tbs-rating>
+    </div>
+</div>
+<mat-dialog-actions>
+    <button [color]="'primary'" (click)="submit()" mat-raised-button>Submit Review</button>
+</mat-dialog-actions>

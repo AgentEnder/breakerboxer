@@ -1,0 +1,17 @@
+:host {
+  display: inline-block;
+}
+
+.rating-stars {
+  display: flex;
+  align-items: center;
+  width: fit-content;
+
+  &:hover {
+    color: var(--text-gold)
+  }
+
+  mat-icon {
+    cursor: pointer;
+  }
+}

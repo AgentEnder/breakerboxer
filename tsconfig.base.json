@@ -20,7 +20,9 @@
       "@tbs/core": ["libs/core/src/index.ts"],
       "@tbs/web/bb-workspace": ["libs/web/bb-workspace/src/index.ts"],
       "@tbs/shared": ["libs/shared/src/index.ts"],
-      "@tbs/user": ["libs/user/src/index.ts"]
+      "@tbs/user": ["libs/user/src/index.ts"],
+      "@tbs/rating": ["libs/rating/src/index.ts"],
+      "@tbs/web/rating": ["libs/web/rating/src/index.ts"]
     },
     "rootDir": "."
   }

@@ -7,16 +7,22 @@ import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
+import { MatButtonModule } from '@angular/material/button';
+import { MatDialogModule } from '@angular/material/dialog';
+
 import { CoreModule } from '@tbs/core';
 import { LayoutModule } from '@tbs/layout';
-import { environment } from '../environments/environment';
+import { RatingModule } from '@tbs/web/rating';
 
+import { environment } from '../environments/environment';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { RatingDialogComponent } from './rating-dialog/rating-dialog.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    RatingDialogComponent
   ],
   imports: [
     BrowserModule,
@@ -26,9 +32,12 @@ import { AppComponent } from './app.component';
     AngularFireAuthModule,
     AngularFirestoreModule,
     BrowserAnimationsModule,
+    MatDialogModule,
+    MatButtonModule,
     CoreModule,
     OverlayModule,
-    LayoutModule
+    LayoutModule,
+    RatingModule
   ],
   providers: [],
   bootstrap: [AppComponent]

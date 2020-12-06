@@ -2,5 +2,8 @@
   <tbs-navbar>
     <span role="navigation" class="ml-4 nav-link" [routerLink]="['/workspace']"> Workspace </span>
   </tbs-navbar>
+  <button mat-raised-button (click)="showDialog()">
+    Open Dialog
+  </button>
   <router-outlet></router-outlet>
 </div>

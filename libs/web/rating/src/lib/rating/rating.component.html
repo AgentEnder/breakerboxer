@@ -1,0 +1,28 @@
+<span
+  class="rating-stars"
+  (mouseleave)="rating = rating"
+  (click)="rate(display)"
+  [ngClass]="{ 'text-gold': rating.mine !== null }"
+>
+  <div class="text-black text-sm mr-2" *ngIf="align === 'right'">
+    ({{ rating.count }})
+  </div>
+  <mat-icon (mouseover)="display = 1">{{
+    display >= 0.75 ? 'star' : display > 0.25 ? 'star_half' : 'star_border'
+  }}</mat-icon>
+  <mat-icon (mouseover)="display = 2">{{
+    display >= 1.75 ? 'star' : display > 1.25 ? 'star_half' : 'star_border'
+  }}</mat-icon>
+  <mat-icon (mouseover)="display = 3">{{
+    display >= 2.75 ? 'star' : display > 2.25 ? 'star_half' : 'star_border'
+  }}</mat-icon>
+  <mat-icon (mouseover)="display = 4">{{
+    display >= 3.75 ? 'star' : display > 3.25 ? 'star_half' : 'star_border'
+  }}</mat-icon>
+  <mat-icon (mouseover)="display = 5">{{
+    display >= 4.75 ? 'star' : display > 4.25 ? 'star_half' : 'star_border'
+  }}</mat-icon>
+  <div class="text-black text-sm ml-2" *ngIf="align === 'left'">
+    ({{ rating.count }})
+  </div>
+</span>
