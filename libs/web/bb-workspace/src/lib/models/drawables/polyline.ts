@@ -1,4 +1,4 @@
-import { type, Point } from '@breakerboxer/core';
+import { type, Point } from '@tbs/core';
 import { DrawingMode } from '../drawing-modes';
 import { Drawable } from './drawable';
 

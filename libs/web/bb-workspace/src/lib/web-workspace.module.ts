@@ -11,7 +11,7 @@ import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatTooltipModule } from '@angular/material/tooltip';
 
-import { SharedModule } from '@breakerboxer/shared';
+import { SharedModule } from '@tbs/shared';
 
 import { CanvasComponent } from './components/canvas/canvas.component';
 import {

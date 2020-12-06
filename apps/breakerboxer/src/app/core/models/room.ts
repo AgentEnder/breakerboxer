@@ -1,4 +1,4 @@
-import { BaseModel, type } from '@breakerboxer/core';
+import { BaseModel, type } from '@tbs/core';
 import { IElectricalComponent } from './electrical-components/electrical-component';
 
 export interface IRoom extends BaseModel {

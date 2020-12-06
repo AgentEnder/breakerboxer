@@ -4,7 +4,7 @@ import { tap, take } from 'rxjs/operators';
 import { Router, ActivatedRoute } from '@angular/router';
 
 @Component({
-    selector: 'breakerboxer-sidebar',
+    selector: 'tbs-sidebar',
     templateUrl: './sidebar.component.html'
 })
 export class SidebarComponent {

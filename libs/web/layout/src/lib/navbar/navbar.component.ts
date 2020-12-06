@@ -1,14 +1,14 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 
-import { AuthService, User } from '@breakerboxer/user';
-import { BaseComponent } from '@breakerboxer/shared';
+import { AuthService, User } from '@tbs/user';
+import { BaseComponent } from '@tbs/shared';
 
 import { TitleService } from '../services';
 import { switchMap, takeUntil } from 'rxjs/operators';
 import { Observable, of } from 'rxjs';
 
 @Component({
-  selector: 'breakerboxer-navbar',
+  selector: 'tbs-navbar',
   templateUrl: './navbar.component.html',
 })
 export class NavbarComponent extends BaseComponent {
@@ -28,7 +28,7 @@ export class NavbarComponent extends BaseComponent {
       }),
       takeUntil(this.destroy$)
     ).subscribe(x => {
-      console.log(x); 
+      console.log(x);
       this.loggedInUser = x;
     });
   }

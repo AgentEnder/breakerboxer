@@ -1,8 +1,8 @@
 import { Component, Inject } from '@angular/core';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
-import { Room } from '@breakerboxer/web-app/core/models';
-import { ProjectsService } from '@breakerboxer/web-app/core/services/projects.service';
-import { IDrawable } from '@breakerboxer/web/bb-workspace';
+import { Room } from '@tbs/web-app/core/models';
+import { ProjectsService } from '@tbs/web-app/core/services/projects.service';
+import { IDrawable } from '@tbs/web/bb-workspace';
 
 @Component({
     selector: 'app-create-room-dialog',

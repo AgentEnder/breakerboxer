@@ -4,12 +4,12 @@ import { fromEvent, Subscription } from 'rxjs';
 import { filter, map, pairwise, takeUntil } from 'rxjs/operators';
 import { WorkspaceContext } from '../../models/workspace-context';
 
-import { DarkModeService, Point } from '@breakerboxer/core';
+import { DarkModeService, Point } from '@tbs/core';
 
 import { DrawableMap, DrawingMode, IDrawable } from '../../models';
 
 @Component({
-  selector: 'breakerboxer-canvas',
+  selector: 'tbs-canvas',
   templateUrl: './canvas.component.html',
   styleUrls: ['./canvas.component.scss']
 })

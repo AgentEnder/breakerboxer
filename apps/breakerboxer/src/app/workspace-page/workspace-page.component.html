@@ -3,14 +3,14 @@
       <app-sidebar></app-sidebar>
   </mat-drawer>
   <mat-drawer-content class="d-flex flex-column">
-    <breakerboxer-ws-toolbar
+    <tbs-ws-toolbar
       (clear)="workspace.clear()"
       (undo)="workspace.undo()"
       (toolSelected)="workspace.drawingMode = $event"
       (contextChange)="workspace.render()"
       [snapSettings]="workspace.context"
       (snapSettingsChange)="setSnapSettings($event)"
-    ></breakerboxer-ws-toolbar>
-    <breakerboxer-canvas class="workspace" #workspace></breakerboxer-canvas>
+    ></tbs-ws-toolbar>
+    <tbs-canvas class="workspace" #workspace></tbs-canvas>
   </mat-drawer-content>
 </mat-drawer-container>

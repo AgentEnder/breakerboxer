@@ -140,7 +140,7 @@
       "projectType": "library",
       "root": "libs/utils",
       "sourceRoot": "libs/utils/src",
-      "prefix": "breakerboxer",
+      "prefix": "tbs",
       "architect": {
         "lint": {
           "builder": "@angular-devkit/build-angular:tslint",
@@ -170,7 +170,7 @@
       "projectType": "library",
       "root": "libs/web/layout",
       "sourceRoot": "libs/web/layout/src",
-      "prefix": "breakerboxer",
+      "prefix": "tbs",
       "architect": {
         "lint": {
           "builder": "@angular-devkit/build-angular:tslint",
@@ -200,7 +200,7 @@
       "projectType": "library",
       "root": "libs/core",
       "sourceRoot": "libs/core/src",
-      "prefix": "breakerboxer",
+      "prefix": "tbs",
       "architect": {
         "lint": {
           "builder": "@angular-devkit/build-angular:tslint",
@@ -230,7 +230,7 @@
       "projectType": "library",
       "root": "libs/web/bb-workspace",
       "sourceRoot": "libs/web/bb-workspace/src",
-      "prefix": "breakerboxer",
+      "prefix": "tbs",
       "architect": {
         "lint": {
           "builder": "@angular-devkit/build-angular:tslint",
@@ -260,7 +260,7 @@
       "projectType": "library",
       "root": "libs/shared",
       "sourceRoot": "libs/shared/src",
-      "prefix": "breakerboxer",
+      "prefix": "tbs",
       "architect": {
         "lint": {
           "builder": "@angular-devkit/build-angular:tslint",
@@ -295,7 +295,7 @@
       },
       "root": "apps/emu-compat",
       "sourceRoot": "apps/emu-compat/src",
-      "prefix": "breakerboxer",
+      "prefix": "app",
       "architect": {
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
@@ -411,7 +411,7 @@
       "projectType": "library",
       "root": "libs/user",
       "sourceRoot": "libs/user/src",
-      "prefix": "breakerboxer",
+      "prefix": "tbs",
       "architect": {
         "lint": {
           "builder": "@angular-devkit/build-angular:tslint",

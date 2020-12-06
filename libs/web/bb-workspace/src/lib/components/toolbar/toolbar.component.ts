@@ -2,7 +2,7 @@ import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { DrawingMode, SnapSettings } from '../../models';
 
 @Component({
-  selector: 'breakerboxer-ws-toolbar',
+  selector: 'tbs-ws-toolbar',
   templateUrl: './toolbar.component.html',
 })
 export class ToolbarComponent implements OnInit {

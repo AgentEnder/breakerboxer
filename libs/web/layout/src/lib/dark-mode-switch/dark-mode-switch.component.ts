@@ -2,10 +2,10 @@ import { Component, EventEmitter, Input, Output, ViewEncapsulation } from '@angu
 
 import { Subscription } from 'rxjs';
 
-import { DarkModeService } from '@breakerboxer/core';
+import { DarkModeService } from '@tbs/core';
 
 @Component({
-    selector: 'breakerboxer-darkmode-switch',
+    selector: 'tbs-darkmode-switch',
     templateUrl: './dark-mode-switch.component.html',
     styleUrls: ['./dark-mode-switch.component.scss'],
     encapsulation: ViewEncapsulation.None
