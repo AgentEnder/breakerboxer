@@ -1,5 +1,8 @@
 import { Component } from '@angular/core';
+
 import { MatDialogRef } from '@angular/material/dialog';
+
+import { GameDataService } from '@tbs/games-data';
 import { Rating } from '@tbs/rating';
 
 @Component({
@@ -9,7 +12,10 @@ import { Rating } from '@tbs/rating';
 export class RatingDialogComponent {
     rm: Rating[] = [];
 
-    constructor(private dialogRef: MatDialogRef<RatingDialogComponent>) {
+    constructor(
+        private dialogRef: MatDialogRef<RatingDialogComponent>,
+        public gameData: GameDataService
+    ) {
         for (let _ = 0; _ < 30; _++) {
             this.rm.push({
               average: Math.random() * 5,
@@ -19,7 +25,7 @@ export class RatingDialogComponent {
           }
     }
 
-    submit() {
+    submit(): void {
         this.dialogRef.close();
     }
 }

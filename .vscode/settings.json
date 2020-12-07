@@ -24,7 +24,7 @@
             "orderLevel": 20
         },
         {
-            "regex": "^[@](breakerboxer)",
+            "regex": "^[@](breakerboxer|tbs)",
             "orderLevel": 30
         },
         {

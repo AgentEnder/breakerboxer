@@ -48,6 +48,9 @@
     },
     "web-rating": {
       "tags": ["platform:web", "scope:shared", "type:lib"]
+    },
+    "games-data": {
+      "tags": ["platform:agnostic", "scope:emu-compat", "type:lib"]
     }
   }
 }

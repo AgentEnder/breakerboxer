@@ -496,6 +496,36 @@
           "style": "scss"
         }
       }
+    },
+    "games-data": {
+      "projectType": "library",
+      "root": "libs/games-data",
+      "sourceRoot": "libs/games-data/src",
+      "prefix": "tbs",
+      "architect": {
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/games-data/tsconfig.lib.json",
+              "libs/games-data/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**", "!libs/games-data/**/*"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/games-data/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      },
+      "schematics": {
+        "@schematics/angular:component": {
+          "style": "scss"
+        }
+      }
     }
   },
   "defaultProject": "breakerboxer",

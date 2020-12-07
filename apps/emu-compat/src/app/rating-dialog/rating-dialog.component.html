@@ -1,21 +1,42 @@
 <div class="container-fluid">
-    <div class="row d-flex justify-content-between">
-        <label class="mr-4">Gameplay</label>
-        <tbs-rating [align]="'right'" [rating]="rm[0]"></tbs-rating>
-    </div>
-    <div class="row d-flex justify-content-between">
-        <label class="mr-4">Sound</label>
-        <tbs-rating [align]="'right'" [rating]="rm[1]"></tbs-rating>
-    </div>
-    <div class="row d-flex justify-content-between">
-        <label class="mr-4">Video</label>
-        <tbs-rating [align]="'right'" [rating]="rm[2]"></tbs-rating>
-    </div>
-    <div class="row d-flex justify-content-between">
-        <label class="mr-4">Stability</label>
-        <tbs-rating [align]="'right'" [rating]="rm[3]"></tbs-rating>
-    </div>
+  <div class="row">
+    <mat-form-field appearance="outline" class="w-100">
+      <mat-label>Hardware</mat-label>
+      <mat-select>
+        <mat-option>-- None --</mat-option>
+        <mat-optgroup
+          *ngFor="let hostGroup of gameData.getEmulationHosts() | async"
+          [label]="hostGroup.name"
+        >
+          <mat-option
+            *ngFor="let host of hostGroup.platforms"
+            [value]="host.platformId"
+          >
+            {{ host.name }}
+          </mat-option>
+        </mat-optgroup>
+      </mat-select>
+    </mat-form-field>
+  </div>
+  <div class="row d-flex justify-content-between">
+    <label class="mr-4">Gameplay</label>
+    <tbs-rating [align]="'right'" [rating]="rm[0]"></tbs-rating>
+  </div>
+  <div class="row d-flex justify-content-between">
+    <label class="mr-4">Sound</label>
+    <tbs-rating [align]="'right'" [rating]="rm[1]"></tbs-rating>
+  </div>
+  <div class="row d-flex justify-content-between">
+    <label class="mr-4">Video</label>
+    <tbs-rating [align]="'right'" [rating]="rm[2]"></tbs-rating>
+  </div>
+  <div class="row d-flex justify-content-between">
+    <label class="mr-4">Stability</label>
+    <tbs-rating [align]="'right'" [rating]="rm[3]"></tbs-rating>
+  </div>
 </div>
 <mat-dialog-actions>
-    <button [color]="'primary'" (click)="submit()" mat-raised-button>Submit Review</button>
+  <button [color]="'primary'" (click)="submit()" mat-raised-button>
+    Submit Review
+  </button>
 </mat-dialog-actions>
