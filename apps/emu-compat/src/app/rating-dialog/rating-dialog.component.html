@@ -18,6 +18,25 @@
       </mat-select>
     </mat-form-field>
   </div>
+  <div class="row">
+    <mat-form-field appearance="outline" class="w-100">
+      <mat-label>Hardware</mat-label>
+      <mat-select>
+        <mat-option>-- None --</mat-option>
+        <mat-optgroup
+          *ngFor="let hostGroup of gameData.getPlatforms() | async"
+          [label]="hostGroup.name"
+        >
+          <mat-option
+            *ngFor="let host of hostGroup.platforms"
+            [value]="host.platformId"
+          >
+            {{ host.name }}
+          </mat-option>
+        </mat-optgroup>
+      </mat-select>
+    </mat-form-field>
+  </div>
   <div class="row d-flex justify-content-between">
     <label class="mr-4">Gameplay</label>
     <tbs-rating [align]="'right'" [rating]="rm[0]"></tbs-rating>

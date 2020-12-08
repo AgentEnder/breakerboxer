@@ -20,6 +20,8 @@ import { environment } from '../environments/environment';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { RatingDialogComponent } from './rating-dialog/rating-dialog.component';
+import { GamesDataModule } from '@tbs/games-data';
+import { UserModule } from '@tbs/user';
 
 @NgModule({
   declarations: [
@@ -41,9 +43,11 @@ import { RatingDialogComponent } from './rating-dialog/rating-dialog.component';
     LayoutModule,
     RatingModule,
     MatFormFieldModule,
-    MatSelectModule
+    MatSelectModule,
+    GamesDataModule
   ],
-  providers: [],
+  providers: [
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

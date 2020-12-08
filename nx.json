@@ -51,9 +51,6 @@
     },
     "games-data": {
       "tags": ["platform:agnostic", "scope:emu-compat", "type:lib"]
-    },
-    "http": {
-      "tags": ["platform:agnostic", "scope:shared", "type:lib"]
     }
   }
 }

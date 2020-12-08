@@ -526,36 +526,6 @@
           "style": "scss"
         }
       }
-    },
-    "http": {
-      "projectType": "library",
-      "root": "libs/http",
-      "sourceRoot": "libs/http/src",
-      "prefix": "tbs",
-      "architect": {
-        "lint": {
-          "builder": "@angular-devkit/build-angular:tslint",
-          "options": {
-            "tsConfig": [
-              "libs/http/tsconfig.lib.json",
-              "libs/http/tsconfig.spec.json"
-            ],
-            "exclude": ["**/node_modules/**", "!libs/http/**/*"]
-          }
-        },
-        "test": {
-          "builder": "@nrwl/jest:jest",
-          "options": {
-            "jestConfig": "libs/http/jest.config.js",
-            "passWithNoTests": true
-          }
-        }
-      },
-      "schematics": {
-        "@schematics/angular:component": {
-          "style": "scss"
-        }
-      }
     }
   },
   "defaultProject": "breakerboxer",
