@@ -23,7 +23,8 @@
       "@tbs/user": ["libs/user/src/index.ts"],
       "@tbs/rating": ["libs/rating/src/index.ts"],
       "@tbs/web/rating": ["libs/web/rating/src/index.ts"],
-      "@tbs/games-data": ["libs/games-data/src/index.ts"]
+      "@tbs/games-data": ["libs/games-data/src/index.ts"],
+      "@tbs/http": ["libs/http/src/index.ts"]
     },
     "rootDir": "."
   }

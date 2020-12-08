@@ -11,5 +11,6 @@ module.exports = {
     '<rootDir>/libs/rating',
     '<rootDir>/libs/web/rating',
     '<rootDir>/libs/games-data',
+    '<rootDir>/libs/http',
   ],
 };

@@ -2,6 +2,9 @@ export type IEnvironmentConfiguration = IGenericEnvironmentConfig & IAppSpecific
 
 export interface IGenericEnvironmentConfig {
   production: boolean;
+  apiKeys: {
+    thegamesdb: string;
+  }
 }
 
 export interface IAppSpecificEnvironmentConfig {

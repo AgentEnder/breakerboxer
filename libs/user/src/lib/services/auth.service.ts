@@ -5,7 +5,7 @@ import { Router } from '@angular/router';
 
 import fb from 'firebase/app';
 import { DateTime } from 'luxon';
-import { Observable, ObservableInput, of } from 'rxjs';
+import { from, Observable, ObservableInput, of } from 'rxjs';
 import { switchMap } from 'rxjs/operators';
 
 import { User } from '../models/user.interface';
@@ -17,6 +17,7 @@ export class AuthService {
 
   user$: Observable<User>;
   loggedIn$: Observable<boolean>;
+  token$: Observable<string>;
 
   constructor(
     private afAuth: AngularFireAuth,
@@ -37,6 +38,10 @@ export class AuthService {
       switchMap((user: User) => {
         return of(user !== null);
       })
+    );
+
+    this.token$ = this.afAuth.authState.pipe(
+      switchMap(x => from(x.getIdToken()))
     );
 
   }
@@ -60,7 +65,6 @@ export class AuthService {
     };
 
     return userRef.set(data, {merge: true});
-
   }
 
   async signOut(): Promise<void> {
