@@ -10,6 +10,7 @@ import { GamesDbApiKeyInterceptor } from './services/the-games-db.interceptor';
 @NgModule({
   imports: [CommonModule, HttpClientModule],
   providers: [
+    GameDataService,
     {
       provide: HTTP_INTERCEPTORS,
       useClass: GamesDbApiKeyInterceptor,

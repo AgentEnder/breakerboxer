@@ -1,1 +1,7 @@
-https://api.thegamesdb.net/v1/Platforms?apikey=071af43e3ae19fb9ab0edfb1f17c4a63a8cb2965698dd25cc0816da6d6a20ba6
+### List Platforms (The Games Db)
+
+GET https://api.thegamesdb.net/v1/Platforms?apikey=071af43e3ae19fb9ab0edfb1f17c4a63a8cb2965698dd25cc0816da6d6a20ba6 HTTP/1.1
+
+### Search results for 2049er
+
+GET https://api.rawg.io/api/games?apikey=277150bc47c04b88bb2388e25b3d2ec2&search=Miner%202049er HTTP/1.1
