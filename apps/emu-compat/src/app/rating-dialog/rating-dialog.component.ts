@@ -79,7 +79,7 @@ export class RatingDialogComponent {
 
   loadDataForGame(x: RAWG.Game): void {
     this.filteredTargets = x.platforms.map((plt) => plt.platform);
-    if (this.filteredTargets.findIndex(x => x.name === this.fg.controls.emulationTargetControl.value) === -1) {
+    if (this.filteredTargets.findIndex(plt => plt.name === this.fg.controls.emulationTargetControl.value) === -1) {
       this.fg.controls.emulationTargetControl.reset();
     }
     this.selectedGame = x;

@@ -5,7 +5,7 @@ export interface IGenericEnvironmentConfig {
   apiKeys: {
     thegamesdb: string,
     rawg: string
-  }
+  };
 }
 
 export interface IAppSpecificEnvironmentConfig {

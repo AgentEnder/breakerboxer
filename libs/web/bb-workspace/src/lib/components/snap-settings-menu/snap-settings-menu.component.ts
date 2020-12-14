@@ -2,7 +2,7 @@ import { Component, EventEmitter, forwardRef, Input, Output } from '@angular/cor
 import { SnapSettings } from '../../models';
 
 @Component({
-    selector: 'tbs-snap-settings-menu',
+    selector: 'breakerboxer-snap-settings-menu',
     templateUrl: './snap-settings-menu.component.html'
 })
 export class SnapSettingsMenuComponent {

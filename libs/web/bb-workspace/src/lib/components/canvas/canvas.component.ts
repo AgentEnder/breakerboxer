@@ -9,7 +9,7 @@ import { DarkModeService, Point } from '@tbs/core';
 import { DrawableMap, DrawingMode, IDrawable } from '../../models';
 
 @Component({
-  selector: 'tbs-canvas',
+  selector: 'breakerboxer-canvs',
   templateUrl: './canvas.component.html',
   styleUrls: ['./canvas.component.scss']
 })

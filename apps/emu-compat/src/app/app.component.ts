@@ -21,7 +21,6 @@ export class AppComponent {
     // They are also not attached underneath the dark-theme element directly.
     // This requires some extra work.
     const container = this.overlayContainer.getContainerElement();
-    
 
     // Without this, the theming is not applied until the dark mode has been toggled
     if (this.darkService.dark) {
@@ -38,7 +37,7 @@ export class AppComponent {
     });
   }
 
-  showDialog() {
-    this.dialog.open(RatingDialogComponent)
+  showDialog(): void {
+    this.dialog.open(RatingDialogComponent);
   }
 }

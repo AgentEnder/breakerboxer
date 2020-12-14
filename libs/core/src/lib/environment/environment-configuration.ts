@@ -2,7 +2,7 @@ import { IEnvironmentConfiguration } from './environment-configuration.interface
 
 export class EnvironmentConfiguration implements IEnvironmentConfiguration {
   production: boolean;
-  apiKeys: { thegamesdb: string };
+  apiKeys: { thegamesdb: string, rawg: string };
   firebase?: {
     apiKey: string;
     authDomain: string;
