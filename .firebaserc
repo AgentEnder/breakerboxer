@@ -6,6 +6,13 @@
           "breakerboxer-506ed"
         ]
       }
+    },
+    "emu-compat": {
+      "hosting": {
+        "emu-compat": [
+          "emu-compat"
+        ]
+      }
     }
   }
 }

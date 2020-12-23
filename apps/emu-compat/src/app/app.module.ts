@@ -18,7 +18,6 @@ import { MatSelectModule } from '@angular/material/select';
 import { CoreModule } from '@tbs/core';
 import { GamesDataModule } from '@tbs/games-data';
 import { LayoutModule } from '@tbs/layout';
-import { UserModule } from '@tbs/user';
 import { RatingModule } from '@tbs/web/rating';
 
 import { environment } from '../environments/environment';

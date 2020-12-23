@@ -354,6 +354,10 @@
             }
           }
         },
+        "deploy": {
+          "builder": "@angular/fire:deploy",
+          "options": {}
+        },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
