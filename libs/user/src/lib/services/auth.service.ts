@@ -14,45 +14,22 @@ import { User } from '../models/user.interface';
   providedIn: 'root'
 })
 export class AuthService {
-
-  user$: Observable<User>;
-  loggedIn$: Observable<boolean>;
-  token$: Observable<string>;
-
   constructor(
     private afAuth: AngularFireAuth,
     private afs: AngularFirestore,
     private router: Router
   ) {
-    this.user$ = this.afAuth.authState.pipe(
-      switchMap((user: any): ObservableInput<User> => {
-        if (user) {
-          return this.afs.doc<User>(`users/${user.uid}`).valueChanges();
-        } else {
-          return of(null);
-        }
-      })
-    );
-
-    this.loggedIn$ = this.user$.pipe(
-      switchMap((user: User) => {
-        return of(user !== null);
-      })
-    );
-
-    this.token$ = this.afAuth.authState.pipe(
-      switchMap(x => from(x.getIdToken()))
-    );
-
   }
 
-  async googleSignIn(): Promise<void> {
+  async googleSignIn(): Promise<User> {
     const provider = new fb.auth.GoogleAuthProvider();
     const credential = await this.afAuth.signInWithPopup(provider);
     return this.updateUserData(credential.user);
   }
 
-  private updateUserData(user: fb.User): Promise<void> {
+  googleSignIn$ = () => from(this.googleSignIn());
+
+  async updateUserData(user: fb.User): Promise<User> {
     const userRef: AngularFirestoreDocument<User> = this.afs.doc(`users/${user.uid}`);
 
     const data: User = {
@@ -64,11 +41,14 @@ export class AuthService {
       photoURL: user.photoURL
     };
 
-    return userRef.set(data, {merge: true});
+    await userRef.set(data, {merge: true});
+    return data;
   }
 
   async signOut(): Promise<void> {
     await this.afAuth.signOut();
     this.router.navigate(['/']);
   }
+
+  signOut$ = () => from(this.signOut());
 }

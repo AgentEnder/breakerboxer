@@ -11,14 +11,14 @@
     <span class="ml-2" [routerLink]="['/']" >{{title.title$| async}}</span>
     <ng-content select="[navItem]"></ng-content>
   </div>
-  <button mat-raised-button class="mr-2" (click)="auth.googleSignIn()" *ngIf="!loggedInUser else profileTemplate">Log In</button>
+  <button mat-raised-button class="mr-2" (click)="logIn()" *ngIf="!loggedInUser else profileTemplate">Log In</button>
   <ng-template #profileTemplate>
     <span class="mr-2">{{loggedInUser?.displayName}}</span>
     <button mat-icon-button [matMenuTriggerFor]="menu"><mat-icon>account_circle</mat-icon></button>
     <mat-menu #menu="matMenu">
       <ng-content select="[profileItem]"></ng-content>
       <mat-divider></mat-divider>
-      <div mat-menu-item  (click)="auth.signOut()">Log Out</div>
+      <div mat-menu-item  (click)="logOut()">Log Out</div>
     </mat-menu>
   </ng-template>
   <tbs-darkmode-switch></tbs-darkmode-switch>

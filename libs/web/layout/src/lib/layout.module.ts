@@ -13,6 +13,7 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { RouterModule } from '@angular/router';
+import { UserModule } from '@tbs/user';
 
 import { DarkModeSwitchComponent } from './dark-mode-switch/dark-mode-switch.component';
 import { NavbarComponent } from './navbar/navbar.component';
@@ -39,7 +40,8 @@ import { SidebarComponent } from './sidebar/sidebar.component';
     MatListModule,
     MatExpansionModule,
     MatTabsModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    UserModule
   ],
   exports: [
     NavbarComponent,
