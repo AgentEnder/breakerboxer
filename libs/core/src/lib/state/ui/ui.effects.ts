@@ -33,7 +33,6 @@ export class UIEffects implements OnInitEffects {
 
     ngrxOnInitEffects(): Action {
         const dark = this.getPreferredDarkMode();
-        console.log(dark);
         return UIActions.initializeUIState({
             state: {
                 darkMode: dark
@@ -44,7 +43,6 @@ export class UIEffects implements OnInitEffects {
     private getPreferredDarkMode(): boolean {
         // local storage property set after initial load
         const saved = this.storageService.retrieveLocalStorage<string>('dark-mode');
-        console.log(saved);
         let dark: boolean;
         switch (saved) {
             case 'light':

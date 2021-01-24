@@ -23,7 +23,6 @@ export class NavbarComponent extends BaseComponent {
     this.store.select(UserState.selectCurrentUser).pipe(
       takeUntil(this.destroy$)
     ).subscribe(x => {
-      console.log(x);
       this.loggedInUser = x;
     });
   }
