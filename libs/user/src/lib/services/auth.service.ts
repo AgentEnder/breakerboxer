@@ -5,8 +5,7 @@ import { Router } from '@angular/router';
 
 import fb from 'firebase/app';
 import { DateTime } from 'luxon';
-import { from, Observable, ObservableInput, of } from 'rxjs';
-import { switchMap } from 'rxjs/operators';
+import { from } from 'rxjs';
 
 import { User } from '../models/user.interface';
 

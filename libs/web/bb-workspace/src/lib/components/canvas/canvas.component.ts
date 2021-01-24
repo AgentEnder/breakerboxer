@@ -11,7 +11,7 @@ import { Store } from '@ngrx/store';
 import { BaseComponent } from '@tbs/shared';
 
 @Component({
-  selector: 'breakerboxer-canvs',
+  selector: 'breakerboxer-canvas',
   templateUrl: './canvas.component.html',
   styleUrls: ['./canvas.component.scss']
 })
@@ -78,8 +78,8 @@ export class CanvasComponent extends BaseComponent implements AfterViewInit {
       distinctUntilChanged()
     ).subscribe(dark => {
       this.darkMode = dark;
-      this.render()
-    })
+      this.render();
+    });
   }
 
   public clear(): void {
@@ -242,7 +242,7 @@ export class CanvasComponent extends BaseComponent implements AfterViewInit {
 
   drawGrid(): void {
     const oldStyle = this.ctx.strokeStyle;
-    this.ctx.strokeStyle = this.darkMode ? '#565656' : '#e3e3e3' ;
+    this.ctx.strokeStyle = this.darkMode ? '#565656' : '#e3e3e3';
     let [left, top, right, bottom] = this.getWorldSpaceBorderRect();
 
     const hspace = this.context.gridSnapSettings.gridSizeX;

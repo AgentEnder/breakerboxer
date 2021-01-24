@@ -16,10 +16,10 @@ export class DarkModeSwitchComponent extends BaseComponent {
 
     private _dark: boolean;
     @Input() set dark(x: boolean) {
-        this.store.dispatch(UIActions.setDarkMode({state: x}))
+        this.store.dispatch(UIActions.setDarkMode({state: x}));
     }
 
-    get dark() {
+    get dark(): boolean {
         return this._dark;
     }
 

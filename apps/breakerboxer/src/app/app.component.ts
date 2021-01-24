@@ -1,9 +1,9 @@
 import { OverlayContainer } from '@angular/cdk/overlay';
 import { Component } from '@angular/core';
 import { Store } from '@ngrx/store';
+import { UIState } from '@tbs/core';
 
 import { BaseComponent } from '@tbs/shared';
-import { UIState } from 'libs/core/src/lib/state/ui/ui.state';
 import { takeUntil } from 'rxjs/operators';
 
 @Component({
@@ -28,6 +28,6 @@ export class AppComponent extends BaseComponent {
       } else {
         container.classList.remove('dark-theme');
       }
-    })
+    });
   }
 }

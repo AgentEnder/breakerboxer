@@ -31,7 +31,7 @@ export class NavbarComponent extends BaseComponent {
   logIn(): void {
     this.store.dispatch(UserActions.logIn());
   }
-  
+
   logOut(): void {
     this.store.dispatch(UserActions.logOut());
   }
