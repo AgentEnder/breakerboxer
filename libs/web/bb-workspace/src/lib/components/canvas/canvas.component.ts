@@ -1,19 +1,21 @@
 import { AfterViewInit, Component, ElementRef, Input, OnInit, ViewChild } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { fromEvent, Subscription } from 'rxjs';
-import { filter, map, pairwise, takeUntil } from 'rxjs/operators';
+import { distinctUntilChanged, filter, map, pairwise, takeUntil } from 'rxjs/operators';
 import { WorkspaceContext } from '../../models/workspace-context';
 
-import { DarkModeService, Point } from '@tbs/core';
+import { UIState, Point } from '@tbs/core';
 
 import { DrawableMap, DrawingMode, IDrawable } from '../../models';
+import { Store } from '@ngrx/store';
+import { BaseComponent } from '@tbs/shared';
 
 @Component({
   selector: 'breakerboxer-canvs',
   templateUrl: './canvas.component.html',
   styleUrls: ['./canvas.component.scss']
 })
-export class CanvasComponent implements AfterViewInit {
+export class CanvasComponent extends BaseComponent implements AfterViewInit {
 
   @Input() public drawingMode: DrawingMode = 'polyline';
 
@@ -48,6 +50,8 @@ export class CanvasComponent implements AfterViewInit {
   private panX = 0;
   private panY = 0;
   private scaleFactor = 1;
+  private darkMode: boolean;
+
 
   public context: WorkspaceContext = {
     angleSnapSettings: {
@@ -65,9 +69,18 @@ export class CanvasComponent implements AfterViewInit {
 
   constructor(
     private el: ElementRef<HTMLElement>,
-    private darkModeService: DarkModeService,
+    private store: Store,
     private dialogService: MatDialog
-  ) { }
+  ) {
+    super();
+    this.store.select(UIState.selectDarkMode).pipe(
+      takeUntil(this.destroy$),
+      distinctUntilChanged()
+    ).subscribe(dark => {
+      this.darkMode = dark;
+      this.render()
+    })
+  }
 
   public clear(): void {
     this.drawables = [];
@@ -95,10 +108,6 @@ export class CanvasComponent implements AfterViewInit {
     // setTimeout(() => {
     //   this.setCanvasPxSize();
     // }, 1000); // timeout handles some weirdness with scaling not being stable due to angular/material drawer.
-
-    this.darkModeService.dark$.subscribe(x => {
-      this.render(this.lastKnownMousePoint);
-    });
   }
 
   setCanvasPxSize(): void {
@@ -206,7 +215,7 @@ export class CanvasComponent implements AfterViewInit {
     mousePosition = mousePosition || this.lastKnownMousePoint;
 
     // Handle dark mode styles
-    if (this.darkModeService.dark) {
+    if (this.darkMode) {
       this.ctx.strokeStyle = 'white';
       this.ctx.fillStyle = 'white';
     } else {
@@ -233,7 +242,7 @@ export class CanvasComponent implements AfterViewInit {
 
   drawGrid(): void {
     const oldStyle = this.ctx.strokeStyle;
-    this.ctx.strokeStyle = this.darkModeService.dark ? '#565656' : '#e3e3e3' ;
+    this.ctx.strokeStyle = this.darkMode ? '#565656' : '#e3e3e3' ;
     let [left, top, right, bottom] = this.getWorldSpaceBorderRect();
 
     const hspace = this.context.gridSnapSettings.gridSizeX;
