@@ -23,7 +23,24 @@
       "@tbs/user": ["libs/user/src/index.ts"],
       "@tbs/rating": ["libs/rating/src/index.ts"],
       "@tbs/web/rating": ["libs/web/rating/src/index.ts"],
-      "@tbs/games-data": ["libs/games-data/src/index.ts"]
+      "@tbs/games-data": ["libs/games-data/src/index.ts"],
+      "@tbs/xplat/core": ["libs/xplat/core/src/index.ts"],
+      "@tbs/xplat/features": ["libs/xplat/features/src/index.ts"],
+      "@tbs/xplat/utils": ["libs/xplat/utils/src/index.ts"],
+      "@tbs/xplat/web/core": ["libs/xplat/web/core/src/index.ts"],
+      "@tbs/xplat/web/features": ["libs/xplat/web/features/src/index.ts"],
+      "@tbs/xplat/environments": [
+        "libs/xplat/core/src/lib/environments/base/index.ts"
+      ],
+      "@tbs/xplat/nativescript/utils": [
+        "libs/xplat/nativescript/utils/src/index.ts"
+      ],
+      "@tbs/xplat/nativescript/core": [
+        "libs/xplat/nativescript/core/src/index.ts"
+      ],
+      "@tbs/xplat/nativescript/features": [
+        "libs/xplat/nativescript/features/src/index.ts"
+      ]
     },
     "rootDir": "."
   }
