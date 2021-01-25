@@ -2,11 +2,13 @@
     "cSpell.words": [
         "Treeview",
         "breakerboxer",
+        "compat",
         "darkmode",
         "drawables",
         "idrawable",
         "ielectrical",
-        "luxon"
+        "luxon",
+        "xplat"
     ],
     "importSorter.sortConfiguration.customOrderingRules.rules": [
         {
