@@ -1,12 +1,10 @@
 {
-  "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
   "version": 1,
-  "newProjectRoot": "",
   "projects": {
     "breakerboxer": {
       "projectType": "application",
       "schematics": {
-        "@schematics/angular:component": {
+        "@nrwl/angular:component": {
           "style": "scss"
         }
       },
@@ -27,7 +25,9 @@
               "apps/breakerboxer/src/favicon.ico",
               "apps/breakerboxer/src/assets"
             ],
-            "styles": ["apps/breakerboxer/src/styles.scss"],
+            "styles": [
+              "apps/breakerboxer/src/styles.scss"
+            ],
             "scripts": []
           },
           "configurations": {
@@ -58,7 +58,10 @@
                 }
               ]
             }
-          }
+          },
+          "outputs": [
+            "{options.outputPath}"
+          ]
         },
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
@@ -93,7 +96,10 @@
               "apps/breakerboxer/src/styles.scss"
             ],
             "scripts": []
-          }
+          },
+          "outputs": [
+            "coverage/apps/breakerboxer"
+          ]
         },
         "lint": {
           "builder": "@angular-devkit/build-angular:tslint",
@@ -102,7 +108,9 @@
               "apps/breakerboxer/tsconfig.app.json",
               "apps/breakerboxer/tsconfig.spec.json"
             ],
-            "exclude": ["**/node_modules/**"]
+            "exclude": [
+              "**/node_modules/**"
+            ]
           }
         },
         "deploy": {
@@ -131,7 +139,9 @@
           "builder": "@angular-devkit/build-angular:tslint",
           "options": {
             "tsConfig": "apps/breakerboxer-e2e/tsconfig.json",
-            "exclude": ["**/node_modules/**"]
+            "exclude": [
+              "**/node_modules/**"
+            ]
           }
         }
       }
@@ -149,7 +159,10 @@
               "libs/utils/tsconfig.lib.json",
               "libs/utils/tsconfig.spec.json"
             ],
-            "exclude": ["**/node_modules/**", "!libs/utils/**/*"]
+            "exclude": [
+              "**/node_modules/**",
+              "!libs/utils/**/*"
+            ]
           }
         },
         "test": {
@@ -157,11 +170,14 @@
           "options": {
             "jestConfig": "libs/utils/jest.config.js",
             "passWithNoTests": true
-          }
+          },
+          "outputs": [
+            "coverage/libs/utils"
+          ]
         }
       },
       "schematics": {
-        "@schematics/angular:component": {
+        "@nrwl/angular:component": {
           "style": "scss"
         }
       }
@@ -179,7 +195,10 @@
               "libs/web/layout/tsconfig.lib.json",
               "libs/web/layout/tsconfig.spec.json"
             ],
-            "exclude": ["**/node_modules/**", "!libs/web/layout/**/*"]
+            "exclude": [
+              "**/node_modules/**",
+              "!libs/web/layout/**/*"
+            ]
           }
         },
         "test": {
@@ -187,11 +206,14 @@
           "options": {
             "jestConfig": "libs/web/layout/jest.config.js",
             "passWithNoTests": true
-          }
+          },
+          "outputs": [
+            "coverage/libs/web/layout"
+          ]
         }
       },
       "schematics": {
-        "@schematics/angular:component": {
+        "@nrwl/angular:component": {
           "style": "scss"
         }
       }
@@ -209,7 +231,10 @@
               "libs/core/tsconfig.lib.json",
               "libs/core/tsconfig.spec.json"
             ],
-            "exclude": ["**/node_modules/**", "!libs/core/**/*"]
+            "exclude": [
+              "**/node_modules/**",
+              "!libs/core/**/*"
+            ]
           }
         },
         "test": {
@@ -217,11 +242,14 @@
           "options": {
             "jestConfig": "libs/core/jest.config.js",
             "passWithNoTests": true
-          }
+          },
+          "outputs": [
+            "coverage/libs/core"
+          ]
         }
       },
       "schematics": {
-        "@schematics/angular:component": {
+        "@nrwl/angular:component": {
           "style": "scss"
         }
       }
@@ -239,7 +267,10 @@
               "libs/web/bb-workspace/tsconfig.lib.json",
               "libs/web/bb-workspace/tsconfig.spec.json"
             ],
-            "exclude": ["**/node_modules/**", "!libs/web/bb-workspace/**/*"]
+            "exclude": [
+              "**/node_modules/**",
+              "!libs/web/bb-workspace/**/*"
+            ]
           }
         },
         "test": {
@@ -247,11 +278,14 @@
           "options": {
             "jestConfig": "libs/web/bb-workspace/jest.config.js",
             "passWithNoTests": true
-          }
+          },
+          "outputs": [
+            "coverage/libs/web/bb-workspace"
+          ]
         }
       },
       "schematics": {
-        "@schematics/angular:component": {
+        "@nrwl/angular:component": {
           "style": "scss"
         }
       }
@@ -269,7 +303,10 @@
               "libs/shared/tsconfig.lib.json",
               "libs/shared/tsconfig.spec.json"
             ],
-            "exclude": ["**/node_modules/**", "!libs/shared/**/*"]
+            "exclude": [
+              "**/node_modules/**",
+              "!libs/shared/**/*"
+            ]
           }
         },
         "test": {
@@ -277,11 +314,14 @@
           "options": {
             "jestConfig": "libs/shared/jest.config.js",
             "passWithNoTests": true
-          }
+          },
+          "outputs": [
+            "coverage/libs/shared"
+          ]
         }
       },
       "schematics": {
-        "@schematics/angular:component": {
+        "@nrwl/angular:component": {
           "style": "scss"
         }
       }
@@ -289,7 +329,7 @@
     "emu-compat": {
       "projectType": "application",
       "schematics": {
-        "@schematics/angular:component": {
+        "@nrwl/angular:component": {
           "style": "scss"
         }
       },
@@ -310,7 +350,9 @@
               "apps/emu-compat/src/favicon.ico",
               "apps/emu-compat/src/assets"
             ],
-            "styles": ["apps/emu-compat/src/styles.scss"],
+            "styles": [
+              "apps/emu-compat/src/styles.scss"
+            ],
             "scripts": []
           },
           "configurations": {
@@ -341,7 +383,10 @@
                 }
               ]
             }
-          }
+          },
+          "outputs": [
+            "{options.outputPath}"
+          ]
         },
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
@@ -372,7 +417,10 @@
               "apps/emu-compat/tsconfig.spec.json",
               "apps/emu-compat/tsconfig.editor.json"
             ],
-            "exclude": ["**/node_modules/**", "!apps/emu-compat/**/*"]
+            "exclude": [
+              "**/node_modules/**",
+              "!apps/emu-compat/**/*"
+            ]
           }
         },
         "test": {
@@ -380,7 +428,10 @@
           "options": {
             "jestConfig": "apps/emu-compat/jest.config.js",
             "passWithNoTests": true
-          }
+          },
+          "outputs": [
+            "coverage/apps/emu-compat"
+          ]
         }
       }
     },
@@ -405,8 +456,13 @@
         "lint": {
           "builder": "@angular-devkit/build-angular:tslint",
           "options": {
-            "tsConfig": ["apps/emu-compat-e2e/tsconfig.e2e.json"],
-            "exclude": ["**/node_modules/**", "!apps/emu-compat-e2e/**/*"]
+            "tsConfig": [
+              "apps/emu-compat-e2e/tsconfig.e2e.json"
+            ],
+            "exclude": [
+              "**/node_modules/**",
+              "!apps/emu-compat-e2e/**/*"
+            ]
           }
         }
       }
@@ -424,7 +480,10 @@
               "libs/user/tsconfig.lib.json",
               "libs/user/tsconfig.spec.json"
             ],
-            "exclude": ["**/node_modules/**", "!libs/user/**/*"]
+            "exclude": [
+              "**/node_modules/**",
+              "!libs/user/**/*"
+            ]
           }
         },
         "test": {
@@ -432,11 +491,14 @@
           "options": {
             "jestConfig": "libs/user/jest.config.js",
             "passWithNoTests": true
-          }
+          },
+          "outputs": [
+            "coverage/libs/user"
+          ]
         }
       },
       "schematics": {
-        "@schematics/angular:component": {
+        "@nrwl/angular:component": {
           "style": "scss"
         }
       }
@@ -454,7 +516,10 @@
               "libs/rating/tsconfig.lib.json",
               "libs/rating/tsconfig.spec.json"
             ],
-            "exclude": ["**/node_modules/**", "!libs/rating/**/*"]
+            "exclude": [
+              "**/node_modules/**",
+              "!libs/rating/**/*"
+            ]
           }
         },
         "test": {
@@ -462,11 +527,14 @@
           "options": {
             "jestConfig": "libs/rating/jest.config.js",
             "passWithNoTests": true
-          }
+          },
+          "outputs": [
+            "coverage/libs/rating"
+          ]
         }
       },
       "schematics": {
-        "@schematics/angular:component": {
+        "@nrwl/angular:component": {
           "style": "scss"
         }
       }
@@ -484,7 +552,10 @@
               "libs/web/rating/tsconfig.lib.json",
               "libs/web/rating/tsconfig.spec.json"
             ],
-            "exclude": ["**/node_modules/**", "!libs/web/rating/**/*"]
+            "exclude": [
+              "**/node_modules/**",
+              "!libs/web/rating/**/*"
+            ]
           }
         },
         "test": {
@@ -492,11 +563,14 @@
           "options": {
             "jestConfig": "libs/web/rating/jest.config.js",
             "passWithNoTests": true
-          }
+          },
+          "outputs": [
+            "coverage/libs/web/rating"
+          ]
         }
       },
       "schematics": {
-        "@schematics/angular:component": {
+        "@nrwl/angular:component": {
           "style": "scss"
         }
       }
@@ -514,7 +588,10 @@
               "libs/games-data/tsconfig.lib.json",
               "libs/games-data/tsconfig.spec.json"
             ],
-            "exclude": ["**/node_modules/**", "!libs/games-data/**/*"]
+            "exclude": [
+              "**/node_modules/**",
+              "!libs/games-data/**/*"
+            ]
           }
         },
         "test": {
@@ -522,11 +599,14 @@
           "options": {
             "jestConfig": "libs/games-data/jest.config.js",
             "passWithNoTests": true
-          }
+          },
+          "outputs": [
+            "coverage/libs/games-data"
+          ]
         }
       },
       "schematics": {
-        "@schematics/angular:component": {
+        "@nrwl/angular:component": {
           "style": "scss"
         }
       }
@@ -540,7 +620,10 @@
         "lint": {
           "builder": "@nrwl/linter:eslint",
           "options": {
-            "lintFilePatterns": ["libs/xplat/core/**/*.ts"]
+            "lintFilePatterns": [
+              "libs/xplat/core/**/*.ts",
+              "libs/xplat/core/src/**/*.html"
+            ]
           }
         },
         "test": {
@@ -548,7 +631,10 @@
           "options": {
             "jestConfig": "libs/xplat/core/jest.config.js",
             "passWithNoTests": true
-          }
+          },
+          "outputs": [
+            "coverage/libs/xplat/core"
+          ]
         }
       }
     },
@@ -561,7 +647,10 @@
         "lint": {
           "builder": "@nrwl/linter:eslint",
           "options": {
-            "lintFilePatterns": ["libs/xplat/features/**/*.ts"]
+            "lintFilePatterns": [
+              "libs/xplat/features/**/*.ts",
+              "libs/xplat/features/src/**/*.html"
+            ]
           }
         },
         "test": {
@@ -569,7 +658,10 @@
           "options": {
             "jestConfig": "libs/xplat/features/jest.config.js",
             "passWithNoTests": true
-          }
+          },
+          "outputs": [
+            "coverage/libs/xplat/features"
+          ]
         }
       }
     },
@@ -582,7 +674,10 @@
         "lint": {
           "builder": "@nrwl/linter:eslint",
           "options": {
-            "lintFilePatterns": ["libs/xplat/scss/**/*.ts"]
+            "lintFilePatterns": [
+              "libs/xplat/scss/**/*.ts",
+              "libs/xplat/scss/src/**/*.html"
+            ]
           }
         },
         "test": {
@@ -590,7 +685,10 @@
           "options": {
             "jestConfig": "libs/xplat/scss/jest.config.js",
             "passWithNoTests": true
-          }
+          },
+          "outputs": [
+            "coverage/libs/xplat/scss"
+          ]
         }
       }
     },
@@ -603,7 +701,10 @@
         "lint": {
           "builder": "@nrwl/linter:eslint",
           "options": {
-            "lintFilePatterns": ["libs/xplat/utils/**/*.ts"]
+            "lintFilePatterns": [
+              "libs/xplat/utils/**/*.ts",
+              "libs/xplat/utils/src/**/*.html"
+            ]
           }
         },
         "test": {
@@ -611,7 +712,10 @@
           "options": {
             "jestConfig": "libs/xplat/utils/jest.config.js",
             "passWithNoTests": true
-          }
+          },
+          "outputs": [
+            "coverage/libs/xplat/utils"
+          ]
         }
       }
     },
@@ -624,7 +728,10 @@
         "lint": {
           "builder": "@nrwl/linter:eslint",
           "options": {
-            "lintFilePatterns": ["libs/xplat/web/core/**/*.ts"]
+            "lintFilePatterns": [
+              "libs/xplat/web/core/**/*.ts",
+              "libs/xplat/web/core/src/**/*.html"
+            ]
           }
         },
         "test": {
@@ -632,7 +739,10 @@
           "options": {
             "jestConfig": "libs/xplat/web/core/jest.config.js",
             "passWithNoTests": true
-          }
+          },
+          "outputs": [
+            "coverage/libs/xplat/web/core"
+          ]
         }
       }
     },
@@ -645,7 +755,10 @@
         "lint": {
           "builder": "@nrwl/linter:eslint",
           "options": {
-            "lintFilePatterns": ["libs/xplat/web/features/**/*.ts"]
+            "lintFilePatterns": [
+              "libs/xplat/web/features/**/*.ts",
+              "libs/xplat/web/features/src/**/*.html"
+            ]
           }
         },
         "test": {
@@ -653,7 +766,10 @@
           "options": {
             "jestConfig": "libs/xplat/web/features/jest.config.js",
             "passWithNoTests": true
-          }
+          },
+          "outputs": [
+            "coverage/libs/xplat/web/features"
+          ]
         }
       }
     },
@@ -666,7 +782,10 @@
         "lint": {
           "builder": "@nrwl/linter:eslint",
           "options": {
-            "lintFilePatterns": ["libs/xplat/web/scss/**/*.ts"]
+            "lintFilePatterns": [
+              "libs/xplat/web/scss/**/*.ts",
+              "libs/xplat/web/scss/src/**/*.html"
+            ]
           }
         },
         "test": {
@@ -674,7 +793,10 @@
           "options": {
             "jestConfig": "libs/xplat/web/scss/jest.config.js",
             "passWithNoTests": true
-          }
+          },
+          "outputs": [
+            "coverage/libs/xplat/web/scss"
+          ]
         }
       }
     },
@@ -687,7 +809,10 @@
         "lint": {
           "builder": "@nrwl/linter:eslint",
           "options": {
-            "lintFilePatterns": ["libs/xplat/nativescript/scss/**/*.ts"]
+            "lintFilePatterns": [
+              "libs/xplat/nativescript/scss/**/*.ts",
+              "libs/xplat/nativescript/scss/src/**/*.html"
+            ]
           }
         },
         "test": {
@@ -695,7 +820,10 @@
           "options": {
             "jestConfig": "libs/xplat/nativescript/scss/jest.config.js",
             "passWithNoTests": true
-          }
+          },
+          "outputs": [
+            "coverage/libs/xplat/nativescript/scss"
+          ]
         }
       }
     },
@@ -708,7 +836,10 @@
         "lint": {
           "builder": "@nrwl/linter:eslint",
           "options": {
-            "lintFilePatterns": ["libs/xplat/nativescript/utils/**/*.ts"]
+            "lintFilePatterns": [
+              "libs/xplat/nativescript/utils/**/*.ts",
+              "libs/xplat/nativescript/utils/src/**/*.html"
+            ]
           }
         },
         "test": {
@@ -716,7 +847,10 @@
           "options": {
             "jestConfig": "libs/xplat/nativescript/utils/jest.config.js",
             "passWithNoTests": true
-          }
+          },
+          "outputs": [
+            "coverage/libs/xplat/nativescript/utils"
+          ]
         }
       }
     },
@@ -729,7 +863,10 @@
         "lint": {
           "builder": "@nrwl/linter:eslint",
           "options": {
-            "lintFilePatterns": ["libs/xplat/nativescript/core/**/*.ts"]
+            "lintFilePatterns": [
+              "libs/xplat/nativescript/core/**/*.ts",
+              "libs/xplat/nativescript/core/src/**/*.html"
+            ]
           }
         },
         "test": {
@@ -737,7 +874,10 @@
           "options": {
             "jestConfig": "libs/xplat/nativescript/core/jest.config.js",
             "passWithNoTests": true
-          }
+          },
+          "outputs": [
+            "coverage/libs/xplat/nativescript/core"
+          ]
         }
       }
     },
@@ -750,7 +890,10 @@
         "lint": {
           "builder": "@nrwl/linter:eslint",
           "options": {
-            "lintFilePatterns": ["libs/xplat/nativescript/features/**/*.ts"]
+            "lintFilePatterns": [
+              "libs/xplat/nativescript/features/**/*.ts",
+              "libs/xplat/nativescript/features/src/**/*.html"
+            ]
           }
         },
         "test": {
@@ -758,12 +901,14 @@
           "options": {
             "jestConfig": "libs/xplat/nativescript/features/jest.config.js",
             "passWithNoTests": true
-          }
+          },
+          "outputs": [
+            "coverage/libs/xplat/nativescript/features"
+          ]
         }
       }
     }
   },
-  "defaultProject": "breakerboxer",
   "cli": {
     "analytics": "48079284-5d9d-47d1-92a4-cb756e8f9b97",
     "defaultCollection": "@nstudio/xplat"
@@ -776,5 +921,6 @@
     "@nrwl/angular:library": {
       "unitTestRunner": "jest"
     }
-  }
+  },
+  "defaultProject": "breakerboxer"
 }
