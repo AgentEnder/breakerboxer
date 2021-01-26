@@ -1,5 +1,5 @@
 module.exports = {
-  displayName: 'web-rating',
+  displayName: 'web-bb-workspace',
   preset: '../../../jest.preset.js',
   setupFilesAfterEnv: ['<rootDir>/src/test-setup.ts'],
   globals: {
@@ -14,7 +14,7 @@ module.exports = {
       },
     },
   },
-  coverageDirectory: '../../../coverage/libs/web/rating',
+  coverageDirectory: '../../../coverage/libs/xplat/web/bb-workspace',
   snapshotSerializers: [
     'jest-preset-angular/build/AngularNoNgAttributesSnapshotSerializer.js',
     'jest-preset-angular/build/AngularSnapshotSerializer.js',

@@ -1,6 +1,6 @@
 module.exports = {
-  displayName: 'web-bb-workspace',
-  preset: '../../../jest.preset.js',
+  displayName: 'layout',
+  preset: '../../jest.preset.js',
   setupFilesAfterEnv: ['<rootDir>/src/test-setup.ts'],
   globals: {
     'ts-jest': {
@@ -14,7 +14,7 @@ module.exports = {
       },
     },
   },
-  coverageDirectory: '../../../coverage/libs/web/bb-workspace',
+  coverageDirectory: '../../coverage/libs/xplat/web/layout',
   snapshotSerializers: [
     'jest-preset-angular/build/AngularNoNgAttributesSnapshotSerializer.js',
     'jest-preset-angular/build/AngularSnapshotSerializer.js',

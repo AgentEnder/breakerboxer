@@ -184,31 +184,31 @@
     },
     "layout": {
       "projectType": "library",
-      "root": "libs/web/layout",
-      "sourceRoot": "libs/web/layout/src",
+      "root": "libs/xplat/web/layout",
+      "sourceRoot": "libs/xplat/web/layout/src",
       "prefix": "tbs",
       "architect": {
         "lint": {
           "builder": "@angular-devkit/build-angular:tslint",
           "options": {
             "tsConfig": [
-              "libs/web/layout/tsconfig.lib.json",
-              "libs/web/layout/tsconfig.spec.json"
+              "libs/xplat/web/layout/tsconfig.lib.json",
+              "libs/xplat/web/layout/tsconfig.spec.json"
             ],
             "exclude": [
               "**/node_modules/**",
-              "!libs/web/layout/**/*"
+              "!libs/xplat/web/layout/**/*"
             ]
           }
         },
         "test": {
           "builder": "@nrwl/jest:jest",
           "options": {
-            "jestConfig": "libs/web/layout/jest.config.js",
+            "jestConfig": "libs/xplat/web/layout/jest.config.js",
             "passWithNoTests": true
           },
           "outputs": [
-            "coverage/libs/web/layout"
+            "coverage/libs/xplat/web/layout"
           ]
         }
       },
@@ -256,31 +256,31 @@
     },
     "web-bb-workspace": {
       "projectType": "library",
-      "root": "libs/web/bb-workspace",
-      "sourceRoot": "libs/web/bb-workspace/src",
+      "root": "libs/xplat/web/bb-workspace",
+      "sourceRoot": "libs/xplat/web/bb-workspace/src",
       "prefix": "tbs",
       "architect": {
         "lint": {
           "builder": "@angular-devkit/build-angular:tslint",
           "options": {
             "tsConfig": [
-              "libs/web/bb-workspace/tsconfig.lib.json",
-              "libs/web/bb-workspace/tsconfig.spec.json"
+              "libs/xplat/web/bb-workspace/tsconfig.lib.json",
+              "libs/xplat/web/bb-workspace/tsconfig.spec.json"
             ],
             "exclude": [
               "**/node_modules/**",
-              "!libs/web/bb-workspace/**/*"
+              "!libs/xplat/web/bb-workspace/**/*"
             ]
           }
         },
         "test": {
           "builder": "@nrwl/jest:jest",
           "options": {
-            "jestConfig": "libs/web/bb-workspace/jest.config.js",
+            "jestConfig": "libs/xplat/web/bb-workspace/jest.config.js",
             "passWithNoTests": true
           },
           "outputs": [
-            "coverage/libs/web/bb-workspace"
+            "coverage/libs/xplat/web/bb-workspace"
           ]
         }
       },
@@ -505,31 +505,31 @@
     },
     "rating": {
       "projectType": "library",
-      "root": "libs/rating",
-      "sourceRoot": "libs/rating/src",
+      "root": "libs/xplat/base/rating",
+      "sourceRoot": "libs/xplat/base/rating/src",
       "prefix": "tbs",
       "architect": {
         "lint": {
           "builder": "@angular-devkit/build-angular:tslint",
           "options": {
             "tsConfig": [
-              "libs/rating/tsconfig.lib.json",
-              "libs/rating/tsconfig.spec.json"
+              "libs/xplat/base/rating/tsconfig.lib.json",
+              "libs/xplat/base/rating/tsconfig.spec.json"
             ],
             "exclude": [
               "**/node_modules/**",
-              "!libs/rating/**/*"
+              "!libs/xplat/base/rating/**/*"
             ]
           }
         },
         "test": {
           "builder": "@nrwl/jest:jest",
           "options": {
-            "jestConfig": "libs/rating/jest.config.js",
+            "jestConfig": "libs/xplat/base/rating/jest.config.js",
             "passWithNoTests": true
           },
           "outputs": [
-            "coverage/libs/rating"
+            "coverage/libs/xplat/base/rating"
           ]
         }
       },
@@ -541,31 +541,31 @@
     },
     "web-rating": {
       "projectType": "library",
-      "root": "libs/web/rating",
-      "sourceRoot": "libs/web/rating/src",
+      "root": "libs/xplat/web/rating",
+      "sourceRoot": "libs/xplat/web/rating/src",
       "prefix": "tbs",
       "architect": {
         "lint": {
           "builder": "@angular-devkit/build-angular:tslint",
           "options": {
             "tsConfig": [
-              "libs/web/rating/tsconfig.lib.json",
-              "libs/web/rating/tsconfig.spec.json"
+              "libs/xplat/web/rating/tsconfig.lib.json",
+              "libs/xplat/web/rating/tsconfig.spec.json"
             ],
             "exclude": [
               "**/node_modules/**",
-              "!libs/web/rating/**/*"
+              "!libs/xplat/web/rating/**/*"
             ]
           }
         },
         "test": {
           "builder": "@nrwl/jest:jest",
           "options": {
-            "jestConfig": "libs/web/rating/jest.config.js",
+            "jestConfig": "libs/xplat/web/rating/jest.config.js",
             "passWithNoTests": true
           },
           "outputs": [
-            "coverage/libs/web/rating"
+            "coverage/libs/xplat/web/rating"
           ]
         }
       },
