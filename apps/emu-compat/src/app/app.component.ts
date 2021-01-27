@@ -6,7 +6,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { Store } from '@ngrx/store';
 import { takeUntil } from 'rxjs/operators';
 
-import { UIState } from '@tbs/core';
+import { UIState } from '@tbs/xplat/core';
 import { BaseComponent } from '@tbs/shared';
 
 import { RatingDialogComponent } from './rating-dialog/rating-dialog.component';

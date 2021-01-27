@@ -4,7 +4,7 @@ import { fromEvent, Subscription } from 'rxjs';
 import { distinctUntilChanged, filter, map, pairwise, takeUntil } from 'rxjs/operators';
 import { WorkspaceContext } from '../../models/workspace-context';
 
-import { UIState, Point } from '@tbs/core';
+import { UIState, Point } from '@tbs/xplat/core';
 
 import { DrawableMap, DrawingMode, IDrawable } from '../../models';
 import { Store } from '@ngrx/store';

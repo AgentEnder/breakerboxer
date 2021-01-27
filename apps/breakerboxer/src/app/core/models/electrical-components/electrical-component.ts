@@ -1,4 +1,4 @@
-import { BaseModel, type } from '@tbs/core';
+import { BaseModel, type } from '@tbs/xplat/core';
 import { IDrawable } from '@tbs/web/bb-workspace';
 import { Breaker } from '../breaker';
 

@@ -1,5 +1,5 @@
 import { Observable, Subject } from 'rxjs';
-import { BaseModel, Point } from '@tbs/core';
+import { BaseModel, Point } from '@tbs/xplat/core';
 
 export interface IDrawable extends BaseModel {
     draw: () => void;

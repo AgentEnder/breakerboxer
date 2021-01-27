@@ -1,4 +1,4 @@
-import {baseEnvironment, IEnvironmentConfiguration} from '@tbs/core';
+import {baseEnvironment, IEnvironmentConfiguration} from '@tbs/xplat/core';
 import {deepMerge} from '@tbs/utils';
 
 export const overrides: Partial<IEnvironmentConfiguration> = {

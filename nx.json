@@ -39,14 +39,6 @@
     "layout": {
       "tags": ["platform:web", "scope:shared", "type:lib", "framework:angular"]
     },
-    "core": {
-      "tags": [
-        "platform:agnostic",
-        "scope:shared",
-        "type:lib",
-        "framework:angular"
-      ]
-    },
     "web-bb-workspace": {
       "tags": [
         "platform:web",

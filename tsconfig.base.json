@@ -17,7 +17,6 @@
       "@tbs/web-app/*": ["apps/breakerboxer/src/app/*"],
       "@tbs/utils": ["libs/utils/src/index.ts"],
       "@tbs/layout": ["libs/xplat/web/layout/src/index.ts"],
-      "@tbs/core": ["libs/core/src/index.ts"],
       "@tbs/web/bb-workspace": ["libs/xplat/web/bb-workspace/src/index.ts"],
       "@tbs/shared": ["libs/shared/src/index.ts"],
       "@tbs/user": ["libs/user/src/index.ts"],

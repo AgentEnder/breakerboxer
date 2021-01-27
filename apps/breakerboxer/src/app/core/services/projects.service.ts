@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 
 import { from, Subject } from 'rxjs';
 
-import { BaseModel } from '@tbs/core';
+import { BaseModel } from '@tbs/xplat/core';
 import { IDrawable } from '@tbs/web/bb-workspace';
 
 import { IBreaker, IElectricalComponent, IRoom } from '../models';

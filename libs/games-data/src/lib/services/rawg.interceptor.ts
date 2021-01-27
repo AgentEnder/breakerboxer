@@ -5,7 +5,7 @@ import {
   HttpRequest,
 } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { baseEnvironment } from '@tbs/core';
+import { baseEnvironment } from '@tbs/xplat/core';
 
 export class GamesDbApiKeyInterceptor implements HttpInterceptor {
   intercept(

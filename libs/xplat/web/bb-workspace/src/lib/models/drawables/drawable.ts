@@ -1,6 +1,6 @@
 import { from, Observable, Subject } from 'rxjs';
 
-import { BaseModel, type, Point } from '@tbs/core';
+import { BaseModel, type, Point } from '@tbs/xplat/core';
 import { WorkspaceContext } from '../workspace-context';
 import { DrawingMode } from '../drawing-modes';
 import { IDrawable } from './idrawable';
