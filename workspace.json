@@ -25,9 +25,7 @@
               "apps/breakerboxer/src/favicon.ico",
               "apps/breakerboxer/src/assets"
             ],
-            "styles": [
-              "apps/breakerboxer/src/styles.scss"
-            ],
+            "styles": ["apps/breakerboxer/src/styles.scss"],
             "scripts": []
           },
           "configurations": {
@@ -59,9 +57,7 @@
               ]
             }
           },
-          "outputs": [
-            "{options.outputPath}"
-          ]
+          "outputs": ["{options.outputPath}"]
         },
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
@@ -97,9 +93,7 @@
             ],
             "scripts": []
           },
-          "outputs": [
-            "coverage/apps/breakerboxer"
-          ]
+          "outputs": ["coverage/apps/breakerboxer"]
         },
         "lint": {
           "builder": "@angular-devkit/build-angular:tslint",
@@ -108,9 +102,7 @@
               "apps/breakerboxer/tsconfig.app.json",
               "apps/breakerboxer/tsconfig.spec.json"
             ],
-            "exclude": [
-              "**/node_modules/**"
-            ]
+            "exclude": ["**/node_modules/**"]
           }
         },
         "deploy": {
@@ -139,9 +131,7 @@
           "builder": "@angular-devkit/build-angular:tslint",
           "options": {
             "tsConfig": "apps/breakerboxer-e2e/tsconfig.json",
-            "exclude": [
-              "**/node_modules/**"
-            ]
+            "exclude": ["**/node_modules/**"]
           }
         }
       }
@@ -159,10 +149,7 @@
               "libs/utils/tsconfig.lib.json",
               "libs/utils/tsconfig.spec.json"
             ],
-            "exclude": [
-              "**/node_modules/**",
-              "!libs/utils/**/*"
-            ]
+            "exclude": ["**/node_modules/**", "!libs/utils/**/*"]
           }
         },
         "test": {
@@ -171,9 +158,7 @@
             "jestConfig": "libs/utils/jest.config.js",
             "passWithNoTests": true
           },
-          "outputs": [
-            "coverage/libs/utils"
-          ]
+          "outputs": ["coverage/libs/utils"]
         }
       },
       "schematics": {
@@ -195,10 +180,7 @@
               "libs/xplat/web/layout/tsconfig.lib.json",
               "libs/xplat/web/layout/tsconfig.spec.json"
             ],
-            "exclude": [
-              "**/node_modules/**",
-              "!libs/xplat/web/layout/**/*"
-            ]
+            "exclude": ["**/node_modules/**", "!libs/xplat/web/layout/**/*"]
           }
         },
         "test": {
@@ -207,9 +189,7 @@
             "jestConfig": "libs/xplat/web/layout/jest.config.js",
             "passWithNoTests": true
           },
-          "outputs": [
-            "coverage/libs/xplat/web/layout"
-          ]
+          "outputs": ["coverage/libs/xplat/web/layout"]
         }
       },
       "schematics": {
@@ -243,9 +223,7 @@
             "jestConfig": "libs/xplat/web/bb-workspace/jest.config.js",
             "passWithNoTests": true
           },
-          "outputs": [
-            "coverage/libs/xplat/web/bb-workspace"
-          ]
+          "outputs": ["coverage/libs/xplat/web/bb-workspace"]
         }
       },
       "schematics": {
@@ -267,10 +245,7 @@
               "libs/shared/tsconfig.lib.json",
               "libs/shared/tsconfig.spec.json"
             ],
-            "exclude": [
-              "**/node_modules/**",
-              "!libs/shared/**/*"
-            ]
+            "exclude": ["**/node_modules/**", "!libs/shared/**/*"]
           }
         },
         "test": {
@@ -279,9 +254,7 @@
             "jestConfig": "libs/shared/jest.config.js",
             "passWithNoTests": true
           },
-          "outputs": [
-            "coverage/libs/shared"
-          ]
+          "outputs": ["coverage/libs/shared"]
         }
       },
       "schematics": {
@@ -314,9 +287,7 @@
               "apps/emu-compat/src/favicon.ico",
               "apps/emu-compat/src/assets"
             ],
-            "styles": [
-              "apps/emu-compat/src/styles.scss"
-            ],
+            "styles": ["apps/emu-compat/src/styles.scss"],
             "scripts": []
           },
           "configurations": {
@@ -348,9 +319,7 @@
               ]
             }
           },
-          "outputs": [
-            "{options.outputPath}"
-          ]
+          "outputs": ["{options.outputPath}"]
         },
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
@@ -381,10 +350,7 @@
               "apps/emu-compat/tsconfig.spec.json",
               "apps/emu-compat/tsconfig.editor.json"
             ],
-            "exclude": [
-              "**/node_modules/**",
-              "!apps/emu-compat/**/*"
-            ]
+            "exclude": ["**/node_modules/**", "!apps/emu-compat/**/*"]
           }
         },
         "test": {
@@ -393,9 +359,7 @@
             "jestConfig": "apps/emu-compat/jest.config.js",
             "passWithNoTests": true
           },
-          "outputs": [
-            "coverage/apps/emu-compat"
-          ]
+          "outputs": ["coverage/apps/emu-compat"]
         }
       }
     },
@@ -420,13 +384,8 @@
         "lint": {
           "builder": "@angular-devkit/build-angular:tslint",
           "options": {
-            "tsConfig": [
-              "apps/emu-compat-e2e/tsconfig.e2e.json"
-            ],
-            "exclude": [
-              "**/node_modules/**",
-              "!apps/emu-compat-e2e/**/*"
-            ]
+            "tsConfig": ["apps/emu-compat-e2e/tsconfig.e2e.json"],
+            "exclude": ["**/node_modules/**", "!apps/emu-compat-e2e/**/*"]
           }
         }
       }
@@ -444,10 +403,7 @@
               "libs/user/tsconfig.lib.json",
               "libs/user/tsconfig.spec.json"
             ],
-            "exclude": [
-              "**/node_modules/**",
-              "!libs/user/**/*"
-            ]
+            "exclude": ["**/node_modules/**", "!libs/user/**/*"]
           }
         },
         "test": {
@@ -456,9 +412,7 @@
             "jestConfig": "libs/user/jest.config.js",
             "passWithNoTests": true
           },
-          "outputs": [
-            "coverage/libs/user"
-          ]
+          "outputs": ["coverage/libs/user"]
         }
       },
       "schematics": {
@@ -480,10 +434,7 @@
               "libs/xplat/base/rating/tsconfig.lib.json",
               "libs/xplat/base/rating/tsconfig.spec.json"
             ],
-            "exclude": [
-              "**/node_modules/**",
-              "!libs/xplat/base/rating/**/*"
-            ]
+            "exclude": ["**/node_modules/**", "!libs/xplat/base/rating/**/*"]
           }
         },
         "test": {
@@ -492,9 +443,7 @@
             "jestConfig": "libs/xplat/base/rating/jest.config.js",
             "passWithNoTests": true
           },
-          "outputs": [
-            "coverage/libs/xplat/base/rating"
-          ]
+          "outputs": ["coverage/libs/xplat/base/rating"]
         }
       },
       "schematics": {
@@ -516,10 +465,7 @@
               "libs/xplat/web/rating/tsconfig.lib.json",
               "libs/xplat/web/rating/tsconfig.spec.json"
             ],
-            "exclude": [
-              "**/node_modules/**",
-              "!libs/xplat/web/rating/**/*"
-            ]
+            "exclude": ["**/node_modules/**", "!libs/xplat/web/rating/**/*"]
           }
         },
         "test": {
@@ -528,9 +474,7 @@
             "jestConfig": "libs/xplat/web/rating/jest.config.js",
             "passWithNoTests": true
           },
-          "outputs": [
-            "coverage/libs/xplat/web/rating"
-          ]
+          "outputs": ["coverage/libs/xplat/web/rating"]
         }
       },
       "schematics": {
@@ -552,10 +496,7 @@
               "libs/games-data/tsconfig.lib.json",
               "libs/games-data/tsconfig.spec.json"
             ],
-            "exclude": [
-              "**/node_modules/**",
-              "!libs/games-data/**/*"
-            ]
+            "exclude": ["**/node_modules/**", "!libs/games-data/**/*"]
           }
         },
         "test": {
@@ -564,9 +505,7 @@
             "jestConfig": "libs/games-data/jest.config.js",
             "passWithNoTests": true
           },
-          "outputs": [
-            "coverage/libs/games-data"
-          ]
+          "outputs": ["coverage/libs/games-data"]
         }
       },
       "schematics": {
@@ -596,9 +535,7 @@
             "jestConfig": "libs/xplat/core/jest.config.js",
             "passWithNoTests": true
           },
-          "outputs": [
-            "coverage/libs/xplat/core"
-          ]
+          "outputs": ["coverage/libs/xplat/core"]
         }
       }
     },
@@ -623,9 +560,7 @@
             "jestConfig": "libs/xplat/features/jest.config.js",
             "passWithNoTests": true
           },
-          "outputs": [
-            "coverage/libs/xplat/features"
-          ]
+          "outputs": ["coverage/libs/xplat/features"]
         }
       }
     },
@@ -650,9 +585,7 @@
             "jestConfig": "libs/xplat/scss/jest.config.js",
             "passWithNoTests": true
           },
-          "outputs": [
-            "coverage/libs/xplat/scss"
-          ]
+          "outputs": ["coverage/libs/xplat/scss"]
         }
       }
     },
@@ -677,9 +610,7 @@
             "jestConfig": "libs/xplat/utils/jest.config.js",
             "passWithNoTests": true
           },
-          "outputs": [
-            "coverage/libs/xplat/utils"
-          ]
+          "outputs": ["coverage/libs/xplat/utils"]
         }
       }
     },
@@ -704,9 +635,7 @@
             "jestConfig": "libs/xplat/web/core/jest.config.js",
             "passWithNoTests": true
           },
-          "outputs": [
-            "coverage/libs/xplat/web/core"
-          ]
+          "outputs": ["coverage/libs/xplat/web/core"]
         }
       }
     },
@@ -731,9 +660,7 @@
             "jestConfig": "libs/xplat/web/features/jest.config.js",
             "passWithNoTests": true
           },
-          "outputs": [
-            "coverage/libs/xplat/web/features"
-          ]
+          "outputs": ["coverage/libs/xplat/web/features"]
         }
       }
     },
@@ -758,9 +685,7 @@
             "jestConfig": "libs/xplat/web/scss/jest.config.js",
             "passWithNoTests": true
           },
-          "outputs": [
-            "coverage/libs/xplat/web/scss"
-          ]
+          "outputs": ["coverage/libs/xplat/web/scss"]
         }
       }
     },
@@ -785,9 +710,7 @@
             "jestConfig": "libs/xplat/nativescript/scss/jest.config.js",
             "passWithNoTests": true
           },
-          "outputs": [
-            "coverage/libs/xplat/nativescript/scss"
-          ]
+          "outputs": ["coverage/libs/xplat/nativescript/scss"]
         }
       }
     },
@@ -812,9 +735,7 @@
             "jestConfig": "libs/xplat/nativescript/utils/jest.config.js",
             "passWithNoTests": true
           },
-          "outputs": [
-            "coverage/libs/xplat/nativescript/utils"
-          ]
+          "outputs": ["coverage/libs/xplat/nativescript/utils"]
         }
       }
     },
@@ -839,9 +760,7 @@
             "jestConfig": "libs/xplat/nativescript/core/jest.config.js",
             "passWithNoTests": true
           },
-          "outputs": [
-            "coverage/libs/xplat/nativescript/core"
-          ]
+          "outputs": ["coverage/libs/xplat/nativescript/core"]
         }
       }
     },
@@ -866,9 +785,7 @@
             "jestConfig": "libs/xplat/nativescript/features/jest.config.js",
             "passWithNoTests": true
           },
-          "outputs": [
-            "coverage/libs/xplat/nativescript/features"
-          ]
+          "outputs": ["coverage/libs/xplat/nativescript/features"]
         }
       }
     }
@@ -884,6 +801,9 @@
     },
     "@nrwl/angular:library": {
       "unitTestRunner": "jest"
+    },
+    "@nrwl/angular:component": {
+      "style": "scss"
     }
   },
   "defaultProject": "breakerboxer"
