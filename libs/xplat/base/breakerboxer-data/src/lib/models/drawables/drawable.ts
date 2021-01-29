@@ -14,7 +14,7 @@ export abstract class Drawable extends BaseModel implements IDrawable {
     abstract name: DrawingMode;
 
     protected ctx: CanvasRenderingContext2D;
-    protected workspaceContext: WorkspaceContext;
+    workspaceContext: WorkspaceContext;
 
     protected $finished = new Subject<IDrawable>();
     finished: Observable<IDrawable> = from(this.$finished);
@@ -28,16 +28,16 @@ export abstract class Drawable extends BaseModel implements IDrawable {
     }
 
     protected snapPointToGrid(pt: Point): Point {
-        const settings = this.workspaceContext.gridSnapSettings;
-        if (settings.snap) {
-            const [ptDeltaX, ptDeltaY] = [pt.x % settings.gridSizeX, pt.y % settings.gridSizeY];
+        const settings = this.workspaceContext;
+        if (settings.grid.snap) {
+            const [ptDeltaX, ptDeltaY] = [pt.x % settings.grid.gridSizeX, pt.y % settings.grid.gridSizeY];
             const snappedPoint = new Point(pt.x, pt.y);
-            snappedPoint.x = ptDeltaX < settings.gridSizeX / 2
+            snappedPoint.x = ptDeltaX < settings.grid.gridSizeX / 2
                            ? snappedPoint.x - ptDeltaX
-                           : snappedPoint.x + (settings.gridSizeX - ptDeltaX);
-            snappedPoint.y = ptDeltaY < settings.gridSizeY / 2
+                           : snappedPoint.x + (settings.grid.gridSizeX - ptDeltaX);
+            snappedPoint.y = ptDeltaY < settings.grid.gridSizeY / 2
                            ? snappedPoint.y - ptDeltaY
-                           : snappedPoint.y + (settings.gridSizeY - ptDeltaY);
+                           : snappedPoint.y + (settings.grid.gridSizeY - ptDeltaY);
             return snappedPoint;
         }
         return pt;

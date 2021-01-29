@@ -17,9 +17,4 @@ export class WorkspacePageComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  setSnapSettings(settings: SnapSettings): void {
-    Object.assign(this.canvas.context, settings);
-    this.canvas.render();
-  }
-
 }

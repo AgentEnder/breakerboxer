@@ -8,7 +8,8 @@ import { distinctUntilChanged, filter, map, pairwise, takeUntil } from 'rxjs/ope
 
 import { BaseComponent } from '@tbs/shared';
 import {
-    DrawableMap, DrawingMode, IDrawable, WorkspaceContext
+  BreakerboxerState,
+    DrawableMap, DrawingMode, IDrawable, SnapSettings, WorkspaceContext
 } from '@tbs/xplat/base/breakerboxer-data';
 import { Point, UIState } from '@tbs/xplat/core';
 
@@ -20,26 +21,6 @@ import { Point, UIState } from '@tbs/xplat/core';
 export class CanvasComponent extends BaseComponent implements AfterViewInit {
 
   @Input() public drawingMode: DrawingMode = 'polyline';
-
-  @Input() public set gridSnap(v) {
-    this.context.gridSnapSettings.snap = v;
-    this.render();
-  }
-  public get gridSnap(): boolean {
-    return this.context.gridSnapSettings.snap;
-  }
-
-  @Input() public set angleSnap(v) {
-    this.context.angleSnapSettings.snap = v;
-    if (this.inProgressDrawable) {
-      this.render();
-    }
-  }
-
-  public get angleSnap(): boolean {
-    return this.context.angleSnapSettings.snap;
-  }
-
 
   @ViewChild('workspaceCanvas') canvas: ElementRef<HTMLCanvasElement>;
 
@@ -53,21 +34,8 @@ export class CanvasComponent extends BaseComponent implements AfterViewInit {
   private panY = 0;
   private scaleFactor = 1;
   private darkMode: boolean;
+  private snapSettings: SnapSettings;
 
-
-  public context: WorkspaceContext = {
-    angleSnapSettings: {
-      angles: [30, 45],
-      snap: false
-    },
-    ctx: null,
-    gridSnapSettings: {
-      gridSizeX: 50,
-      gridSizeY: 50,
-      displayGrid: true,
-      snap: true
-    }
-  };
 
   constructor(
     private el: ElementRef<HTMLElement>,
@@ -82,6 +50,16 @@ export class CanvasComponent extends BaseComponent implements AfterViewInit {
       this.darkMode = dark;
       this.render();
     });
+
+    this.store.select(BreakerboxerState.selectSnapSettings).pipe(
+      takeUntil(this.destroy$)
+    ).subscribe(x => {
+      this.snapSettings = x
+      if (this.inProgressDrawable) {
+        this.inProgressDrawable.workspaceContext = this.getCurrentContext();
+      }
+      this.render();
+    })
   }
 
   public clear(): void {
@@ -104,7 +82,6 @@ export class CanvasComponent extends BaseComponent implements AfterViewInit {
   ngAfterViewInit(): void {
     const canvasElement = this.canvas.nativeElement;
     this.ctx = this.canvas.nativeElement.getContext('2d');
-    this.context.ctx = this.ctx;
     // @ts-ignore
     const obs = new ResizeObserver(() => this.setCanvasPxSize()).observe(canvasElement);
     // setTimeout(() => {
@@ -187,7 +164,7 @@ export class CanvasComponent extends BaseComponent implements AfterViewInit {
 
   startDrawing(pt: Point): void {
     this.drawing = true;
-    this.inProgressDrawable = DrawableMap[this.drawingMode](this.context);
+    this.inProgressDrawable = DrawableMap[this.drawingMode](this.getCurrentContext());
     this.inProgressDrawable.click(pt);
     const subscription = this.inProgressDrawable.finished.subscribe(x => {
       if (x) {
@@ -233,7 +210,7 @@ export class CanvasComponent extends BaseComponent implements AfterViewInit {
     this.ctx.translate(this.panX, this.panY);
     this.ctx.scale(this.scaleFactor, this.scaleFactor);
 
-    if (this.context.gridSnapSettings.displayGrid) { this.drawGrid(); }
+    if (this.snapSettings.gridSettings.displayGrid) { this.drawGrid(); }
 
     // Draw each item in queue
     this.drawables.forEach(x => x.draw());
@@ -247,8 +224,8 @@ export class CanvasComponent extends BaseComponent implements AfterViewInit {
     this.ctx.strokeStyle = this.darkMode ? '#565656' : '#e3e3e3';
     let [left, top, right, bottom] = this.getWorldSpaceBorderRect();
 
-    const hspace = this.context.gridSnapSettings.gridSizeX;
-    const vspace = this.context.gridSnapSettings.gridSizeY;
+    const hspace = this.snapSettings.gridSettings.gridSizeX;
+    const vspace = this.snapSettings.gridSettings.gridSizeY;
     const gridOffsetPt = this.getWorldSpacePoint(new Point(0, 0));
     const gridOffsetX = gridOffsetPt.x % hspace;
     const gridOffsetY = gridOffsetPt.y % vspace;
@@ -312,5 +289,11 @@ export class CanvasComponent extends BaseComponent implements AfterViewInit {
     const transformedBR = this.getWorldSpacePoint(bottomRight);
     return [...transformedTL.coordinates, ...transformedBR.coordinates];
   }
+
+  getCurrentContext = () => ({
+    ctx: this.ctx, 
+    angle: this.snapSettings.angleSnapSettings, 
+    grid: this.snapSettings.gridSettings
+  });
 
 }

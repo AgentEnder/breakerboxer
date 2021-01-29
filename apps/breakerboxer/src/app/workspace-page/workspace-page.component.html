@@ -8,8 +8,6 @@
       (undo)="workspace.undo()"
       (toolSelected)="workspace.drawingMode = $event"
       (contextChange)="workspace.render()"
-      [snapSettings]="workspace.context"
-      (snapSettingsChange)="setSnapSettings($event)"
     ></breakerboxer-ws-toolbar>
     <breakerboxer-canvas class="workspace" #workspace></breakerboxer-canvas>
   </mat-drawer-content>

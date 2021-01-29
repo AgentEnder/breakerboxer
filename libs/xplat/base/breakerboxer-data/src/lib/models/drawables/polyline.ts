@@ -72,7 +72,7 @@ export class Polyline extends Drawable {
         }
 
 
-        if (!this.workspaceContext.angleSnapSettings.snap) {
+        if (!this.workspaceContext.angle.snap) {
             return {
                 newPoint: pt,
                 snappedTo: snappedToEnum.NULL
@@ -129,7 +129,7 @@ export class Polyline extends Drawable {
     }
 
     private getExpandedSnappingAngles(): number[] {
-        return Array.from(new Set(this.workspaceContext.angleSnapSettings.angles.reduce((acc, angle) => {
+        return Array.from(new Set(this.workspaceContext.angle.angles.reduce((acc, angle) => {
             let multiple = angle;
             while (multiple < 360) {
                 acc.push(multiple);

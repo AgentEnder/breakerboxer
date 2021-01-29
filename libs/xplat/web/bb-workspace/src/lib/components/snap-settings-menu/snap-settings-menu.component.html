@@ -6,12 +6,11 @@
   Snap Settings
 </button>
 
-<mat-menu #menu>
+<mat-menu #menu [formGroup]="fg">
   <div mat-menu-item>
     <mat-slide-toggle 
       (click)="$event.stopPropagation()" 
-      [(ngModel)]="snapSettingsModel.gridSnapSettings.snap" 
-      (ngModelChange)="refreshSnapSettings()"
+      formControlName="gridSnap"
       >
       Snap to Grid
     </mat-slide-toggle>
@@ -19,8 +18,7 @@
   <div mat-menu-item>
     <mat-slide-toggle 
       (click)="$event.stopPropagation()" 
-      [(ngModel)]="snapSettingsModel.gridSnapSettings.displayGrid" 
-      (ngModelChange)="refreshSnapSettings()"
+      formControlName="displayGrid"
       >
       View Grid
     </mat-slide-toggle>
@@ -28,8 +26,7 @@
   <div mat-menu-item>
     <mat-slide-toggle
     (click)="$event.stopPropagation()"
-    [(ngModel)]="snapSettingsModel.angleSnapSettings.snap"
-    (ngModelChange)="refreshSnapSettings()"
+    formControlName="angleSnap"
       >
       Snap to Angles
     </mat-slide-toggle>

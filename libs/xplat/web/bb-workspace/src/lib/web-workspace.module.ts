@@ -1,6 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { MatButtonModule } from '@angular/material/button';
 import { MatButtonToggleModule } from '@angular/material/button-toggle';
@@ -12,6 +12,7 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatTooltipModule } from '@angular/material/tooltip';
 
 import { SharedModule } from '@tbs/shared';
+import { BreakerboxerDataModule } from '@tbs/xplat/base/breakerboxer-data';
 
 import { CanvasComponent } from './components/canvas/canvas.component';
 import {
@@ -29,6 +30,7 @@ const COMPONENTS = [
   imports: [
     CommonModule,
     FormsModule,
+    ReactiveFormsModule,
     SharedModule,
     MatToolbarModule,
     MatButtonModule,
@@ -38,6 +40,7 @@ const COMPONENTS = [
     MatButtonToggleModule,
     MatMenuModule,
     MatSlideToggleModule,
+    BreakerboxerDataModule
   ],
   declarations: [...COMPONENTS],
   exports: [...COMPONENTS],
