@@ -15,13 +15,13 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatTreeModule } from '@angular/material/tree';
 
-import { CoreModule } from '../core/core.module';
+import { WebWorkspaceModule } from '@tbs/web/bb-workspace';
+
 import { CreateRoomDialogComponent } from './create-room-dialog/create-room-dialog.component';
 import { SidebarHelpComponent } from './sidebar-help/sidebar-help.component';
 import { SidebarTreeviewComponent } from './sidebar-treeview/sidebar-treeview.component';
 import { SidebarComponent } from './sidebar/sidebar.component';
 import { WorkspacePageComponent } from './workspace-page.component';
-import { WebWorkspaceModule } from '@tbs/web/bb-workspace';
 
 const routes: Routes = [
   {
@@ -43,7 +43,6 @@ const routes: Routes = [
     RouterModule.forChild(routes),
     WebWorkspaceModule,
     FormsModule,
-    CoreModule,
     MatToolbarModule,
     MatButtonModule,
     MatInputModule,

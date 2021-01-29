@@ -1,5 +1,5 @@
 import { BaseModel, type } from '@tbs/xplat/core';
-import { IElectricalComponent } from './electrical-components/electrical-component';
+import { IElectricalComponent } from './electrical-component';
 
 export interface IBreaker extends BaseModel {
     name: string;

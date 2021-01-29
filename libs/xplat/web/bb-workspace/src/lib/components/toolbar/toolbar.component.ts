@@ -1,5 +1,5 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { DrawingMode, SnapSettings } from '../../models';
+import { DrawingMode, SnapSettings } from '@tbs/xplat/base/breakerboxer-data';
 
 @Component({
   selector: 'breakerboxer-ws-toolbar',

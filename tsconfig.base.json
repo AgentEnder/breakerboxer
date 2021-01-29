@@ -11,23 +11,56 @@
     "importHelpers": true,
     "target": "es2015",
     "module": "es2020",
-    "lib": ["es2018", "dom"],
-    "types": ["resize-observer-browser"],
+    "lib": [
+      "es2018",
+      "dom"
+    ],
+    "types": [
+      "resize-observer-browser"
+    ],
     "paths": {
-      "@tbs/web-app/*": ["apps/breakerboxer/src/app/*"],
-      "@tbs/utils": ["libs/utils/src/index.ts"],
-      "@tbs/layout": ["libs/xplat/web/layout/src/index.ts"],
-      "@tbs/web/bb-workspace": ["libs/xplat/web/bb-workspace/src/index.ts"],
-      "@tbs/shared": ["libs/shared/src/index.ts"],
-      "@tbs/user": ["libs/user/src/index.ts"],
-      "@tbs/rating": ["libs/xplat/base/rating/src/index.ts"],
-      "@tbs/web/rating": ["libs/xplat/web/rating/src/index.ts"],
-      "@tbs/games-data": ["libs/games-data/src/index.ts"],
-      "@tbs/xplat/core": ["libs/xplat/core/src/index.ts"],
-      "@tbs/xplat/features": ["libs/xplat/features/src/index.ts"],
-      "@tbs/xplat/utils": ["libs/xplat/utils/src/index.ts"],
-      "@tbs/xplat/web/core": ["libs/xplat/web/core/src/index.ts"],
-      "@tbs/xplat/web/features": ["libs/xplat/web/features/src/index.ts"],
+      "@tbs/web-app/*": [
+        "apps/breakerboxer/src/app/*"
+      ],
+      "@tbs/utils": [
+        "libs/utils/src/index.ts"
+      ],
+      "@tbs/layout": [
+        "libs/xplat/web/layout/src/index.ts"
+      ],
+      "@tbs/web/bb-workspace": [
+        "libs/xplat/web/bb-workspace/src/index.ts"
+      ],
+      "@tbs/shared": [
+        "libs/shared/src/index.ts"
+      ],
+      "@tbs/user": [
+        "libs/user/src/index.ts"
+      ],
+      "@tbs/rating": [
+        "libs/xplat/base/rating/src/index.ts"
+      ],
+      "@tbs/web/rating": [
+        "libs/xplat/web/rating/src/index.ts"
+      ],
+      "@tbs/games-data": [
+        "libs/games-data/src/index.ts"
+      ],
+      "@tbs/xplat/core": [
+        "libs/xplat/core/src/index.ts"
+      ],
+      "@tbs/xplat/features": [
+        "libs/xplat/features/src/index.ts"
+      ],
+      "@tbs/xplat/utils": [
+        "libs/xplat/utils/src/index.ts"
+      ],
+      "@tbs/xplat/web/core": [
+        "libs/xplat/web/core/src/index.ts"
+      ],
+      "@tbs/xplat/web/features": [
+        "libs/xplat/web/features/src/index.ts"
+      ],
       "@tbs/xplat/environments": [
         "libs/xplat/core/src/lib/environments/base/index.ts"
       ],
@@ -39,6 +72,9 @@
       ],
       "@tbs/xplat/nativescript/features": [
         "libs/xplat/nativescript/features/src/index.ts"
+      ],
+      "@tbs/xplat/base/breakerboxer-data": [
+        "libs/xplat/base/breakerboxer-data/src/index.ts"
       ]
     },
     "rootDir": "."

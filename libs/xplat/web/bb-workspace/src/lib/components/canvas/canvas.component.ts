@@ -1,14 +1,16 @@
 import { AfterViewInit, Component, ElementRef, Input, OnInit, ViewChild } from '@angular/core';
+
 import { MatDialog } from '@angular/material/dialog';
+
+import { Store } from '@ngrx/store';
 import { fromEvent, Subscription } from 'rxjs';
 import { distinctUntilChanged, filter, map, pairwise, takeUntil } from 'rxjs/operators';
-import { WorkspaceContext } from '../../models/workspace-context';
 
-import { UIState, Point } from '@tbs/xplat/core';
-
-import { DrawableMap, DrawingMode, IDrawable } from '../../models';
-import { Store } from '@ngrx/store';
 import { BaseComponent } from '@tbs/shared';
+import {
+    DrawableMap, DrawingMode, IDrawable, WorkspaceContext
+} from '@tbs/xplat/base/breakerboxer-data';
+import { Point, UIState } from '@tbs/xplat/core';
 
 @Component({
   selector: 'breakerboxer-canvas',

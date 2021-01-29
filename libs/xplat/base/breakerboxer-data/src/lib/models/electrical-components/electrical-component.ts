@@ -1,6 +1,6 @@
 import { BaseModel, type } from '@tbs/xplat/core';
-import { IDrawable } from '@tbs/web/bb-workspace';
-import { Breaker } from '../breaker';
+import { IDrawable } from '../drawables/idrawable';
+import { Breaker } from './breaker';
 
 export interface IElectricalComponent extends BaseModel {
     name: string;

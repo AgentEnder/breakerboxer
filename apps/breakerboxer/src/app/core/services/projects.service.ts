@@ -2,11 +2,12 @@ import { Injectable } from '@angular/core';
 
 import { from, Subject } from 'rxjs';
 
+import {
+    IBreaker, IDrawable, IElectricalComponent, IRoom
+} from '@tbs/xplat/base/breakerboxer-data';
 import { BaseModel } from '@tbs/xplat/core';
-import { IDrawable } from '@tbs/web/bb-workspace';
 
-import { IBreaker, IElectricalComponent, IRoom } from '../models';
-import { assertType } from '../utils/assertType';
+import { assertType } from '@tbs/xplat/utils';
 
 @Injectable({
     providedIn: 'root'

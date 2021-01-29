@@ -1,5 +1,5 @@
 import { Component, EventEmitter, forwardRef, Input, Output } from '@angular/core';
-import { SnapSettings } from '../../models';
+import { SnapSettings } from '@tbs/xplat/base/breakerboxer-data';
 
 @Component({
     selector: 'breakerboxer-snap-settings-menu',

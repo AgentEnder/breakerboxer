@@ -1,5 +1,7 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { CanvasComponent, SnapSettings } from '@tbs/web/bb-workspace';
+import { CanvasComponent } from '@tbs/web/bb-workspace';
+import { SnapSettings } from '@tbs/xplat/base/breakerboxer-data';
+
 
 @Component({
   selector: 'app-workspace-page',

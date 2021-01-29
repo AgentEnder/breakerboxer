@@ -23,5 +23,6 @@ module.exports = {
     '<rootDir>/libs/xplat/nativescript/utils',
     '<rootDir>/libs/xplat/nativescript/core',
     '<rootDir>/libs/xplat/nativescript/features',
+    '<rootDir>/libs/xplat/base/breakerboxer-state',
   ],
 };
