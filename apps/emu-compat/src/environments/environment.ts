@@ -2,10 +2,11 @@
 // `ng build --prod` replaces `environment.ts` with `environment.prod.ts`.
 // The list of file replacements can be found in `angular.json`.
 
-import {baseEnvironment, IEnvironmentConfiguration} from '@tbs/xplat/core';
+import { IEnvironment } from 'libs/xplat/core/src/lib/environments/environment.interface';
+import { environmentDev } from 'libs/xplat/core/src/lib/environments/base/environment.dev';
 import {deepMerge} from '@tbs/utils';
 
-export const overrides: Partial<IEnvironmentConfiguration> = {
+export const overrides: Partial<IEnvironment> = {
   firebase: {
     apiKey: 'AIzaSyDKLr4qjSsBANvhQyR5MmvYoeC65yCNibY',
     authDomain: 'emu-compat.firebaseapp.com',
@@ -18,7 +19,7 @@ export const overrides: Partial<IEnvironmentConfiguration> = {
   }
 };
 
-export const environment = deepMerge(baseEnvironment, overrides);
+export const environment = deepMerge(environmentDev, overrides);
 
 /*
  * For easier debugging in development mode, you can import the following file

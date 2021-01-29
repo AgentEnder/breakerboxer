@@ -7,7 +7,7 @@ import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
-import { CoreModule } from '@tbs/xplat/core';
+import { TbsCoreModule } from '@tbs/xplat/web/core';
 import { LayoutModule } from '@tbs/layout';
 
 import { environment } from '../environments/environment';
@@ -26,7 +26,7 @@ import { AppComponent } from './app.component';
     AngularFireAuthModule,
     AngularFirestoreModule,
     BrowserAnimationsModule,
-    CoreModule,
+    TbsCoreModule,
     OverlayModule,
     LayoutModule
   ],

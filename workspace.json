@@ -26,13 +26,19 @@
               "apps/breakerboxer/src/assets"
             ],
             "styles": ["apps/breakerboxer/src/styles.scss"],
-            "scripts": []
+            "scripts": [],
+            "fileReplacements": [
+              {
+                "replace": "libs/xplat/core/src/lib/environments/environment.ts",
+                "with": "apps/breakerboxer/src/environments/environment.ts"
+              }
+            ]
           },
           "configurations": {
             "production": {
               "fileReplacements": [
                 {
-                  "replace": "apps/breakerboxer/src/environments/environment.ts",
+                  "replace": "libs/xplat/core/src/lib/environments/environment.ts",
                   "with": "apps/breakerboxer/src/environments/environment.prod.ts"
                 }
               ],
@@ -288,15 +294,21 @@
               "apps/emu-compat/src/assets"
             ],
             "styles": ["apps/emu-compat/src/styles.scss"],
-            "scripts": []
+            "scripts": [],
+            "fileReplacements": [
+              {
+                "replace": "libs/xplat/core/src/lib/environments/environment.ts",
+                "with": "apps/emu-compat/src/environments/environment.ts"
+              }
+            ]
           },
           "configurations": {
             "production": {
               "fileReplacements": [
-                {
-                  "replace": "apps/emu-compat/src/environments/environment.ts",
-                  "with": "apps/emu-compat/src/environments/environment.prod.ts"
-                }
+                  {
+                    "replace": "libs/xplat/core/src/lib/environments/environment.ts",
+                    "with": "apps/emu-compat/src/environments/environment.prod.ts"
+                  }
               ],
               "optimization": true,
               "outputHashing": "all",

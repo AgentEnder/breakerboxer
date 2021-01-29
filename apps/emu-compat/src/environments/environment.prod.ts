@@ -1,7 +1,8 @@
-import {baseEnvironment, IEnvironmentConfiguration} from '@tbs/xplat/core';
+import { IEnvironment } from 'libs/xplat/core/src/lib/environments/environment.interface';
+import { environmentProd } from 'libs/xplat/core/src/lib/environments/base/environment.prod';
 import {deepMerge} from '@tbs/utils';
 
-export const overrides: Partial<IEnvironmentConfiguration> = {
+export const overrides: Partial<IEnvironment> = {
   production: true,
   firebase: {
     apiKey: 'AIzaSyDKLr4qjSsBANvhQyR5MmvYoeC65yCNibY',
@@ -15,4 +16,4 @@ export const overrides: Partial<IEnvironmentConfiguration> = {
   }
 };
 
-export const environment = deepMerge(baseEnvironment, overrides);
+export const environment = deepMerge(environmentProd, overrides);

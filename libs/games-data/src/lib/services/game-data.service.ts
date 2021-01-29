@@ -8,7 +8,9 @@ import { hostOptions, platformOptions } from './static-data';
 
 const baseUrl = 'https://api.rawg.io/api';
 
-@Injectable()
+@Injectable({
+  providedIn: 'root'
+})
 export class GameDataService {
   constructor(private httpClient: HttpClient) {}
 

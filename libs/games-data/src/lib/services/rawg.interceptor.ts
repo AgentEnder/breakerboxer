@@ -5,7 +5,7 @@ import {
   HttpRequest,
 } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { baseEnvironment } from '@tbs/xplat/core';
+import { environment } from '@tbs/xplat/core';
 
 export class GamesDbApiKeyInterceptor implements HttpInterceptor {
   intercept(
@@ -14,7 +14,7 @@ export class GamesDbApiKeyInterceptor implements HttpInterceptor {
   ): Observable<HttpEvent<any>> {
     if (req.url.indexOf('rawg.io') !== -1) {
       req = req.clone({
-        params: req.params.set('key', baseEnvironment.apiKeys.rawg),
+        params: req.params.set('key', environment.apiKeys.rawg),
       });
     }
     return next.handle(req);

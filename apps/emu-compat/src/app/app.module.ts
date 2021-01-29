@@ -15,7 +15,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
 
-import { CoreModule } from '@tbs/xplat/core';
+import { TbsCoreModule } from '@tbs/xplat/web/core';
 import { GamesDataModule } from '@tbs/games-data';
 import { LayoutModule } from '@tbs/layout';
 import { RatingModule } from '@tbs/web/rating';
@@ -41,7 +41,7 @@ import { RatingDialogComponent } from './rating-dialog/rating-dialog.component';
     BrowserAnimationsModule,
     MatDialogModule,
     MatButtonModule,
-    CoreModule,
+    TbsCoreModule,
     OverlayModule,
     LayoutModule,
     RatingModule,
