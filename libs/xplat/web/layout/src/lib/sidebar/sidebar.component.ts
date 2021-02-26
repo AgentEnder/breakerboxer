@@ -2,6 +2,7 @@ import { Component, Input } from '@angular/core';
 import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 import { tap, take } from 'rxjs/operators';
 import { Router, ActivatedRoute } from '@angular/router';
+import { MatDrawerMode } from '@angular/material/sidenav';
 
 @Component({
     selector: 'tbs-sidebar',
@@ -10,7 +11,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 export class SidebarComponent {
     public show;
 
-    mode = 'side';
+    mode: MatDrawerMode = 'side';
 
     topGap = 64;
 

@@ -1,17 +1,18 @@
-import { Injectable } from '@angular/core';
+import { Inject, Injectable } from '@angular/core';
 
 import { Actions, createEffect, ofType, OnInitEffects } from '@ngrx/effects';
 import { of } from 'rxjs';
 import { catchError, mergeMap, switchMap } from 'rxjs/operators';
 
-import { AuthService } from '../services';
+import { AUTH_SERVICE } from '../tokens';
+import { IAuthService } from '../models';
 import { UserActions } from './user.action';
 
 @Injectable()
 export class UserEffects {
     onLogIn$ = createEffect(() => this.actions$.pipe(
         ofType(UserActions.logIn),
-        switchMap(() => this.authService.googleSignIn$().pipe(
+        switchMap(() => this.authService.signIn$().pipe(
             mergeMap((user) => [
                 UserActions.logInSuccess({ user })
             ])
@@ -29,7 +30,7 @@ export class UserEffects {
     ));
 
     constructor(
-        private authService: AuthService,
+        @Inject(AUTH_SERVICE) private authService: IAuthService,
         private actions$: Actions,
     ) { }
 }

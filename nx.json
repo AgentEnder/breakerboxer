@@ -37,12 +37,7 @@
       ]
     },
     "layout": {
-      "tags": [
-        "platform:web",
-        "scope:shared",
-        "type:lib",
-        "framework:angular"
-      ]
+      "tags": ["platform:web", "scope:shared", "type:lib", "framework:angular"]
     },
     "web-bb-workspace": {
       "tags": [
@@ -75,9 +70,7 @@
         "type:e2e",
         "framework:agnostic"
       ],
-      "implicitDependencies": [
-        "emu-compat"
-      ]
+      "implicitDependencies": ["emu-compat"]
     },
     "user": {
       "tags": [
@@ -96,12 +89,7 @@
       ]
     },
     "web-rating": {
-      "tags": [
-        "platform:web",
-        "scope:shared",
-        "type:lib",
-        "framework:angular"
-      ]
+      "tags": ["platform:web", "scope:shared", "type:lib", "framework:angular"]
     },
     "games-data": {
       "tags": [
@@ -144,28 +132,13 @@
       ]
     },
     "xplat-web-core": {
-      "tags": [
-        "platform:web",
-        "scope:shared",
-        "type:lib",
-        "framework:angular"
-      ]
+      "tags": ["platform:web", "scope:shared", "type:lib", "framework:angular"]
     },
     "xplat-web-features": {
-      "tags": [
-        "platform:web",
-        "scope:shared",
-        "type:lib",
-        "framework:angular"
-      ]
+      "tags": ["platform:web", "scope:shared", "type:lib", "framework:angular"]
     },
     "xplat-web-scss": {
-      "tags": [
-        "platform:web",
-        "scope:shared",
-        "type:lib",
-        "framework:agnostic"
-      ]
+      "tags": ["platform:web", "scope:shared", "type:lib", "framework:agnostic"]
     },
     "xplat-nativescript-scss": {
       "tags": [
@@ -203,6 +176,14 @@
       "tags": [
         "platform:agnostic",
         "scope:breakerboxer",
+        "type:lib",
+        "framework:angular"
+      ]
+    },
+    "firebase": {
+      "tags": [
+        "platform:agnostic",
+        "scope:shared",
         "type:lib",
         "framework:angular"
       ]

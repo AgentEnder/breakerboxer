@@ -3,21 +3,25 @@ import { AngularFireAuth } from '@angular/fire/auth';
 import { AngularFirestore, AngularFirestoreDocument } from '@angular/fire/firestore';
 import { Router } from '@angular/router';
 
+import { User, IAuthService } from '@tbs/user';
+
 import fb from 'firebase/app';
 import { DateTime } from 'luxon';
-import { from } from 'rxjs';
+import { from, Observable } from 'rxjs';
 
-import { User } from '../models/user.interface';
 
 @Injectable({
   providedIn: 'root'
 })
-export class AuthService {
+export class AuthService implements IAuthService {
   constructor(
     private afAuth: AngularFireAuth,
     private afs: AngularFirestore,
     private router: Router
   ) {
+  }
+  signIn$(): Observable<User> {
+    return this.googleSignIn$();
   }
 
   async googleSignIn(): Promise<User> {
@@ -40,7 +44,7 @@ export class AuthService {
       photoURL: user.photoURL
     };
 
-    await userRef.set(data, {merge: true});
+    await userRef.set(data, { merge: true });
     return data;
   }
 

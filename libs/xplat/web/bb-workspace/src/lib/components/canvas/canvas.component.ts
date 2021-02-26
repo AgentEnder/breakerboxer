@@ -96,7 +96,7 @@ export class CanvasComponent extends BaseComponent implements AfterViewInit {
     this.render();
   }
 
-  onClick(event: MouseEvent): void {
+  onClick(event: Partial<MouseEvent>): void {
     const pt = this.getCanvasXY(event);
     // LEFT CLICK
     if (event.button === 0) {
@@ -134,7 +134,7 @@ export class CanvasComponent extends BaseComponent implements AfterViewInit {
     }
   }
 
-  onScroll(event: WheelEvent): void {
+  onScroll(event: any): void {
     console.log(event);
     event.preventDefault(); // Prevent page from scrolling when user tries to zoom
 
@@ -261,7 +261,7 @@ export class CanvasComponent extends BaseComponent implements AfterViewInit {
     this.render();
   }
 
-  getCanvasXY(event: MouseEvent): Point {
+  getCanvasXY(event: Partial<MouseEvent>): Point {
     const [x, y] = this.getRawCanvasXY(event).coordinates;
     return this.getWorldSpacePoint(new Point(x, y));
   }
@@ -274,7 +274,7 @@ export class CanvasComponent extends BaseComponent implements AfterViewInit {
     );
   }
 
-  getRawCanvasXY(event: MouseEvent): Point {
+  getRawCanvasXY(event: Partial<MouseEvent>): Point {
     const rect = this.canvas.nativeElement.getBoundingClientRect();
     const x = event.clientX - rect.left;
     const y = event.clientY - rect.top;
