@@ -14,6 +14,7 @@ import { environment } from './environments/environment';
 import { LogService } from './services/log.service';
 import { PlatformLanguageToken } from './services/tokens';
 import { WindowService } from './services/window.service';
+import { CoreEffects } from './state/core.effects';
 import { UIEffects } from './state/ui/ui.effects';
 import { uiReducer } from './state/ui/ui.reducer';
 
@@ -31,7 +32,7 @@ LogService.DEBUG.LEVEL_4 = !environment.production;
       maxAge: 25, // Retains last 25 states
       logOnly: environment.production, // Restrict extension to log-only mode
     }),
-    EffectsModule.forRoot([UIEffects])
+    EffectsModule.forRoot([CoreEffects, UIEffects])
   ],
 })
 export class CoreModule {

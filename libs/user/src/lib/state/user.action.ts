@@ -24,4 +24,9 @@ export namespace UserActions {
     export const logOutSuccess = createAction(
         '[@user] log out success'
     );
+
+    export const markAuthAvailable = createAction(
+        '[@user] mark login available',
+        (payload: {available: boolean}) => payload
+    );
 }

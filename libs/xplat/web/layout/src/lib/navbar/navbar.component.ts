@@ -1,12 +1,12 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 
-import { User, UserActions, UserState } from '@tbs/user';
+import { Store } from '@ngrx/store';
+import { takeUntil } from 'rxjs/operators';
+
 import { BaseComponent } from '@tbs/shared';
+import { User, UserActions, UserState } from '@tbs/user';
 
 import { TitleService } from '../services';
-import { switchMap, takeUntil } from 'rxjs/operators';
-import { Observable, of } from 'rxjs';
-import { Store } from '@ngrx/store';
 
 @Component({
   selector: 'tbs-navbar',
@@ -18,13 +18,19 @@ export class NavbarComponent extends BaseComponent {
 
   public loggedInUser: User = null;
 
-  constructor(public title: TitleService, public store: Store) {
+  authAvailable$
+
+  constructor(public title: TitleService, protected store: Store) {
     super();
     this.store.select(UserState.selectCurrentUser).pipe(
       takeUntil(this.destroy$)
     ).subscribe(x => {
       this.loggedInUser = x;
     });
+
+    this.authAvailable$ = this.store.select(UserState.selectAuthAvailable).pipe(
+      takeUntil(this.destroy$)
+    );
   }
 
   logIn(): void {

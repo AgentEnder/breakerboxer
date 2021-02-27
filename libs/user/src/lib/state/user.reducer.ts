@@ -11,6 +11,10 @@ const reducer = createReducer(UserState.initialState,
     on(UserActions.logOutSuccess, (state, _) => ({
         ...state,
         signedInUser: null
+    })),
+    on(UserActions.markAuthAvailable, (state, {available}) => ({
+        ...state,
+        authAvailable: available
     }))
 );
 
