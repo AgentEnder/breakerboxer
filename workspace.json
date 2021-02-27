@@ -812,13 +812,19 @@
             "aot": true,
             "assets": ["apps/web-portfolio/src/favicon.ico", "apps/web-portfolio/src/assets"],
             "styles": ["apps/web-portfolio/src/styles.scss"],
-            "scripts": []
+            "scripts": [],
+            "fileReplacements": [
+              {
+                "replace": "libs/xplat/core/src/lib/environments/environment.ts",
+                "with": "apps/web-portfolio/src/environments/environment.ts"
+              }
+            ]
           },
           "configurations": {
             "production": {
               "fileReplacements": [
                 {
-                  "replace": "apps/web-portfolio/src/environments/environment.ts",
+                  "replace": "libs/xplat/core/src/lib/environments/environment.ts",
                   "with": "apps/web-portfolio/src/environments/environment.prod.ts"
                 }
               ],
