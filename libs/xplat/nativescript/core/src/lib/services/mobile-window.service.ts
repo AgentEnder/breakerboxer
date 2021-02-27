@@ -1,11 +1,5 @@
 import { Injectable } from '@angular/core';
-import {
-  Device,
-  isIOS,
-  Dialogs,
-  AlertOptions,
-  ConfirmOptions,
-} from '@nativescript/core';
+import { Device, isIOS, Dialogs, AlertOptions, ConfirmOptions } from '@nativescript/core';
 import * as timer from '@nativescript/core/timer';
 
 @Injectable({
@@ -68,20 +62,13 @@ export class MobileWindowService {
   }
 
   // helps ensure return value is a number and not a zone wrapped value
-  public setTimeout(
-    handler: (...args: any[]) => void,
-    timeout?: number
-  ): number {
+  public setTimeout(handler: (...args: any[]) => void, timeout?: number): number {
     return timer.setTimeout(handler, timeout);
   }
   public clearTimeout(timeoutId: number): void {
     timer.clearTimeout(timeoutId);
   }
-  public setInterval(
-    handler: (...args: any[]) => void,
-    ms?: number,
-    ...args: any[]
-  ): number {
+  public setInterval(handler: (...args: any[]) => void, ms?: number, ...args: any[]): number {
     return timer.setInterval(handler, ms);
   }
   public clearInterval(intervalId: number): void {

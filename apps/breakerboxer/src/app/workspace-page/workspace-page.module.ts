@@ -26,8 +26,8 @@ import { WorkspacePageComponent } from './workspace-page.component';
 const routes: Routes = [
   {
     path: '',
-    component: WorkspacePageComponent
-  }
+    component: WorkspacePageComponent,
+  },
 ];
 
 @NgModule({
@@ -36,7 +36,7 @@ const routes: Routes = [
     CreateRoomDialogComponent,
     SidebarComponent,
     SidebarTreeviewComponent,
-    SidebarHelpComponent
+    SidebarHelpComponent,
   ],
   imports: [
     CommonModule,
@@ -53,7 +53,7 @@ const routes: Routes = [
     MatMenuModule,
     MatDialogModule,
     MatSlideToggleModule,
-    MatTreeModule
-  ]
+    MatTreeModule,
+  ],
 })
-export class WorkspacePageModule { }
+export class WorkspacePageModule {}

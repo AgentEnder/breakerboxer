@@ -4,7 +4,7 @@
 
 import { IEnvironment } from 'libs/xplat/core/src/lib/environments/environment.interface';
 import { environmentDev } from 'libs/xplat/core/src/lib/environments/base/environment.dev';
-import {deepMerge} from '@tbs/utils';
+import { deepMerge } from '@tbs/utils';
 
 export const overrides: Partial<IEnvironment> = {
   firebase: {
@@ -15,8 +15,8 @@ export const overrides: Partial<IEnvironment> = {
     messagingSenderId: '113976152784',
     appId: '1:113976152784:web:f684f626ae2e7417e104d5',
     measurementId: 'G-HKX0PN0797',
-    databaseURL: ''
-  }
+    databaseURL: '',
+  },
 };
 
 export const environment = deepMerge(environmentDev, overrides);

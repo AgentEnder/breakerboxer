@@ -1,5 +1,5 @@
 export interface Rating {
-    average: number;
-    count: number;
-    mine: number;
+  average: number;
+  count: number;
+  mine: number;
 }

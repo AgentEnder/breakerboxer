@@ -4,8 +4,8 @@
 export interface IEnvironment {
   production?: boolean;
   apiKeys?: {
-    thegamesdb?: string,
-    rawg?: string
+    thegamesdb?: string;
+    rawg?: string;
   };
   firebase?: {
     apiKey: string;

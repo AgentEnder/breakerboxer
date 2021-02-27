@@ -8,29 +8,32 @@
 
 // Define the default theme (same as the example above).
 $primary: mat-palette($mat-indigo, 700, 900, 500);
-$accent:  mat-palette($mat-deep-orange, A200, A100, A400);
-$theme:   mat-light-theme((
-  color: (
-    primary: $primary,
-    accent: $accent,
+$accent: mat-palette($mat-deep-orange, A200, A100, A400);
+$theme: mat-light-theme(
+  (
+    color: (
+      primary: $primary,
+      accent: $accent,
+    ),
   )
-));
+);
 
 // Include the default theme styles (color and default density)
 @include angular-material-theme($theme);
 
-
 // Define an alternate dark theme.
 // $dark-primary: mat-palette($mat-blue-grey, 500, 300, 700);
-$dark-accent:  mat-palette($mat-amber, A200, A100, A400);
-$dark-warn:    mat-palette($mat-deep-orange);
-$dark-theme:   mat-dark-theme((
-  color: (
-    primary: $primary,
-    accent: $dark-accent,
-    warn: $dark-warn,
+$dark-accent: mat-palette($mat-amber, A200, A100, A400);
+$dark-warn: mat-palette($mat-deep-orange);
+$dark-theme: mat-dark-theme(
+  (
+    color: (
+      primary: $primary,
+      accent: $dark-accent,
+      warn: $dark-warn,
+    ),
   )
-));
+);
 
 // Include the dark color styles inside of a block with a CSS class. You can make this
 // CSS class whatever you want. In this example, any component inside of an element with

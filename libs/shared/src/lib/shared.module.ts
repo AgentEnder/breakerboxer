@@ -5,6 +5,6 @@ import { DIRECTIVES } from './directives';
 @NgModule({
   imports: [CommonModule],
   declarations: [...DIRECTIVES],
-  exports: [...DIRECTIVES]
+  exports: [...DIRECTIVES],
 })
 export class SharedModule {}

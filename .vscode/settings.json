@@ -1,45 +1,45 @@
 {
-    "cSpell.words": [
-        "Treeview",
-        "breakerboxer",
-        "compat",
-        "darkmode",
-        "drawables",
-        "idrawable",
-        "ielectrical",
-        "luxon",
-        "xplat"
-    ],
-    "importSorter.sortConfiguration.customOrderingRules.rules": [
-        {
-            "regex": "^[@]angular(!/material)",
-            "orderLevel": 10
-        },
-        {
-            "regex": "^[@]angular(/material)",
-            "orderLevel": 15
-        },
-        {
-            "regex": "^[@]angular",
-            "orderLevel": 10
-        },
-        {
-            "regex": "^[@](!breakerboxer)",
-            "orderLevel": 20
-        },
-        {
-            "regex": "^[@](breakerboxer|tbs)",
-            "orderLevel": 30
-        },
-        {
-            "type": "importMember",
-            "regex": "^$",
-            "orderLevel": 40,
-            "disableSort": true
-        },
-        {
-            "regex": "^[.]",
-            "orderLevel": 50
-        }
+  "cSpell.words": [
+    "Treeview",
+    "breakerboxer",
+    "compat",
+    "darkmode",
+    "drawables",
+    "idrawable",
+    "ielectrical",
+    "luxon",
+    "xplat"
   ],
+  "importSorter.sortConfiguration.customOrderingRules.rules": [
+    {
+      "regex": "^[@]angular(!/material)",
+      "orderLevel": 10
+    },
+    {
+      "regex": "^[@]angular(/material)",
+      "orderLevel": 15
+    },
+    {
+      "regex": "^[@]angular",
+      "orderLevel": 10
+    },
+    {
+      "regex": "^[@](!breakerboxer)",
+      "orderLevel": 20
+    },
+    {
+      "regex": "^[@](breakerboxer|tbs)",
+      "orderLevel": 30
+    },
+    {
+      "type": "importMember",
+      "regex": "^$",
+      "orderLevel": 40,
+      "disableSort": true
+    },
+    {
+      "regex": "^[.]",
+      "orderLevel": 50
+    }
+  ]
 }

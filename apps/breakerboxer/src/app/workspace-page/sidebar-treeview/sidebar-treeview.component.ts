@@ -7,28 +7,28 @@ import { ProjectsService } from '@tbs/web-app/core/services/projects.service';
 @Component({
   selector: 'app-sidebar-treeview',
   templateUrl: './sidebar-treeview.component.html',
-  styleUrls: ['./sidebar-treeview.component.scss']
+  styleUrls: ['./sidebar-treeview.component.scss'],
 })
 export class SidebarTreeviewComponent implements OnInit {
-
-  treeControl = new NestedTreeControl<TreeNode>((node: TreeNode) => node.children );
+  treeControl = new NestedTreeControl<TreeNode>((node: TreeNode) => node.children);
   dataSource = new MatTreeNestedDataSource<TreeNode>();
   data: TreeNode[] = [];
 
-
-  constructor(public projectsService: ProjectsService) { }
+  constructor(public projectsService: ProjectsService) {}
 
   ngOnInit(): void {
-    this.projectsService.rooms$.subscribe(rooms => {
+    this.projectsService.rooms$.subscribe((rooms) => {
       if (rooms) {
-        this.data = rooms.map(x => ({
+        this.data = rooms.map((x) => ({
           breaker: null,
-          children: x.components.map((y: IElectricalComponent): TreeNode => ({
-            breaker: y.breaker?.name,
-            children: [],
-            name: y.name
-          })),
-          name: x.name
+          children: x.components.map(
+            (y: IElectricalComponent): TreeNode => ({
+              breaker: y.breaker?.name,
+              children: [],
+              name: y.name,
+            })
+          ),
+          name: x.name,
         }));
       } else {
         this.data = [];
@@ -38,7 +38,6 @@ export class SidebarTreeviewComponent implements OnInit {
   }
 
   hasChild = (_: number, node: TreeNode) => !!node.children && node.children.length > 0;
-
 }
 
 interface TreeNode {

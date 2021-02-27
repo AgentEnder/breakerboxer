@@ -12,8 +12,8 @@ import { GamesDbApiKeyInterceptor } from './services/the-games-db.interceptor';
     {
       provide: HTTP_INTERCEPTORS,
       useClass: GamesDbApiKeyInterceptor,
-      multi: true
-    }
-  ]
+      multi: true,
+    },
+  ],
 })
 export class GamesDataModule {}

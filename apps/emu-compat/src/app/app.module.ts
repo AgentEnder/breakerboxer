@@ -26,10 +26,7 @@ import { AppComponent } from './app.component';
 import { RatingDialogComponent } from './rating-dialog/rating-dialog.component';
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    RatingDialogComponent
-  ],
+  declarations: [AppComponent, RatingDialogComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -49,10 +46,9 @@ import { RatingDialogComponent } from './rating-dialog/rating-dialog.component';
     MatSelectModule,
     MatAutocompleteModule,
     MatInputModule,
-    GamesDataModule
+    GamesDataModule,
   ],
-  providers: [
-  ],
-  bootstrap: [AppComponent]
+  providers: [],
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

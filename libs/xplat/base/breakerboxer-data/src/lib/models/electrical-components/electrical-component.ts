@@ -3,19 +3,18 @@ import { IDrawable } from '../drawables/idrawable';
 import { Breaker } from './breaker';
 
 export interface IElectricalComponent extends BaseModel {
-    name: string;
-    notes: string;
-    representation: IDrawable;
-    connections: IElectricalComponent[];
-    breaker?: Breaker;
+  name: string;
+  notes: string;
+  representation: IDrawable;
+  connections: IElectricalComponent[];
+  breaker?: Breaker;
 }
 
-export class ElectricalComponent extends BaseModel implements IElectricalComponent
-{
-    type: type = 'electrical-component';
-    name: string;
-    notes: string;
-    representation: IDrawable;
-    connections: IElectricalComponent[];
-    breaker?: Breaker;
+export class ElectricalComponent extends BaseModel implements IElectricalComponent {
+  type: type = 'electrical-component';
+  name: string;
+  notes: string;
+  representation: IDrawable;
+  connections: IElectricalComponent[];
+  breaker?: Breaker;
 }

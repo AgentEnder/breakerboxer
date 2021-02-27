@@ -26,12 +26,7 @@
     "member-ordering": [
       true,
       {
-        "order": [
-          "static-field",
-          "instance-field",
-          "static-method",
-          "instance-method"
-        ]
+        "order": ["static-field", "instance-field", "static-method", "instance-method"]
       }
     ],
     "no-console": [true, "debug", "info", "time", "timeEnd", "trace"],
@@ -75,12 +70,7 @@
       ]
     },
     "variable-name": {
-      "options": [
-        "ban-keywords",
-        "check-format",
-        "allow-pascal-case",
-        "allow-leading-underscore"
-      ]
+      "options": ["ban-keywords", "check-format", "allow-pascal-case", "allow-leading-underscore"]
     },
     "whitespace": {
       "options": [
@@ -142,9 +132,5 @@
       }
     ]
   },
-  "rulesDirectory": [
-    "codelyzer",
-    "node_modules/@nrwl/workspace/src/tslint",
-    "node_modules/codelyzer"
-  ]
+  "rulesDirectory": ["codelyzer", "node_modules/@nrwl/workspace/src/tslint", "node_modules/codelyzer"]
 }

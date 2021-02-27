@@ -18,19 +18,18 @@ export class NavbarComponent extends BaseComponent {
 
   public loggedInUser: User = null;
 
-  authAvailable$
+  authAvailable$;
 
   constructor(public title: TitleService, protected store: Store) {
     super();
-    this.store.select(UserState.selectCurrentUser).pipe(
-      takeUntil(this.destroy$)
-    ).subscribe(x => {
-      this.loggedInUser = x;
-    });
+    this.store
+      .select(UserState.selectCurrentUser)
+      .pipe(takeUntil(this.destroy$))
+      .subscribe((x) => {
+        this.loggedInUser = x;
+      });
 
-    this.authAvailable$ = this.store.select(UserState.selectAuthAvailable).pipe(
-      takeUntil(this.destroy$)
-    );
+    this.authAvailable$ = this.store.select(UserState.selectAuthAvailable).pipe(takeUntil(this.destroy$));
   }
 
   logIn(): void {

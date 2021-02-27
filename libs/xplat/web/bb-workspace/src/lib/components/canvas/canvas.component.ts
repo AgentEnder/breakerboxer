@@ -9,17 +9,20 @@ import { distinctUntilChanged, filter, map, pairwise, takeUntil } from 'rxjs/ope
 import { BaseComponent } from '@tbs/shared';
 import {
   BreakerboxerState,
-    DrawableMap, DrawingMode, IDrawable, SnapSettings, WorkspaceContext
+  DrawableMap,
+  DrawingMode,
+  IDrawable,
+  SnapSettings,
+  WorkspaceContext,
 } from '@tbs/xplat/base/breakerboxer-data';
 import { Point, UIState } from '@tbs/xplat/core';
 
 @Component({
   selector: 'breakerboxer-canvas',
   templateUrl: './canvas.component.html',
-  styleUrls: ['./canvas.component.scss']
+  styleUrls: ['./canvas.component.scss'],
 })
 export class CanvasComponent extends BaseComponent implements AfterViewInit {
-
   @Input() public drawingMode: DrawingMode = 'polyline';
 
   @ViewChild('workspaceCanvas') canvas: ElementRef<HTMLCanvasElement>;
@@ -36,30 +39,26 @@ export class CanvasComponent extends BaseComponent implements AfterViewInit {
   private darkMode: boolean;
   private snapSettings: SnapSettings;
 
-
-  constructor(
-    private el: ElementRef<HTMLElement>,
-    private store: Store,
-    private dialogService: MatDialog
-  ) {
+  constructor(private el: ElementRef<HTMLElement>, private store: Store, private dialogService: MatDialog) {
     super();
-    this.store.select(UIState.selectDarkMode).pipe(
-      takeUntil(this.destroy$),
-      distinctUntilChanged()
-    ).subscribe(dark => {
-      this.darkMode = dark;
-      this.render();
-    });
+    this.store
+      .select(UIState.selectDarkMode)
+      .pipe(takeUntil(this.destroy$), distinctUntilChanged())
+      .subscribe((dark) => {
+        this.darkMode = dark;
+        this.render();
+      });
 
-    this.store.select(BreakerboxerState.selectSnapSettings).pipe(
-      takeUntil(this.destroy$)
-    ).subscribe(x => {
-      this.snapSettings = x
-      if (this.inProgressDrawable) {
-        this.inProgressDrawable.workspaceContext = this.getCurrentContext();
-      }
-      this.render();
-    })
+    this.store
+      .select(BreakerboxerState.selectSnapSettings)
+      .pipe(takeUntil(this.destroy$))
+      .subscribe((x) => {
+        this.snapSettings = x;
+        if (this.inProgressDrawable) {
+          this.inProgressDrawable.workspaceContext = this.getCurrentContext();
+        }
+        this.render();
+      });
   }
 
   public clear(): void {
@@ -102,32 +101,40 @@ export class CanvasComponent extends BaseComponent implements AfterViewInit {
     if (event.button === 0) {
       if (!this.inProgressDrawable) {
         this.startDrawing(pt);
-      }
-      else {
+      } else {
         this.inProgressDrawable.click(pt);
       }
       // RIGHT CLICK, Drawing in progress
     } else if (event.button === 2) {
       if (this.inProgressDrawable) {
-        if (this.inProgressDrawable.altClick) { this.inProgressDrawable.altClick(pt); }
-        else {
+        if (this.inProgressDrawable.altClick) {
+          this.inProgressDrawable.altClick(pt);
+        } else {
           this.resetDrawingAction();
         }
-      }
-      else {
+      } else {
         // RIGHT CLICK, not drawing: PAN
-        fromEvent(this.canvas.nativeElement, 'mousemove').pipe( // when user hits mouse down start listening to mouse movement
-          takeUntil(fromEvent(this.canvas.nativeElement, 'mouseup').pipe( // stop this whenever they let up of the mouse
-            filter((x: MouseEvent) => x.button === 2), // iff it was the right mouse button
-            // Map should fire right before takeUntil clears the event.
-            map(x => { this.canvas.nativeElement.style.removeProperty('cursor'); })
-          )),
-        ).subscribe((evt: MouseEvent) => { // apply panning and re-render
-          this.canvas.nativeElement.style.cursor = 'grab';
-          this.panX += evt.movementX;
-          this.panY += evt.movementY;
-          this.render();
-        });
+        fromEvent(this.canvas.nativeElement, 'mousemove')
+          .pipe(
+            // when user hits mouse down start listening to mouse movement
+            takeUntil(
+              fromEvent(this.canvas.nativeElement, 'mouseup').pipe(
+                // stop this whenever they let up of the mouse
+                filter((x: MouseEvent) => x.button === 2), // iff it was the right mouse button
+                // Map should fire right before takeUntil clears the event.
+                map((x) => {
+                  this.canvas.nativeElement.style.removeProperty('cursor');
+                })
+              )
+            )
+          )
+          .subscribe((evt: MouseEvent) => {
+            // apply panning and re-render
+            this.canvas.nativeElement.style.cursor = 'grab';
+            this.panX += evt.movementX;
+            this.panY += evt.movementY;
+            this.render();
+          });
       }
 
       event.preventDefault();
@@ -166,7 +173,7 @@ export class CanvasComponent extends BaseComponent implements AfterViewInit {
     this.drawing = true;
     this.inProgressDrawable = DrawableMap[this.drawingMode](this.getCurrentContext());
     this.inProgressDrawable.click(pt);
-    const subscription = this.inProgressDrawable.finished.subscribe(x => {
+    const subscription = this.inProgressDrawable.finished.subscribe((x) => {
       if (x) {
         this.finishDrawing(x);
         console.log(`Finished drawing ${x}`);
@@ -189,7 +196,9 @@ export class CanvasComponent extends BaseComponent implements AfterViewInit {
   }
 
   public render(mousePosition?: Point): void {
-    if (!this.ctx) { return; }
+    if (!this.ctx) {
+      return;
+    }
 
     mousePosition = mousePosition || this.lastKnownMousePoint;
 
@@ -210,10 +219,12 @@ export class CanvasComponent extends BaseComponent implements AfterViewInit {
     this.ctx.translate(this.panX, this.panY);
     this.ctx.scale(this.scaleFactor, this.scaleFactor);
 
-    if (this.snapSettings.gridSettings.displayGrid) { this.drawGrid(); }
+    if (this.snapSettings.gridSettings.displayGrid) {
+      this.drawGrid();
+    }
 
     // Draw each item in queue
-    this.drawables.forEach(x => x.draw());
+    this.drawables.forEach((x) => x.draw());
     if (this.inProgressDrawable && this.inProgressDrawable.drawPreview && mousePosition) {
       this.inProgressDrawable.drawPreview(mousePosition);
     }
@@ -268,10 +279,7 @@ export class CanvasComponent extends BaseComponent implements AfterViewInit {
 
   getWorldSpacePoint(pt: Point): Point {
     const matrix = this.ctx.getTransform();
-    return new Point(
-      (pt.x - matrix.e) / matrix.a,
-      (pt.y - matrix.f) / matrix.d,
-    );
+    return new Point((pt.x - matrix.e) / matrix.a, (pt.y - matrix.f) / matrix.d);
   }
 
   getRawCanvasXY(event: Partial<MouseEvent>): Point {
@@ -281,7 +289,7 @@ export class CanvasComponent extends BaseComponent implements AfterViewInit {
     return new Point(x, y);
   }
 
-  getWorldSpaceBorderRect(): ([number, number, number, number]) {
+  getWorldSpaceBorderRect(): [number, number, number, number] {
     const topLeft = new Point(0, 0);
     const bottomRight = new Point(this.canvas.nativeElement.width, this.canvas.nativeElement.height);
     const matrix = this.ctx.getTransform();
@@ -291,9 +299,8 @@ export class CanvasComponent extends BaseComponent implements AfterViewInit {
   }
 
   getCurrentContext = () => ({
-    ctx: this.ctx, 
-    angle: this.snapSettings.angleSnapSettings, 
-    grid: this.snapSettings.gridSettings
+    ctx: this.ctx,
+    angle: this.snapSettings.angleSnapSettings,
+    grid: this.snapSettings.gridSettings,
   });
-
 }

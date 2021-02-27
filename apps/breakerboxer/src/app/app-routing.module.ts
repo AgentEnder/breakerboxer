@@ -5,20 +5,20 @@ const routes: Routes = [
   {
     path: '',
     pathMatch: 'full',
-    redirectTo: 'home'
+    redirectTo: 'home',
   },
   {
     path: 'home',
-    loadChildren: () => import('./landing-page/landing-page.module').then(m => m.LandingPageModule)
+    loadChildren: () => import('./landing-page/landing-page.module').then((m) => m.LandingPageModule),
   },
   {
     path: 'workspace',
-    loadChildren: () => import('./workspace-page/workspace-page.module').then(m => m.WorkspacePageModule)
-  }
+    loadChildren: () => import('./workspace-page/workspace-page.module').then((m) => m.WorkspacePageModule),
+  },
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes, { relativeLinkResolution: 'legacy' })],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}

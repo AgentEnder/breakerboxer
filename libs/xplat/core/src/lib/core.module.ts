@@ -24,7 +24,8 @@ import { uiReducer } from './state/ui/ui.reducer';
 LogService.DEBUG.LEVEL_4 = !environment.production;
 
 @NgModule({
-  imports: [CommonModule,
+  imports: [
+    CommonModule,
     StoreModule.forRoot({
       ui: uiReducer,
     }),
@@ -32,14 +33,12 @@ LogService.DEBUG.LEVEL_4 = !environment.production;
       maxAge: 25, // Retains last 25 states
       logOnly: environment.production, // Restrict extension to log-only mode
     }),
-    EffectsModule.forRoot([CoreEffects, UIEffects])
+    EffectsModule.forRoot([CoreEffects, UIEffects]),
   ],
 })
 export class CoreModule {
   // configuredProviders: *required to configure WindowService and others per platform
-  static forRoot(
-    configuredProviders: Array<any>
-  ): ModuleWithProviders<CoreModule> {
+  static forRoot(configuredProviders: Array<any>): ModuleWithProviders<CoreModule> {
     return {
       ngModule: CoreModule,
       providers: [

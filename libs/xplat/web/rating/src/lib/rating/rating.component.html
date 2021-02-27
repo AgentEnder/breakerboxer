@@ -4,9 +4,7 @@
   (click)="rate(display)"
   [ngClass]="{ 'text-gold': rating.mine !== null }"
 >
-  <div class="text-black text-sm mr-2" *ngIf="align === 'right'">
-    ({{ rating.count }})
-  </div>
+  <div class="text-black text-sm mr-2" *ngIf="align === 'right'">({{ rating.count }})</div>
   <mat-icon (mouseover)="display = 1">{{
     display >= 0.75 ? 'star' : display > 0.25 ? 'star_half' : 'star_border'
   }}</mat-icon>
@@ -22,7 +20,5 @@
   <mat-icon (mouseover)="display = 5">{{
     display >= 4.75 ? 'star' : display > 4.25 ? 'star_half' : 'star_border'
   }}</mat-icon>
-  <div class="text-black text-sm ml-2" *ngIf="align === 'left'">
-    ({{ rating.count }})
-  </div>
+  <div class="text-black text-sm ml-2" *ngIf="align === 'left'">({{ rating.count }})</div>
 </span>

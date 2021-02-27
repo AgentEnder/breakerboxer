@@ -1,5 +1,5 @@
-import { createAction } from "@ngrx/store";
+import { createAction } from '@ngrx/store';
 
 export namespace CoreActions {
-    export const AppInit = createAction('[@tbs/core] app init');
+  export const AppInit = createAction('[@tbs/core] app init');
 }

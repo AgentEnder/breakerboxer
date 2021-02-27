@@ -27,7 +27,7 @@ export class AppComponent extends BaseComponent {
     // This requires some extra work.
     const container = this.overlayContainer.getContainerElement();
 
-    this.dark$.subscribe(x => {
+    this.dark$.subscribe((x) => {
       if (x) {
         container.classList.add('dark-theme');
       } else {

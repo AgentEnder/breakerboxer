@@ -1,10 +1,5 @@
 import { Component } from '@angular/core';
-import {
-  FormBuilder,
-  FormControl,
-  FormGroup,
-  Validators,
-} from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 
 import { MatDialogRef } from '@angular/material/dialog';
 
@@ -46,15 +41,13 @@ export class RatingDialogComponent {
         this.loadFilteredTargets(x);
       }
     });
-    this.fg.controls.gameControl.valueChanges
-      .pipe(debounceTime(150))
-      .subscribe((x) => {
-        if (typeof x !== 'object') {
-          this.loadFilteredGames(x);
-        } else {
-          this.loadDataForGame(x);
-        }
-      });
+    this.fg.controls.gameControl.valueChanges.pipe(debounceTime(150)).subscribe((x) => {
+      if (typeof x !== 'object') {
+        this.loadFilteredGames(x);
+      } else {
+        this.loadDataForGame(x);
+      }
+    });
   }
 
   submit(): void {
@@ -79,7 +72,10 @@ export class RatingDialogComponent {
 
   loadDataForGame(x: RAWG.Game): void {
     this.filteredTargets = x.platforms.map((plt) => plt.platform);
-    if (this.filteredTargets.findIndex(plt => plt.name === this.fg.controls.emulationTargetControl.value) === -1) {
+    if (
+      this.filteredTargets.findIndex((plt) => plt.name === this.fg.controls.emulationTargetControl.value) ===
+      -1
+    ) {
       this.fg.controls.emulationTargetControl.reset();
     }
     this.selectedGame = x;

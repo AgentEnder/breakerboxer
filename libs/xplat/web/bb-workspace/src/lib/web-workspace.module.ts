@@ -15,16 +15,10 @@ import { SharedModule } from '@tbs/shared';
 import { BreakerboxerDataModule } from '@tbs/xplat/base/breakerboxer-data';
 
 import { CanvasComponent } from './components/canvas/canvas.component';
-import {
-    SnapSettingsMenuComponent
-} from './components/snap-settings-menu/snap-settings-menu.component';
+import { SnapSettingsMenuComponent } from './components/snap-settings-menu/snap-settings-menu.component';
 import { ToolbarComponent } from './components/toolbar/toolbar.component';
 
-const COMPONENTS = [
-  CanvasComponent,
-  SnapSettingsMenuComponent,
-  ToolbarComponent,
-];
+const COMPONENTS = [CanvasComponent, SnapSettingsMenuComponent, ToolbarComponent];
 
 @NgModule({
   imports: [
@@ -40,7 +34,7 @@ const COMPONENTS = [
     MatButtonToggleModule,
     MatMenuModule,
     MatSlideToggleModule,
-    BreakerboxerDataModule
+    BreakerboxerDataModule,
   ],
   declarations: [...COMPONENTS],
   exports: [...COMPONENTS],

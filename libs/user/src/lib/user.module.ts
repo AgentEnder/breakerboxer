@@ -12,7 +12,7 @@ import { userReducer } from './state/user.reducer';
   imports: [
     CommonModule,
     StoreModule.forFeature(UserState.key, userReducer),
-    EffectsModule.forFeature([UserEffects])
+    EffectsModule.forFeature([UserEffects]),
   ],
 })
 export class UserModule {}

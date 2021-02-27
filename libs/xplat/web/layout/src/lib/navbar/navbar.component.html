@@ -8,18 +8,22 @@
     <mat-icon (click)="navToggle.emit()">menu</mat-icon>
   </button>
   <div class="d-flex align-items-baseline mr-auto">
-    <span class="ml-2" [routerLink]="['/']" >{{title.title$| async}}</span>
+    <span class="ml-2" [routerLink]="['/']">{{ title.title$ | async }}</span>
     <ng-content select="[navItem]"></ng-content>
   </div>
-  <ng-container *ngIf="authAvailable$| async">
-    <button mat-raised-button class="mr-2" (click)="logIn()" *ngIf="!loggedInUser else profileTemplate">Log In</button>
+  <ng-container *ngIf="authAvailable$ | async">
+    <button mat-raised-button class="mr-2" (click)="logIn()" *ngIf="!loggedInUser; else profileTemplate">
+      Log In
+    </button>
     <ng-template #profileTemplate>
-      <span class="mr-2">{{loggedInUser?.displayName}}</span>
-      <button mat-icon-button [matMenuTriggerFor]="menu" ><mat-icon>account_circle</mat-icon></button>
+      <span class="mr-2">{{ loggedInUser?.displayName }}</span>
+      <button mat-icon-button [matMenuTriggerFor]="menu">
+        <mat-icon>account_circle</mat-icon>
+      </button>
       <mat-menu #menu="matMenu">
         <ng-content select="[profileItem]"></ng-content>
         <mat-divider></mat-divider>
-        <div mat-menu-item  (click)="logOut()">Log Out</div>
+        <div mat-menu-item (click)="logOut()">Log Out</div>
       </mat-menu>
     </ng-template>
   </ng-container>

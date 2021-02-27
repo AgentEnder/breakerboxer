@@ -1,5 +1,5 @@
 import { Directive, EventEmitter, Input, Output } from '@angular/core';
-import {ControlValueAccessor} from '@angular/forms';
+import { ControlValueAccessor } from '@angular/forms';
 import { Rating } from '../models/rating.interface';
 
 @Directive()
@@ -20,7 +20,7 @@ export abstract class RatingBaseComponent implements ControlValueAccessor {
     this._value = value;
     this.rating = {
       ...this.rating,
-      mine: value
+      mine: value,
     };
     this.notifyValueChange();
   }
@@ -61,7 +61,5 @@ export abstract class RatingBaseComponent implements ControlValueAccessor {
     this.onTouched = fn;
   }
 
-  setDisabledState(isDisabled: boolean): void {
-  }
+  setDisabledState(isDisabled: boolean): void {}
 }
-

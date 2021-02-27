@@ -5,17 +5,14 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { TbsCoreModule } from '@tbs/xplat/web/core';
 import { LayoutModule } from '@tbs/layout';
-import {FirebaseModule} from '@tbs/firebase';
-
+import { FirebaseModule } from '@tbs/firebase';
 
 import { environment } from '../environments/environment';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 
 @NgModule({
-  declarations: [
-    AppComponent
-  ],
+  declarations: [AppComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -23,9 +20,9 @@ import { AppComponent } from './app.component';
     TbsCoreModule,
     OverlayModule,
     LayoutModule,
-    FirebaseModule.forRoot(environment.firebase)
+    FirebaseModule.forRoot(environment.firebase),
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

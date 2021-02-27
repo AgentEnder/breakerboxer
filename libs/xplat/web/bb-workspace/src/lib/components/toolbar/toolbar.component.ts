@@ -6,16 +6,13 @@ import { DrawingMode, SnapSettings } from '@tbs/xplat/base/breakerboxer-data';
   templateUrl: './toolbar.component.html',
 })
 export class ToolbarComponent implements OnInit {
-
   @Output() undo = new EventEmitter<void>();
   @Output() clear = new EventEmitter<void>();
   @Output() toolSelected = new EventEmitter<DrawingMode>();
 
   @Output() contextChange = new EventEmitter<void>();
 
-  constructor() { }
+  constructor() {}
 
-  ngOnInit(): void {
-  }
-
+  ngOnInit(): void {}
 }

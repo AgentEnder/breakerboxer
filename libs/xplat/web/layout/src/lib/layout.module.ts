@@ -21,11 +21,7 @@ import { TitleService } from './services/title.service';
 import { SidebarComponent } from './sidebar/sidebar.component';
 
 @NgModule({
-  declarations: [
-    NavbarComponent,
-    SidebarComponent,
-    DarkModeSwitchComponent
-  ],
+  declarations: [NavbarComponent, SidebarComponent, DarkModeSwitchComponent],
   imports: [
     BrowserModule,
     FormsModule,
@@ -41,14 +37,9 @@ import { SidebarComponent } from './sidebar/sidebar.component';
     MatExpansionModule,
     MatTabsModule,
     BrowserAnimationsModule,
-    UserModule
+    UserModule,
   ],
-  exports: [
-    NavbarComponent,
-    SidebarComponent
-  ],
-  providers: [
-    TitleService
-  ]
+  exports: [NavbarComponent, SidebarComponent],
+  providers: [TitleService],
 })
-export class LayoutModule { }
+export class LayoutModule {}

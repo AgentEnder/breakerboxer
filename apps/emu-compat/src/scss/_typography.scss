@@ -1,14 +1,14 @@
-.text-{
-    &white {
-        color: var(--text-white);
-    }
-    &black {
-        color: var(--text-black);
-    }
-    &gold {
-        color: var(--text-gold);
-    }
-    &sm {
-        font-size: small;
-    }
+.text- {
+  &white {
+    color: var(--text-white);
+  }
+  &black {
+    color: var(--text-black);
+  }
+  &gold {
+    color: var(--text-gold);
+  }
+  &sm {
+    font-size: small;
+  }
 }

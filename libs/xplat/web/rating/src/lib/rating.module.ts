@@ -8,6 +8,6 @@ import { RatingComponent } from './rating/rating.component';
 @NgModule({
   imports: [CommonModule, MatIconModule],
   declarations: [RatingComponent],
-  exports: [RatingComponent]
+  exports: [RatingComponent],
 })
 export class RatingModule {}

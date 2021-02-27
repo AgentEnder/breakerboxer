@@ -7,13 +7,7 @@ import { RouterModule } from '@angular/router';
 import { UISharedModule } from '@tbs/xplat/features';
 import { UI_COMPONENTS } from './components';
 
-const MODULES = [
-  CommonModule,
-  RouterModule,
-  FormsModule,
-  ReactiveFormsModule,
-  UISharedModule,
-];
+const MODULES = [CommonModule, RouterModule, FormsModule, ReactiveFormsModule, UISharedModule];
 
 @NgModule({
   imports: [...MODULES],

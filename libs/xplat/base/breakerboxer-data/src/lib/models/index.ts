@@ -14,10 +14,10 @@ export * from './room';
 export * from './electrical-components';
 
 type DrawableMapping = {
-    [key in DrawingMode]: (ctx: WorkspaceContext) => IDrawable
+  [key in DrawingMode]: (ctx: WorkspaceContext) => IDrawable;
 };
 
 export const DrawableMap: DrawableMapping = {
-    polyline: (ctx: WorkspaceContext) => new Polyline(ctx),
-    rectangle: (ctx: WorkspaceContext) => new Rectangle(ctx)
+  polyline: (ctx: WorkspaceContext) => new Polyline(ctx),
+  rectangle: (ctx: WorkspaceContext) => new Rectangle(ctx),
 };

@@ -5,41 +5,42 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { MatDrawerMode } from '@angular/material/sidenav';
 
 @Component({
-    selector: 'tbs-sidebar',
-    templateUrl: './sidebar.component.html'
+  selector: 'tbs-sidebar',
+  templateUrl: './sidebar.component.html',
 })
 export class SidebarComponent {
-    public show;
+  public show;
 
-    mode: MatDrawerMode = 'side';
+  mode: MatDrawerMode = 'side';
 
-    topGap = 64;
+  topGap = 64;
 
-    public routes: MenuItem[] = [];
+  public routes: MenuItem[] = [];
 
-    public toggleSidenav(): void {
-        this.show = !this.show;
-    }
+  public toggleSidenav(): void {
+    this.show = !this.show;
+  }
 
-    constructor(private breakpoints: BreakpointObserver, public activatedRoute: ActivatedRoute){
-        breakpoints.observe([Breakpoints.Handset]).subscribe( ({ matches }) => {
-            if (matches) { // Mobile
-                this.mode = 'over';
-                this.topGap = 56;
-                this.show = false;
-            } else {
-                this.mode = 'side';
-                this.topGap = 64;
-                this.show = true;
-            }
-            console.log('Mobile: ', matches);
-        });
-    }
+  constructor(private breakpoints: BreakpointObserver, public activatedRoute: ActivatedRoute) {
+    breakpoints.observe([Breakpoints.Handset]).subscribe(({ matches }) => {
+      if (matches) {
+        // Mobile
+        this.mode = 'over';
+        this.topGap = 56;
+        this.show = false;
+      } else {
+        this.mode = 'side';
+        this.topGap = 64;
+        this.show = true;
+      }
+      console.log('Mobile: ', matches);
+    });
+  }
 }
 
-export interface MenuItem{
-    icon: string;
-    label: string;
-    path?: string;
-    children?: MenuItem[];
+export interface MenuItem {
+  icon: string;
+  label: string;
+  path?: string;
+  children?: MenuItem[];
 }

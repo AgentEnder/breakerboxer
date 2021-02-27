@@ -4,11 +4,7 @@ import { HttpClientModule, HttpClient } from '@angular/common/http';
 import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { throwIfAlreadyLoaded } from '@tbs/xplat/utils';
-import {
-  CoreModule,
-  PlatformLanguageToken,
-  PlatformWindowToken,
-} from '@tbs/xplat/core';
+import { CoreModule, PlatformLanguageToken, PlatformWindowToken } from '@tbs/xplat/core';
 
 // bring in custom web services here...
 

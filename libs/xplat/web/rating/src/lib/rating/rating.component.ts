@@ -6,22 +6,21 @@ import { RatingBaseComponent } from '@tbs/rating';
 export const WEB_RATING_VALUE_ACCESSOR: any = {
   provide: NG_VALUE_ACCESSOR,
   useExisting: forwardRef(() => RatingComponent),
-  multi: true
+  multi: true,
 };
 
 @Component({
   selector: 'tbs-rating',
   templateUrl: './rating.component.html',
   styleUrls: ['./rating.component.scss'],
-  providers: [WEB_RATING_VALUE_ACCESSOR]
+  providers: [WEB_RATING_VALUE_ACCESSOR],
 })
 export class RatingComponent extends RatingBaseComponent implements OnInit {
-
   @Input() align: 'left' | 'right' = 'left';
 
-  constructor() { super(); }
-
-  ngOnInit(): void {
+  constructor() {
+    super();
   }
 
+  ngOnInit(): void {}
 }

@@ -9,17 +9,11 @@ import fb from 'firebase/app';
 import { DateTime } from 'luxon';
 import { from, Observable } from 'rxjs';
 
-
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class AuthService implements IAuthService {
-  constructor(
-    private afAuth: AngularFireAuth,
-    private afs: AngularFirestore,
-    private router: Router
-  ) {
-  }
+  constructor(private afAuth: AngularFireAuth, private afs: AngularFirestore, private router: Router) {}
   signIn$(): Observable<User> {
     return this.googleSignIn$();
   }
@@ -41,7 +35,7 @@ export class AuthService implements IAuthService {
       displayName: user.displayName,
       lastSignIn: DateTime.utc().toISO(),
       emailVerified: user.emailVerified,
-      photoURL: user.photoURL
+      photoURL: user.photoURL,
     };
 
     await userRef.set(data, { merge: true });

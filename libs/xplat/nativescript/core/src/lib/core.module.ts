@@ -1,21 +1,14 @@
 import { NgModule, Optional, SkipSelf } from '@angular/core';
 
 // nativescript
-import {
-  NativeScriptModule,
-  NativeScriptHttpClientModule,
-} from '@nativescript/angular';
+import { NativeScriptModule, NativeScriptHttpClientModule } from '@nativescript/angular';
 import { Device } from '@nativescript/core';
 import { TNSFontIconModule, USE_STORE } from 'nativescript-ngx-fonticon';
 import { fontAwesomeIcons } from '@tbs/xplat/nativescript/utils';
 
 // libs
 import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
-import {
-  CoreModule,
-  PlatformLanguageToken,
-  PlatformWindowToken,
-} from '@tbs/xplat/core';
+import { CoreModule, PlatformLanguageToken, PlatformWindowToken } from '@tbs/xplat/core';
 import { throwIfAlreadyLoaded } from '@tbs/xplat/utils';
 
 // app

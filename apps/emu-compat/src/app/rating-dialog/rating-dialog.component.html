@@ -1,28 +1,32 @@
 <div class="container-fluid">
   <div class="row" [formGroup]="fg">
     <mat-form-field class="w-100" appearance="outline">
-      <input type="text"
-             placeholder="Game"
-             aria-label="Emulated Game"
-             matInput
-             formControlName="gameControl"
-             [matAutocomplete]="gameAuto">
+      <input
+        type="text"
+        placeholder="Game"
+        aria-label="Emulated Game"
+        matInput
+        formControlName="gameControl"
+        [matAutocomplete]="gameAuto"
+      />
       <mat-autocomplete #gameAuto="matAutocomplete" [displayWith]="getName">
         <mat-option *ngFor="let option of filteredGames" [value]="option">
-          {{option.name}}
+          {{ option.name }}
         </mat-option>
       </mat-autocomplete>
     </mat-form-field>
     <mat-form-field class="w-100" appearance="outline">
-      <input type="text"
-             placeholder="Emulated Console"
-             aria-label="target"
-             matInput
-             formControlName="emulationTargetControl"
-             [matAutocomplete]="auto">
+      <input
+        type="text"
+        placeholder="Emulated Console"
+        aria-label="target"
+        matInput
+        formControlName="emulationTargetControl"
+        [matAutocomplete]="auto"
+      />
       <mat-autocomplete #auto="matAutocomplete">
         <mat-option *ngFor="let option of filteredTargets" [value]="option.name">
-          {{option.name}}
+          {{ option.name }}
         </mat-option>
       </mat-autocomplete>
     </mat-form-field>
@@ -30,14 +34,8 @@
       <mat-label>Hardware</mat-label>
       <mat-select>
         <mat-option>-- None --</mat-option>
-        <mat-optgroup
-          *ngFor="let hostGroup of gameData.getEmulationHosts() | async"
-          [label]="hostGroup.name"
-        >
-          <mat-option
-            *ngFor="let host of hostGroup.platforms"
-            [value]="host.platformId"
-          >
+        <mat-optgroup *ngFor="let hostGroup of gameData.getEmulationHosts() | async" [label]="hostGroup.name">
+          <mat-option *ngFor="let host of hostGroup.platforms" [value]="host.platformId">
             {{ host.name }}
           </mat-option>
         </mat-optgroup>
@@ -49,14 +47,8 @@
       <mat-label>Hardware</mat-label>
       <mat-select>
         <mat-option>-- None --</mat-option>
-        <mat-optgroup
-          *ngFor="let hostGroup of gameData.getPlatforms() | async"
-          [label]="hostGroup.name"
-        >
-          <mat-option
-            *ngFor="let host of hostGroup.platforms"
-            [value]="host.platformId"
-          >
+        <mat-optgroup *ngFor="let hostGroup of gameData.getPlatforms() | async" [label]="hostGroup.name">
+          <mat-option *ngFor="let host of hostGroup.platforms" [value]="host.platformId">
             {{ host.name }}
           </mat-option>
         </mat-optgroup>
@@ -80,7 +72,7 @@
     <tbs-rating [align]="'right'" [rating]="rm[3]"></tbs-rating>
   </div>
 </div>
-{{fg.value| json}}
+{{ fg.value | json }}
 <mat-dialog-actions>
   <button [color]="'primary'" (click)="submit()" [disabled]="fg.invalid" mat-raised-button>
     Submit Review

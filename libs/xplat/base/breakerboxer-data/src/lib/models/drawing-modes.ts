@@ -1,3 +1,1 @@
-export type DrawingMode
-= 'polyline'
-| 'rectangle';
+export type DrawingMode = 'polyline' | 'rectangle';

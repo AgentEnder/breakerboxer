@@ -6,12 +6,13 @@ describe('SidebarHelpComponent', () => {
   let component: SidebarHelpComponent;
   let fixture: ComponentFixture<SidebarHelpComponent>;
 
-  beforeEach(waitForAsync(() => {
-    TestBed.configureTestingModule({
-      declarations: [ SidebarHelpComponent ]
+  beforeEach(
+    waitForAsync(() => {
+      TestBed.configureTestingModule({
+        declarations: [SidebarHelpComponent],
+      }).compileComponents();
     })
-    .compileComponents();
-  }));
+  );
 
   beforeEach(() => {
     fixture = TestBed.createComponent(SidebarHelpComponent);

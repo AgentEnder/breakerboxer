@@ -75,12 +75,8 @@ export class AppService {
       versionName = pi.versionName;
       buildNumber = pi.versionCode.toString();
     } else if (Application.ios) {
-      versionName = NSBundle.mainBundle.objectForInfoDictionaryKey(
-        'CFBundleShortVersionString'
-      );
-      buildNumber = NSBundle.mainBundle.objectForInfoDictionaryKey(
-        'CFBundleVersion'
-      );
+      versionName = NSBundle.mainBundle.objectForInfoDictionaryKey('CFBundleShortVersionString');
+      buildNumber = NSBundle.mainBundle.objectForInfoDictionaryKey('CFBundleVersion');
     }
     this._appVersion = `v${versionName} (${buildNumber})`;
     this._log.debug('App version:', this._appVersion);
@@ -107,9 +103,7 @@ export class AppService {
 
     // set initial orientation
     let orientation = getOrientation();
-    this.orientation = orientation
-      ? orientation
-      : Enums.DeviceOrientation.portrait;
+    this.orientation = orientation ? orientation : Enums.DeviceOrientation.portrait;
     this._log.debug('current orientation:', this.orientation);
 
     // handle orientation changes
@@ -145,8 +139,7 @@ const getOrientation = function () {
       return '';
     }
   } else {
-    const orientation = getContext().getResources().getConfiguration()
-      .orientation;
+    const orientation = getContext().getResources().getConfiguration().orientation;
     switch (orientation) {
       case 1 /* ORIENTATION_PORTRAIT (0x00000001) */:
         return Enums.DeviceOrientation.portrait;

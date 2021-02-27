@@ -40,22 +40,14 @@ export class LogService {
 
   // error
   public error(...err: Array<any>) {
-    if (
-      LogService.DEBUG.LEVEL_4 ||
-      LogService.DEBUG.LEVEL_3 ||
-      LogService.DEBUG.LEVEL_2
-    ) {
+    if (LogService.DEBUG.LEVEL_4 || LogService.DEBUG.LEVEL_3 || LogService.DEBUG.LEVEL_2) {
       console.error(err);
     }
   }
 
   // warn
   public warn(...warn: Array<any>) {
-    if (
-      LogService.DEBUG.LEVEL_4 ||
-      LogService.DEBUG.LEVEL_3 ||
-      LogService.DEBUG.LEVEL_1
-    ) {
+    if (LogService.DEBUG.LEVEL_4 || LogService.DEBUG.LEVEL_3 || LogService.DEBUG.LEVEL_1) {
       console.warn(warn);
     }
   }
