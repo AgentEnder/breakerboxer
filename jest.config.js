@@ -26,5 +26,6 @@ module.exports = {
     '<rootDir>/libs/xplat/base/breakerboxer-state',
     '<rootDir>/libs/firebase',
     '<rootDir>/apps/web-portfolio',
+    '<rootDir>/libs/portfolio-data',
   ],
 };

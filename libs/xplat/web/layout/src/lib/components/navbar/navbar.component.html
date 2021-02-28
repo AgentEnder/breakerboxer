@@ -3,9 +3,10 @@
     mat-icon-button
     class="example-icon mr-2"
     aria-label="Toggle Side Navigation"
-    *ngIf="!hideNavToggle"
+    *ngIf="showSideNav$| async"
+    (click)="toggleSideNav()"
   >
-    <mat-icon (click)="navToggle.emit()">menu</mat-icon>
+    <mat-icon>menu</mat-icon>
   </button>
   <div class="d-flex align-items-baseline mr-auto">
     <span class="ml-2" [routerLink]="['/']">{{ title.title$ | async }}</span>

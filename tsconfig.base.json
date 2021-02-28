@@ -36,7 +36,8 @@
       "@tbs/xplat/nativescript/core": ["libs/xplat/nativescript/core/src/index.ts"],
       "@tbs/xplat/nativescript/features": ["libs/xplat/nativescript/features/src/index.ts"],
       "@tbs/xplat/base/breakerboxer-data": ["libs/xplat/base/breakerboxer-data/src/index.ts"],
-      "@tbs/firebase": ["libs/firebase/src/index.ts"]
+      "@tbs/firebase": ["libs/firebase/src/index.ts"],
+      "@tbs/portfolio-data": ["libs/portfolio-data/src/index.ts"]
     },
     "rootDir": "."
   }

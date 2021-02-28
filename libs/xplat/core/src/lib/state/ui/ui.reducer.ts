@@ -12,6 +12,14 @@ const _uiReducer = createReducer(
   on(UIActions.setDarkModeSuccess, (state, action) => ({
     ...state,
     darkMode: action.state,
+  })),
+  on(UIActions.toggleSidebarCollapsed, (state, action) => ({
+    ...state,
+    collapseSidebar: action.state ?? !state.collapseSidebar,
+  })),
+  on(UIActions.showSidebarCollapse, (state, action) => ({
+    ...state,
+    showSidebarCollapse: action.state,
   }))
 );
 

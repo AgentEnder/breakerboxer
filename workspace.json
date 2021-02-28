@@ -908,6 +908,27 @@
           }
         }
       }
+    },
+    "portfolio-data": {
+      "root": "libs/portfolio-data",
+      "sourceRoot": "libs/portfolio-data/src",
+      "projectType": "library",
+      "architect": {
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": ["libs/portfolio-data/**/*.ts"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/portfolio-data"],
+          "options": {
+            "jestConfig": "libs/portfolio-data/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      }
     }
   },
   "cli": {

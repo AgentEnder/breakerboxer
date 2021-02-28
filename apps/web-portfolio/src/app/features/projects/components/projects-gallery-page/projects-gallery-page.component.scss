@@ -1,0 +1,17 @@
+:host {
+  display: flex;
+  justify-content: center;
+}
+
+.portfolio-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 2em;
+  width: 100%;
+  max-width: 1000px;
+}
+
+.example-header-image {
+  background-image: url('https://material.angular.io/assets/img/examples/shiba1.jpg');
+  background-size: cover;
+}

@@ -6,19 +6,20 @@ import { takeUntil } from 'rxjs/operators';
 import { BaseComponent } from '@tbs/shared';
 import { User, UserActions, UserState } from '@tbs/user';
 
-import { TitleService } from '../services';
+import { TitleService } from '../../services';
+import { UIActions, UIState } from '@tbs/xplat/core';
 
 @Component({
   selector: 'tbs-navbar',
   templateUrl: './navbar.component.html',
 })
 export class NavbarComponent extends BaseComponent {
-  @Input() hideNavToggle = true;
   @Output() public navToggle = new EventEmitter<void>();
 
   public loggedInUser: User = null;
 
   authAvailable$;
+  showSideNav$;
 
   constructor(public title: TitleService, protected store: Store) {
     super();
@@ -30,6 +31,7 @@ export class NavbarComponent extends BaseComponent {
       });
 
     this.authAvailable$ = this.store.select(UserState.selectAuthAvailable).pipe(takeUntil(this.destroy$));
+    this.showSideNav$ = this.store.select(UIState.selectShowSidebarCollapse).pipe(takeUntil(this.destroy$));
   }
 
   logIn(): void {
@@ -38,5 +40,9 @@ export class NavbarComponent extends BaseComponent {
 
   logOut(): void {
     this.store.dispatch(UserActions.logOut());
+  }
+
+  toggleSideNav(): void {
+    this.store.dispatch(UIActions.toggleSidebarCollapsed({}));
   }
 }

@@ -54,6 +54,7 @@
     "web-portfolio-e2e": {
       "tags": ["platform:web", "scope:portfolio", "type:e2e", "framework:protractor"],
       "implicitDependencies": ["web-portfolio"]
-    }
+    },
+    "portfolio-data": { "tags": ["platform:agnostic", "scope:portfolio", "type:lib", "framework:angular"] }
   }
 }

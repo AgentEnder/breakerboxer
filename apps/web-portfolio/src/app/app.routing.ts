@@ -2,9 +2,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
-// app
-import { SharedModule } from './features/shared/shared.module';
-
 const routes: Routes = [
   {
     path: '',
@@ -15,9 +12,13 @@ const routes: Routes = [
     path: 'home',
     loadChildren: () => import('./features/home/home.module').then((m) => m.HomeModule),
   },
+  {
+    path: 'projects',
+    loadChildren: () => import('./features/projects/projects.module').then((m) => m.ProjectsModule),
+  },
 ];
 
 @NgModule({
-  imports: [SharedModule, RouterModule.forRoot(routes)],
+  imports: [RouterModule.forRoot(routes)],
 })
 export class AppRoutingModule {}
