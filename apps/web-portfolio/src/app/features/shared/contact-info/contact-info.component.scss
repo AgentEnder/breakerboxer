@@ -1,0 +1,19 @@
+.contact_info {
+  position: fixed;
+  bottom: 0;
+  right: 0;
+  padding: 1.5em;
+  display: flex;
+  align-items: flex-end;
+
+  & &__legend {
+    writing-mode: vertical-rl;
+    text-orientation: upright;
+    white-space: nowrap;
+  }
+  & &__icons {
+    display: flex;
+    flex-direction: column-reverse;
+    font-size: 24px;
+  }
+}

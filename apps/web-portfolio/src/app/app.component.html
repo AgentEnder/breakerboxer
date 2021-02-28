@@ -1,8 +1,10 @@
 <div class="main-wrapper" [ngClass]="{ 'dark-theme': dark$ | async }">
-    <tbs-navbar>
-      <span navItem class="ml-4 nav-link" [routerLink]="['/projects']"> Projects </span>
-      <span navItem class="nav-link" [routerLink]="['/resume']"> Resume </span>
-    </tbs-navbar>
+  <tbs-navbar>
+    <span navItem class="ml-4 nav-link" [routerLink]="['/projects']"> Projects </span>
+    <span navItem class="nav-link" [routerLink]="['/resume']"> Resume </span>
+  </tbs-navbar>
+  <div class="content">
     <router-outlet></router-outlet>
+    <app-contact-info></app-contact-info>
   </div>
-  
+</div>
