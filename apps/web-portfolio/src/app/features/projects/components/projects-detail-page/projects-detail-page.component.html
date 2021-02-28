@@ -1,3 +1,15 @@
 <tbs-sidebar [routes]="menuItems$| async">
-    
+    <div class="content-container">
+        <mat-card class="mat-elevation-z4 project-panel">
+            <mat-card-header class="w-100">
+                <div class="d-flex w-100">
+                  <div class="mr-auto">
+                    <mat-card-title>{{ project.title }}</mat-card-title>
+                    <mat-card-subtitle *ngIf="project.tags?.length">{{ project.tags.join(', ') }}</mat-card-subtitle>
+                  </div>
+                  <app-language-logo *ngFor="let tech of project.technologyUsed" [language]="tech" class="tech-logo"></app-language-logo>
+                </div>
+              </mat-card-header>
+        </mat-card>
+    </div>
 </tbs-sidebar>

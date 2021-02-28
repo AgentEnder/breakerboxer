@@ -23,7 +23,13 @@ export class SidebarComponent extends BaseComponent implements OnDestroy {
 
   topGap = 64;
 
-  @Input() public routes: MenuItem[] = [];
+  _routes: MenuItem[] = [];
+  @Input() public set routes(v: MenuItem[]) {
+    this._routes = v;
+  }
+  public get routes(): MenuItem[] {
+    return this._routes;
+  }
 
   public toggleSidenav(): void {
     this.store.dispatch(UIActions.toggleSidebarCollapsed({}));
