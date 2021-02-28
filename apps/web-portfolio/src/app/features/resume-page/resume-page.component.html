@@ -1,0 +1,50 @@
+<mat-card class="mx-4 mt-4 mat-elevation-z4 panel" style="min-height: 80vh">
+  <div class="d-flex flex-column w-100 h-100">
+    <div mat-tab-nav-bar>
+      <a
+        [routerLink]="['career']"
+        routerLinkActive
+        #crla="routerLinkActive"
+        [active]="crla.isActive"
+        mat-tab-link
+        >Career</a
+      >
+      <a
+        [routerLink]="['education']"
+        routerLinkActive
+        #erla="routerLinkActive"
+        [active]="erla.isActive"
+        mat-tab-link
+        >Education</a
+      >
+      <a
+        [routerLink]="['skills']"
+        routerLinkActive
+        #srla="routerLinkActive"
+        [active]="srla.isActive"
+        mat-tab-link
+        >Skills</a
+      >
+      <a
+        [routerLink]="['portfolio']"
+        routerLinkActive
+        #prla="routerLinkActive"
+        [active]="prla.isActive"
+        mat-tab-link
+        >Portfolio</a
+      >
+      <a
+        [routerLink]="['contact']"
+        routerLinkActive
+        #contactRla="routerLinkActive"
+        [active]="contactRla.isActive"
+        class="ml-auto"
+        mat-tab-link
+        >Contact</a
+      >
+    </div>
+    <div class="flex-grow-1">
+      <router-outlet></router-outlet>
+    </div>
+  </div>
+</mat-card>

@@ -1,0 +1,12 @@
+:host {
+  display: flex;
+  justify-content: center;
+}
+
+.panel {
+  display: flex;
+  flex-direction: column;
+  gap: 2em;
+  width: 100%;
+  max-width: 1000px;
+}

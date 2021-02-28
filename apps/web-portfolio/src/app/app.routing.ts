@@ -16,6 +16,10 @@ const routes: Routes = [
     path: 'projects',
     loadChildren: () => import('./features/projects/projects.module').then((m) => m.ProjectsModule),
   },
+  {
+    path: 'resume',
+    loadChildren: () => import('./features/resume-page/resume-page.module').then((m) => m.ResumePageModule),
+  },
 ];
 
 @NgModule({
