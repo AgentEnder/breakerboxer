@@ -85,7 +85,7 @@ export class CareerTabComponent implements OnInit {
                 'Implemented mobility and producer consumer data separation in pFogSim, a Fog network simulator.',
             },
             {
-              title: '•	Worked as a team to write research paper detailing the improvements to the simulator',
+              title: 'Worked as a team to write research paper detailing the improvements to the simulator',
             },
           ],
         },
@@ -106,7 +106,14 @@ export class CareerTabComponent implements OnInit {
             {
               title:
                 'Collected and performed analysis on social media datasets using machine learning and natural language processing.',
-              content: `Used clustering and clique detection algorithms to locate hierarchical structures within youtube, reddit and twitter \n\n [Novel Machine Learning Algorithms for Centrality and Cliques Detection in Youtube Social Networks](https://aircconline.com/abstract/ijaia/v11n1/11120ijaia06.html)`,
+              content: `Used clustering and clique detection algorithms to locate hierarchical structures within youtube, reddit and twitter`,
+            },
+          ],
+          documents: [
+            {
+              title:
+                'Novel Machine Learning Algorithms for Centrality and Cliques Detection in Youtube Social Networks',
+              href: 'https://aircconline.com/ijaia/V11N1/11120ijaia06.pdf',
             },
           ],
         },

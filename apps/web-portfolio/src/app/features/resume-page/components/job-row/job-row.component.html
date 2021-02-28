@@ -17,6 +17,9 @@
               <div *ngIf="bullet.content" [innerHTML]="(bullet.content| marked)"></div>
           </li>
       </ul>
+      <div *ngFor="let document of duty.documents">
+          <a [routerLink]="['/documents']" [queryParams]="{href: document.href}">{{document.title}}</a>
+      </div>
     </mat-card-content>
   </ng-container>
 </mat-card>

@@ -21,6 +21,8 @@ export class SidebarComponent extends BaseComponent implements OnDestroy {
 
   mode: MatDrawerMode = 'side';
 
+  mobile: boolean = false;
+
   topGap = 64;
 
   _routes: MenuItem[] = [];
@@ -31,8 +33,8 @@ export class SidebarComponent extends BaseComponent implements OnDestroy {
     return this._routes;
   }
 
-  public toggleSidenav(): void {
-    this.store.dispatch(UIActions.toggleSidebarCollapsed({}));
+  public toggleSidenav(state?: boolean): void {
+    this.store.dispatch(UIActions.toggleSidebarCollapsed({ state }));
   }
 
   constructor(breakpoints: BreakpointObserver, public activatedRoute: ActivatedRoute, private store: Store) {
@@ -45,9 +47,11 @@ export class SidebarComponent extends BaseComponent implements OnDestroy {
         if (matches) {
           // Mobile
           this.mode = 'over';
+          this.mobile = true;
           this.topGap = 56;
           this.store.dispatch(UIActions.toggleSidebarCollapsed({ state: false }));
         } else {
+          this.mobile = false;
           this.mode = 'side';
           this.topGap = 64;
           this.store.dispatch(UIActions.toggleSidebarCollapsed({ state: true }));

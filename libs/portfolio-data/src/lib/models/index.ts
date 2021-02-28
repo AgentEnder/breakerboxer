@@ -5,3 +5,4 @@ export * from './job-title.interface';
 export * from './job-duty-list.interface';
 export * from './bullet-point.interface';
 export * from './tag.interface';
+export * from './document.interface';
