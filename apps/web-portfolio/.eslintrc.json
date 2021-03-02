@@ -9,11 +9,11 @@
       "rules": {
         "@angular-eslint/directive-selector": [
           "error",
-          { "type": "attribute", "prefix": "tbs", "style": "camelCase" }
+          { "type": "attribute", "prefix": "app", "style": "camelCase" }
         ],
         "@angular-eslint/component-selector": [
           "error",
-          { "type": "element", "prefix": "tbs", "style": "kebab-case" }
+          { "type": "element", "prefix": "app", "style": "kebab-case" }
         ]
       }
     },
