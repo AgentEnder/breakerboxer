@@ -1,12 +1,27 @@
-<mat-card class="mx-4 mat-elevation-z4 panel">
-  <h1>Hello!</h1>
-  <h2>My Name Is Craigory</h2>
-  <h3>I love to learn, to teach, and to build tools that help developers.</h3>
-  <h4>Recently, I've been learning</h4>
-  <ul>
-    <li>Advanced Nx (Custom schematics, builders, plugin development)</li>
-    <li>Cross platform app architecture in a monorepo maximizing code reuse.</li>
-    <li>NgRx to build base components that allow for extensive reuse.</li>
-  </ul>
-  <h4>For more information on my projects, check out the <a [routerLink]="['/projects']">projects</a> page</h4>
+<mat-card class="m-4 mat-elevation-z4 panel">
+  <div class="d-flex justify-content-between h-100 w-100 flex-md-nowrap flex-wrap">
+    <div>
+      <h1>Hello!</h1>
+      <h2>My Name Is Craigory</h2>
+      <h3>I love to learn, to teach, and to build tools that help developers.</h3>
+      <h4>Recently, I've been learning</h4>
+      <ul>
+        <li>Advanced Nx (Custom schematics, builders, plugin development)</li>
+        <li>Cross platform app architecture in a monorepo maximizing code reuse.</li>
+        <li>NgRx to build base components that allow for extensive reuse.</li>
+      </ul>
+      <h4>
+        For more information on my projects, check out the <a [routerLink]="['/projects']">projects</a> page
+      </h4>
+    </div>
+    <div class="flex-grow-1 mw-md-50 ml-md-2">
+      <mat-card class="p-2 mat-elevation-z4">
+        <img class="w-100 mb-2" src="assets/undraw_under_construction.svg" />
+        <mat-divider></mat-divider>
+        <div class="mx-2 mt-2">
+          This website is still under construction, but feel free to look around.
+        </div>
+      </mat-card>
+    </div>
+  </div>
 </mat-card>

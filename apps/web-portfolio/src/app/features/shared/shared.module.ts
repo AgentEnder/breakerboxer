@@ -5,6 +5,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
 import { MatIconModule } from '@angular/material/icon';
 import { MatTooltipModule } from '@angular/material/tooltip';
+import { MatDividerModule } from '@angular/material/divider';
 
 import { LayoutModule } from '@tbs/layout';
 import { UIModule } from '@tbs/xplat/web/features';
@@ -20,6 +21,7 @@ const MODULES = [
   MatCardModule,
   MatIconModule,
   MatTooltipModule,
+  MatDividerModule,
 ];
 
 @NgModule({
