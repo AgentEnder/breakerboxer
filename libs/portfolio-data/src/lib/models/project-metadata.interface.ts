@@ -3,4 +3,7 @@ export interface ProjectMetadata {
   title: string;
   tags: string[];
   technologyUsed: string[];
+  markdownDescription: string;
+  liveDemoLink?: string;
+  sourceCodeLink?: string;
 }

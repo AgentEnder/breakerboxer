@@ -37,4 +37,21 @@
   &:last-child::before {
     bottom: 50%;
   }
+
+  .panel {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    max-width: 1000px;
+  }
+}
+
+.mw-50 {
+  max-width: 50% !important;
+}
+
+@media (min-width: 992px) {
+  .mw-md-50 {
+    max-width: 50% !important;
+  }
 }
