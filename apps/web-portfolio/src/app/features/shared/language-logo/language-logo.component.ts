@@ -16,6 +16,7 @@ export class LanguageLogoComponent implements OnInit {
     nx: 'assets/nx-logo.png',
     'c#': 'assets/net-logo.svg',
     angular: 'assets/angular-logo.svg',
+    firebase: 'assets/firebase-logo.svg',
   };
 
   constructor() {}

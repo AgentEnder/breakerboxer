@@ -810,7 +810,11 @@
             "polyfills": "apps/web-portfolio/src/polyfills.ts",
             "tsConfig": "apps/web-portfolio/tsconfig.app.json",
             "aot": true,
-            "assets": ["apps/web-portfolio/src/favicon.ico", "apps/web-portfolio/src/assets"],
+            "assets": [
+              "apps/web-portfolio/src/favicon.ico",
+              "apps/web-portfolio/src/assets",
+              "apps/web-portfolio/src/.htaccess"
+            ],
             "styles": ["apps/web-portfolio/src/styles.scss"],
             "scripts": [],
             "fileReplacements": [

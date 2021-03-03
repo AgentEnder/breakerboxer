@@ -10,17 +10,13 @@
       </div>
     </mat-card-header>
     <mat-card-content>
-      <p>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Tenetur facilis quam exercitationem iste est
-        accusantium voluptatum quasi adipisci, quod atque harum ipsum. Quibusdam, repellat. Quis perspiciatis,
-        enim labore deleniti nesciunt dolorem. Impedit id assumenda, veniam eos fugit recusandae, laborum
-        maiores quae illum quia expedita tempora, odio architecto obcaecati sed! Accusantium.
+      <p [innerHTML]="project.markdownDescription| marked">
       </p>
     </mat-card-content>
     <mat-card-actions class="w-100 d-flex">
       <button mat-button [routerLink]="[project.title]" class="mr-auto">View Details</button>
-      <button mat-mini-fab matTooltip="Open Source" class="mr-2" color="primary"><mat-icon>code</mat-icon></button>
-      <button mat-mini-fab matTooltip="Live Site" color="primary"><mat-icon>public</mat-icon></button>
+      <a *ngIf="project.sourceCodeLink" [href]="project.sourceCodeLink" mat-mini-fab matTooltip="Open Source" class="mr-2" color="primary"><mat-icon>code</mat-icon></a>
+      <a *ngIf="project.liveDemoLink" [href]="project.liveDemoLink" mat-mini-fab matTooltip="Live Site" color="primary"><mat-icon>public</mat-icon></a>
     </mat-card-actions>
   </mat-card>
 </mat-card>
