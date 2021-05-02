@@ -55,6 +55,8 @@
       "tags": ["platform:web", "scope:portfolio", "type:e2e", "framework:protractor"],
       "implicitDependencies": ["web-portfolio"]
     },
-    "portfolio-data": { "tags": ["platform:agnostic", "scope:portfolio", "type:lib", "framework:angular"] }
+    "portfolio-data": { "tags": ["platform:agnostic", "scope:portfolio", "type:lib", "framework:angular"] },
+    "baby-babble": { "tags": [] },
+    "baby-babble-e2e": { "tags": [], "implicitDependencies": ["baby-babble"] }
   }
 }

@@ -27,5 +27,6 @@ module.exports = {
     '<rootDir>/libs/firebase',
     '<rootDir>/apps/web-portfolio',
     '<rootDir>/libs/portfolio-data',
+    '<rootDir>/apps/baby-babble',
   ],
 };

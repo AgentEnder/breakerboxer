@@ -933,6 +933,114 @@
           }
         }
       }
+    },
+    "baby-babble": {
+      "projectType": "application",
+      "root": "apps/baby-babble",
+      "sourceRoot": "apps/baby-babble/src",
+      "prefix": "app",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:browser",
+          "options": {
+            "outputPath": "dist/apps/baby-babble",
+            "index": "apps/baby-babble/src/index.html",
+            "main": "apps/baby-babble/src/main.ts",
+            "polyfills": "apps/baby-babble/src/polyfills.ts",
+            "tsConfig": "apps/baby-babble/tsconfig.app.json",
+            "aot": true,
+            "assets": ["apps/baby-babble/src/favicon.ico", "apps/baby-babble/src/assets"],
+            "styles": ["apps/baby-babble/src/styles.scss"],
+            "scripts": []
+          },
+          "configurations": {
+            "production": {
+              "fileReplacements": [
+                {
+                  "replace": "apps/baby-babble/src/environments/environment.ts",
+                  "with": "apps/baby-babble/src/environments/environment.prod.ts"
+                }
+              ],
+              "optimization": true,
+              "outputHashing": "all",
+              "sourceMap": false,
+              "namedChunks": false,
+              "extractLicenses": true,
+              "vendorChunk": false,
+              "buildOptimizer": true,
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "2mb",
+                  "maximumError": "5mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "6kb",
+                  "maximumError": "10kb"
+                }
+              ]
+            }
+          }
+        },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "options": {
+            "browserTarget": "baby-babble:build"
+          },
+          "configurations": {
+            "production": {
+              "browserTarget": "baby-babble:build:production"
+            }
+          }
+        },
+        "extract-i18n": {
+          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "options": {
+            "browserTarget": "baby-babble:build"
+          }
+        },
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": ["apps/baby-babble/src/**/*.ts", "apps/baby-babble/src/**/*.html"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "outputs": ["coverage/apps/baby-babble"],
+          "options": {
+            "jestConfig": "apps/baby-babble/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      }
+    },
+    "baby-babble-e2e": {
+      "root": "apps/baby-babble-e2e",
+      "sourceRoot": "apps/baby-babble-e2e/src",
+      "projectType": "application",
+      "architect": {
+        "e2e": {
+          "builder": "@nrwl/cypress:cypress",
+          "options": {
+            "cypressConfig": "apps/baby-babble-e2e/cypress.json",
+            "tsConfig": "apps/baby-babble-e2e/tsconfig.e2e.json",
+            "devServerTarget": "baby-babble:serve"
+          },
+          "configurations": {
+            "production": {
+              "devServerTarget": "baby-babble:serve:production"
+            }
+          }
+        },
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": ["apps/baby-babble-e2e/**/*.{js,ts}"]
+          }
+        }
+      }
     }
   },
   "cli": {
