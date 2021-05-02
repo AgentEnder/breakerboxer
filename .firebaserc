@@ -13,6 +13,13 @@
           "emu-compat"
         ]
       }
+    },
+    "babybabble-6ab62": {
+      "hosting": {
+        "baby-babble": [
+          "babybabble-6ab62"
+        ]
+      }
     }
   }
 }

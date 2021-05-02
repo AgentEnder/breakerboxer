@@ -35,7 +35,7 @@ export class WindowService {
         // console.log('WindowService -- using result.then promise');
         result.then(resolve, reject);
       } else {
-        resolve();
+        resolve(null);
       }
     });
   }
@@ -46,7 +46,7 @@ export class WindowService {
       if (isObject(result) && result.then) {
         result.then(resolve, reject);
       } else if (result) {
-        resolve();
+        resolve(result);
       } else {
         reject();
       }

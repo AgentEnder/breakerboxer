@@ -1,0 +1,29 @@
+.name-card {
+  background: linear-gradient(135deg, var(--primary-light) 25%, transparent 25%),
+    linear-gradient(225deg, var(--accent-dark) 25%, transparent 25%),
+    linear-gradient(315deg, var(--accent-light) 25%, transparent 25%),
+    linear-gradient(45deg, var(--primary-dark) 25%, transparent 25%);
+  backdrop-filter: sepia(64%);
+  display: grid;
+  place-content: center;
+  width: min(80vw, 400px);
+  height: min(70vh, 800px);
+  transform-origin: 50% 125%;
+
+  * {
+    user-select: none;
+  }
+}
+
+.page-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  margin: 2em;
+  overflow-x: visible;
+}
+
+:host {
+  overflow: hidden;
+}

@@ -1,0 +1,67 @@
+$primary: #f06292;
+$primary-light: #f48fb1;
+$primary-dark: #ec407a;
+$accent: #40c4ff;
+$accent-light: #80d8ff;
+$accent-dark: #00b0ff;
+
+$dark-gray: #5c5c5c;
+
+$primary-transparent: rgba($primary, 0.2);
+$accent-transparent: rgba($accent, 0.2);
+
+$text-color: #232323;
+$dark-text-color: #eaeaea;
+
+$dark-primary: #c2185b;
+$dark-primary-light: #e91e63;
+$dark-primary-dark: #880e4f;
+$dark-accent: #0277bd;
+$dark-accent-light: #0288d1;
+$dark-accent-dark: #01579b;
+
+$gray: #9a9a9a;
+
+$dark-primary-transparent: rgba($dark-primary, 0.2);
+$dark-accent-transparent: rgba($dark-accent, 0.2);
+
+$background-color: #fafafa;
+$dark-background-color: #303030;
+
+:root,
+.light-theme {
+  --primary: #{$primary};
+  --primary-light: #{$primary-light};
+  --primary-dark: #{$primary-dark};
+  --accent: #{$accent};
+  --accent-light: #{$accent-light};
+  --accent-dark: #{$accent-dark};
+
+  --gray: #{$gray};
+
+  --text-color: #{$text-color};
+
+  --primary-transparent: #{$primary-transparent};
+  --accent-transparent: #{$accent-transparent};
+
+  --background-color: #{$background-color};
+  --background-color-transition: background-color 250ms ease-in-out;
+}
+
+.dark-theme {
+  --primary: #{$dark-primary};
+  --primary-light: #{$dark-primary-light};
+  --primary-dark: #{$dark-primary-dark};
+  --accent: #{$dark-accent};
+  --accent-light: #{$dark-accent-light};
+  --accent-dark: #{$dark-accent-dark};
+
+  --gray: #{$dark-gray};
+
+  --text-color: #{$dark-text-color};
+
+  --primary-transparent: #{$dark-primary-transparent};
+  --accent-transparent: #{$dark-accent-transparent};
+
+  --background-color: #{$dark-background-color};
+}

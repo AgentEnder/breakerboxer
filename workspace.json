@@ -104,7 +104,9 @@
         },
         "deploy": {
           "builder": "@angular/fire:deploy",
-          "options": {}
+          "options": {
+            "project": "breakerboxer"
+          }
         }
       }
     },
@@ -1012,6 +1014,12 @@
           "options": {
             "jestConfig": "apps/baby-babble/jest.config.js",
             "passWithNoTests": true
+          }
+        },
+        "deploy": {
+          "builder": "@angular/fire:deploy",
+          "options": {
+            "project": "baby-babble"
           }
         }
       }
