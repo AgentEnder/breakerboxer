@@ -57,6 +57,8 @@
     },
     "portfolio-data": { "tags": ["platform:agnostic", "scope:portfolio", "type:lib", "framework:angular"] },
     "baby-babble": { "tags": [] },
-    "baby-babble-e2e": { "tags": [], "implicitDependencies": ["baby-babble"] }
+    "baby-babble-e2e": { "tags": [], "implicitDependencies": ["baby-babble"] },
+    "web-glob101": { "tags": [] },
+    "web-glob101-e2e": { "tags": [], "implicitDependencies": ["web-glob101"] }
   }
 }

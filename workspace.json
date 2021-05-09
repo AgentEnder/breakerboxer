@@ -1049,6 +1049,114 @@
           }
         }
       }
+    },
+    "web-glob101": {
+      "projectType": "application",
+      "root": "apps/web-glob101",
+      "sourceRoot": "apps/web-glob101/src",
+      "prefix": "tbs",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:browser",
+          "options": {
+            "outputPath": "dist/apps/web-glob101",
+            "index": "apps/web-glob101/src/index.html",
+            "main": "apps/web-glob101/src/main.ts",
+            "polyfills": "apps/web-glob101/src/polyfills.ts",
+            "tsConfig": "apps/web-glob101/tsconfig.app.json",
+            "aot": true,
+            "assets": ["apps/web-glob101/src/favicon.ico", "apps/web-glob101/src/assets"],
+            "styles": ["apps/web-glob101/src/styles.scss"],
+            "scripts": []
+          },
+          "configurations": {
+            "production": {
+              "fileReplacements": [
+                {
+                  "replace": "apps/web-glob101/src/environments/environment.ts",
+                  "with": "apps/web-glob101/src/environments/environment.prod.ts"
+                }
+              ],
+              "optimization": true,
+              "outputHashing": "all",
+              "sourceMap": false,
+              "namedChunks": false,
+              "extractLicenses": true,
+              "vendorChunk": false,
+              "buildOptimizer": true,
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "2mb",
+                  "maximumError": "5mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "6kb",
+                  "maximumError": "10kb"
+                }
+              ]
+            }
+          }
+        },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "options": {
+            "browserTarget": "web-glob101:build"
+          },
+          "configurations": {
+            "production": {
+              "browserTarget": "web-glob101:build:production"
+            }
+          }
+        },
+        "extract-i18n": {
+          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "options": {
+            "browserTarget": "web-glob101:build"
+          }
+        },
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": ["apps/web-glob101/src/**/*.ts", "apps/web-glob101/src/**/*.html"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "outputs": ["coverage/apps/web-glob101"],
+          "options": {
+            "jestConfig": "apps/web-glob101/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      }
+    },
+    "web-glob101-e2e": {
+      "root": "apps/web-glob101-e2e",
+      "sourceRoot": "apps/web-glob101-e2e/src",
+      "projectType": "application",
+      "architect": {
+        "e2e": {
+          "builder": "@nrwl/cypress:cypress",
+          "options": {
+            "cypressConfig": "apps/web-glob101-e2e/cypress.json",
+            "tsConfig": "apps/web-glob101-e2e/tsconfig.e2e.json",
+            "devServerTarget": "web-glob101:serve"
+          },
+          "configurations": {
+            "production": {
+              "devServerTarget": "web-glob101:serve:production"
+            }
+          }
+        },
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": ["apps/web-glob101-e2e/**/*.{js,ts}"]
+          }
+        }
+      }
     }
   },
   "cli": {
