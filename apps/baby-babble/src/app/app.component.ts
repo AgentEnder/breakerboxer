@@ -1,10 +1,11 @@
 import { OverlayContainer } from '@angular/cdk/overlay';
 import { Component } from '@angular/core';
+
 import { Store } from '@ngrx/store';
-import { UIState } from '@tbs/xplat/core';
+import { takeUntil } from 'rxjs/operators';
 
 import { BaseComponent } from '@tbs/shared';
-import { takeUntil } from 'rxjs/operators';
+import { UIState } from '@tbs/xplat/core';
 
 @Component({
   selector: 'app-root',

@@ -1,8 +1,12 @@
 import { Component, ElementRef, OnInit, Renderer2, ViewChild } from '@angular/core';
+
 import { MatButton } from '@angular/material/button';
 import { MatRipple, RippleRef } from '@angular/material/core';
+import { Store } from '@ngrx/store';
+
 import { fromEvent } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
+import { BabyBabbleNamesActions } from '../state';
 
 import { boyNames, girlNames } from './names';
 
@@ -24,7 +28,7 @@ export class VotePageComponent implements OnInit {
   private swipeRipple: RippleRef;
   private activeRipple: 'left' | 'right' | null;
 
-  constructor(private renderer: Renderer2) {}
+  constructor(private renderer: Renderer2, private store: Store) {}
 
   ngOnInit(): void {
     this.getNextName();
@@ -40,7 +44,6 @@ export class VotePageComponent implements OnInit {
   }
 
   toggle(gender: 'boy' | 'girl') {
-    console.log('gender', gender);
     if (gender === 'boy' && this.allowBoyNames) {
       this.allowBoyNames = false;
       if (!this.allowGirlNames) {
@@ -65,7 +68,7 @@ export class VotePageComponent implements OnInit {
     const startY = event.clientY;
     let currentX = null;
     let currentY = null;
-    fromEvent(this.card.nativeElement, 'mousemove')
+    fromEvent(document.body, 'mousemove')
       .pipe(takeUntil(fromEvent(document.body, 'mouseup')))
       .subscribe({
         next: (ev: MouseEvent) => {
@@ -74,7 +77,34 @@ export class VotePageComponent implements OnInit {
           this.renderSwipePreview(startX, startY, currentX, currentY);
         },
         complete: () => {
-          this.completeSwipe(startX, startY, currentX, currentY);
+          if (currentX && currentY) {
+            this.completeSwipe(startX, startY, currentX, currentY);
+          }
+        },
+      });
+  }
+
+  swipeStart(event: TouchEvent) {
+    if (event.touches.length !== 1) {
+      return;
+    }
+
+    const startX = event.touches[0].clientX;
+    const startY = event.touches[0].clientY;
+    let currentX = null;
+    let currentY = null;
+    fromEvent(document.body, 'touchmove')
+      .pipe(takeUntil(fromEvent(document.body, 'touchend')))
+      .subscribe({
+        next: (ev: TouchEvent) => {
+          currentX = ev.touches[0].clientX;
+          currentY = ev.touches[0].clientY;
+          this.renderSwipePreview(startX, startY, currentX, currentY);
+        },
+        complete: () => {
+          if (currentX && currentY) {
+            this.completeSwipe(startX, startY, currentX, currentY);
+          }
         },
       });
   }
@@ -117,10 +147,12 @@ export class VotePageComponent implements OnInit {
   }
 
   like() {
+    this.store.dispatch(BabyBabbleNamesActions.likeName({ name: this.displayName }));
     this.getNextName();
   }
 
   dislike() {
+    this.store.dispatch(BabyBabbleNamesActions.dislikeName({ name: this.displayName }));
     this.getNextName();
   }
 }

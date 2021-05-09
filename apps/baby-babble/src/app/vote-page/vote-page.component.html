@@ -1,5 +1,5 @@
 <div class="page-container">
-    <mat-card class="mat-elevation-z8 name-card" #card (mousedown)="dragStart($event)">
+    <mat-card class="mat-elevation-z8 name-card" #card (mousedown)="dragStart($event)" (touchstart)="swipeStart($event)">
         <div class="name">
             {{displayName}}
         </div>

@@ -3,9 +3,10 @@
 // The list of file replacements can be found in `angular.json`.
 
 // eslint-disable-next-line @nrwl/nx/enforce-module-boundaries
-import { IEnvironment } from 'libs/xplat/core/src/lib/environments/environment.interface';
-// eslint-disable-next-line @nrwl/nx/enforce-module-boundaries
 import { environmentDev } from 'libs/xplat/core/src/lib/environments/base/environment.dev';
+// eslint-disable-next-line @nrwl/nx/enforce-module-boundaries
+import { IEnvironment } from 'libs/xplat/core/src/lib/environments/environment.interface';
+
 import { deepMerge } from '@tbs/utils';
 
 export const overrides: Partial<IEnvironment> = {
