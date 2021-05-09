@@ -22,7 +22,8 @@
       "@tbs/xplat/nativescript/features": ["libs/xplat/nativescript/features/src/index.ts"],
       "@tbs/xplat/base/breakerboxer-data": ["libs/xplat/base/breakerboxer-data/src/index.ts"],
       "@tbs/firebase": ["libs/firebase/src/index.ts"],
-      "@tbs/portfolio-data": ["libs/portfolio-data/src/index.ts"]
+      "@tbs/portfolio-data": ["libs/portfolio-data/src/index.ts"],
+      "@tbs/glob101-util": ["libs/glob101-util/src/index.ts"]
     }
   }
 }

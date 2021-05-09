@@ -1163,6 +1163,27 @@
           }
         }
       }
+    },
+    "glob101-util": {
+      "root": "libs/glob101-util",
+      "sourceRoot": "libs/glob101-util/src",
+      "projectType": "library",
+      "architect": {
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": ["libs/glob101-util/**/*.ts"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/glob101-util"],
+          "options": {
+            "jestConfig": "libs/glob101-util/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      }
     }
   },
   "cli": {

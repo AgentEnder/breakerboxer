@@ -59,6 +59,7 @@
     "baby-babble": { "tags": [] },
     "baby-babble-e2e": { "tags": [], "implicitDependencies": ["baby-babble"] },
     "web-glob101": { "tags": [] },
-    "web-glob101-e2e": { "tags": [], "implicitDependencies": ["web-glob101"] }
+    "web-glob101-e2e": { "tags": [], "implicitDependencies": ["web-glob101"] },
+    "glob101-util": { "tags": [] }
   }
 }

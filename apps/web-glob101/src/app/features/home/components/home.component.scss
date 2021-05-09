@@ -1,0 +1,52 @@
+.matches {
+  color: var(--primary);
+  font-weight: bold;
+  position: relative;
+  width: fit-content;
+
+  &::after {
+    font-family: 'Font Awesome 5 Free';
+    content: '\f058';
+    position: absolute;
+    right: -1.25em;
+  }
+}
+
+fieldset {
+  border: 1px solid rgba(0, 0, 0, 0.12);
+  padding: 0.25rem 1rem 1rem 1rem;
+  border-radius: 0.25rem;
+  color: gray;
+  transition: color 200ms ease-in-out, border-color 100ms ease-in-out;
+
+  legend {
+    width: auto;
+    padding: 0.25rem;
+    margin-bottom: -0.25rem;
+    font-size: small;
+  }
+
+  &:focus-within {
+    color: var(--primary);
+    border-color: var(--primary);
+    border-width: 2px;
+  }
+
+  &:hover:not(:focus-within) {
+    border-color: black;
+    border-width: 2px;
+  }
+
+  [contenteditable] {
+    outline: 0px solid transparent;
+    color: var(--black);
+  }
+}
+
+::ng-deep .dark-theme fieldset {
+  border-color: rgba(255, 255, 255, 0.3);
+
+  &:hover:not(:focus-within) {
+    border-color: white;
+  }
+}

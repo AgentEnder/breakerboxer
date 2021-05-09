@@ -38,6 +38,8 @@ $dark-background-color: #303030;
   --accent-dark: #{$accent-dark};
 
   --gray: #{$gray};
+  --black: black;
+  --white: white;
 
   --text-color: #{$text-color};
 
@@ -57,6 +59,8 @@ $dark-background-color: #303030;
   --accent-dark: #{$dark-accent-dark};
 
   --gray: #{$dark-gray};
+  --black: white;
+  --white: black;
 
   --text-color: #{$dark-text-color};
 

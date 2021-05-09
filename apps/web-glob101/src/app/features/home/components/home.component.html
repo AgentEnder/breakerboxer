@@ -1,23 +1,20 @@
 <div class="m-5 d-flex flex-column align-items-center">
   <mat-form-field class="w-100" [appearance]="'outline'">
     <mat-label>Glob Pattern</mat-label>
-    <input matInput placeholder="**/*.spec.ts" [value]="pattern" (keyup)="updatePattern($event)">
+    <input matInput placeholder="**/*.spec.ts" [formControl]="patternFormControl" />
   </mat-form-field>
   <div class="d-flex w-100" style="gap: 1.75rem">
-    <mat-form-field [appearance]="'outline'" class="flex-grow-1">
-      <mat-label>Test Strings</mat-label>
-      <textarea matInput placeholder="**/*.spec.ts"></textarea>
-    </mat-form-field>
-    <mat-form-field [appearance]="'outline'">
-      <mat-label>Test Strings</mat-label>
-      <textarea matInput placeholder="**/*.spec.ts"></textarea>
-    </mat-form-field>
-  </div>
-</div>
-<div class="d-flex">
-  <div contenteditable #filesField>
-    <div>files/test/x.spec.ts</div>
-    <div>files/test/x.ts</div>
-    <div>files/test/x.docs.md</div>
+    <fieldset class="flex-grow-1"><legend>Test Strings</legend>
+      <div contenteditable #filesField>
+        <div>files/test/x.spec.ts</div>
+        <div>files/test/x.ts</div>
+        <div>files/test/x.docs.md</div>
+      </div>
+    </fieldset>
+    <fieldset><legend>Test Strings</legend>
+      <pre><code>
+        {{parts| json}}
+      </code></pre>
+    </fieldset>
   </div>
 </div>

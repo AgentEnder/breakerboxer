@@ -29,5 +29,6 @@ module.exports = {
     '<rootDir>/libs/portfolio-data',
     '<rootDir>/apps/baby-babble',
     '<rootDir>/apps/web-glob101',
+    '<rootDir>/libs/glob101-util',
   ],
 };

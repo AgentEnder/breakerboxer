@@ -1,4 +1,5 @@
 import { NgModule } from '@angular/core';
+import { ReactiveFormsModule } from '@angular/forms';
 import { MatIconModule } from '@angular/material/icon';
 import { RouterModule, Routes } from '@angular/router';
 
@@ -13,7 +14,7 @@ export const routes: Routes = [
 ];
 
 @NgModule({
-  imports: [SharedModule, RouterModule.forChild(routes), MatIconModule],
+  imports: [SharedModule, RouterModule.forChild(routes), MatIconModule, ReactiveFormsModule],
   declarations: [...HOME_COMPONENTS],
   exports: [...HOME_COMPONENTS],
 })
