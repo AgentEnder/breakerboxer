@@ -1,9 +1,11 @@
 import { NgModule } from '@angular/core';
 
-// xplat
 import { UIModule } from '@tbs/xplat/web/features';
 
-const MODULES = [UIModule];
+import { MatInputModule } from '@angular/material/input';
+import { MatFormFieldModule } from '@angular/material/form-field';
+
+const MODULES = [UIModule, MatInputModule, MatFormFieldModule];
 
 @NgModule({
   imports: [...MODULES],

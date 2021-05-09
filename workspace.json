@@ -1110,6 +1110,12 @@
             }
           }
         },
+        "deploy": {
+          "builder": "@angular/fire:deploy",
+          "options": {
+            "project": "web-glob101"
+          }
+        },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {

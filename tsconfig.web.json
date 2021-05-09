@@ -1,22 +1,8 @@
 {
-  "compileOnSave": false,
-  "angularCompilerOptions": {
-    "strictTemplates": true
-  },
+  "extends": "./tsconfig.base.json",
   "compilerOptions": {
-    "baseUrl": ".",
-    "outDir": "./dist/out-tsc",
-    "sourceMap": true,
-    "declaration": false,
-    "downlevelIteration": true,
-    "experimentalDecorators": true,
-    "moduleResolution": "node",
-    "importHelpers": true,
-    "target": "es2015",
-    "module": "es2020",
-    "lib": ["es2018", "dom"],
-    "types": ["resize-observer-browser"],
     "paths": {
+      "path": ["shims/path.ts"],
       "@tbs/utils": ["libs/utils/src/index.ts"],
       "@tbs/layout": ["libs/xplat/web/layout/src/index.ts"],
       "@tbs/web/bb-workspace": ["libs/xplat/web/bb-workspace/src/index.ts"],
@@ -37,7 +23,6 @@
       "@tbs/xplat/base/breakerboxer-data": ["libs/xplat/base/breakerboxer-data/src/index.ts"],
       "@tbs/firebase": ["libs/firebase/src/index.ts"],
       "@tbs/portfolio-data": ["libs/portfolio-data/src/index.ts"]
-    },
-    "rootDir": "."
+    }
   }
 }

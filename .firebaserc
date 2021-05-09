@@ -20,6 +20,13 @@
           "babybabble-6ab62"
         ]
       }
+    },
+    "glob101-9383c": {
+      "hosting": {
+        "web-glob101": [
+          "glob101-9383c"
+        ]
+      }
     }
   }
 }
