@@ -6,7 +6,7 @@
         <input matInput placeholder="**/*.spec.ts" [formControl]="patternFormControl" />
       </mat-form-field>
       <div class="d-flex w-100 flex-wrap" style="gap: 1.75rem">
-        <fieldset class="flex-grow-1">
+        <fieldset class="test-strings">
           <legend>Test Strings</legend>
           <div contenteditable #filesField>
             <div>files/test/x.spec.ts</div>
@@ -15,7 +15,7 @@
             <div>files/test/x.docs.md</div>
           </div>
         </fieldset>
-        <fieldset>
+        <fieldset class="explanation">
           <legend>Explanation</legend>
           <ng-container *ngFor="let part of parts">
             <ng-container *ngTemplateOutlet="globPartDisplay; context: { $implicit: part }"></ng-container>
