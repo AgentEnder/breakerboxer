@@ -7,18 +7,21 @@
   <ng-container *ngFor="let duty of job.duties">
     <mat-card-header>
       <mat-card-subtitle class="d-flex" *ngFor="let title of duty.titles"
-        ><div>{{ title.title }}</div> <div class="ml-auto">{{title.start| date}} - {{title.end ? (title.end|date) : 'Present'}}</div></mat-card-subtitle
+        ><div>{{ title.title }}</div>
+        <div class="ml-auto">
+          {{ title.start | date }} - {{ title.end ? (title.end | date) : 'Present' }}
+        </div></mat-card-subtitle
       >
     </mat-card-header>
     <mat-card-content>
       <ul>
-          <li *ngFor="let bullet of duty.bullets">
-              <h6>{{bullet.title}}</h6>
-              <div *ngIf="bullet.content" [innerHTML]="(bullet.content| marked)"></div>
-          </li>
+        <li *ngFor="let bullet of duty.bullets">
+          <h6>{{ bullet.title }}</h6>
+          <div *ngIf="bullet.content" [innerHTML]="bullet.content | marked"></div>
+        </li>
       </ul>
       <div *ngFor="let document of duty.documents">
-          <a [routerLink]="['/documents']" [queryParams]="{href: document.href}">{{document.title}}</a>
+        <a [routerLink]="['/documents']" [queryParams]="{ href: document.href }">{{ document.title }}</a>
       </div>
     </mat-card-content>
   </ng-container>

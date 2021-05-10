@@ -9,7 +9,6 @@ import { takeUntil } from 'rxjs/operators';
 import { UIState } from '@tbs/xplat/core';
 import { BaseComponent } from '@tbs/shared';
 
-
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',

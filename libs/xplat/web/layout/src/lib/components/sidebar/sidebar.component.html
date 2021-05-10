@@ -1,5 +1,16 @@
-<mat-sidenav-container style="position: absolute; bottom: 0; left: 0; right: 0" [style.top]="topGap + 'px'" autosize>
-  <mat-sidenav #sidenav [mode]="mode" [opened]="(show$| async) || !mobile" [fixedInViewport]="true" [fixedTopGap]="topGap" (closedStart)="toggleSidenav(true)">
+<mat-sidenav-container
+  style="position: absolute; bottom: 0; left: 0; right: 0"
+  [style.top]="topGap + 'px'"
+  autosize
+>
+  <mat-sidenav
+    #sidenav
+    [mode]="mode"
+    [opened]="(show$ | async) || !mobile"
+    [fixedInViewport]="true"
+    [fixedTopGap]="topGap"
+    (closedStart)="toggleSidenav(true)"
+  >
     <mat-nav-list *ngFor="let route of routes">
       <ng-container *ngIf="route.children && route.children.length; else singleItemTemplate">
         <mat-expansion-panel

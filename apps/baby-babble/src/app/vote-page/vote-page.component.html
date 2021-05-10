@@ -1,24 +1,29 @@
 <div class="page-container">
-    <mat-card class="mat-elevation-z8 name-card" #card (mousedown)="dragStart($event)" (touchstart)="swipeStart($event)">
-        <div class="name">
-            {{displayName}}
-        </div>
-        <div class="gender text-center">
-            <mat-icon>{{isBoyName ? 'male' : 'female'}}</mat-icon>
-        </div>
-    </mat-card>
-    <div class="d-flex m-4" style="gap: 2em">
-        <button mat-raised-button #dislikeBtn (click)="getNextName()">Dislike</button>
-        <button mat-icon-button [mat-menu-trigger-for]="settingsMenu"><mat-icon>settings</mat-icon></button>
-        <button mat-raised-button #likeBtn color="accent" (click)="getNextName()">Like</button>
+  <mat-card
+    class="mat-elevation-z8 name-card"
+    #card
+    (mousedown)="dragStart($event)"
+    (touchstart)="swipeStart($event)"
+  >
+    <div class="name">
+      {{ displayName }}
     </div>
+    <div class="gender text-center">
+      <mat-icon>{{ isBoyName ? 'male' : 'female' }}</mat-icon>
+    </div>
+  </mat-card>
+  <div class="d-flex m-4" style="gap: 2em">
+    <button mat-raised-button #dislikeBtn (click)="getNextName()">Dislike</button>
+    <button mat-icon-button [mat-menu-trigger-for]="settingsMenu"><mat-icon>settings</mat-icon></button>
+    <button mat-raised-button #likeBtn color="accent" (click)="getNextName()">Like</button>
+  </div>
 </div>
 
 <mat-menu #settingsMenu="matMenu">
-    <div mat-menu-item role="menuitemcheckbox" (click)="$event.stopPropagation()">
-        <mat-slide-toggle [checked]="allowBoyNames" (toggleChange)="toggle('boy')">Boy Names</mat-slide-toggle>
-    </div>
-    <div mat-menu-item role="menuitemcheckbox" (click)="$event.stopPropagation()">
-        <mat-slide-toggle [checked]="allowGirlNames" (toggleChange)="toggle('girl')">Girl Names</mat-slide-toggle>
-    </div>
+  <div mat-menu-item role="menuitemcheckbox" (click)="$event.stopPropagation()">
+    <mat-slide-toggle [checked]="allowBoyNames" (toggleChange)="toggle('boy')">Boy Names</mat-slide-toggle>
+  </div>
+  <div mat-menu-item role="menuitemcheckbox" (click)="$event.stopPropagation()">
+    <mat-slide-toggle [checked]="allowGirlNames" (toggleChange)="toggle('girl')">Girl Names</mat-slide-toggle>
+  </div>
 </mat-menu>

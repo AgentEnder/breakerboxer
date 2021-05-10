@@ -6,8 +6,7 @@ import { IEnvironment } from 'libs/xplat/core/src/lib/environments/environment.i
 import { environmentDev } from 'libs/xplat/core/src/lib/environments/base/environment.dev';
 import { deepMerge } from '@tbs/utils';
 
-export const overrides: Partial<IEnvironment> = {
-};
+export const overrides: Partial<IEnvironment> = {};
 
 export const environment = deepMerge(environmentDev, overrides);
 

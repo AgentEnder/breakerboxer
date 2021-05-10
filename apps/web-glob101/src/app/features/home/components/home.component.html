@@ -6,7 +6,8 @@
         <input matInput placeholder="**/*.spec.ts" [formControl]="patternFormControl" />
       </mat-form-field>
       <div class="d-flex w-100 flex-wrap" style="gap: 1.75rem">
-        <fieldset class="flex-grow-1"><legend>Test Strings</legend>
+        <fieldset class="flex-grow-1">
+          <legend>Test Strings</legend>
           <div contenteditable #filesField>
             <div>files/test/x.spec.ts</div>
             <div>files/test/x.ts</div>
@@ -14,21 +15,22 @@
             <div>files/test/x.docs.md</div>
           </div>
         </fieldset>
-        <fieldset><legend>Explanation</legend>
+        <fieldset>
+          <legend>Explanation</legend>
           <ng-container *ngFor="let part of parts">
-            <ng-container *ngTemplateOutlet="globPartDisplay; context: {$implicit: part}"></ng-container>
+            <ng-container *ngTemplateOutlet="globPartDisplay; context: { $implicit: part }"></ng-container>
           </ng-container>
         </fieldset>
       </div>
-    </div>  
+    </div>
   </mat-card>
 </div>
 
 <ng-template let-globPart #globPartDisplay>
   <div>
-    {{globPart.description}} <span class="token" *ngIf="globPart.token">{{globPart.token}}</span>
+    {{ globPart.description }} <span class="token" *ngIf="globPart.token">{{ globPart.token }}</span>
     <div class="innerParts" *ngFor="let part of globPart.innerParts">
-      <ng-container *ngTemplateOutlet="globPartDisplay; context: {$implicit: part}"></ng-container>
+      <ng-container *ngTemplateOutlet="globPartDisplay; context: { $implicit: part }"></ng-container>
     </div>
   </div>
 </ng-template>
