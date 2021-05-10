@@ -22,18 +22,22 @@ $theme: mat-light-theme(
 @include angular-material-theme($theme);
 
 // Define an alternate dark theme.
-// $dark-primary: mat-palette($mat-blue-grey, 500, 300, 700);
+$dark-primary: mat-palette($mat-indigo, 300, 200, 500);
 $dark-accent: mat-palette($mat-amber, A200, A100, A400);
 $dark-warn: mat-palette($mat-deep-orange);
 $dark-theme: mat-dark-theme(
   (
     color: (
-      primary: $primary,
+      primary: $dark-primary,
       accent: $dark-accent,
       warn: $dark-warn,
     ),
   )
 );
+
+* {
+  caret-color: white;
+}
 
 // Include the dark color styles inside of a block with a CSS class. You can make this
 // CSS class whatever you want. In this example, any component inside of an element with
@@ -43,5 +47,9 @@ $dark-theme: mat-dark-theme(
 
   img.invert {
     filter: invert(1);
+  }
+
+  .mat-toolbar.mat-primary {
+    background: var(--primary-dark);
   }
 }

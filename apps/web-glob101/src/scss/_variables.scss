@@ -13,16 +13,16 @@ $accent-transparent: rgba($accent, 0.2);
 $text-color: #232323;
 $dark-text-color: #eaeaea;
 
-// $dark-primary: #607d8b;
-// $dark-primary-light: #90a4ae;
-// $dark-primary-dark: #455a64;
+$dark-primary: #7986cb;
+$dark-primary-light: #9fa8da;
+$dark-primary-dark: #3f51b5;
 $dark-accent: #ffd740;
 $dark-accent-light: #ffe57f;
 $dark-accent-dark: #ffc400;
 
 $gray: #9a9a9a;
 
-// $dark-primary-transparent: rgba($dark-primary, 0.2);
+$dark-primary-transparent: rgba($dark-primary, 0.2);
 $dark-accent-transparent: rgba($dark-accent, 0.2);
 
 $background-color: #e3e3ef;
@@ -51,9 +51,9 @@ $dark-background-color: #30303f;
 }
 
 .dark-theme {
-  // --primary: #{$dark-primary};
-  // --primary-light: #{$dark-primary-light};
-  // --primary-dark: #{$dark-primary-dark};
+  --primary: #{$dark-primary};
+  --primary-light: #{$dark-primary-light};
+  --primary-dark: #{$dark-primary-dark};
   --accent: #{$dark-accent};
   --accent-light: #{$dark-accent-light};
   --accent-dark: #{$dark-accent-dark};

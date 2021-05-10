@@ -1,13 +1,14 @@
 // shared across all platforms and apps
-@import '~@tbs/xplat-scss/index';
+@use '~@tbs/xplat-scss/index';
 
 /**
  * The following are web specific (used with any web app targets)
  */
 
 // web specific variables
-@import 'variables';
+@use 'variables';
 
 // web styles (create/import other scss files or define as needed)
-@import 'spacing';
-@import 'tags';
+@use 'spacing';
+@use 'tags';
+@use 'angular_material';

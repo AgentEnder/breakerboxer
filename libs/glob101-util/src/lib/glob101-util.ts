@@ -53,7 +53,6 @@ export function getGlobTokens(pattern: string): string[] {
   while (!(queue.length === 0)) {
     let next = queue.shift();
     let token: string;
-    position += 1;
 
     multiCharacterTokens
       .filter((x) => x.startsWith(next))
@@ -92,6 +91,7 @@ export function getGlobTokens(pattern: string): string[] {
         throw `Unexpected illegal token at position ${position} in pattern`;
       }
       tokens.push(token);
+      position += token.length;
       continue;
     }
   }
@@ -149,6 +149,9 @@ function internalParseTokens(
       tokens.splice(0, 1);
       consumption += 1;
     }
+  }
+  if (groupStartToken) {
+    throw `Expected closing tag ${GroupCloseMap[groupStartToken]}`;
   }
   return {
     parts,
