@@ -2,9 +2,9 @@ import { AfterViewInit, Component, ElementRef, Renderer2, ViewChild } from '@ang
 import { FormControl } from '@angular/forms';
 
 import { BaseComponent } from '@tbs/xplat/core';
-import { isMatch } from 'micromatch';
-import { parseGlobPattern } from '@tbs/glob101-util';
-import { bufferTime, debounceTime, takeUntil } from 'rxjs/operators';
+import { matcher } from 'micromatch';
+import { GlobPart, parseGlobPattern } from '@tbs/glob101-util';
+import { debounceTime, takeUntil } from 'rxjs/operators';
 
 @Component({
   selector: 'tbs-home',
@@ -18,7 +18,7 @@ export class HomeComponent extends BaseComponent implements AfterViewInit {
   @ViewChild('filesField') filesField: ElementRef<HTMLElement>;
 
   patternFormControl = new FormControl();
-  parts: import('c:/Users/craig/source/repos/tbs-monorepo/libs/glob101-util/src/lib/models/glob-part.model').GlobPart[];
+  parts: GlobPart[];
 
   constructor(private renderer: Renderer2) {
     super();
@@ -34,21 +34,24 @@ export class HomeComponent extends BaseComponent implements AfterViewInit {
 
   updatePattern(pattern: string) {
     this.pattern = pattern;
-    this.parts = parseGlobPattern(this.pattern);
+    try {
+      this.parts = parseGlobPattern(this.pattern);
+    } catch (e) {
+      console.log(e);
+    }
     this.updateIndicators();
   }
 
   updateIndicators() {
     const childCount = this.filesField.nativeElement.children.length;
+    const m = this.pattern.length ? matcher(this.pattern) : () => false;
     for (let idx = 0; idx < childCount; idx++) {
-      if (this.pattern?.length) {
-        const element = this.filesField.nativeElement.children.item(idx);
-        const matches = isMatch(element.innerHTML, this.pattern);
-        if (matches) {
-          this.renderer.addClass(element, 'matches');
-        } else {
-          this.renderer.removeClass(element, 'matches');
-        }
+      const element = this.filesField.nativeElement.children.item(idx);
+      const matches = m(element.innerHTML);
+      if (matches) {
+        this.renderer.addClass(element, 'matches');
+      } else {
+        this.renderer.removeClass(element, 'matches');
       }
     }
   }

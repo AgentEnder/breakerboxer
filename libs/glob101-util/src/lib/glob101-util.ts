@@ -1,12 +1,49 @@
 import { GlobPart } from './models/glob-part.model';
 
-// const singleCharacterTokens = ['*', '?', '!', '{', '}', '[', ']', ')', '|']; // not sure if needed currently, as most things could be part of a pattern.
-const multiCharacterTokens = ['***', '**', '*(', '+(', '@(', '!(', '?(', '[!', '[^'];
+const singleCharacterTokens = ['*', '?', '!', '{', '}', '[', ']', ')', '|', '/', ',']; // not sure if needed currently, as most things could be part of a pattern.
+const multiCharacterTokens = ['***', '**', '*(', '+(', '@(', '!(', '?(', '[!', '[^', '..'];
 const illegalTokens = ['***', '('];
 
-export function glob101Util(): string {
-  return 'glob101-util';
-}
+export const TokenDescriptorMap = {
+  '*': 'Match any string',
+  '?': 'Match a single character',
+  '{': 'Match any part of the set',
+  '}': 'Close set',
+  '[': 'Begin Range',
+  ']': 'End Range',
+  ')': 'End Group',
+  '|': 'Group separator',
+  '/': 'Directory separator',
+  '**': 'Globstar (recursive wildcard)',
+  '*(': 'Match zero or more items from the group',
+  '+(': 'Match one or more items from the group',
+  '@(': 'Match exactly one item from the group',
+  '!(': 'Match none of the items in the group',
+  '?(': 'Match zero or one items in the group',
+  '[!': 'Match no characters in the range',
+  '[^': 'Match no characters in the range',
+};
+
+export const GroupCloseMap = {
+  '*(': ')',
+  '+(': ')',
+  '@(': ')',
+  '!(': ')',
+  '?(': ')',
+  '[!': ']',
+  '[^': ']',
+  '[': ']',
+  '{': '}',
+};
+
+export const GroupSeparatorMap = {
+  '*(': '|',
+  '+(': '|',
+  '@(': '|',
+  '!(': '|',
+  '?(': '|',
+  '{': ',',
+};
 
 export function getGlobTokens(pattern: string): string[] {
   let position = 0;
@@ -14,7 +51,7 @@ export function getGlobTokens(pattern: string): string[] {
   const tokens = [];
 
   while (!(queue.length === 0)) {
-    const next = queue.shift();
+    let next = queue.shift();
     let token: string;
     position += 1;
 
@@ -28,13 +65,33 @@ export function getGlobTokens(pattern: string): string[] {
           queue.splice(0, matcher.length - 1);
         }
       });
-    token = token || next;
+
+    if (!token && singleCharacterTokens.includes(next)) {
+      token = next;
+    } else if (!token) {
+      token = next;
+      next = queue.shift();
+      while (next) {
+        const multiCharacterTokenIsNext =
+          multiCharacterTokens.filter(
+            (x) => x.startsWith(next) && [next, ...queue.slice(0, x.length - 1)].join('') === x
+          ).length > 0;
+        const singleCharacterTokenIsNext = singleCharacterTokens.includes(next);
+
+        if (multiCharacterTokenIsNext || singleCharacterTokenIsNext) {
+          queue.unshift(next);
+          break;
+        } else {
+          token += next;
+          next = queue.shift();
+        }
+      }
+    }
     if (token) {
       if (illegalTokens.some((x) => x === token)) {
         throw `Unexpected illegal token at position ${position} in pattern`;
       }
       tokens.push(token);
-      console.log({ queue });
       continue;
     }
   }
@@ -60,7 +117,8 @@ export function parseGlobTokens(tokens: string[]): GlobPart[] {
 }
 
 function internalParseTokens(
-  tokens: string[]
+  tokens: string[],
+  groupStartToken: string = undefined
 ): {
   parts: GlobPart[];
   tokensConsumed: number;
@@ -68,20 +126,23 @@ function internalParseTokens(
   const parts: GlobPart[] = [];
   let consumption = 0;
   while (tokens.length) {
-    if (tokens[0].includes('(')) {
+    if (tokens[0].includes('(') || tokens[0].includes('[') || tokens[0].includes('{')) {
       const match = matchGroup(tokens);
       parts.push(match);
       consumption += match.tokensConsumed;
       tokens.splice(0, match.tokensConsumed);
-    } else if (tokens[0] === ')') {
-      return {
-        parts,
-        tokensConsumed: consumption + 1,
-      };
+    } else if (Object.values(GroupCloseMap).includes(tokens[0])) {
+      if (GroupCloseMap[groupStartToken] === tokens[0]) {
+        return {
+          parts,
+          tokensConsumed: consumption + 1,
+        };
+      }
+      throw `Unexpected closing tag ${tokens[0]}`;
     } else {
       // TODO: Add parsing for ranges + lists, consolidate characters down to one token if not inside a range.
       parts.push({
-        description: '',
+        description: TokenDescriptorMap[tokens[0]],
         innerParts: [],
         token: tokens[0],
       });
@@ -96,31 +157,35 @@ function internalParseTokens(
 }
 
 function matchGroup(tokens: string[]): GlobPart & { tokensConsumed: number } {
-  let description: string;
-  switch (tokens[0]) {
-    case '@(':
-      description = 'Matches one pattern in group';
-      break;
-    case '!(':
-      description = 'Matches no pattern in group';
-      break;
-    case '?(':
-      description = 'Matches zero or one pattern in group';
-      break;
-    case '*(':
-      description = 'Matches zero or more patterns in group';
-      break;
-    case '+(':
-      description = 'Matches one or more patterns in group';
-      break;
-    default:
-      break;
-  }
-  const newTokens = internalParseTokens(tokens.slice(1));
+  const description = TokenDescriptorMap[tokens[0]];
+  const newTokens = internalParseTokens(tokens.slice(1), tokens[0]);
+  let partIdx = 0;
+  const parts: GlobPart[] = newTokens.parts.reduce(
+    (pList: GlobPart[], part: GlobPart) => {
+      if (part.token === GroupSeparatorMap[tokens[0]]) {
+        pList.push({
+          description: 'Group Segment',
+          innerParts: [],
+          token: '',
+        });
+        partIdx++;
+      } else {
+        pList[partIdx].innerParts.push(part);
+      }
+      return pList;
+    },
+    [
+      {
+        description: 'Group Segment',
+        innerParts: [],
+        token: '',
+      },
+    ]
+  );
   return {
     token: tokens[0],
     description,
-    innerParts: newTokens.parts,
+    innerParts: parts,
     tokensConsumed: newTokens.tokensConsumed + 1,
   };
 }
