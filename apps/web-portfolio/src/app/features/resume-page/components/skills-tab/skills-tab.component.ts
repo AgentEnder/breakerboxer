@@ -1,7 +1,6 @@
 import { AfterViewInit, Component, ElementRef, ViewChild } from '@angular/core';
 
 import * as d3 from 'd3';
-import { HierarchyNode } from 'd3';
 
 @Component({
   selector: 'app-skills-tab',
@@ -194,7 +193,7 @@ export class SkillsTabComponent implements AfterViewInit {
 }
 
 const chart = (radius, data: any) => {
-  const root = partition(radius, data) as HierarchyNode<any>;
+  const root = partition(radius, data) as d3.HierarchyNode<any>;
   const color = d3.scaleOrdinal(d3.quantize(d3.interpolateRainbow, data.children.length + 1));
 
   const svg = d3.create('svg');

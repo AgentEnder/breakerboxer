@@ -4,7 +4,6 @@ import { from, Subject } from 'rxjs';
 
 import { IBreaker, IDrawable, IElectricalComponent, IRoom } from '@tbs/xplat/base/breakerboxer-data';
 import { BaseModel } from '@tbs/xplat/core';
-
 import { assertType } from '@tbs/xplat/utils';
 
 @Injectable({

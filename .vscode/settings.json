@@ -14,7 +14,7 @@
   ],
   "importSorter.sortConfiguration.customOrderingRules.rules": [
     {
-      "regex": "^[@]angular(!/material)",
+      "regex": "^[@]angular(?!/material|/fire)",
       "orderLevel": 10
     },
     {
@@ -22,26 +22,30 @@
       "orderLevel": 15
     },
     {
-      "regex": "^[@]angular",
-      "orderLevel": 10
+      "regex": "^[@]angular(/fire)",
+      "orderLevel": 16
+    },
+    {
+      "regex": "^[@]ngrx",
+      "orderLevel": 21
     },
     {
       "regex": "^[@](!breakerboxer)",
-      "orderLevel": 20
+      "orderLevel": 30
     },
     {
       "regex": "^[@](breakerboxer|tbs)",
-      "orderLevel": 30
+      "orderLevel": 40
     },
     {
       "type": "importMember",
       "regex": "^$",
-      "orderLevel": 40,
+      "orderLevel": 50,
       "disableSort": true
     },
     {
       "regex": "^[.]",
-      "orderLevel": 50
+      "orderLevel": 60
     }
   ]
 }

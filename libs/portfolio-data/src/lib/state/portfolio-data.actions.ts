@@ -1,4 +1,5 @@
 import { createAction, props } from '@ngrx/store';
+
 import { ProjectMetadata } from '../models';
 
 export namespace PortfolioDataActions {

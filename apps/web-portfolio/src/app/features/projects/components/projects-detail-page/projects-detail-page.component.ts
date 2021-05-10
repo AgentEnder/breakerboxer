@@ -1,7 +1,11 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+
+import { Project } from 'libs/portfolio-data/src/lib/models/project.interface';
+import { Observable } from 'rxjs';
+import { map, switchMap, takeUntil } from 'rxjs/operators';
 
 import { Store } from '@ngrx/store';
-import { Observable } from 'rxjs';
 
 import { MenuItem } from '@tbs/layout';
 import {
@@ -10,11 +14,9 @@ import {
   PortfolioProjectsService,
   ProjectMetadata,
 } from '@tbs/portfolio-data';
-import { map, switchMap, takeUntil } from 'rxjs/operators';
-import { ActivatedRoute } from '@angular/router';
-import { PROJECT_ROUTE_PARAM } from '../../constants';
-import { Project } from 'libs/portfolio-data/src/lib/models/project.interface';
 import { BaseComponent } from '@tbs/xplat/core';
+
+import { PROJECT_ROUTE_PARAM } from '../../constants';
 
 @Component({
   selector: 'app-projects-page',

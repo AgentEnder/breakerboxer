@@ -3,11 +3,12 @@ import { Component } from '@angular/core';
 
 import { MatDialog } from '@angular/material/dialog';
 
-import { Store } from '@ngrx/store';
 import { takeUntil } from 'rxjs/operators';
 
-import { UIState } from '@tbs/xplat/core';
+import { Store } from '@ngrx/store';
+
 import { BaseComponent } from '@tbs/shared';
+import { UIState } from '@tbs/xplat/core';
 
 @Component({
   selector: 'app-root',

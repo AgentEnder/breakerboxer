@@ -1,4 +1,5 @@
-import { type, Point } from '@tbs/xplat/core';
+import { Point, type } from '@tbs/xplat/core';
+
 import { DrawingMode } from '../drawing-modes';
 import { Drawable } from './drawable';
 

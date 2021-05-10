@@ -1,12 +1,12 @@
 // angular
-import { Injectable, Inject, NgZone } from '@angular/core';
+import { Inject, Injectable, NgZone } from '@angular/core';
 
 // nativescript
-import { Device, isIOS, Application, Enums } from '@nativescript/core';
-
+import { Application, Device, Enums, isIOS } from '@nativescript/core';
 // libs
 import { TranslateService } from '@ngx-translate/core';
 import { Subject } from 'rxjs';
+
 import { LogService, PlatformLanguageToken } from '@tbs/xplat/core';
 
 /**

@@ -1,4 +1,5 @@
 import { BaseModel, type } from '@tbs/xplat/core';
+
 import { IDrawable } from '../drawables/idrawable';
 import { Breaker } from './breaker';
 

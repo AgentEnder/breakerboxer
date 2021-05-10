@@ -1,4 +1,5 @@
 import { InjectionToken, Type } from '@angular/core';
+
 import { IXPlatWindow } from '../models';
 
 /**

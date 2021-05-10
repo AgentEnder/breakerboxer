@@ -1,4 +1,5 @@
 import { createReducer, on } from '@ngrx/store';
+
 import { PortfolioDataActions } from './portfolio-data.actions';
 import { PortfolioDataState } from './portfolio-data.state';
 

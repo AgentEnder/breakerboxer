@@ -1,9 +1,10 @@
 import { CommonModule } from '@angular/common';
 import { ModuleWithProviders, NgModule } from '@angular/core';
-import { AngularFireModule, FirebaseOptions, FIREBASE_OPTIONS } from '@angular/fire';
+
+import { AngularFireModule, FIREBASE_OPTIONS, FirebaseOptions } from '@angular/fire';
+import { AngularFireAnalyticsModule } from '@angular/fire/analytics';
 import { AngularFireAuthModule } from '@angular/fire/auth';
 import { AngularFirestoreModule } from '@angular/fire/firestore';
-import { AngularFireAnalyticsModule } from '@angular/fire/analytics';
 
 import { AUTH_SERVICE } from '@tbs/user';
 

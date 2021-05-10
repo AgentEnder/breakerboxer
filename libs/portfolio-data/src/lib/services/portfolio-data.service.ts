@@ -1,5 +1,7 @@
 import { Injectable } from '@angular/core';
+
 import { Observable, of } from 'rxjs';
+
 import { ProjectMetadata } from '../models';
 import { Project } from '../models/project.interface';
 

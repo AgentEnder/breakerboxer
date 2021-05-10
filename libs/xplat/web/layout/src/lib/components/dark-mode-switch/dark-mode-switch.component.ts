@@ -1,10 +1,11 @@
 import { Component, EventEmitter, Input, Output, ViewEncapsulation } from '@angular/core';
-import { Store } from '@ngrx/store';
-
-import { UIActions, UIState } from '@tbs/xplat/core';
-import { BaseComponent } from '@tbs/shared';
 
 import { distinctUntilChanged, takeUntil } from 'rxjs/operators';
+
+import { Store } from '@ngrx/store';
+
+import { BaseComponent } from '@tbs/shared';
+import { UIActions, UIState } from '@tbs/xplat/core';
 
 @Component({
   selector: 'tbs-darkmode-switch',

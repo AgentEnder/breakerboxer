@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 
-import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
+
+import { Store } from '@ngrx/store';
 
 import { MenuItem } from '@tbs/layout';
 import { PortfolioDataActions, PortfolioDataState, ProjectMetadata } from '@tbs/portfolio-data';

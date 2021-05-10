@@ -3,9 +3,10 @@ import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms'
 
 import { MatDialogRef } from '@angular/material/dialog';
 
+import { debounceTime, throttle } from 'rxjs/operators';
+
 import { GameDataService, RAWG } from '@tbs/games-data';
 import { Rating } from '@tbs/rating';
-import { debounceTime, throttle } from 'rxjs/operators';
 
 @Component({
   selector: 'emu-compat-rating-dialog',

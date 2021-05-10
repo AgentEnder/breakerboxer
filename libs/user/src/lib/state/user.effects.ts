@@ -1,9 +1,10 @@
 import { Inject, Injectable, Optional } from '@angular/core';
 
-import { Actions, createEffect, ofType, OnInitEffects } from '@ngrx/effects';
-import { Action } from '@ngrx/store';
 import { of } from 'rxjs';
 import { catchError, map, mergeMap, switchMap, tap } from 'rxjs/operators';
+
+import { Actions, createEffect, ofType, OnInitEffects } from '@ngrx/effects';
+import { Action } from '@ngrx/store';
 
 import { IAuthService } from '../models';
 import { AUTH_SERVICE } from '../tokens';

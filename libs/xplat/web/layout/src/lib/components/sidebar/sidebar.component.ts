@@ -4,9 +4,10 @@ import { ActivatedRoute, Router } from '@angular/router';
 
 import { MatDrawerMode } from '@angular/material/sidenav';
 
-import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
 import { take, takeUntil, tap } from 'rxjs/operators';
+
+import { Store } from '@ngrx/store';
 
 import { BaseComponent, UIActions, UIState } from '@tbs/xplat/core';
 

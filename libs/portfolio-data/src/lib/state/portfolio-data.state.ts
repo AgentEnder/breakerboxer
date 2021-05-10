@@ -1,4 +1,5 @@
 import { createFeatureSelector, createSelector } from '@ngrx/store';
+
 import { ProjectMetadata } from '../models';
 
 export namespace PortfolioDataState {

@@ -1,11 +1,12 @@
 import { NgModule } from '@angular/core';
-import { MatTabsModule } from '@angular/material/tabs';
 import { RouterModule, Routes } from '@angular/router';
-import { SharedModule } from '../shared/shared.module';
-import { ResumePageComponent } from './resume-page.component';
 
-import { CareerTabComponent, COMPONENTS, EducationTabComponent, SkillsTabComponent } from './components';
 import { MatDividerModule } from '@angular/material/divider';
+import { MatTabsModule } from '@angular/material/tabs';
+
+import { SharedModule } from '../shared/shared.module';
+import { CareerTabComponent, COMPONENTS, EducationTabComponent, SkillsTabComponent } from './components';
+import { ResumePageComponent } from './resume-page.component';
 
 const routes: Routes = [
   {

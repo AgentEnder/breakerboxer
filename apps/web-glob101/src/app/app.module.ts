@@ -1,20 +1,20 @@
+import { OverlayModule } from '@angular/cdk/overlay';
 import { NgModule } from '@angular/core';
+import { BrowserModule } from '@angular/platform-browser';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
+import { FirebaseModule } from '@tbs/firebase';
+import { LayoutModule } from '@tbs/layout';
 // libs
 import { TbsCoreModule } from '@tbs/xplat/web/core';
-import { LayoutModule } from '@tbs/layout';
-import { FirebaseModule } from '@tbs/firebase';
 
 import { environment } from '../environments/environment';
-
+import { AppComponent } from './app.component';
+import { AppRoutingModule } from './app.routing';
 // app
 import { CoreModule } from './core/core.module';
 import { SharedModule } from './features/shared/shared.module';
-import { AppRoutingModule } from './app.routing';
-import { AppComponent } from './app.component';
-import { BrowserModule } from '@angular/platform-browser';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { OverlayModule } from '@angular/cdk/overlay';
+
 @NgModule({
   imports: [
     BrowserModule,

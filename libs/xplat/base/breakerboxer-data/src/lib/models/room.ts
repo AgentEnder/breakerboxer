@@ -1,4 +1,5 @@
 import { BaseModel, type } from '@tbs/xplat/core';
+
 import { IElectricalComponent } from './electrical-components/electrical-component';
 
 export interface IRoom extends BaseModel {

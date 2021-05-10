@@ -1,9 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { DomSanitizer } from '@angular/platform-browser';
 import { ActivatedRoute, ParamMap } from '@angular/router';
-import { BaseComponent } from '@tbs/xplat/core';
+
 import { Observable } from 'rxjs';
 import { map, takeUntil } from 'rxjs/operators';
+
+import { BaseComponent } from '@tbs/xplat/core';
 
 @Component({
   selector: 'app-documents-page',

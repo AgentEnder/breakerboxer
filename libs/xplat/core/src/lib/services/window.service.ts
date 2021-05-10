@@ -1,8 +1,9 @@
 // angular
-import { Injectable, Inject, ViewContainerRef } from '@angular/core';
+import { Inject, Injectable, ViewContainerRef } from '@angular/core';
 
 // app
-import { isObject, isNativeScript } from '@tbs/xplat/utils';
+import { isNativeScript, isObject } from '@tbs/xplat/utils';
+
 import { XPlatWindow } from '../models';
 import { PlatformWindowToken } from './tokens';
 

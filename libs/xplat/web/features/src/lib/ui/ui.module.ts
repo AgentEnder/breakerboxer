@@ -1,13 +1,14 @@
-import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 
 // libs
 import { UISharedModule } from '@tbs/xplat/features';
+
 import { UI_COMPONENTS } from './components';
-import { PIPES } from './pipes';
 import { DIRECTIVES } from './directives';
+import { PIPES } from './pipes';
 
 const MODULES = [CommonModule, RouterModule, FormsModule, ReactiveFormsModule, UISharedModule];
 

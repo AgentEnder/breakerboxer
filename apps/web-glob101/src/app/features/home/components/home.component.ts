@@ -1,10 +1,11 @@
 import { AfterViewInit, Component, ElementRef, Renderer2, ViewChild } from '@angular/core';
 import { FormControl } from '@angular/forms';
 
-import { BaseComponent } from '@tbs/xplat/core';
 import { matcher } from 'micromatch';
-import { GlobPart, parseGlobPattern } from '@tbs/glob101-util';
 import { debounceTime, takeUntil } from 'rxjs/operators';
+
+import { GlobPart, parseGlobPattern } from '@tbs/glob101-util';
+import { BaseComponent } from '@tbs/xplat/core';
 
 @Component({
   selector: 'tbs-home',

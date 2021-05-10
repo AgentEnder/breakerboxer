@@ -1,7 +1,7 @@
 import { CareerTabComponent } from './career-tab/career-tab.component';
 import { EducationTabComponent } from './education-tab/education-tab.component';
-import { SkillsTabComponent } from './skills-tab/skills-tab.component';
 import { JobRowComponent } from './job-row/job-row.component';
+import { SkillsTabComponent } from './skills-tab/skills-tab.component';
 
 export const COMPONENTS = [CareerTabComponent, EducationTabComponent, SkillsTabComponent, JobRowComponent];
 

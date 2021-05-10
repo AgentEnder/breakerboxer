@@ -1,7 +1,6 @@
-import { Observable, Observer } from 'rxjs';
-
 // nativescript
-import { knownFolders, File, Folder, path } from '@nativescript/core';
+import { File, Folder, knownFolders, path } from '@nativescript/core';
+import { Observable, Observer } from 'rxjs';
 
 export class MobileTranslateLoader {
   constructor(private _path: string) {}

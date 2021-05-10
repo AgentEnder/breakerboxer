@@ -2,12 +2,13 @@ import { Component, ElementRef, OnInit, Renderer2, ViewChild } from '@angular/co
 
 import { MatButton } from '@angular/material/button';
 import { MatRipple, RippleRef } from '@angular/material/core';
-import { Store } from '@ngrx/store';
 
 import { fromEvent } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
-import { BabyBabbleNamesActions } from '../state';
 
+import { Store } from '@ngrx/store';
+
+import { BabyBabbleNamesActions } from '../state';
 import { boyNames, girlNames } from './names';
 
 @Component({

@@ -1,4 +1,5 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
+
 import { CanvasComponent } from '@tbs/web/bb-workspace';
 import { SnapSettings } from '@tbs/xplat/base/breakerboxer-data';
 

@@ -2,9 +2,10 @@ import { AfterViewInit, Component, ElementRef, Input, OnInit, ViewChild } from '
 
 import { MatDialog } from '@angular/material/dialog';
 
-import { Store } from '@ngrx/store';
 import { fromEvent, Subscription } from 'rxjs';
 import { distinctUntilChanged, filter, map, pairwise, takeUntil } from 'rxjs/operators';
+
+import { Store } from '@ngrx/store';
 
 import { BaseComponent } from '@tbs/shared';
 import {

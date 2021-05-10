@@ -1,7 +1,10 @@
 import { NestedTreeControl } from '@angular/cdk/tree';
 import { Component, OnChanges, OnInit } from '@angular/core';
+
 import { MatTreeNestedDataSource } from '@angular/material/tree';
+
 import { IElectricalComponent, IRoom } from '@tbs/xplat/base/breakerboxer-data';
+
 import { ProjectsService } from '../../core/services/projects.service';
 
 @Component({

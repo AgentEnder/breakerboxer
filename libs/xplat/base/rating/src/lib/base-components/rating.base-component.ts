@@ -1,5 +1,6 @@
 import { Directive, EventEmitter, Input, Output } from '@angular/core';
 import { ControlValueAccessor } from '@angular/forms';
+
 import { Rating } from '../models/rating.interface';
 
 @Directive()

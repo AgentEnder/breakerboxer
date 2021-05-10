@@ -1,13 +1,16 @@
 import { AfterViewInit, Component, EventEmitter, forwardRef, Input, Output } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
+
+import { distinctUntilChanged, takeUntil, tap } from 'rxjs/operators';
+
 import { Store } from '@ngrx/store';
+
 import { BaseComponent } from '@tbs/shared';
 import {
   BreakerboxerActions,
   BreakerboxerState,
   compareSnapSettings,
 } from '@tbs/xplat/base/breakerboxer-data';
-import { distinctUntilChanged, takeUntil, tap } from 'rxjs/operators';
 
 @Component({
   selector: 'breakerboxer-snap-settings-menu',

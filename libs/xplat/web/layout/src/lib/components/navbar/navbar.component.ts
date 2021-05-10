@@ -1,13 +1,14 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 
-import { Store } from '@ngrx/store';
 import { takeUntil } from 'rxjs/operators';
+
+import { Store } from '@ngrx/store';
 
 import { BaseComponent } from '@tbs/shared';
 import { User, UserActions, UserState } from '@tbs/user';
+import { UIActions, UIState } from '@tbs/xplat/core';
 
 import { TitleService } from '../../services';
-import { UIActions, UIState } from '@tbs/xplat/core';
 
 @Component({
   selector: 'tbs-navbar',

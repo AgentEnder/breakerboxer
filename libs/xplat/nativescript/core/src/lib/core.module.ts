@@ -1,19 +1,19 @@
 import { NgModule, Optional, SkipSelf } from '@angular/core';
 
 // nativescript
-import { NativeScriptModule, NativeScriptHttpClientModule } from '@nativescript/angular';
+import { NativeScriptHttpClientModule, NativeScriptModule } from '@nativescript/angular';
 import { Device } from '@nativescript/core';
-import { TNSFontIconModule, USE_STORE } from 'nativescript-ngx-fonticon';
-import { fontAwesomeIcons } from '@tbs/xplat/nativescript/utils';
-
 // libs
 import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
+import { TNSFontIconModule, USE_STORE } from 'nativescript-ngx-fonticon';
+
 import { CoreModule, PlatformLanguageToken, PlatformWindowToken } from '@tbs/xplat/core';
+import { fontAwesomeIcons } from '@tbs/xplat/nativescript/utils';
 import { throwIfAlreadyLoaded } from '@tbs/xplat/utils';
 
+import { MobileTranslateLoader } from './services/mobile-translate.loader';
 // app
 import { MobileWindowService } from './services/mobile-window.service';
-import { MobileTranslateLoader } from './services/mobile-translate.loader';
 
 // factories
 export function platformLangFactory() {

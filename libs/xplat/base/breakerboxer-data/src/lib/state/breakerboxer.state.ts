@@ -1,4 +1,5 @@
 import { createFeatureSelector, createSelector } from '@ngrx/store';
+
 import { AngleSnapSettings, GridSettings } from '../models';
 
 export namespace BreakerboxerState {

@@ -1,8 +1,9 @@
 import { OverlayContainer } from '@angular/cdk/overlay';
 import { Component } from '@angular/core';
 
-import { Store } from '@ngrx/store';
 import { takeUntil } from 'rxjs/operators';
+
+import { Store } from '@ngrx/store';
 
 import { BaseComponent } from '@tbs/shared';
 import { UIState } from '@tbs/xplat/core';

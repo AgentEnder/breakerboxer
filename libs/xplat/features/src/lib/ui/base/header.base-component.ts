@@ -1,4 +1,4 @@
-import { Directive, Input, Output, EventEmitter } from '@angular/core';
+import { Directive, EventEmitter, Input, Output } from '@angular/core';
 
 // libs
 import { BaseComponent } from '@tbs/xplat/core';

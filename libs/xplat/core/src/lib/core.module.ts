@@ -1,11 +1,12 @@
 import { APP_BASE_HREF, CommonModule } from '@angular/common';
 import { Inject, ModuleWithProviders, NgModule, Optional, SkipSelf } from '@angular/core';
 
+// libs
+import { TranslateService } from '@ngx-translate/core';
+
 import { EffectsModule } from '@ngrx/effects';
 import { StoreModule } from '@ngrx/store';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
-// libs
-import { TranslateService } from '@ngx-translate/core';
 
 import { throwIfAlreadyLoaded } from '@tbs/xplat/utils';
 

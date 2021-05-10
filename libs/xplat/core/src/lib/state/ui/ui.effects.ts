@@ -2,13 +2,14 @@ import { MediaMatcher } from '@angular/cdk/layout';
 import { Platform } from '@angular/cdk/platform';
 import { Injectable } from '@angular/core';
 
+import { of } from 'rxjs';
+import { catchError, mergeMap, switchMap } from 'rxjs/operators';
+
 import { Actions, createEffect, ofType, OnInitEffects } from '@ngrx/effects';
 import { Action } from '@ngrx/store';
+
 import { LocalStorageService } from '../../services';
 import { UIActions } from './ui.actions';
-
-import { catchError, mergeMap, switchMap } from 'rxjs/operators';
-import { of } from 'rxjs';
 
 @Injectable()
 export class UIEffects implements OnInitEffects {

@@ -1,5 +1,6 @@
-import { IEnvironment } from 'libs/xplat/core/src/lib/environments/environment.interface';
 import { environmentProd } from 'libs/xplat/core/src/lib/environments/base/environment.prod';
+import { IEnvironment } from 'libs/xplat/core/src/lib/environments/environment.interface';
+
 import { deepMerge } from '@tbs/utils';
 
 export const overrides: Partial<IEnvironment> = {

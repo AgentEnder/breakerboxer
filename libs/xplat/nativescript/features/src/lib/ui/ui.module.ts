@@ -5,9 +5,10 @@ import {
   NativeScriptFormsModule,
   NativeScriptRouterModule,
 } from '@nativescript/angular';
-
 import { TNSFontIconModule } from 'nativescript-ngx-fonticon';
+
 import { UISharedModule } from '@tbs/xplat/features';
+
 import { UI_COMPONENTS } from './components';
 
 const MODULES = [

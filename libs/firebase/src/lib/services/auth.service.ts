@@ -1,13 +1,14 @@
 import { Injectable } from '@angular/core';
-import { AngularFireAuth } from '@angular/fire/auth';
-import { AngularFirestore, AngularFirestoreDocument } from '@angular/fire/firestore';
 import { Router } from '@angular/router';
 
-import { User, IAuthService } from '@tbs/user';
+import { AngularFireAuth } from '@angular/fire/auth';
+import { AngularFirestore, AngularFirestoreDocument } from '@angular/fire/firestore';
 
 import fb from 'firebase/app';
 import { DateTime } from 'luxon';
 import { from, Observable } from 'rxjs';
+
+import { IAuthService, User } from '@tbs/user';
 
 @Injectable({
   providedIn: 'root',

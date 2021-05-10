@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+
 import { RouterExtensions } from '@nativescript/angular';
 
 import { HeaderBaseComponent } from '@tbs/xplat/features';

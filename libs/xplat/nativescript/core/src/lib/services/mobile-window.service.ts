@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
-import { Device, isIOS, Dialogs, AlertOptions, ConfirmOptions } from '@nativescript/core';
+
+import { AlertOptions, ConfirmOptions, Device, Dialogs, isIOS } from '@nativescript/core';
 import * as timer from '@nativescript/core/timer';
 
 @Injectable({

@@ -1,8 +1,9 @@
 import { from, Observable, Subject } from 'rxjs';
 
-import { BaseModel, type, Point } from '@tbs/xplat/core';
-import { WorkspaceContext } from '../workspace-context';
+import { BaseModel, Point, type } from '@tbs/xplat/core';
+
 import { DrawingMode } from '../drawing-modes';
+import { WorkspaceContext } from '../workspace-context';
 import { IDrawable } from './idrawable';
 
 export abstract class Drawable extends BaseModel implements IDrawable {

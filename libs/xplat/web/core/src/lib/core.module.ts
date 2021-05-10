@@ -1,10 +1,12 @@
+import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { NgModule, Optional, SkipSelf } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { HttpClientModule, HttpClient } from '@angular/common/http';
+
 import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
-import { throwIfAlreadyLoaded } from '@tbs/xplat/utils';
+
 import { CoreModule, PlatformLanguageToken, PlatformWindowToken } from '@tbs/xplat/core';
+import { throwIfAlreadyLoaded } from '@tbs/xplat/utils';
 
 // bring in custom web services here...
 
