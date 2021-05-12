@@ -7,6 +7,7 @@ import { debounceTime, takeUntil, tap } from 'rxjs/operators';
 import { GlobPart, parseGlobPattern } from '@tbs/glob101-util';
 import { BaseComponent } from '@tbs/xplat/core';
 import { fromEvent } from 'rxjs';
+import { SharedGlobsService } from '../../shared/glob101-data.service';
 
 @Component({
   selector: 'tbs-home',
@@ -23,7 +24,7 @@ export class HomeComponent extends BaseComponent implements AfterViewInit {
   loading = false;
   error: string;
 
-  constructor(private renderer: Renderer2) {
+  constructor(private renderer: Renderer2, private service: SharedGlobsService) {
     super();
   }
 
@@ -87,5 +88,11 @@ export class HomeComponent extends BaseComponent implements AfterViewInit {
       const element = this.filesField.nativeElement.children.item(idx) as HTMLElement;
       callback(element);
     }
+  }
+
+  shareCurrentGlob() {
+    this.service
+      .shareGlob(this.pattern, this.filesField.nativeElement.innerHTML)
+      .subscribe((x) => console.log(x));
   }
 }

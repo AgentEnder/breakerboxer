@@ -6,7 +6,7 @@ export namespace UserState {
   export const key = 'user';
 
   export interface IState {
-    signedInUser?: User;
+    signedInUser?: User | undefined;
     authAvailable: boolean;
   }
 
