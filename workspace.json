@@ -22,7 +22,7 @@
             "tsConfig": "apps/breakerboxer/tsconfig.app.json",
             "aot": true,
             "assets": ["apps/breakerboxer/src/favicon.ico", "apps/breakerboxer/src/assets"],
-            "styles": ["apps/breakerboxer/src/styles.scss"],
+            "styles": ["apps/breakerboxer/src/styles.scss", "libs/xplat/web/scss/src/_index.scss"],
             "scripts": [],
             "fileReplacements": [
               {
@@ -89,7 +89,8 @@
             "assets": ["apps/breakerboxer/src/favicon.ico", "apps/breakerboxer/src/assets"],
             "styles": [
               "./node_modules/@angular/material/prebuilt-themes/indigo-pink.css",
-              "apps/breakerboxer/src/styles.scss"
+              "apps/breakerboxer/src/styles.scss",
+              "libs/xplat/web/scss/src/_index.scss"
             ],
             "scripts": []
           },
@@ -274,7 +275,7 @@
             "tsConfig": "apps/emu-compat/tsconfig.app.json",
             "aot": true,
             "assets": ["apps/emu-compat/src/favicon.ico", "apps/emu-compat/src/assets"],
-            "styles": ["apps/emu-compat/src/styles.scss"],
+            "styles": ["apps/emu-compat/src/styles.scss", "libs/xplat/web/scss/src/_index.scss"],
             "scripts": [],
             "fileReplacements": [
               {
@@ -635,7 +636,7 @@
     },
     "xplat-web-scss": {
       "root": "libs/xplat/web/scss",
-      "sourceRoot": "libs/xplat/web/scss/src",
+      "sourceRoot": "libs/xplat/web/scss/src/_index.scss",
       "projectType": "library",
       "schematics": {},
       "architect": {
@@ -817,7 +818,7 @@
               "apps/web-portfolio/src/assets",
               "apps/web-portfolio/src/.htaccess"
             ],
-            "styles": ["apps/web-portfolio/src/styles.scss"],
+            "styles": ["apps/web-portfolio/src/styles.scss", "libs/xplat/web/scss/src/_index.scss"],
             "scripts": [],
             "fileReplacements": [
               {
@@ -952,7 +953,7 @@
             "tsConfig": "apps/baby-babble/tsconfig.app.json",
             "aot": true,
             "assets": ["apps/baby-babble/src/favicon.ico", "apps/baby-babble/src/assets"],
-            "styles": ["apps/baby-babble/src/styles.scss"],
+            "styles": ["apps/baby-babble/src/styles.scss", "libs/xplat/web/scss/src/_index.scss"],
             "scripts": []
           },
           "configurations": {
@@ -1066,7 +1067,7 @@
             "tsConfig": "apps/web-glob101/tsconfig.app.json",
             "aot": true,
             "assets": ["apps/web-glob101/src/favicon.ico", "apps/web-glob101/src/assets"],
-            "styles": ["apps/web-glob101/src/styles.scss"],
+            "styles": ["apps/web-glob101/src/styles.scss", "libs/xplat/web/scss/src/_index.scss"],
             "scripts": []
           },
           "configurations": {
