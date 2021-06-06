@@ -4,7 +4,9 @@ import { RouterModule, Routes } from '@angular/router';
 
 import { MatCardModule } from '@angular/material/card';
 import { MatIconModule } from '@angular/material/icon';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { ClipboardModule } from '@angular/cdk/clipboard';
 
 import { SharedModule } from '../shared/shared.module';
 import { HOME_COMPONENTS, HomeComponent } from './components';
@@ -12,6 +14,10 @@ import { HOME_COMPONENTS, HomeComponent } from './components';
 export const routes: Routes = [
   {
     path: '',
+    component: HomeComponent,
+  },
+  {
+    path: 'view/:id',
     component: HomeComponent,
   },
 ];
@@ -24,6 +30,8 @@ export const routes: Routes = [
     ReactiveFormsModule,
     MatCardModule,
     MatProgressSpinnerModule,
+    MatSnackBarModule,
+    ClipboardModule,
   ],
   declarations: [...HOME_COMPONENTS],
   exports: [...HOME_COMPONENTS],

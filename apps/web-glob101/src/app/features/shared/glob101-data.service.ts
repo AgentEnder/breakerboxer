@@ -57,6 +57,28 @@ export class SharedGlobsService {
       )
     );
   }
+
+  retrieveGlobInfoFromLinkId(id: string) {
+    return this.firestore
+      .collection(`shared-tests/data/links`)
+      .doc<SharedGlobLink>(id)
+      .get()
+      .pipe(
+        map((x) => {
+          const data = x.data();
+          return {
+            user: data.uid ?? 'anonymous',
+            glob: data.globId,
+          };
+        }),
+        switchMap((x) =>
+          this.firestore
+            .doc<SharedGlob>(`shared-tests/data/${x.user}/${x.glob}`)
+            .get()
+            .pipe(map((x) => x.data()))
+        )
+      );
+  }
 }
 
 export interface SharedGlob {

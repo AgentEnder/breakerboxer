@@ -85,3 +85,7 @@ fieldset {
 .explanation {
   flex-grow: 1;
 }
+
+[matSuffix].suffix-btn {
+  cursor: pointer;
+}

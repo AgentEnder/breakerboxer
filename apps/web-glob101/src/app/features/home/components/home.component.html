@@ -4,7 +4,7 @@
       <mat-form-field class="w-100" [appearance]="'outline'">
         <mat-label>Glob Pattern</mat-label>
         <input matInput placeholder="**/*.spec.ts" [formControl]="patternFormControl" />
-        <button mat-icon-button matSuffix (click)="shareCurrentGlob()"><mat-icon>share</mat-icon></button>
+        <mat-icon matSuffix (click)="shareCurrentGlob()" class="suffix-btn">share</mat-icon>
       </mat-form-field>
       <div class="d-flex w-100 flex-wrap" style="gap: 1.75rem">
         <fieldset class="test-strings">

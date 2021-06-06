@@ -1,12 +1,17 @@
 import { AfterViewInit, Component, ElementRef, Renderer2, ViewChild } from '@angular/core';
 import { FormControl } from '@angular/forms';
+import { ActivatedRoute } from '@angular/router';
+
+import { MatSnackBar } from '@angular/material/snack-bar';
+import { Clipboard } from '@angular/cdk/clipboard';
 
 import { matcher } from 'micromatch';
-import { debounceTime, takeUntil, tap } from 'rxjs/operators';
+import { fromEvent } from 'rxjs';
+import { debounceTime, filter, map, switchMap, takeUntil, tap } from 'rxjs/operators';
 
 import { GlobPart, parseGlobPattern } from '@tbs/glob101-util';
 import { BaseComponent } from '@tbs/xplat/core';
-import { fromEvent } from 'rxjs';
+
 import { SharedGlobsService } from '../../shared/glob101-data.service';
 
 @Component({
@@ -24,8 +29,25 @@ export class HomeComponent extends BaseComponent implements AfterViewInit {
   loading = false;
   error: string;
 
-  constructor(private renderer: Renderer2, private service: SharedGlobsService) {
+  constructor(
+    private renderer: Renderer2,
+    private service: SharedGlobsService,
+    private snackBar: MatSnackBar,
+    private clipboard: Clipboard,
+    route: ActivatedRoute
+  ) {
     super();
+
+    route.paramMap
+      .pipe(
+        map((x) => x.get('id')),
+        filter((x) => !!x),
+        switchMap((x) => this.service.retrieveGlobInfoFromLinkId(x))
+      )
+      .subscribe((x) => {
+        this.filesField.nativeElement.innerHTML = x.testData;
+        this.patternFormControl.setValue(x.pattern);
+      });
   }
 
   ngAfterViewInit(): void {
@@ -93,6 +115,18 @@ export class HomeComponent extends BaseComponent implements AfterViewInit {
   shareCurrentGlob() {
     this.service
       .shareGlob(this.pattern, this.filesField.nativeElement.innerHTML)
-      .subscribe((x) => console.log(x));
+      .pipe(
+        switchMap((x) =>
+          this.snackBar
+            .open(`Shareable Link Created!`, 'Copy')
+            .afterDismissed()
+            .pipe(map((y) => ({ link: x, dismissEvent: y })))
+        )
+      )
+      .subscribe((x) => {
+        if (x.dismissEvent.dismissedByAction) {
+          this.clipboard.copy(x.link);
+        }
+      });
   }
 }
