@@ -1,6 +1,8 @@
 <div class="main-wrapper" [ngClass]="{ 'dark-theme': dark$ | async }">
   <tbs-navbar>
     <span navItem class="ml-auto nav-link" [routerLink]="['/vote']">Vote</span>
+    <span navItem class="ml-auto nav-link" [routerLink]="['/rank']">Eliminate</span>
+    <span navItem class="ml-auto nav-link" [routerLink]="['/history']">History</span>
   </tbs-navbar>
   <router-outlet></router-outlet>
 </div>

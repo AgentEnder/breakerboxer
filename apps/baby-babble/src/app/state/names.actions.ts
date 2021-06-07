@@ -1,4 +1,5 @@
 import { createAction, props } from '@ngrx/store';
+import { Choice } from '../firestore-models';
 
 // eslint-disable-next-line @typescript-eslint/no-namespace
 export namespace BabyBabbleNamesActions {
@@ -21,5 +22,25 @@ export namespace BabyBabbleNamesActions {
   export const dislikeNameFailed = createAction(
     '[@baby-babble names] dislike name failed',
     props<{ error: unknown }>()
+  );
+
+  export const loadLikedNames = createAction('[@baby-babble names] load liked names');
+  export const loadLikedNamesSuccess = createAction(
+    '[@baby-babble names] load liked names success',
+    props<{ names: Choice[] }>()
+  );
+  export const loadLikedNamesFailed = createAction(
+    '[@baby-babble names] load liked names failed',
+    props<{ error: unknown }>()
+  );
+
+  export const updateNameStrength = createAction(
+    '[@baby-babble names] update strength',
+    props<{ choice: Choice }>()
+  );
+
+  export const updateNameStrengthSuccess = createAction(
+    '[@baby-babble names] update strength success',
+    props<{ choice: Choice }>()
   );
 }

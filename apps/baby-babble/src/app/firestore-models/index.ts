@@ -16,9 +16,13 @@ export interface BabyBabbleUserData {
   dislikes: string[];
 }
 
-export interface ChoiceRecord {
-  name: string;
+export interface ChoiceRecord extends Choice {
   updatedDate: Date;
+}
+
+export interface Choice {
+  name: string;
+  strength?: number;
 }
 
 export interface NameMetadata {

@@ -1,11 +1,12 @@
 import { createFeatureSelector, createSelector } from '@ngrx/store';
+import { Choice } from '../firestore-models';
 
 // eslint-disable-next-line @typescript-eslint/no-namespace
 export namespace BabyBabbleNamesState {
   export const key = 'babyBabbleNames';
 
   export interface IState {
-    liked: string[];
+    liked: Choice[];
     disliked: string[];
   }
 

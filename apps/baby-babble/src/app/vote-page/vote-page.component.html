@@ -13,9 +13,9 @@
     </div>
   </mat-card>
   <div class="d-flex m-4" style="gap: 2em">
-    <button mat-raised-button #dislikeBtn (click)="getNextName()">Dislike</button>
+    <button mat-raised-button #dislikeBtn (click)="dislike()">Dislike</button>
     <button mat-icon-button [mat-menu-trigger-for]="settingsMenu"><mat-icon>settings</mat-icon></button>
-    <button mat-raised-button #likeBtn color="accent" (click)="getNextName()">Like</button>
+    <button mat-raised-button #likeBtn color="accent" (click)="like()">Like</button>
   </div>
 </div>
 

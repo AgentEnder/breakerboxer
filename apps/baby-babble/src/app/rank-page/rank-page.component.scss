@@ -1,0 +1,45 @@
+.name-card {
+  background: linear-gradient(135deg, var(--primary-light) 25%, transparent 25%),
+    linear-gradient(225deg, var(--accent-dark) 25%, transparent 25%),
+    linear-gradient(315deg, var(--accent-light) 25%, transparent 25%),
+    linear-gradient(45deg, var(--primary-dark) 25%, transparent 25%);
+  backdrop-filter: sepia(64%);
+  display: grid;
+  place-content: center;
+  flex-grow: 1;
+  width: 100%;
+
+  transform-origin: 50% 125%;
+
+  * {
+    user-select: none;
+  }
+}
+
+.cards-flex {
+  width: min(80vw, 500px);
+  height: min(70vh, 800px);
+  display: flex;
+  flex-direction: column;
+  gap: 2em;
+}
+
+.name {
+  font-size: 3rem;
+  font-family: 'Gloria Hallelujah', cursive;
+  text-align: center;
+  padding: 1rem;
+}
+
+.page-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  margin: 2em;
+  overflow-x: visible;
+}
+
+:host {
+  overflow: hidden;
+}

@@ -40,6 +40,8 @@ export class VotePageComponent implements OnInit {
       this.isBoyName = !!Math.round(Math.random());
     } else if (this.allowBoyNames) {
       this.isBoyName = true;
+    } else {
+      this.isBoyName = false;
     }
     this.displayName = randomFromArray(this.isBoyName ? boyNames : girlNames);
   }

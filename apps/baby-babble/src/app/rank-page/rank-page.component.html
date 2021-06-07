@@ -1,0 +1,69 @@
+<ng-container [ngSwitch]="state">
+<ng-container *ngSwitchCase="'ELIMINATE'">
+  <div class="page-container">
+    <h1>Choose your favorite!</h1>
+    <div class="cards-flex">
+      <mat-card
+        class="mat-elevation-z8 name-card"
+        #card
+        (click)="chooseName(names[0])"
+        matRipple
+      >
+        <div class="name">
+          {{ names[0] }}
+        </div>
+      </mat-card>
+      <mat-card
+        class="mat-elevation-z8 name-card"
+        #card
+        (click)="chooseName(names[1])"
+        matRipple
+      >
+        <div class="name">
+          {{ names[1] }}
+        </div>
+      </mat-card>
+    </div>
+    <div class="d-flex m-4" style="gap: 2em">
+      <button mat-icon-button><mat-icon>settings</mat-icon></button>
+    </div>
+  </div>
+</ng-container>
+<ng-container *ngSwitchCase="'OUT_OF_NAMES'">
+  <div class="page-container">
+    <div class="cards-flex">
+      <mat-card
+        class="mat-elevation-z8 name-card"
+        #card
+      >
+        <div class="name">
+          <h1>Your favorite is {{favorite}}</h1>
+          <button mat-icon-button mat-raised-button (click)="restart()"><mat-icon>refresh</mat-icon></button>
+        </div>
+      </mat-card>
+    </div>
+    <div class="d-flex m-4" style="gap: 2em">
+      <button mat-icon-button><mat-icon>settings</mat-icon></button>
+    </div>
+  </div>
+</ng-container>
+<ng-container *ngSwitchDefault>
+  <div class="page-container">
+    <div class="cards-flex">
+      <mat-card
+        class="mat-elevation-z8 name-card"
+        #card
+      >
+        <div class="name">
+          <h1>Come back after voting some more!</h1>
+          <a mat-icon-button mat-raised-button [routerLink]="['/vote']"><mat-icon>open_in_browser</mat-icon></a>
+        </div>
+      </mat-card>
+    </div>
+    <div class="d-flex m-4" style="gap: 2em">
+      <button mat-icon-button><mat-icon>settings</mat-icon></button>
+    </div>
+  </div>
+</ng-container>
+</ng-container>
+

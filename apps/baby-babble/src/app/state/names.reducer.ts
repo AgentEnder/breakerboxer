@@ -7,10 +7,14 @@ export const babyBabbleNamesReducer = createReducer(
   BabyBabbleNamesState.initialState,
   on(actions.likeNameSuccess, (state, action) => ({
     ...state,
-    liked: [...state.liked, action.name],
+    liked: [...state.liked, { name: action.name }],
   })),
   on(actions.dislikeNameSuccess, (state, action) => ({
     ...state,
     disliked: [...state.disliked, action.name],
+  })),
+  on(actions.loadLikedNamesSuccess, (state, { names }) => ({
+    ...state,
+    liked: names,
   }))
 );

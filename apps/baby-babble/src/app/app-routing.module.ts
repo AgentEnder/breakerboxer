@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { AuthGuard } from '@tbs/user';
 
 const routes: Routes = [
   {
@@ -14,6 +15,15 @@ const routes: Routes = [
   {
     path: 'vote',
     loadChildren: () => import('./vote-page/vote-page.module').then((m) => m.VotePageModule),
+  },
+  {
+    path: 'rank',
+    loadChildren: () => import('./rank-page/rank-page.module').then((m) => m.RankPageModule),
+  },
+  {
+    path: 'history',
+    loadChildren: () => import('./history-page/history-page.module').then((m) => m.HistoryPageModule),
+    canActivate: [AuthGuard],
   },
 ];
 
