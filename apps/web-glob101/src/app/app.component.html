@@ -1,6 +1,6 @@
 <div class="main-wrapper" [ngClass]="{ 'dark-theme': dark$ | async }">
   <tbs-navbar>
-    <span navItem class="ml-4 nav-link" [routerLink]="['/workspace']"> Workspace </span>
+    <span navItem class="ml-4 nav-link" [routerLink]="['/my-saved-globs']" *ngIf="authenticated$| async"> My Globs </span>
   </tbs-navbar>
   <router-outlet></router-outlet>
 </div>

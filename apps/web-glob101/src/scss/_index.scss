@@ -1,2 +1,13 @@
 @import './theming';
 @import './variables';
+
+.content-container {
+  display: flex;
+  justify-content: center;
+  padding: 2rem;
+
+  mat-card {
+    max-width: 1200px;
+    flex-grow: 1;
+  }
+}

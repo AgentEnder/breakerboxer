@@ -4,7 +4,7 @@ import { Router } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { UserState } from '@tbs/user';
 import { from, Observable, throwError } from 'rxjs';
-import { map, mergeMap, switchMap, withLatestFrom } from 'rxjs/operators';
+import { filter, map, mergeMap, switchMap, withLatestFrom } from 'rxjs/operators';
 import fb from 'firebase';
 
 @Injectable({
@@ -19,6 +19,28 @@ export class SharedGlobsService {
     );
   }
 
+  shareExistingGlob(pattern: string, testData: string, expireTime = null) {
+    // return this.lookupGlob(pattern, testData).pipe(
+    //   switchMap((glob) => this.getLinkForSavedGlob(glob, expireTime))
+    // );
+  }
+
+  lookupGlob(pattern: string, testData: string) {
+    // return this.store.select(UserState.selectCurrentUser).pipe(
+    //   map((user) => ({ user, collection: user ? user.uid : 'anonymous' })),
+    //   switchMap(({ collection }) =>
+    //     from(
+    //       this.firestore
+    //         .collection('shared-tests')
+    //         .doc('data')
+    //         .collection<SharedGlob>(`${collection}`, ref => ref.where('pattern', '==', pattern).where('testData', '==', testData))
+    //         .doc()
+    //         .then((x) => x.get())
+    //     )
+    //   )
+    // );
+  }
+
   saveNewGlob(pattern: string, testData: string) {
     return this.store.select(UserState.selectCurrentUser).pipe(
       map((user) => ({ user, collection: user ? user.uid : 'anonymous' })),
@@ -31,6 +53,7 @@ export class SharedGlobsService {
             .add({
               pattern,
               testData,
+              createdOnDate: new Date(),
             })
             .then((x) => x.get())
         )
@@ -58,7 +81,7 @@ export class SharedGlobsService {
     );
   }
 
-  retrieveGlobInfoFromLinkId(id: string) {
+  retrieveGlobInfoFromLinkId(id: string): Observable<SharedGlob> {
     return this.firestore
       .collection(`shared-tests/data/links`)
       .doc<SharedGlobLink>(id)
@@ -79,11 +102,24 @@ export class SharedGlobsService {
         )
       );
   }
+
+  retrieveMySharedGlobs(): Observable<SharedGlob[]> {
+    return this.store.select(UserState.selectCurrentUser).pipe(
+      filter((x) => !!x),
+      switchMap((x) =>
+        this.firestore
+          .collection<SharedGlob>(`shared-tests/data/${x.uid}`)
+          .get()
+          .pipe(map((x) => x.docs.map((y) => y.data())))
+      )
+    );
+  }
 }
 
 export interface SharedGlob {
   pattern: string;
   testData: string;
+  createdOnDate?: Date;
 }
 
 export interface SharedGlobLink {

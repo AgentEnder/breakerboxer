@@ -18,7 +18,7 @@ export namespace UserState {
 
   export const selectCurrentUser = createSelector(selectState, (state) => state.signedInUser);
 
-  export const selectLoggedIn = createSelector(selectState, (state) => state.signedInUser !== null);
+  export const selectLoggedIn = createSelector(selectState, (state) => !!state.signedInUser);
 
   export const selectAuthAvailable = createSelector(selectState, (state) => state.authAvailable);
 }

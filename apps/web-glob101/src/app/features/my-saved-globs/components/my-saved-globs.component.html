@@ -1,0 +1,23 @@
+<div class="content-container">
+  <mat-card class="mat-elevation-z4">
+    <div class="m-5 d-flex flex-column align-items-center">
+        <h1>My Saved Globs</h1>
+        <ng-container *ngIf="globs$| async as globs">
+            <mat-accordion class="w-100">
+                <mat-expansion-panel *ngFor="let glob of globs" hideToggle>
+                    <mat-expansion-panel-header>
+                        <div class="d-flex w-100 align-items-center">
+                            <h3 class="mr-auto">
+                                {{glob.pattern}}
+                            </h3>
+                            <button mat-icon-button (click)="getShareLink(glob, $event)"><mat-icon>share</mat-icon></button>
+                            <button mat-icon-button (click)="openInTab(glob)"><mat-icon>open_in_browser</mat-icon></button>
+                        </div>
+                    </mat-expansion-panel-header>
+                    <div #el [innerHTML]="getTestStrings(el, glob)"></div>
+                </mat-expansion-panel>
+            </mat-accordion>
+        </ng-container>
+    </div>
+  </mat-card>
+</div>

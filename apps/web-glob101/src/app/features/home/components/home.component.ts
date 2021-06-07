@@ -34,20 +34,9 @@ export class HomeComponent extends BaseComponent implements AfterViewInit {
     private service: SharedGlobsService,
     private snackBar: MatSnackBar,
     private clipboard: Clipboard,
-    route: ActivatedRoute
+    private route: ActivatedRoute
   ) {
     super();
-
-    route.paramMap
-      .pipe(
-        map((x) => x.get('id')),
-        filter((x) => !!x),
-        switchMap((x) => this.service.retrieveGlobInfoFromLinkId(x))
-      )
-      .subscribe((x) => {
-        this.filesField.nativeElement.innerHTML = x.testData;
-        this.patternFormControl.setValue(x.pattern);
-      });
   }
 
   ngAfterViewInit(): void {
@@ -73,6 +62,35 @@ export class HomeComponent extends BaseComponent implements AfterViewInit {
       .subscribe(() => {
         this.updateIndicators();
       });
+
+    this.loadPatternDataFromURL();
+  }
+
+  loadPatternDataFromURL(): void {
+    this.route.paramMap
+      .pipe(
+        map((x) => x.get('id')),
+        filter((x) => !!x),
+        switchMap((x) => this.service.retrieveGlobInfoFromLinkId(x)),
+        takeUntil(this.destroy$)
+      )
+      .subscribe((x) => {
+        this.setTestStringInnerHTML(x.testData);
+        this.patternFormControl.setValue(x.pattern);
+      });
+
+    this.route.queryParamMap
+      .pipe(
+        map((x) => ({ pattern: x.get('pattern'), testStrings: x.get('testStrings') })),
+        filter((x) => !!x.pattern),
+        takeUntil(this.destroy$)
+      )
+      .subscribe((x) => {
+        if (x.testStrings.length) {
+          this.setTestStringInnerHTML(x.testStrings);
+        }
+        this.patternFormControl.setValue(x.pattern);
+      });
   }
 
   updatePattern(pattern: string) {
@@ -87,7 +105,7 @@ export class HomeComponent extends BaseComponent implements AfterViewInit {
 
   updateIndicators() {
     const m = this.pattern.length ? matcher(this.pattern) : () => false;
-    this.iterateChildren(this.filesField.nativeElement, (element) => {
+    iterateChildHTMLElements(this.filesField.nativeElement, (element) => {
       const matches = m(element.innerHTML);
       if (matches) {
         this.renderer.addClass(element, 'matches');
@@ -99,22 +117,14 @@ export class HomeComponent extends BaseComponent implements AfterViewInit {
   }
 
   clearIndicators() {
-    this.iterateChildren(this.filesField.nativeElement, (element) => {
+    iterateChildHTMLElements(this.filesField.nativeElement, (element) => {
       this.renderer.removeClass(element, 'matches');
     });
   }
 
-  iterateChildren(el: HTMLElement, callback: (el: HTMLElement) => void) {
-    const childCount = this.filesField.nativeElement.children.length;
-    for (let idx = 0; idx < childCount; idx++) {
-      const element = this.filesField.nativeElement.children.item(idx) as HTMLElement;
-      callback(element);
-    }
-  }
-
   shareCurrentGlob() {
     this.service
-      .shareGlob(this.pattern, this.filesField.nativeElement.innerHTML)
+      .shareGlob(this.pattern, this.getTestStringsValue())
       .pipe(
         switchMap((x) =>
           this.snackBar
@@ -128,5 +138,34 @@ export class HomeComponent extends BaseComponent implements AfterViewInit {
           this.clipboard.copy(x.link);
         }
       });
+  }
+
+  getTestStringsValue(): string {
+    const testStrings: string[] = [];
+    iterateChildHTMLElements(this.filesField.nativeElement, (el) => {
+      testStrings.push(el.textContent);
+    });
+    return testStrings.join(',');
+  }
+
+  setTestStringInnerHTML(testStrings: string) {
+    const ff = this.filesField.nativeElement;
+    for (let idx = ff.children.length - 1; idx >= 0; --idx) {
+      console.log(idx);
+      ff.removeChild(ff.children.item(idx));
+    }
+    testStrings.split(',').forEach((testString) => {
+      const div = this.renderer.createElement('div');
+      const text = this.renderer.createText(testString);
+      this.renderer.appendChild(div, text);
+      this.renderer.appendChild(ff, div);
+    });
+  }
+}
+
+function iterateChildHTMLElements(parent: HTMLElement, callback: (el: Element) => void) {
+  for (let idx = 0; idx < parent.children.length; idx++) {
+    const child = parent.children.item(idx);
+    callback(child);
   }
 }

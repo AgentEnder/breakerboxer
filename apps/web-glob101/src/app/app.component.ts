@@ -7,6 +7,7 @@ import { Store } from '@ngrx/store';
 
 import { BaseComponent } from '@tbs/shared';
 import { UIState } from '@tbs/xplat/core';
+import { UserState } from '@tbs/user';
 
 @Component({
   selector: 'tbs-root',
@@ -16,6 +17,7 @@ export class AppComponent extends BaseComponent {
   title = 'Glob 101';
 
   dark$ = this.store.select(UIState.selectDarkMode).pipe(takeUntil(this.destroy$));
+  authenticated$ = this.store.select(UserState.selectLoggedIn).pipe(takeUntil(this.destroy$));
 
   constructor(public store: Store, private overlayContainer: OverlayContainer) {
     super();
