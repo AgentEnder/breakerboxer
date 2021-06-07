@@ -2,7 +2,7 @@
   "migrations": [
     {
       "cli": "nx",
-      "version": "12.3.0-rc.0",
+      "version": "12.3.1",
       "description": "Remove deprecated options and update others according to new defaults. It syncs with the v12 migration of Angular builders.",
       "factory": "./src/migrations/update-12-3-0/update-webpack-browser-config",
       "package": "@nrwl/angular",
@@ -10,49 +10,27 @@
     },
     {
       "cli": "nx",
-      "version": "12.3.0-rc.0",
+      "version": "12.3.1",
       "description": "Updates storybook configurations to support webpack 5",
       "factory": "./src/migrations/update-12-3-0/update-storybook",
       "package": "@nrwl/angular",
       "name": "update-storybook"
     },
     {
-      "version": "12.0.0-beta",
-      "description": "In Angular version 12, the type of ActivatedRouteSnapshot.fragment is nullable. This migration automatically adds non-null assertions to it.",
-      "factory": "./migrations/activated-route-snapshot-fragment/index",
-      "package": "@angular/core",
-      "name": "migration-v12-activated-route-snapshot-fragment"
-    },
-    {
-      "version": "12.0.0-next.6",
-      "description": "`XhrFactory` has been moved from `@angular/common/http` to `@angular/common`.",
-      "factory": "./migrations/xhr-factory/index",
-      "package": "@angular/core",
-      "name": "migration-v12-xhr-factory"
+      "cli": "nx",
+      "version": "12.3.1",
+      "description": "Migrates some rules that have changed in Angular EsLint",
+      "factory": "./src/migrations/update-12-3-0/update-angular-eslint-rules",
+      "package": "@nrwl/angular",
+      "name": "update-angular-eslint-rules"
     },
     {
       "cli": "nx",
-      "version": "11.5.2-beta.1",
-      "description": "Remove presets from the root babel.config.json file to prevent conflicts with babel presets used in apps.",
-      "factory": "./src/migrations/update-11-5-2/update-root-babel-config",
-      "package": "@nrwl/web",
-      "name": "update-root-babel-config-11-5-2"
-    },
-    {
-      "cli": "nx",
-      "version": "11.5.2-beta.1",
-      "description": "Create .babelrc files for workspace libs to fix compatibility with the new babel.config.json setup.",
-      "factory": "./src/migrations/update-11-5-2/create-babelrc-for-workspace-libs",
-      "package": "@nrwl/web",
-      "name": "create-babelrc-for-workspace-libs-11-5-2"
-    },
-    {
-      "cli": "nx",
-      "version": "11.5.2-beta.1",
-      "description": "Update existing .babelrc files to add missing '@nrwl/web/babel' preset if necessary.",
-      "factory": "./src/migrations/update-11-5-2/update-existing-babelrc-files",
-      "package": "@nrwl/web",
-      "name": "update-existing-babelrc-files-11-5-2"
+      "version": "12.3.5-beta.0",
+      "description": "Convert targets using @nrwl/angular:webpack-browser with the buildTarget option set to use the @nrwl/angular:delegate-build executor instead.",
+      "factory": "./src/migrations/update-12-3-0/convert-webpack-browser-build-target-to-delegate-build",
+      "package": "@nrwl/angular",
+      "name": "convert-webpack-browser-build-target-to-delegate-build"
     }
   ]
 }

@@ -1100,12 +1100,9 @@
             },
             "dev": {
               "optimization": true,
-              "outputHashing": "all",
               "sourceMap": true,
               "namedChunks": true,
-              "extractLicenses": true,
-              "vendorChunk": false,
-              "buildOptimizer": false
+              "extractLicenses": true
             }
           }
         },

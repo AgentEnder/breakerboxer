@@ -58,7 +58,6 @@ export function getGlobTokens(pattern: string): string[] {
       .filter((x) => x.startsWith(next))
       .forEach((x) => {
         const matcher = [next, ...queue.slice(0, x.length - 1)].join('');
-        console.log(x, matcher);
         if (x === matcher) {
           token = x;
           queue.splice(0, matcher.length - 1);
@@ -107,9 +106,7 @@ export function parseGlobTokens(tokens: string[]): GlobPart[] {
   let parts: GlobPart[] = [];
   const tokensCopy = [...tokens];
   while (tokensCopy.length > 0) {
-    console.log('Parsing Tokens', tokensCopy);
     const { parts: newParts, tokensConsumed } = internalParseTokens(tokensCopy);
-    console.log({ newParts, tokensConsumed });
     parts = parts.concat(newParts);
     tokensCopy.splice(0, tokensConsumed);
   }

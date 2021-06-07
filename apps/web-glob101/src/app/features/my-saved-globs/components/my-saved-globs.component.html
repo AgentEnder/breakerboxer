@@ -15,6 +15,7 @@
                         </div>
                     </mat-expansion-panel-header>
                     <div #el [innerHTML]="getTestStrings(el, glob)"></div>
+                    <pre><code>{{glob| json}}</code></pre>
                 </mat-expansion-panel>
             </mat-accordion>
         </ng-container>

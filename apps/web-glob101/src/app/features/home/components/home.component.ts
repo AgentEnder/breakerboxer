@@ -151,7 +151,6 @@ export class HomeComponent extends BaseComponent implements AfterViewInit {
   setTestStringInnerHTML(testStrings: string) {
     const ff = this.filesField.nativeElement;
     for (let idx = ff.children.length - 1; idx >= 0; --idx) {
-      console.log(idx);
       ff.removeChild(ff.children.item(idx));
     }
     testStrings.split(',').forEach((testString) => {

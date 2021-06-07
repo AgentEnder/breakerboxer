@@ -27,7 +27,6 @@ export class MySavedGlobsComponent {
   getTestStrings(el: HTMLElement, glob: SharedGlob) {
     const ff = el;
     for (let idx = ff.children.length - 1; idx >= 0; --idx) {
-      console.log(idx);
       ff.removeChild(ff.children.item(idx));
     }
     glob.testData.split(',').forEach((testString) => {
