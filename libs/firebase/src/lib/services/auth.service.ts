@@ -8,13 +8,31 @@ import fb from 'firebase/app';
 import { DateTime } from 'luxon';
 import { from, Observable } from 'rxjs';
 
-import { IAuthService, User } from '@tbs/user';
+import { IAuthService, User, UserActions, UserState } from '@tbs/user';
+import { Store } from '@ngrx/store';
+import { switchMap, take } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root',
 })
 export class AuthService implements IAuthService {
-  constructor(private afAuth: AngularFireAuth, private afs: AngularFirestore, private router: Router) {}
+  constructor(
+    private afAuth: AngularFireAuth,
+    private afs: AngularFirestore,
+    private router: Router,
+    private store: Store
+  ) {
+    afAuth.setPersistence('local');
+    afAuth.authState
+      .pipe(
+        take(1),
+        switchMap((x) => from(this.updateUserData(x)))
+      )
+      .subscribe((x) => {
+        store.dispatch(UserActions.logInSuccess({ user: x }));
+      });
+  }
+
   signIn$(): Observable<User> {
     return this.googleSignIn$();
   }

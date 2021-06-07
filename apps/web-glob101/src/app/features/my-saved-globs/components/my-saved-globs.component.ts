@@ -1,7 +1,6 @@
-import { Component, ElementRef, OnInit, Renderer2 } from '@angular/core';
+import { Component, Renderer2 } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Clipboard } from '@angular/cdk/clipboard';
-import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
 import { map, switchMap } from 'rxjs/operators';
 import { SharedGlob, SharedGlobsService } from '../../shared/glob101-data.service';
@@ -42,7 +41,7 @@ export class MySavedGlobsComponent {
     event.stopPropagation();
 
     this.service
-      .shareGlob(glob.pattern, glob.testData)
+      .shareExistingGlob(glob.id)
       .pipe(
         switchMap((x) =>
           this.snackBar

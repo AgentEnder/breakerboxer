@@ -19,26 +19,16 @@ export class SharedGlobsService {
     );
   }
 
-  shareExistingGlob(pattern: string, testData: string, expireTime = null) {
-    // return this.lookupGlob(pattern, testData).pipe(
-    //   switchMap((glob) => this.getLinkForSavedGlob(glob, expireTime))
-    // );
-  }
-
-  lookupGlob(pattern: string, testData: string) {
-    // return this.store.select(UserState.selectCurrentUser).pipe(
-    //   map((user) => ({ user, collection: user ? user.uid : 'anonymous' })),
-    //   switchMap(({ collection }) =>
-    //     from(
-    //       this.firestore
-    //         .collection('shared-tests')
-    //         .doc('data')
-    //         .collection<SharedGlob>(`${collection}`, ref => ref.where('pattern', '==', pattern).where('testData', '==', testData))
-    //         .doc()
-    //         .then((x) => x.get())
-    //     )
-    //   )
-    // );
+  shareExistingGlob(id: string) {
+    return this.store.select(UserState.selectCurrentUser).pipe(
+      switchMap((user) =>
+        this.firestore
+          .collection(`shared-tests/data/${user.uid}`)
+          .doc<SharedGlob>(id)
+          .get()
+          .pipe(switchMap((x) => this.getLinkForSavedGlob(x)))
+      )
+    );
   }
 
   saveNewGlob(pattern: string, testData: string) {
@@ -63,7 +53,7 @@ export class SharedGlobsService {
 
   getLinkForSavedGlob(
     sharedGlob: fb.firestore.DocumentSnapshot<SharedGlob>,
-    expireTime: Date
+    expireTime: Date = null
   ): Observable<string> {
     return this.store.select(UserState.selectCurrentUser).pipe(
       switchMap((user) =>
@@ -110,7 +100,7 @@ export class SharedGlobsService {
         this.firestore
           .collection<SharedGlob>(`shared-tests/data/${x.uid}`)
           .get()
-          .pipe(map((x) => x.docs.map((y) => y.data())))
+          .pipe(map((x) => x.docs.map((y) => ({ ...y.data(), id: y.id }))))
       )
     );
   }
@@ -120,6 +110,7 @@ export interface SharedGlob {
   pattern: string;
   testData: string;
   createdOnDate?: Date;
+  id?: string;
 }
 
 export interface SharedGlobLink {
