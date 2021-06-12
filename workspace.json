@@ -1017,10 +1017,26 @@
             "passWithNoTests": true
           }
         },
-        "deploy": {
+        "deploy-web": {
           "builder": "@angular/fire:deploy",
           "options": {
             "project": "baby-babble"
+          }
+        },
+        "deploy-rules": {
+          "builder": "@nrwl/workspace:run-commands",
+          "options": {
+            "commands": [
+              "cp apps/baby-babble/firestore.rules firestore.rules",
+              "firebase deploy --only firestore:rules --project babybabble-6ab62"
+            ],
+            "parallel": false
+          }
+        },
+        "deploy": {
+          "builder": "@nrwl/workspace:run-commands",
+          "options": {
+            "commands": ["nx deploy-web baby-babble", "nx deploy-rules baby-babble"]
           }
         }
       }
@@ -1124,6 +1140,16 @@
           "builder": "@angular/fire:deploy",
           "options": {
             "project": "web-glob101"
+          }
+        },
+        "deploy-rules": {
+          "builder": "@nrwl/workspace:run-commands",
+          "options": {
+            "commands": [
+              "cp apps/web-glob101/firestore.rules firestore.rules",
+              "firebase deploy --only firestore:rules"
+            ],
+            "parallel": false
           }
         },
         "extract-i18n": {

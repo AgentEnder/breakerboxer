@@ -28,5 +28,8 @@
         ]
       }
     }
+  },
+  "projects": {
+    "default": "glob101-9383c"
   }
 }

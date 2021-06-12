@@ -1,7 +1,10 @@
+import { ClipboardModule } from '@angular/cdk/clipboard';
 import { OverlayModule } from '@angular/cdk/overlay';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 
 import { EffectsModule } from '@ngrx/effects';
 import { StoreModule } from '@ngrx/store';
@@ -29,6 +32,8 @@ import { babyBabbleNamesReducer } from './state/names.reducer';
     FirebaseModule.forRoot(environment.firebase),
     StoreModule.forFeature(BabyBabbleNamesState.key, babyBabbleNamesReducer),
     EffectsModule.forFeature([BabyBabbleNamesEffects]),
+    MatSnackBarModule,
+    ClipboardModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

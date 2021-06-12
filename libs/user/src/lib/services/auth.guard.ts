@@ -1,8 +1,8 @@
 import { Inject, Injectable, Optional } from '@angular/core';
-import { ActivatedRouteSnapshot, CanActivate, RouterStateSnapshot } from '@angular/router';
+import { ActivatedRouteSnapshot, CanActivate, Router, RouterStateSnapshot, UrlTree } from '@angular/router';
 
-import { Observable, of } from 'rxjs';
-import { map, switchMap, take, tap } from 'rxjs/operators';
+import { Observable, of, timer } from 'rxjs';
+import { delayWhen, map, switchMap, take, tap } from 'rxjs/operators';
 
 import { Action, Store } from '@ngrx/store';
 
@@ -17,7 +17,8 @@ export class AuthGuard implements CanActivate {
   constructor(
     @Optional() @Inject(AUTH_SERVICE) private authService,
     private store: Store,
-    private actions$: Actions
+    private actions$: Actions,
+    private router: Router
   ) {
     if (!authService) {
       console.warn(
@@ -30,8 +31,9 @@ export class AuthGuard implements CanActivate {
   canActivate(
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot
-  ): Observable<boolean> | Promise<boolean> | boolean {
+  ): Observable<boolean | UrlTree> | Promise<boolean> | boolean {
     return this.store.select(UserState.selectLoggedIn).pipe(
+      delayWhen((x) => (x ? of(true) : timer(1000))),
       tap((x) => {
         if (!x) {
           this.store.dispatch(UserActions.logIn());
@@ -44,7 +46,10 @@ export class AuthGuard implements CanActivate {
         return this.actions$.pipe(
           ofType(UserActions.logInSuccess, UserActions.logInFailed),
           take(1),
-          map((x: Action) => x.type === UserActions.logInSuccess({ user: null }).type)
+          switchMap((x: Action) => {
+            console.log(x);
+            return x.type === UserActions.logInSuccess.type ? of(true) : of(this.router.createUrlTree(['/']));
+          })
         );
       })
     );

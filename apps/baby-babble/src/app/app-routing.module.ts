@@ -25,6 +25,11 @@ const routes: Routes = [
     loadChildren: () => import('./history-page/history-page.module').then((m) => m.HistoryPageModule),
     canActivate: [AuthGuard],
   },
+  {
+    path: 'compare',
+    loadChildren: () => import('./compare-page/compare-page.module').then((m) => m.ComparePageModule),
+    canActivate: [AuthGuard],
+  },
 ];
 
 @NgModule({

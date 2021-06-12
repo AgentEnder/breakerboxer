@@ -1,0 +1,89 @@
+.name-card {
+  background: linear-gradient(135deg, var(--primary-light) 6.25%, transparent 6.25%),
+    linear-gradient(225deg, var(--accent-dark) 6.25%, transparent 6.25%),
+    linear-gradient(315deg, var(--accent-light) 6.25%, transparent 6.25%),
+    linear-gradient(45deg, var(--primary-dark) 6.25%, transparent 6.25%);
+  backdrop-filter: sepia(64%);
+  display: flex;
+  position: absolute;
+
+  &-lg {
+    inset: 2rem;
+  }
+
+  &-sm {
+    width: min(80vw, 400px);
+    height: min(70vh, 400px);
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: 2rem;
+    align-items: center;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+}
+
+.name {
+  font-size: 3rem;
+  font-family: 'Gloria Hallelujah', cursive;
+}
+
+:host ::ng-deep {
+  .inner-container {
+    width: 100%;
+    height: 100%;
+    overflow-y: auto;
+    overflow-x: auto;
+
+    /* width */
+    &::-webkit-scrollbar {
+      width: 10px;
+    }
+
+    /* Track */
+    &::-webkit-scrollbar-track {
+      box-shadow: inset 0 0 5px var(--text-color);
+      border-radius: 5px;
+    }
+
+    /* Handle */
+    &::-webkit-scrollbar-thumb {
+      background: var(--primary);
+      border-radius: 5px;
+    }
+
+    /* Handle on hover */
+    &::-webkit-scrollbar-thumb:hover {
+      background: #b30000;
+    }
+  }
+}
+
+.history-table {
+  width: 100%;
+}
+
+:host {
+  height: 100%;
+}
+
+.page-container {
+  overflow-x: visible;
+  position: relative;
+  height: 100%;
+}
+
+:host {
+  overflow: hidden;
+}
+
+.form-actions {
+  display: flex;
+  gap: 2em;
+  flex-wrap: wrap;
+
+  > button {
+    flex-grow: 1;
+  }
+}
