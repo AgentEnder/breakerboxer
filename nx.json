@@ -12,23 +12,18 @@
     "nx.json": "*"
   },
   "projects": {
+    "baby-babble": {
+      "tags": []
+    },
+    "baby-babble-e2e": {
+      "tags": [],
+      "implicitDependencies": ["baby-babble"]
+    },
     "breakerboxer": {
       "tags": ["platform:web", "scope:breakerboxer", "type:app", "framework:angular"]
     },
     "breakerboxer-e2e": {
       "tags": ["platform:web", "scope:breakerboxer", "type:e2e", "framework:protractor"]
-    },
-    "utils": {
-      "tags": ["platform:agnostic", "scope:shared", "type:util", "framework:agnostic"]
-    },
-    "layout": {
-      "tags": ["platform:web", "scope:shared", "type:lib", "framework:angular"]
-    },
-    "web-bb-workspace": {
-      "tags": ["platform:web", "scope:breakerboxer", "type:lib", "framework:angular"]
-    },
-    "shared": {
-      "tags": ["platform:agnostic", "scope:shared", "type:lib", "framework:angular"]
     },
     "emu-compat": {
       "tags": ["platform:web", "scope:emu-compat", "type:app", "framework:angular"]
@@ -37,23 +32,73 @@
       "tags": ["platform:web", "scope:emu-compat", "type:e2e", "framework:agnostic"],
       "implicitDependencies": ["emu-compat"]
     },
-    "user": {
+    "firebase": {
       "tags": ["platform:agnostic", "scope:shared", "type:lib", "framework:angular"]
+    },
+    "games-data": {
+      "tags": ["platform:agnostic", "scope:emu-compat", "type:lib", "framework:angular"]
+    },
+    "glob101-util": {
+      "tags": []
+    },
+    "layout": {
+      "tags": ["platform:web", "scope:shared", "type:lib", "framework:angular"]
+    },
+    "portfolio-data": {
+      "tags": ["platform:agnostic", "scope:portfolio", "type:lib", "framework:angular"]
     },
     "rating": {
       "tags": ["platform:agnostic", "scope:shared", "type:lib", "framework:angular"]
     },
+    "shared": {
+      "tags": ["platform:agnostic", "scope:shared", "type:lib", "framework:angular"]
+    },
+    "user": {
+      "tags": ["platform:agnostic", "scope:shared", "type:lib", "framework:angular"]
+    },
+    "utils": {
+      "tags": ["platform:agnostic", "scope:shared", "type:util", "framework:agnostic"]
+    },
+    "web-bb-workspace": {
+      "tags": ["platform:web", "scope:breakerboxer", "type:lib", "framework:angular"]
+    },
+    "web-glob101": {
+      "tags": []
+    },
+    "web-glob101-e2e": {
+      "tags": [],
+      "implicitDependencies": ["web-glob101"]
+    },
+    "web-portfolio": {
+      "tags": ["platform:web", "scope:portfolio", "type:app", "framework:angular"]
+    },
+    "web-portfolio-e2e": {
+      "tags": ["platform:web", "scope:portfolio", "type:e2e", "framework:protractor"],
+      "implicitDependencies": ["web-portfolio"]
+    },
     "web-rating": {
       "tags": ["platform:web", "scope:shared", "type:lib", "framework:angular"]
     },
-    "games-data": {
-      "tags": ["platform:agnostic", "scope:emu-compat", "type:lib", "framework:angular"]
+    "xplat-base-breakerboxer-data": {
+      "tags": ["platform:agnostic", "scope:breakerboxer", "type:lib", "framework:angular"]
     },
     "xplat-core": {
       "tags": ["platform:agnostic", "scope:shared", "type:lib", "framework:angular"]
     },
     "xplat-features": {
       "tags": ["platform:agnostic", "scope:shared", "type:lib", "framework:angular"]
+    },
+    "xplat-nativescript-core": {
+      "tags": ["platform:nativescript", "scope:shared", "type:lib", "framework:angular"]
+    },
+    "xplat-nativescript-features": {
+      "tags": ["platform:nativescript", "scope:shared", "type:lib", "framework:angular"]
+    },
+    "xplat-nativescript-scss": {
+      "tags": ["platform:nativescript", "scope:shared", "type:lib", "framework:agnostic"]
+    },
+    "xplat-nativescript-utils": {
+      "tags": ["platform:nativescript", "scope:shared", "type:lib", "framework:agnostic"]
     },
     "xplat-scss": {
       "tags": ["platform:agnostic", "scope:shared", "type:lib", "framework:agnostic"]
@@ -69,51 +114,6 @@
     },
     "xplat-web-scss": {
       "tags": ["platform:web", "scope:shared", "type:lib", "framework:agnostic"]
-    },
-    "xplat-nativescript-scss": {
-      "tags": ["platform:nativescript", "scope:shared", "type:lib", "framework:agnostic"]
-    },
-    "xplat-nativescript-utils": {
-      "tags": ["platform:nativescript", "scope:shared", "type:lib", "framework:agnostic"]
-    },
-    "xplat-nativescript-core": {
-      "tags": ["platform:nativescript", "scope:shared", "type:lib", "framework:angular"]
-    },
-    "xplat-nativescript-features": {
-      "tags": ["platform:nativescript", "scope:shared", "type:lib", "framework:angular"]
-    },
-    "xplat-base-breakerboxer-data": {
-      "tags": ["platform:agnostic", "scope:breakerboxer", "type:lib", "framework:angular"]
-    },
-    "firebase": {
-      "tags": ["platform:agnostic", "scope:shared", "type:lib", "framework:angular"]
-    },
-    "web-portfolio": {
-      "tags": ["platform:web", "scope:portfolio", "type:app", "framework:angular"]
-    },
-    "web-portfolio-e2e": {
-      "tags": ["platform:web", "scope:portfolio", "type:e2e", "framework:protractor"],
-      "implicitDependencies": ["web-portfolio"]
-    },
-    "portfolio-data": {
-      "tags": ["platform:agnostic", "scope:portfolio", "type:lib", "framework:angular"]
-    },
-    "baby-babble": {
-      "tags": []
-    },
-    "baby-babble-e2e": {
-      "tags": [],
-      "implicitDependencies": ["baby-babble"]
-    },
-    "web-glob101": {
-      "tags": []
-    },
-    "web-glob101-e2e": {
-      "tags": [],
-      "implicitDependencies": ["web-glob101"]
-    },
-    "glob101-util": {
-      "tags": []
     }
   }
 }

@@ -48,3 +48,4 @@ Thumbs.db
 
 /firestore.rules
 /firestore.indexes.json
+.npmrc
