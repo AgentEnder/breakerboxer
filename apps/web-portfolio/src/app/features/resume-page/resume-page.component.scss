@@ -1,4 +1,10 @@
 :host {
-  display: flex;
-  justify-content: center;
+  position: relative;
+  display: block;
+}
+
+.panel {
+  position: absolute;
+  left: 2em;
+  right: 2em;
 }

@@ -70,4 +70,13 @@ const SAMPLE_DATA: Project[] = [
     sourceCodeLink: 'https://github.com/AgentEnder/breakerboxer/tree/master/apps/web-portfolio',
     liveDemoLink: '#',
   },
+  {
+    id: '460FF820-B1AE-4128-86F7-6D9E19EFAFAE',
+    title: 'nx-dotnet',
+    tags: ['Nx, .NET'],
+    technologyUsed: ['Nx'],
+    markdownContent: '',
+    markdownDescription: 'Collection of Nx Plugins for .NET support / miscellany.',
+    sourceCodeLink: 'https://github.com/nx-dotnet/nx-dotnet/',
+  },
 ];

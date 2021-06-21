@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 
 import { Job } from '@tbs/portfolio-data';
 
@@ -7,12 +7,29 @@ import { Job } from '@tbs/portfolio-data';
   templateUrl: './career-tab.component.html',
   styleUrls: ['./career-tab.component.scss'],
 })
-export class CareerTabComponent implements OnInit {
-  constructor() {}
-
-  ngOnInit(): void {}
-
+export class CareerTabComponent {
   jobs: Job[] = [
+    {
+      company: 'Narwhal Technologies',
+      duties: [
+        {
+          titles: [
+            {
+              title: 'Software Engineer',
+              start: new Date(2021, 6, 1),
+            },
+          ],
+          bullets: [
+            {
+              title: 'High leverage consultant utilizing Nx with Angular + React',
+            },
+            {
+              title: 'Maintainer and Core Contributor for Nx',
+            },
+          ],
+        },
+      ],
+    },
     {
       company: 'Universal Plant Services',
       duties: [
@@ -21,6 +38,7 @@ export class CareerTabComponent implements OnInit {
             {
               title: 'Software Developer',
               start: new Date(2020, 7, 1),
+              end: new Date(2021, 7, 1),
             },
             {
               title: 'SDET',
