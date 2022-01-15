@@ -60,7 +60,7 @@
     "d3": "^6.5.0",
     "firebase": "^8.2.4",
     "luxon": "^1.25.0",
-    "marked": "^2.0.1",
+    "marked": "^4.0.10",
     "micromatch": "^4.0.4",
     "nativescript-ngx-fonticon": "~7.0.0",
     "nativescript-theme-core": "^1.0.4",
